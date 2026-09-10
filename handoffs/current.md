@@ -2,7 +2,7 @@
 
 **Updated:** September 10, 2026
 
-**Checkpoint:** Corrected Part 1 hotel-name search verified and reviewed; Git checkpoint in progress
+**Checkpoint:** Corrected Part 1 hotel-name search verified, reviewed, and committed locally
 
 ## Corrected behavior
 
@@ -20,11 +20,10 @@
 
 ## Superseded local checkpoint
 
-The two existing local commits contain the earlier city-search interpretation.
-They were never pushed and must not be identified as the final Part 1 checkpoint.
-The obsolete Boston and Seattle screenshots have been removed. A corrected
-commit will be created only after automated checks, browser checks, replacement
-screenshots, and manual review pass.
+The two earlier local commits contained the city-search interpretation. They
+were never pushed and were replaced by the corrected hotel-search history after
+automated checks, browser checks, replacement screenshots, and manual review
+passed. The obsolete Boston and Seattle screenshots were removed.
 
 ## Verification status
 
@@ -56,7 +55,8 @@ screenshots, and manual review pass.
   `d58cbe7f37151ebf361976357a19b06552c4733059dc285a0d1f9d565a6c7b11`)
 - `evidence/part1-hotel-no-results.png` (SHA-256
   `be7c45e845f4b7249665c48f550c68b2b2f05b5335e2b23d68c6bca4fad8457b`)
-- Final Part 1 commit hash
+- Corrected Part 1 implementation/evidence checkpoint:
+  `d224428019dd6fb7223c4e607aabc108af145577`
 - Public GitHub repository URL
 
 ## Current limitations
@@ -68,6 +68,6 @@ screenshots, and manual review pass.
 
 ## Next action
 
-Replace the superseded local history with the reviewed Part 1 hotel-search
-checkpoint, then create the remote and push only after student authorization.
-Do not start Part 2.
+Create the public remote and push the corrected Part 1 checkpoint only after
+student authorization. Record the resulting repository URL without starting
+Part 2.
