@@ -2,7 +2,7 @@
 
 **Updated:** September 10, 2026
 
-**Checkpoint:** Corrected Part 1 hotel-name search verified, reviewed, and committed locally
+**Checkpoint:** Corrected Part 1 hotel-name search verified, reviewed, committed, and pushed
 
 ## Corrected behavior
 
@@ -57,17 +57,15 @@ passed. The obsolete Boston and Seattle screenshots were removed.
   `be7c45e845f4b7249665c48f550c68b2b2f05b5335e2b23d68c6bca4fad8457b`)
 - Corrected Part 1 implementation/evidence checkpoint:
   `d224428019dd6fb7223c4e607aabc108af145577`
-- Public GitHub repository URL
+- Public GitHub repository:
+  `https://github.com/NateHudson214/hudson-travel`
 
 ## Current limitations
 
-- GitHub CLI authentication was invalid at the last check and must be renewed
-  before creating the remote.
-- The repository has no remote and nothing has been pushed.
 - Local dependencies and build output remain ignored and must not be committed.
+- Canvas submission of `report.md` remains a manual student action.
 
 ## Next action
 
-Create the public remote and push the corrected Part 1 checkpoint only after
-student authorization. Record the resulting repository URL without starting
-Part 2.
+Upload `report.md` to the Part 1 Canvas assignment and confirm submission before
+starting any Part 2 work.

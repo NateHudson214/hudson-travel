@@ -4,10 +4,10 @@
 
 **Due:** Friday, September 11, 2026, at 11:59 PM ET
 
-**Repository URL:** **PENDING — no remote exists.**
+**Repository URL:** [https://github.com/NateHudson214/hudson-travel](https://github.com/NateHudson214/hudson-travel)
 
 **Exact Part 1 implementation/evidence checkpoint:**
-`d224428019dd6fb7223c4e607aabc108af145577`
+[`d224428019dd6fb7223c4e607aabc108af145577`](https://github.com/NateHudson214/hudson-travel/commit/d224428019dd6fb7223c4e607aabc108af145577)
 
 ## Project context
 
@@ -68,8 +68,8 @@ evidence. No remote was created, so that work was never published.
 - Corrected manual VS Code scan: completed by the student; all visible changes
   were intentional, no secrets or `.env` files were present, generated output
   was excluded, and the source CSV files were unmodified.
-- Repository URL and clickable commit link: **PENDING — add after the public
-  remote is created and this checkpoint is pushed.**
+- Public repository and clickable implementation commit links are recorded
+  above; `main` was pushed to GitHub after verification.
 
 Capture instructions are in [`evidence/README.md`](evidence/README.md), the
 prompt record is in
