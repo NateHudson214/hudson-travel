@@ -12,7 +12,7 @@
 ## Project context
 
 Hudson Travel is a local educational application built with Vue, FastAPI, and
-the instructor-supplied CSV data. Part 1 searches hotels by name and displays
+the supplied CSV data. Part 1 searches hotels by name and displays
 their available fixed-date stays. It does not create real reservations, process
 payments, use SQLite, or implement Part 2 booking behavior.
 
