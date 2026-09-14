@@ -9,7 +9,11 @@
 **Preserved Part 1 implementation/evidence checkpoint:**
 [`d224428019dd6fb7223c4e607aabc108af145577`](https://github.com/NateHudson214/hudson-travel/commit/d224428019dd6fb7223c4e607aabc108af145577)
 
-**Exact Part 2 checkpoint:** `[PLACEHOLDER — add after reviewed feature work is committed and merged]`
+**Exact Part 2 implementation checkpoint:**
+[`2a127bf79e8cb66069b0c1a9695391a8e2924507`](https://github.com/NateHudson214/hudson-travel/commit/2a127bf79e8cb66069b0c1a9695391a8e2924507)
+
+**Exact Part 2 merge checkpoint:**
+[`95635eff2dc77fdf4f6e9dd5b842a62a239e1f3f`](https://github.com/NateHudson214/hudson-travel/commit/95635eff2dc77fdf4f6e9dd5b842a62a239e1f3f)
 
 ## Project context
 
@@ -88,8 +92,14 @@ recovery, and console checks. Its detailed evidence is in
 also passed: the student confirmed every visible change was intentional, no
 secrets or `.env` files were present, generated dependencies, build output, and
 the ignored database were excluded, and all CSV and dependency declarations
-were unmodified. This report still needs the exact Part 2 checkpoint/merge
-commit and final pushed status before upload.
+were unmodified.
+
+Substantial Part 2 work was committed on `part2-sqlite-bookings` at the exact
+implementation checkpoint above and pushed as a remote feature branch. It was
+then merged into `main` with a non-fast-forward merge. The complete automated
+gate passed again on the combined `main`, and the merge plus final documentation
+state were pushed to the public repository. Part 1 remains preserved in the
+same history. This report is ready for the student's final Canvas upload.
 
 Major implementation instructions are retained in
 [`prompts/002-part2-sqlite-bookings.md`](prompts/002-part2-sqlite-bookings.md).

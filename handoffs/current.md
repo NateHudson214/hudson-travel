@@ -2,14 +2,19 @@
 
 **Updated:** September 14, 2026
 
-**Checkpoint:** Part 1 preserved; reviewed Part 2 SQLite and Vue CRUD ready for feature-branch checkpoint
+**Checkpoint:** Part 1 preserved; Part 2 verified, merged, and published
 
 ## Branch state
 
-- Branch: `part2-sqlite-bookings`
+- Current branch: `main`
 - Base: synchronized `main` commit
   `dcfb474d8c156020389ed7d3ba86d483251a3b8a`
-- Part 2 changes are uncommitted and have not been pushed.
+- Part 2 implementation commit:
+  `2a127bf79e8cb66069b0c1a9695391a8e2924507`
+- Non-fast-forward Part 2 merge commit:
+  `95635eff2dc77fdf4f6e9dd5b842a62a239e1f3f`
+- The feature branch and final merged `main` documentation state are published
+  at `https://github.com/NateHudson214/hudson-travel`.
 - Part 1 implementation/evidence checkpoint remains
   `d224428019dd6fb7223c4e607aabc108af145577`.
 
@@ -80,8 +85,7 @@ passed. The obsolete Boston and Seattle screenshots were removed.
 ## Current limitations
 
 - Local dependencies and build output remain ignored and must not be committed.
-- The Part 2 checkpoint, merge to `main`, push, and Canvas submission remain
-  pending.
+- Only the student's Part 2 Canvas submission remains pending.
 
 ## Part 2 automated verification
 
@@ -110,9 +114,9 @@ passed. The obsolete Boston and Seattle screenshots were removed.
 
 ## Next action
 
-Create the reviewed Part 2 feature-branch checkpoint, preserve it remotely,
-merge it into `main`, rerun the complete combined gate, record exact commit
-metadata, and push the verified final documentation state.
+Upload `report.md` to the Part 2 Canvas assignment and confirm the submitted
+file is the updated Part 2 report. Do not make further source changes unless a
+submission review identifies a specific issue.
 
 ## Part 2 backend slice
 

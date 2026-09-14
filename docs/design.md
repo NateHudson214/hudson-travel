@@ -1,6 +1,6 @@
 # Hudson Travel — Project Design
 
-**Status:** Part 1 is preserved at [`d224428019dd6fb7223c4e607aabc108af145577`](https://github.com/NateHudson214/hudson-travel/commit/d224428019dd6fb7223c4e607aabc108af145577). Part 2 development is underway on `part2-sqlite-bookings`. Dependency-free SQLite initialization, SQLite-backed reads and writes, and the Vue booking CRUD interface are implemented. The complete automated gate and a zero-correction browser/restart persistence smoke test passed on September 14, 2026. Manual review, feature-branch checkpoint, merge, and Part 2 submission remain pending.
+**Status:** Part 1 is preserved at [`d224428019dd6fb7223c4e607aabc108af145577`](https://github.com/NateHudson214/hudson-travel/commit/d224428019dd6fb7223c4e607aabc108af145577). Part 2 was implemented on `part2-sqlite-bookings` at [`2a127bf79e8cb66069b0c1a9695391a8e2924507`](https://github.com/NateHudson214/hudson-travel/commit/2a127bf79e8cb66069b0c1a9695391a8e2924507) and merged into `main` with [`95635eff2dc77fdf4f6e9dd5b842a62a239e1f3f`](https://github.com/NateHudson214/hudson-travel/commit/95635eff2dc77fdf4f6e9dd5b842a62a239e1f3f). The complete automated gates, zero-correction browser/restart smoke test, and manual VS Code review passed. The feature branch and final `main` documentation state are published; only the student's Part 2 Canvas submission remains.
 
 ## Design revision
 
@@ -287,5 +287,8 @@ bookings plus cancelled B007; B008 remained absent, and
 `next_booking_number=9`. A controlled backend outage displayed a clear booking
 error while preserving both search results and booking history. Recovery through
 the Vue refresh action succeeded, and the healthy browser console had no warning
-or error entries. No source correction cycle was required. The next task is the
-student's final VS Code review; no Part 2 branch commit has been made.
+or error entries. No source correction cycle was required. The final manual
+review passed, the implementation checkpoint was preserved on the remote
+feature branch, and the verified non-fast-forward merge was published on
+`main`. The remaining task is the student's Part 2 Canvas submission of
+`report.md`.
