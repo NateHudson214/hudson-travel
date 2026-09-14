@@ -1,82 +1,95 @@
-# Hudson Travel — Part 1 Report
+# Hudson Travel — Part 2 Report Draft
 
-**Assignment:** Part 1 Hotel Search
+**Assignment:** Part 2 SQLite Booking CRUD
 
-**Due:** Friday, September 11, 2026, at 11:59 PM ET
+**Due:** Tuesday, September 15, 2026, at 11:59 PM ET
 
 **Repository URL:** [https://github.com/NateHudson214/hudson-travel](https://github.com/NateHudson214/hudson-travel)
 
-**Exact Part 1 implementation/evidence checkpoint:**
+**Preserved Part 1 implementation/evidence checkpoint:**
 [`d224428019dd6fb7223c4e607aabc108af145577`](https://github.com/NateHudson214/hudson-travel/commit/d224428019dd6fb7223c4e607aabc108af145577)
+
+**Exact Part 2 checkpoint:** `[PLACEHOLDER — add after reviewed feature work is committed and merged]`
 
 ## Project context
 
 Hudson Travel is a local educational application built with Vue, FastAPI, and
-the supplied CSV data. Part 1 searches hotels by name and displays
-their available fixed-date stays. It does not create real reservations, process
-payments, use SQLite, or implement Part 2 booking behavior.
-
-The implementation follows [`docs/design.md`](docs/design.md) and the checks in
-[`docs/verification.md`](docs/verification.md).
+SQLite. Part 1's hotel-name search is preserved. Part 2 seeds the supplied
+hotel, trip, user, and booking records into SQLite once, then performs all
+search and booking reads and writes through FastAPI. The bookings are simulated;
+the application does not make real reservations or process payments.
 
 ## Responsibilities
 
 ### Interface
 
-Vue provides a labeled hotel-name input and Search button. It displays loading,
-validation, request-error, result-summary, no-results, and results-table states.
-The table identifies the matching hotel and every associated offered stay.
-Validation and request failures remove stale results.
+Vue preserves hotel-name search and loads travelers plus joined booking history
+when the page starts. A user searches for a hotel, selects a traveler and one
+displayed offered trip, and creates a booking. The history table shows booking
+ID, traveler, trip, hotel, stay dates, booked-on date, and status. Confirmed
+bookings can be cancelled while remaining visible, and a test booking can be
+deleted. Clear loading, validation, success, error, and empty states are shown.
+Booking and search errors do not erase valid state from the other workflow.
 
 ### Logic
 
-FastAPI provides `GET /api/trips?hotel_name={hotel_name}`. Python trims and
-validates the query, matches hotel names case-insensitively with partial-name
-support, joins trips to matching hotels through `hotel_id`, and returns only the
-fields needed by the table.
+FastAPI exposes hotel search, traveler and joined-history reads, booking
+creation, cancellation, and deletion. Python validates references, assigns the
+booking date and initial `confirmed` status, and allocates monotonic `B` IDs in
+an immediate transaction. Vue sends every CRUD operation to FastAPI and rereads
+history after create, cancel, and delete so the database remains the source of
+truth.
 
 ### Data
 
-Part 1 reads `backend/data/hotels.csv` and `backend/data/trips.csv` with
-`encoding="utf-8-sig"`. The supplied CSV files are read-only. `users.csv` and
-`bookings.csv` remain preserved for the later assignment but are unused here.
+On first initialization, Python reads all four supplied CSV files with
+`utf-8-sig`, creates the relational schema, preserves every supplied ID, stores
+a durable `csv_seed_version` marker, and initializes `next_booking_number` in
+one transaction. Every later application read and write uses
+`backend/instance/hudson_travel.sqlite3`; the ignored development database is
+not committed. Foreign keys are enabled for every connection. The marker—not
+row counts or individual records—prevents deleted starter records from being
+restored and prevents duplicate seeding.
+
+## API behavior
+
+| Operation | Contract | Result |
+| --- | --- | --- |
+| Search | `GET /api/trips?hotel_name={name}` | SQLite-backed matching offered stays |
+| Read travelers | `GET /api/users` | Supplied travelers for the selector |
+| Read history | `GET /api/bookings` | Joined booking, user, trip, and hotel rows |
+| Create | `POST /api/bookings` with `user_id`, `trip_id` | `201`, backend ID/date, `confirmed` row |
+| Cancel | `PATCH /api/bookings/{id}` with `{"status":"cancelled"}` | Retained joined row with cancelled status |
+| Delete | `DELETE /api/bookings/{id}` | `204`; row removed |
 
 ## Expected versus observed verification
 
 | Check | Expected | Observed |
 | --- | --- | --- |
-| Backend tests | Exact, normalized, partial, unmatched, missing, and blank searches pass | 6 passed; two non-failing dependency warnings |
-| Frontend tests | Correct parameter encoding and friendly error handling pass | 3 passed |
-| Frontend lint/build | No findings and successful production build | Both linters passed; Vite transformed 14 modules |
-| `Harbor Lantern Hotel` | `T001` and `T009` | Passed; table showed both IDs, trip names, hotel, Boston, MA, dates, and $150 rate |
-| Lowercase and surrounding spaces | Same two stays | Passed; both forms returned the same two rows |
-| `Lantern` | Same two stays through partial matching | Passed; displayed T001 and T009 |
-| `Not a Real Hotel` | Clear no-results message and no table | Passed; message displayed and table was absent |
-| Blank hotel name | Clear validation and no stale table | Passed after a successful search; validation displayed and both rows/table cleared |
-| Backend unavailable | Friendly request error and no stale table | Passed by stopping only the test backend; request error displayed and prior rows/table cleared |
-| Healthy browser console | No application errors | Passed; no warnings or errors were reported |
-| Protected files | CSV and dependency declarations unchanged | SHA-256 values match the pre-correction values |
+| Backend tests | One-time seed, preserved IDs/counts, SQLite search, persistent CRUD, non-reused IDs, clear errors | 15 passed; two non-failing framework dependency warnings |
+| Frontend API-client tests | User/history reads, exact create/cancel/delete requests, useful error handling | 11 passed |
+| Frontend lint/build | No lint findings and a successful production bundle | Oxlint and ESLint passed; Vite transformed 18 modules |
+| Protected files | All CSV and dependency-declaration hashes unchanged | Passed after implementation |
+| Database exclusion | Local SQLite state is ignored and untracked | Passed; `backend/instance/` is ignored |
+| Browser CRUD | Create, read, cancel-retain, and delete all initiated through Vue | Passed: B007 created and cancelled-retained; B008 created and deleted; service logs recorded GET/POST/PATCH/DELETE |
+| Browser refresh | Saved changes remain after refreshing the page | Passed: B007 persisted and B008 remained absent |
+| Service restart | Changes persist, deletions stay deleted, seed records do not duplicate/reappear | Passed: seven rows after restart—B001–B006 plus cancelled B007; B008 absent; counter 9 |
+| Browser failure isolation and console | Clear errors, unrelated state retained, no healthy-console errors | Passed: failed create showed a clear error, retained two search rows and seven history rows, recovered through Refresh history, and healthy console was clean |
+| Manual VS Code scan | Only intentional files; no secrets/generated output/CSV edits | Passed September 14, 2026; student confirmed every visible change was intentional and protected/generated files were excluded |
 
-The previous city-search implementation, smoke evidence, screenshots, and local
-commit hashes were based on a superseded interpretation and are not final Part 1
-evidence. No remote was created, so that work was never published.
+## Evidence and remaining work
 
-## Evidence
+The backend tests use temporary databases. The authorized browser smoke test
+created the ignored development database and left it with the six seed bookings
+plus cancelled B007; B008 remains deleted. The test passed in zero correction
+cycles, including browser refresh, full service restart, controlled failure,
+recovery, and console checks. Its detailed evidence is in
+[`docs/verification.md`](docs/verification.md). The final manual VS Code review
+also passed: the student confirmed every visible change was intentional, no
+secrets or `.env` files were present, generated dependencies, build output, and
+the ignored database were excluded, and all CSV and dependency declarations
+were unmodified. This report still needs the exact Part 2 checkpoint/merge
+commit and final pushed status before upload.
 
-- Successful hotel search: [`evidence/part1-hotel-search.png`](evidence/part1-hotel-search.png), reviewed and readable.
-- Unmatched hotel search: [`evidence/part1-hotel-no-results.png`](evidence/part1-hotel-no-results.png), reviewed and readable.
-- Corrected manual VS Code scan: completed by the student; all visible changes
-  were intentional, no secrets or `.env` files were present, generated output
-  was excluded, and the source CSV files were unmodified.
-- Public repository and clickable implementation commit links are recorded
-  above; `main` was pushed to GitHub after verification.
-
-Capture instructions are in [`evidence/README.md`](evidence/README.md), the
-prompt record is in
-[`prompts/001-part1-hotel-search.md`](prompts/001-part1-hotel-search.md), and
-the current state is in [`handoffs/current.md`](handoffs/current.md).
-
-## Part 2 boundary
-
-Part 2 has not started. No database, persistence, traveler selection, or booking
-CRUD belongs in this checkpoint.
+Major implementation instructions are retained in
+[`prompts/002-part2-sqlite-bookings.md`](prompts/002-part2-sqlite-bookings.md).

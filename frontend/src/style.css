@@ -19,7 +19,8 @@ body {
 }
 
 button,
-input {
+input,
+select {
   font: inherit;
 }
 
@@ -92,7 +93,17 @@ input {
   background: #ffffff;
 }
 
+select {
+  min-width: 0;
+  padding: 0.85rem 2.5rem 0.85rem 1rem;
+  border: 1px solid #9cabc0;
+  border-radius: 0.65rem;
+  color: #17233c;
+  background: #ffffff;
+}
+
 input:focus-visible,
+select:focus-visible,
 button:focus-visible {
   outline: 0.2rem solid #69a6e8;
   outline-offset: 0.15rem;
@@ -113,7 +124,8 @@ button:hover:not(:disabled) {
 }
 
 button:disabled,
-input:disabled {
+input:disabled,
+select:disabled {
   cursor: wait;
   opacity: 0.65;
 }
@@ -138,6 +150,111 @@ input:disabled {
 
 .result-summary {
   font-weight: 750;
+}
+
+.booking-section {
+  padding: clamp(1.5rem, 4vw, 2.5rem);
+  border-top: 1px solid #e3e8f0;
+}
+
+.section-heading {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.section-eyebrow {
+  color: #1768ac;
+}
+
+h2 {
+  margin: 0;
+  font-size: clamp(1.35rem, 3vw, 1.8rem);
+}
+
+.section-intro {
+  margin: 0.6rem 0 1.25rem;
+  color: #4c5c72;
+}
+
+.booking-form {
+  display: grid;
+  grid-template-columns: minmax(12rem, 1fr) minmax(16rem, 1.5fr) auto;
+  align-items: end;
+  gap: 1rem;
+}
+
+.booking-feedback {
+  min-height: 2.8rem;
+  padding-top: 1rem;
+}
+
+.booking-feedback p,
+.history-state {
+  margin: 0;
+}
+
+.success-message {
+  color: #17683a;
+  font-weight: 700;
+}
+
+.history-section {
+  background: #f9fbfe;
+}
+
+.secondary-button,
+.danger-button {
+  padding: 0.6rem 0.85rem;
+  font-size: 0.82rem;
+}
+
+.secondary-button {
+  border: 1px solid #1768ac;
+  color: #1768ac;
+  background: #ffffff;
+}
+
+.secondary-button:hover:not(:disabled) {
+  color: #ffffff;
+  background: #1768ac;
+}
+
+.danger-button {
+  background: #a2212f;
+}
+
+.danger-button:hover:not(:disabled) {
+  background: #7c1723;
+}
+
+.booking-table-wrap {
+  padding: 1.25rem 0 0;
+}
+
+.row-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.status-badge {
+  display: inline-block;
+  padding: 0.25rem 0.55rem;
+  border-radius: 999px;
+  font-size: 0.76rem;
+  font-weight: 800;
+  text-transform: capitalize;
+}
+
+.status-confirmed {
+  color: #17683a;
+  background: #daf2e4;
+}
+
+.status-cancelled {
+  color: #80202c;
+  background: #f8dfe2;
 }
 
 .table-wrap {
@@ -171,8 +288,14 @@ th {
 }
 
 @media (max-width: 38rem) {
-  .search-form {
+  .search-form,
+  .booking-form {
     grid-template-columns: 1fr;
+  }
+
+  .section-heading {
+    align-items: stretch;
+    flex-direction: column;
   }
 
   button {
