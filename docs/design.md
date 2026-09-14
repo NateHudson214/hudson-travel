@@ -1,6 +1,6 @@
-# Hudson Travel — Assignment 1 Design
+# Hudson Travel — Project Design
 
-**Status:** The Part 1 CSV-backed search has been corrected to use hotel name, as required by the authoritative assignment table. The corrected automated gate and API/browser smoke test pass, both replacement screenshots have been reviewed at their required repository paths, and the student completed the final VS Code review. The corrected implementation/evidence checkpoint is [`d224428019dd6fb7223c4e607aabc108af145577`](https://github.com/NateHudson214/hudson-travel/commit/d224428019dd6fb7223c4e607aabc108af145577) in the public [Hudson Travel repository](https://github.com/NateHudson214/hudson-travel). The two earlier local commits and their city-search evidence were replaced before publication. Part 2 has not started.
+**Status:** Part 1 is preserved at [`d224428019dd6fb7223c4e607aabc108af145577`](https://github.com/NateHudson214/hudson-travel/commit/d224428019dd6fb7223c4e607aabc108af145577). Part 2 development is underway on `part2-sqlite-bookings`. Dependency-free SQLite initialization, SQLite-backed reads and writes, and the Vue booking CRUD interface are implemented. The complete automated gate and a zero-correction browser/restart persistence smoke test passed on September 14, 2026. Manual review, feature-branch checkpoint, merge, and Part 2 submission remain pending.
 
 ## Design revision
 
@@ -72,10 +72,10 @@ These counts provide simple expected results for browser verification and backen
 
 | Layer | Part 1 responsibility | Part 2 responsibility |
 | --- | --- | --- |
-| Interface | Vue provides a hotel-name input, Search button, result table, loading/error feedback, and no-results message. | Vue adds booking creation, history, cancellation, and test-booking deletion controls. Every CRUD action is initiated in the frontend. |
-| Logic | Python trims and validates the hotel-name query, performs case-insensitive partial matching, joins trips to hotels through `hotel_id`, and returns predictable results. | Python validates user/trip references, assigns unique booking IDs, permits valid status changes, and controls deletion. |
-| Data | `hotels.csv` and `trips.csv` are read-only sources. Trips have fixed dates and are the rows returned by search. | All four CSVs seed relational SQLite tables once. After seeding, reads and writes use SQLite only. |
-| Persistence | No user-created state is required. Search data comes from the supplied CSV files whenever the backend runs. | SQLite preserves additions, cancellations, and deletions across browser refresh and frontend/backend restarts without duplicating or restoring seed records. |
+| Interface | Vue provides a hotel-name input, Search button, result table, loading/error feedback, and no-results message. | Vue loads travelers and booking history, creates bookings from a selected traveler and displayed trip, retains cancelled rows, deletes confirmed test rows, refreshes from the backend after mutations, and shows independent loading/success/error/empty states. |
+| Logic | Python trims and validates the hotel-name query, performs case-insensitive partial matching, joins trips to hotels through `hotel_id`, and returns predictable results. | Implemented backend logic validates references, assigns durable unique IDs, reads joined history, cancels while retaining records, and deletes selected bookings. |
+| Data | `hotels.csv` and `trips.csv` were read-only Part 1 sources. | Implemented initialization seeds all four read-only CSVs once. Every application read and write then uses SQLite. |
+| Persistence | No user-created state was required. | Implemented SQLite transactions and a durable seed marker preserve additions, cancellations, and deletions without duplicating or restoring starter records. Browser refresh and full process-restart persistence passed against the development database. |
 
 ## Part 1 — CSV Hotel Search
 
@@ -141,9 +141,17 @@ IDs may remain in the API response for later use without occupying prominent tab
 
 ### Database initialization
 
-On the first run only, create SQLite tables for hotels, trips, users, and bookings and seed them from the four supplied CSVs while preserving every provided ID. A durable initialization marker or equivalent one-time strategy must prevent reseeding on later starts. Checking only whether an individual row exists is insufficient because deleting a seeded test booking must not cause that booking to reappear after restart.
+The backend now creates `backend/instance/hudson_travel.sqlite3` during FastAPI startup. In one `BEGIN IMMEDIATE` transaction it creates `hotels`, `trips`, `users`, `bookings`, and `app_metadata`; seeds all four supplied CSVs while preserving every provided ID; stores `csv_seed_version=1`; and initializes `next_booking_number` to 7. The ignored `backend/instance/` directory keeps local state out of Git.
 
-After initialization, every application read and write uses SQLite rather than rereading CSV files. The database file is local application state and must survive frontend/backend restarts.
+The durable seed marker, rather than row counts or individual record checks,
+prevents all later reseeding. The marker is written only after the full seed
+succeeds, so a failed transaction cannot record a partial initialization. After
+initialization, every application read and write uses SQLite rather than
+rereading CSV files.
+
+Foreign keys are enabled on every application connection. New IDs come from a
+durable counter reserved inside `BEGIN IMMEDIATE`; cancellation and deletion do
+not decrement it, so IDs cannot be reused.
 
 ### Required frontend-driven CRUD
 
@@ -154,19 +162,36 @@ After initialization, every application read and write uses SQLite rather than r
 
 The frontend must send each operation through FastAPI to Python; it must not mutate a local-only booking list.
 
-### Likely API surface for Part 2
+### Implemented Vue interaction
+
+On startup Vue requests both `/api/users` and `/api/bookings`. Hotel search
+continues to populate the offered-stay table; the booking form permits only a
+trip from those current results to be selected. Creation sends the chosen IDs
+to FastAPI. The history table identifies the booking, traveler, trip, hotel,
+stay dates, backend-assigned booking date, and status. Confirmed rows expose a
+cancel action, all rows expose delete, and a manual history refresh remains
+available. Each mutation is followed by a new history request, so SQLite—not a
+frontend-only edit—is the displayed source of truth. Booking failures leave
+valid search results intact, and search failures leave valid history intact.
+
+### Implemented backend API surface
 
 ```text
 GET    /api/trips?hotel_name={hotel_name}
 GET    /api/users
 GET    /api/bookings
-GET    /api/bookings/{booking_id}
 POST   /api/bookings
 PATCH  /api/bookings/{booking_id}
 DELETE /api/bookings/{booking_id}
 ```
 
-Exact request and response shapes will be finalized before Part 2 implementation.
+`POST /api/bookings` accepts `user_id` and `trip_id`, assigns `booked_on` and a
+new `B` identifier on the backend, creates a `confirmed` booking, and returns
+HTTP 201 with joined user/trip/hotel details. `PATCH` accepts only
+`{"status":"cancelled"}` and returns the retained joined record. `DELETE`
+returns HTTP 204. Missing bookings and nonexistent user/trip references return
+clear 404 responses. The history collection is the required read operation, so
+no single-booking endpoint is included.
 
 ### Part 2 persistence checks
 
@@ -242,4 +267,25 @@ The project folder is named `hudson-travel`. The corrected Part 1 FastAPI endpoi
 
 Project-local dependencies remain installed in ignored directories. Corrected verification produced six passing backend tests, three passing frontend tests, clean Oxlint and ESLint runs, and a successful Vite production build. Exact, lowercase, surrounding-space, partial, unmatched, blank, and safe backend-outage cases passed through the API and browser; the healthy console had no warnings or errors. One bounded correction cycle made the required `T001` and `T009` identifiers visible beside their trip names. The reviewed replacement screenshots are `evidence/part1-hotel-search.png` and `evidence/part1-hotel-no-results.png`.
 
-The earlier city-search smoke test, screenshots, and local commits were superseded and replaced before publication. The student completed the corrected manual VS Code scan and confirmed that the visible changes are intentional, no secrets or `.env` files are present, generated dependencies and build output are excluded, and the source CSV files are unmodified. The corrected implementation/evidence checkpoint is `d224428019dd6fb7223c4e607aabc108af145577`; `main` is published at `https://github.com/NateHudson214/hudson-travel`. Part 2 has not started.
+The earlier city-search smoke test, screenshots, and local commits were superseded and replaced before publication. The corrected Part 1 checkpoint remains published on `main` at `https://github.com/NateHudson214/hudson-travel`.
+
+On `part2-sqlite-bookings`, the Part 2 implementation now initializes the
+ignored SQLite database exactly once, serves hotel search from SQLite, lists
+users and joined booking history, and creates, cancels, and deletes persistent
+bookings. The Vue interface loads travelers/history, creates a booking for a
+displayed trip, cancels while retaining the row, deletes after backend
+confirmation, and rereads history after every mutation. Backend tests use
+isolated temporary databases and cover all seed IDs,
+repeat initialization, SQLite-only search, B007/B008 allocation, persistent
+create/cancel/delete behavior, and error responses. Frontend client tests cover
+the exact CRUD methods and bodies plus error parsing.
+
+The bounded Part 2 smoke test created B007 for U006/T001, refreshed the browser,
+cancelled B007 while retaining it, created B008 for U006/T009, deleted B008,
+and then restarted both services. After restart, SQLite contained the six seed
+bookings plus cancelled B007; B008 remained absent, and
+`next_booking_number=9`. A controlled backend outage displayed a clear booking
+error while preserving both search results and booking history. Recovery through
+the Vue refresh action succeeded, and the healthy browser console had no warning
+or error entries. No source correction cycle was required. The next task is the
+student's final VS Code review; no Part 2 branch commit has been made.

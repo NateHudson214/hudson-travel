@@ -1,8 +1,17 @@
 # Current Handoff
 
-**Updated:** September 10, 2026
+**Updated:** September 14, 2026
 
-**Checkpoint:** Corrected Part 1 hotel-name search verified, reviewed, committed, and pushed
+**Checkpoint:** Part 1 preserved; reviewed Part 2 SQLite and Vue CRUD ready for feature-branch checkpoint
+
+## Branch state
+
+- Branch: `part2-sqlite-bookings`
+- Base: synchronized `main` commit
+  `dcfb474d8c156020389ed7d3ba86d483251a3b8a`
+- Part 2 changes are uncommitted and have not been pushed.
+- Part 1 implementation/evidence checkpoint remains
+  `d224428019dd6fb7223c4e607aabc108af145577`.
 
 ## Corrected behavior
 
@@ -16,7 +25,15 @@
 - Vue provides hotel-name search plus loading, validation, request-error,
   no-results, summary, and results-table states.
 - Validation and request failures clear stale results.
-- No Part 2 behavior has started.
+- The Part 1 search interface remains intact while the Part 2 backend slice is
+  developed separately on the feature branch.
+- Vue loads the supplied travelers and joined booking history on startup.
+- The booking form accepts a traveler and one trip from current search results,
+  then sends creation through FastAPI.
+- The history table exposes cancellation for confirmed rows and deletion for
+  test rows. It refreshes from SQLite after each successful mutation.
+- Search and booking failures use independent state, so one workflow does not
+  erase valid data from the other.
 
 ## Superseded local checkpoint
 
@@ -63,9 +80,66 @@ passed. The obsolete Boston and Seattle screenshots were removed.
 ## Current limitations
 
 - Local dependencies and build output remain ignored and must not be committed.
-- Canvas submission of `report.md` remains a manual student action.
+- The Part 2 checkpoint, merge to `main`, push, and Canvas submission remain
+  pending.
+
+## Part 2 automated verification
+
+- Backend pytest: 15 passed with the same two non-failing framework dependency
+  warnings recorded in Part 1.
+- Frontend API-client tests: 11 passed, including users, history, exact create,
+  cancel, and delete requests, HTTP details, and empty/malformed error bodies.
+- Oxlint and ESLint: passed with no findings.
+- Vite production build: passed; 18 modules transformed.
+- `git diff --check`: passed.
+- All four supplied CSV hashes and all three dependency-declaration hashes
+  match the Part 1 values.
+- Tests used temporary SQLite files; no development database was created.
+- `backend/instance/hudson_travel.sqlite3` is covered by `.gitignore`.
+- Browser CRUD, refresh persistence, service-restart persistence, controlled
+  failure isolation, recovery, and the healthy console all passed.
+- Smoke-test database state: B001–B006 plus cancelled B007; B008 absent;
+  `csv_seed_version=1`; `next_booking_number=9`.
+- Zero source correction cycles were required.
+- Only the backend and frontend processes created by the smoke test were
+  stopped; ports 8000 and 5173 were released.
+- Final manual VS Code review: passed September 14, 2026. The student confirmed
+  all visible changes were intentional; no secrets or `.env` files were
+  present; generated dependencies, build output, and the ignored SQLite file
+  were excluded; and all CSV and dependency declarations were unmodified.
 
 ## Next action
 
-Upload `report.md` to the Part 1 Canvas assignment and confirm submission before
-starting any Part 2 work.
+Create the reviewed Part 2 feature-branch checkpoint, preserve it remotely,
+merge it into `main`, rerun the complete combined gate, record exact commit
+metadata, and push the verified final documentation state.
+
+## Part 2 backend slice
+
+- FastAPI initializes ignored `backend/instance/hudson_travel.sqlite3` at
+  startup using Python's built-in `sqlite3`.
+- One transaction creates the schema, loads all four UTF-8-sig CSVs with their
+  original IDs, stores `csv_seed_version=1`, and initializes the durable booking
+  counter at 7.
+- Later startups skip all CSV inserts once the marker exists.
+- Every application connection enables foreign keys.
+- Hotel search now reads SQLite exclusively after initialization.
+- `GET /api/users` and `GET /api/bookings` return frontend-ready records.
+- `POST /api/bookings` creates confirmed bookings with backend-assigned dates
+  and monotonic IDs.
+- `PATCH /api/bookings/{booking_id}` cancels while retaining the record.
+- `DELETE /api/bookings/{booking_id}` permanently removes the record.
+- Temporary-database tests cover seed integrity, repeat initialization,
+  SQLite-only search, persistent CRUD, non-reused IDs, joins, and error cases.
+
+## Part 2 frontend slice
+
+- `frontend/src/api/bookings.js` supplies user/history reads and exact
+  create/cancel/delete requests through a shared response helper.
+- `BookingForm.vue` provides labeled traveler and current-search-trip selectors.
+- `BookingHistory.vue` displays joined history and sends cancel/delete events.
+- `App.vue` loads users/history at startup, validates creation, shows operation
+  feedback, disables conflicting booking controls, and rereads history after
+  every mutation.
+- The history table remains intact on search failure; search results remain
+  intact on booking failure.
