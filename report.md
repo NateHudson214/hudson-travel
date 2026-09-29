@@ -174,6 +174,26 @@ provider verification.
 **Non-fast-forward merge checkpoint:**
 [`6739c4e5b4e4a93b74d6558253078024b1aa7cbf`](https://github.com/NateHudson214/hudson-travel/commit/6739c4e5b4e4a93b74d6558253078024b1aa7cbf)
 
+### Submission links
+
+- **Startup and backend-only configuration:**
+  [`README.md`](README.md#backend-setup)
+- **Research notes and source decisions:**
+  [`docs/assignment2-part1-research.md`](docs/assignment2-part1-research.md)
+- **Early mockup:**
+  [`docs/mockups/assignment2-part1-early.svg`](docs/mockups/assignment2-part1-early.svg)
+- **Screen-recorded demonstration:**
+  [`evidence/assignment2-part1-demo.mov`](evidence/assignment2-part1-demo.mov)
+- **Detailed verification record:**
+  [`docs/verification.md`](docs/verification.md#observed-nearby-hotel-smoke-test--september-29-2026)
+
+The early mockup established the ZIP form, resolved center, list/map layout,
+shared selection, attribution, and explicit invalid, unresolved, empty, and
+service-failure states before implementation. The completed interface retained
+those decisions, used a scrollable provider-results list beside the Leaflet
+map, and preserved the earlier fixed and entered-ZIP workflows plus Assignment
+1 behavior.
+
 The authoritative Part 1 extension resolves a validated five-digit U.S. ZIP,
 uses the returned coordinates as the center of a Geoapify Places search for up
 to 20 `accommodation.hotel` results within 5,000 metres, and presents the
@@ -203,10 +223,10 @@ selection, attribution, and validation behavior, and contain no API key,
 secret, private information, or unrelated content. The retained services were
 stopped afterward and both application ports were released:
 
-- `evidence/assignment2-part1-live-hotels.png` — reviewed live-results PNG
-- `evidence/assignment2-part1-selection.png` — reviewed synchronized-selection PNG
-- `evidence/assignment2-part1-states.png` — reviewed validation-state PNG
-- `evidence/assignment2-part1-demo.mov` — reviewed demonstration recording
+- [`evidence/assignment2-part1-live-hotels.png`](evidence/assignment2-part1-live-hotels.png) — reviewed live-results PNG
+- [`evidence/assignment2-part1-selection.png`](evidence/assignment2-part1-selection.png) — reviewed synchronized-selection PNG
+- [`evidence/assignment2-part1-states.png`](evidence/assignment2-part1-states.png) — reviewed validation-state PNG
+- [`evidence/assignment2-part1-demo.mov`](evidence/assignment2-part1-demo.mov) — reviewed demonstration recording
 
 ### AI disclosure and evidence log
 
