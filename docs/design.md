@@ -1,6 +1,6 @@
 # Hudson Travel — Project Design
 
-**Status:** Assignment 1 remains preserved and published. The Assignment 2 public-API activity and entered-ZIP foundation are complete. Assignment 2 Part 1 research, early mockup, Leaflet dependency setup, backend Places slice, Vue list/map implementation, bounded live browser smoke test, evidence review, and final VS Code review are complete. The Git checkpoint and Canvas submission remain pending.
+**Status:** Assignment 1 remains preserved and published. Assignment 2 Part 1 research, implementation, bounded live verification, evidence review, final VS Code review, feature-branch checkpoint, non-fast-forward merge, and merged-main gate are complete. The reviewed checkpoint is published in the Hudson Travel repository; only Canvas submission remains pending.
 
 ## Design revision
 
@@ -377,5 +377,13 @@ validation screenshot, and demonstration recording. All four repository
 evidence files are readable and contain no reported key, secret, private, or
 unrelated content. The student then completed the final VS Code review and
 confirmed that all visible changes were intentional, protected and generated
-files were excluded, and no shortlist or Part 2 behavior was present. The next
-task is the Assignment 2 Part 1 Git checkpoint.
+files were excluded, and no shortlist or Part 2 behavior was present. The
+remaining task is the Assignment 2 Part 1 Canvas submission.
+
+The Assignment 2 Part 1 implementation and evidence checkpoint is
+[`0f38ae0ac35808e332ec91472bb0d5393e5adfc8`](https://github.com/NateHudson214/hudson-travel/commit/0f38ae0ac35808e332ec91472bb0d5393e5adfc8).
+It is preserved on the published `assignment2-part1-live-hotels` feature
+branch. The non-fast-forward merge into `main` is
+[`6739c4e5b4e4a93b74d6558253078024b1aa7cbf`](https://github.com/NateHudson214/hudson-travel/commit/6739c4e5b4e4a93b74d6558253078024b1aa7cbf).
+The complete automated gate passed both before the feature commit and after the
+merge. Assignment 1 checkpoints remain in the same history.

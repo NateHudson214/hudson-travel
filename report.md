@@ -147,7 +147,10 @@ proxies `/api`; `backend/app/main.py` validates and maps the route response;
 `backend/app/config.py` reads the backend-only setting. The sanitized response
 then returns through FastAPI and the Vite proxy to the Vue table.
 
-### Pending submission evidence
+### Earlier entered-ZIP activity evidence
+
+These optional placeholders belong to the earlier standalone ZIP activity, not
+the completed Assignment 2 Part 1 hotel-list-and-map evidence documented below.
 
 - `evidence/assignment2-entered-zip-success.png` — **placeholder until the
   student saves and reviews it**
@@ -162,6 +165,14 @@ recreated state is for visual capture and is not claimed as an additional live
 provider verification.
 
 ## Assignment 2 Part 1 — live hotel search and map
+
+**Repository:** [https://github.com/NateHudson214/hudson-travel](https://github.com/NateHudson214/hudson-travel)
+
+**Assessed implementation and evidence checkpoint:**
+[`0f38ae0ac35808e332ec91472bb0d5393e5adfc8`](https://github.com/NateHudson214/hudson-travel/commit/0f38ae0ac35808e332ec91472bb0d5393e5adfc8)
+
+**Non-fast-forward merge checkpoint:**
+[`6739c4e5b4e4a93b74d6558253078024b1aa7cbf`](https://github.com/NateHudson214/hudson-travel/commit/6739c4e5b4e4a93b74d6558253078024b1aa7cbf)
 
 The authoritative Part 1 extension resolves a validated five-digit U.S. ZIP,
 uses the returned coordinates as the center of a Geoapify Places search for up
@@ -217,3 +228,15 @@ the explicit Leaflet approval, the 5 km/20-result Places contract, synchronized
 selection requirements, the one-live-search smoke-test boundary, and the
 revised manual capture approach when browser tooling could not safely preserve
 all required live screenshots and video automatically.
+
+### Checkpoint and submission status
+
+Substantial Part 1 work is preserved on the published
+`assignment2-part1-live-hotels` feature branch at the assessed checkpoint above.
+It was merged into `main` with a non-fast-forward merge after the final VS Code
+review and successful feature-branch gate. The complete gate passed again on
+merged `main`, and the merge plus final documentation state are published.
+Assignment 1 checkpoints remain in history. The remaining student action is to
+upload this `report.md` to the Assignment 2 Part 1 Canvas submission and include
+the repository, assessed commit, early mockup, and reviewed recording links or
+files as the Canvas form permits.

@@ -171,6 +171,25 @@ files were correct and readable; secrets, generated output, caches, the ignored
 SQLite database, editor settings, and unrelated files were excluded; supplied
 CSV records were unchanged; and no shortlist or Part 2 behavior was present.
 
+### Assignment 2 Part 1 Git checkpoint verification
+
+The complete gate passed on the `assignment2-part1-live-hotels` feature branch
+before commit and again on merged `main`. Both runs produced 95 passing backend
+tests with the same two non-failing dependency warnings, 23 passing frontend
+API-client tests, clean Oxlint and ESLint runs, and a successful 25-module Vite
+production build. Dependency consistency, `git diff --check`, local Markdown
+links, key-free configuration, frontend secret scanning, protected hashes,
+evidence hashes, and ignore rules also passed.
+
+- Implementation/evidence checkpoint:
+  [`0f38ae0ac35808e332ec91472bb0d5393e5adfc8`](https://github.com/NateHudson214/hudson-travel/commit/0f38ae0ac35808e332ec91472bb0d5393e5adfc8)
+- Non-fast-forward merge checkpoint:
+  [`6739c4e5b4e4a93b74d6558253078024b1aa7cbf`](https://github.com/NateHudson214/hudson-travel/commit/6739c4e5b4e4a93b74d6558253078024b1aa7cbf)
+
+The feature branch and final `main` documentation state are published at
+<https://github.com/NateHudson214/hudson-travel>. Assignment 1 commits remain
+in history, and no live Geoapify request was made during either Git gate.
+
 ### Entered-ZIP browser smoke test
 
 1. Confirm the fixed **Look up ZIP 16802** control still displays its location.

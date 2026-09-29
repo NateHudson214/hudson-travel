@@ -74,3 +74,8 @@ API key, secret, private information, or unrelated content.
 
 Only the retained Hudson Travel backend and frontend were stopped after capture;
 ports 8000 and 5173 were confirmed free.
+
+The reviewed evidence is preserved in implementation checkpoint
+[`0f38ae0ac35808e332ec91472bb0d5393e5adfc8`](https://github.com/NateHudson214/hudson-travel/commit/0f38ae0ac35808e332ec91472bb0d5393e5adfc8)
+and its non-fast-forward `main` merge
+[`6739c4e5b4e4a93b74d6558253078024b1aa7cbf`](https://github.com/NateHudson214/hudson-travel/commit/6739c4e5b4e4a93b74d6558253078024b1aa7cbf).

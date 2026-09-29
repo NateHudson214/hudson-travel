@@ -4,7 +4,8 @@
 
 **Checkpoint:** Assignment 1 preserved; Assignment 2 Part 1 implementation,
 bounded live browser verification, evidence review, and final VS Code review
-complete; Git checkpoint pending
+complete; feature checkpoint and non-fast-forward merge published; Canvas
+submission pending
 
 ## Assignment 2 Part 1 current stage
 
@@ -67,6 +68,16 @@ complete; Git checkpoint pending
   change was intentional, evidence was correct, protected/generated/private
   files were excluded, CSV records were unchanged, and no shortlist or Part 2
   behavior was included.
+- The implementation/evidence checkpoint is
+  `0f38ae0ac35808e332ec91472bb0d5393e5adfc8` on the published
+  `assignment2-part1-live-hotels` branch:
+  <https://github.com/NateHudson214/hudson-travel/commit/0f38ae0ac35808e332ec91472bb0d5393e5adfc8>.
+- The non-fast-forward merge checkpoint is
+  `6739c4e5b4e4a93b74d6558253078024b1aa7cbf`:
+  <https://github.com/NateHudson214/hudson-travel/commit/6739c4e5b4e4a93b74d6558253078024b1aa7cbf>.
+- The complete automated gate passed on the feature branch and merged `main`.
+  Both branches are published, Assignment 1 history remains intact, and the
+  working tree is clean.
 
 ## Assignment 2 public API activity
 
@@ -233,10 +244,10 @@ passed. The obsolete Boston and Seattle screenshots were removed.
 
 ## Next action
 
-Prepare the reviewed Assignment 2 Part 1 feature-branch checkpoint, preserve it
-remotely, merge it into `main` with a non-fast-forward merge, rerun the complete
-gate, and record the exact hashes and URLs. Do not add shortlist behavior, new
-persistence, or begin Part 2.
+Upload the updated `report.md` to the Assignment 2 Part 1 Canvas submission and
+provide the repository URL, assessed implementation checkpoint, and reviewed
+demonstration recording as requested. Do not add shortlist behavior, new
+persistence, or begin Part 2 until the student explicitly starts that work.
 
 ## Part 2 backend slice
 
