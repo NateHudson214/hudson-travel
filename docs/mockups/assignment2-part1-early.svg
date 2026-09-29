@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="1120" viewBox="0 0 1440 1120" role="img" aria-labelledby="title description">
+  <title id="title">Hudson Travel Assignment 2 Part 1 early mockup</title>
+  <desc id="description">Early design showing a ZIP search, resolved location, synchronized hotel list and map, loading feedback, and four alternate error or empty states.</desc>
+  <rect width="1440" height="1120" fill="#eef3f8"/>
+  <rect x="55" y="38" width="1330" height="1044" rx="24" fill="#ffffff" stroke="#b9c7d8" stroke-width="2"/>
+  <rect x="55" y="38" width="1330" height="122" rx="24" fill="#174f86"/>
+  <rect x="55" y="130" width="1330" height="30" fill="#174f86"/>
+  <text x="95" y="82" font-family="Arial, sans-serif" font-size="17" font-weight="700" letter-spacing="2" fill="#cce4ff">HUDSON TRAVEL · EARLY MOCKUP</text>
+  <text x="95" y="128" font-family="Arial, sans-serif" font-size="34" font-weight="700" fill="#ffffff">Find hotels near a U.S. ZIP code</text>
+  <text x="1335" y="91" text-anchor="end" font-family="Arial, sans-serif" font-size="15" fill="#ffffff">NOT YET IMPLEMENTED</text>
+
+  <text x="95" y="204" font-family="Arial, sans-serif" font-size="16" font-weight="700" fill="#1b2b42">ZIP code</text>
+  <rect x="95" y="218" width="350" height="52" rx="8" fill="#ffffff" stroke="#70839b" stroke-width="2"/>
+  <text x="115" y="251" font-family="Arial, sans-serif" font-size="18" fill="#1b2b42">16802</text>
+  <rect x="463" y="218" width="220" height="52" rx="8" fill="#1768ac"/>
+  <text x="492" y="251" font-family="Arial, sans-serif" font-size="17" font-weight="700" fill="#ffffff">Search nearby hotels</text>
+  <rect x="720" y="218" width="615" height="52" rx="8" fill="#e8f2fc" stroke="#a9c8e8"/>
+  <text x="742" y="242" font-family="Arial, sans-serif" font-size="15" font-weight="700" fill="#174f86">Resolved search center: 16802 · State College, PA</text>
+  <text x="742" y="261" font-family="Arial, sans-serif" font-size="13" fill="#41536a">Up to 20 Geoapify hotels within 5 km of the returned point</text>
+
+  <rect x="95" y="296" width="500" height="535" rx="14" fill="#f8fafc" stroke="#c9d4e2"/>
+  <text x="125" y="338" font-family="Arial, sans-serif" font-size="22" font-weight="700" fill="#1b2b42">Nearby hotels</text>
+  <text x="125" y="365" font-family="Arial, sans-serif" font-size="14" fill="#53657c">3 example provider results · nearest first</text>
+
+  <rect x="120" y="390" width="450" height="116" rx="12" fill="#e7f2ff" stroke="#1768ac" stroke-width="3"/>
+  <text x="144" y="423" font-family="Arial, sans-serif" font-size="17" font-weight="700" fill="#174f86">Selected · Example Hotel One</text>
+  <text x="144" y="451" font-family="Arial, sans-serif" font-size="14" fill="#35485f">123 College Avenue · 420 m away</text>
+  <text x="144" y="481" font-family="Arial, sans-serif" font-size="13" fill="#174f86">Matches highlighted marker 1</text>
+
+  <rect x="120" y="524" width="450" height="104" rx="12" fill="#ffffff" stroke="#c9d4e2"/>
+  <text x="144" y="558" font-family="Arial, sans-serif" font-size="17" font-weight="700" fill="#1b2b42">Example Hotel Two</text>
+  <text x="144" y="587" font-family="Arial, sans-serif" font-size="14" fill="#53657c">Address unavailable · 1.2 km away</text>
+
+  <rect x="120" y="646" width="450" height="104" rx="12" fill="#ffffff" stroke="#c9d4e2"/>
+  <text x="144" y="680" font-family="Arial, sans-serif" font-size="17" font-weight="700" fill="#1b2b42">Name unavailable</text>
+  <text x="144" y="709" font-family="Arial, sans-serif" font-size="14" fill="#53657c">456 University Drive · distance unavailable</text>
+
+  <text x="125" y="793" font-family="Arial, sans-serif" font-size="13" fill="#53657c">Hotel data: Powered by Geoapify · © OpenStreetMap contributors</text>
+
+  <rect x="620" y="296" width="715" height="535" rx="14" fill="#dfe9dd" stroke="#9aad99"/>
+  <path d="M620 430 L1335 365 M620 660 L1335 555 M835 296 L910 831 M1110 296 L1035 831" stroke="#ffffff" stroke-width="18" opacity="0.8"/>
+  <path d="M620 430 L1335 365 M620 660 L1335 555 M835 296 L910 831 M1110 296 L1035 831" stroke="#aab9a8" stroke-width="2"/>
+  <circle cx="953" cy="534" r="18" fill="#ffffff" stroke="#174f86" stroke-width="5"/>
+  <text x="947" y="540" font-family="Arial, sans-serif" font-size="16" font-weight="700" fill="#174f86">1</text>
+  <circle cx="1120" cy="455" r="14" fill="#1768ac"/>
+  <text x="1115" y="461" font-family="Arial, sans-serif" font-size="13" font-weight="700" fill="#ffffff">2</text>
+  <circle cx="820" cy="645" r="14" fill="#1768ac"/>
+  <text x="815" y="651" font-family="Arial, sans-serif" font-size="13" font-weight="700" fill="#ffffff">3</text>
+  <circle cx="980" cy="590" r="7" fill="#a2212f"/>
+  <text x="996" y="596" font-family="Arial, sans-serif" font-size="13" font-weight="700" fill="#7c1723">ZIP search center</text>
+  <rect x="905" y="470" width="270" height="48" rx="8" fill="#ffffff" stroke="#174f86"/>
+  <text x="923" y="500" font-family="Arial, sans-serif" font-size="14" font-weight="700" fill="#174f86">Example Hotel One selected</text>
+  <rect x="995" y="793" width="320" height="26" rx="5" fill="#ffffff" opacity="0.92"/>
+  <text x="1305" y="811" text-anchor="end" font-family="Arial, sans-serif" font-size="12" fill="#35485f">Leaflet | © OpenStreetMap contributors</text>
+
+  <text x="95" y="875" font-family="Arial, sans-serif" font-size="19" font-weight="700" fill="#1b2b42">Required alternate states</text>
+  <rect x="95" y="895" width="235" height="145" rx="12" fill="#fff7e6" stroke="#dfb35c"/>
+  <text x="115" y="928" font-family="Arial, sans-serif" font-size="15" font-weight="700" fill="#7c4a00">Loading</text>
+  <text x="115" y="956" font-family="Arial, sans-serif" font-size="13" fill="#5c4b2f">Finding the ZIP location</text>
+  <text x="115" y="979" font-family="Arial, sans-serif" font-size="13" fill="#5c4b2f">and hotels within 5 km…</text>
+  <text x="115" y="1012" font-family="Arial, sans-serif" font-size="12" fill="#5c4b2f">Input and Search disabled</text>
+
+  <rect x="345" y="895" width="235" height="145" rx="12" fill="#fdecef" stroke="#d48c97"/>
+  <text x="365" y="928" font-family="Arial, sans-serif" font-size="15" font-weight="700" fill="#922231">Invalid / unresolved</text>
+  <text x="365" y="956" font-family="Arial, sans-serif" font-size="13" fill="#6b3540">Enter exactly five digits.</text>
+  <text x="365" y="985" font-family="Arial, sans-serif" font-size="13" fill="#6b3540">or</text>
+  <text x="365" y="1012" font-family="Arial, sans-serif" font-size="13" fill="#6b3540">ZIP 00000 could not be resolved.</text>
+
+  <rect x="595" y="895" width="350" height="145" rx="12" fill="#f4f6f8" stroke="#b9c7d8"/>
+  <text x="615" y="928" font-family="Arial, sans-serif" font-size="15" font-weight="700" fill="#35485f">No nearby hotels</text>
+  <text x="615" y="956" font-family="Arial, sans-serif" font-size="13" fill="#53657c">The ZIP resolved successfully, but Geoapify</text>
+  <text x="615" y="979" font-family="Arial, sans-serif" font-size="13" fill="#53657c">returned no hotels within 5 km.</text>
+  <text x="615" y="1012" font-family="Arial, sans-serif" font-size="12" fill="#53657c">No list rows or stale markers shown</text>
+
+  <rect x="960" y="895" width="375" height="145" rx="12" fill="#fdecef" stroke="#d48c97"/>
+  <text x="980" y="928" font-family="Arial, sans-serif" font-size="15" font-weight="700" fill="#922231">Service failure / quota</text>
+  <text x="980" y="956" font-family="Arial, sans-serif" font-size="13" fill="#6b3540">Nearby hotels could not be loaded.</text>
+  <text x="980" y="979" font-family="Arial, sans-serif" font-size="13" fill="#6b3540">Try again later.</text>
+  <text x="980" y="1012" font-family="Arial, sans-serif" font-size="12" fill="#6b3540">Never presented as an empty successful search</text>
+</svg>

@@ -1,6 +1,6 @@
 # Hudson Travel — Project Design
 
-**Status:** Part 1 is preserved at [`d224428019dd6fb7223c4e607aabc108af145577`](https://github.com/NateHudson214/hudson-travel/commit/d224428019dd6fb7223c4e607aabc108af145577). Part 2 was implemented on `part2-sqlite-bookings` at [`2a127bf79e8cb66069b0c1a9695391a8e2924507`](https://github.com/NateHudson214/hudson-travel/commit/2a127bf79e8cb66069b0c1a9695391a8e2924507) and merged into `main` with [`95635eff2dc77fdf4f6e9dd5b842a62a239e1f3f`](https://github.com/NateHudson214/hudson-travel/commit/95635eff2dc77fdf4f6e9dd5b842a62a239e1f3f). The complete automated gates, zero-correction browser/restart smoke test, and manual VS Code review passed. The feature branch and final `main` documentation state are published; only the student's Part 2 Canvas submission remains.
+**Status:** Assignment 1 remains preserved and published. The Assignment 2 public-API activity and entered-ZIP foundation are complete. Assignment 2 Part 1 research, early mockup, Leaflet dependency setup, backend Places slice, Vue list/map implementation, bounded live browser smoke test, evidence review, and final VS Code review are complete. The Git checkpoint and Canvas submission remain pending.
 
 ## Design revision
 
@@ -9,6 +9,74 @@ The detailed checkpoint instructions materially replace parts of the earlier pla
 ## Application scope
 
 Hudson Travel adapts the course calculator project into a small local hotel application with a Vue frontend, a Python backend, and FastAPI communication between them. Part 1 lets a user search by hotel name and displays that hotel's matching offered stays from joined hotel/trip records in a plain table. Part 2 moves the supplied data into SQLite and adds simulated booking history with create, read, cancel, and delete actions. All identities, trips, and bookings are synthetic; the application does not connect to Expedia or perform real purchases.
+
+## Assignment 2 graded ZIP lookup
+
+The guided demonstration keeps one button for ZIP `16802`. Vue calls the local
+FastAPI route, the Python controller contacts Geoapify with a backend-only key,
+and Vue renders the sanitized location response. The graded extension adds a
+text input so leading-zero ZIP codes remain intact. Both frontend and backend
+require exactly five ASCII digits; the backend trims surrounding whitespace and
+is the authoritative validation boundary.
+
+`GET /api/zip-location?zip_code={zip_code}` passes only validated input to the
+existing controller. It returns postcode, country code, latitude, longitude,
+and locality when supplied. Invalid input maps to HTTP 400, unresolved ZIPs to
+404, missing configuration to 503, and provider failures to 502. Vue displays a
+successful entered lookup in a plain table and clears stale dynamic results on
+validation or request failure. The original fixed route remains unchanged.
+
+The earlier graded activity ended at location lookup, but the authoritative
+Assignment 2 Part 1 scope continues from that foundation. Part 1 must retrieve
+`accommodation.hotel` places within a strict 5 km circle centered on the exact
+resolved U.S. postcode, then present the provider results in a synchronized
+Vue list and Leaflet map. It must preserve honest missing-data behavior,
+distinct invalid/unresolved/empty/failure states, keyboard access, and visible
+Geoapify, OpenStreetMap, and tile-provider attribution. The persistent
+shortlist remains Assignment 2 Part 2 and is not part of the current work.
+
+The research record and early mockup are documented in
+[`docs/assignment2-part1-research.md`](assignment2-part1-research.md) and
+[`docs/mockups/assignment2-part1-early.svg`](mockups/assignment2-part1-early.svg).
+
+### Assignment 2 Part 1 backend contract
+
+`GET /api/hotels/nearby?zip_code={zip_code}` reuses the exact five-ASCII-digit
+validation and geocoding behavior, then calls the focused Places controller
+with the geocoder's returned coordinates. The controller requests
+`accommodation.hotel` with a strict `circle` filter of 5,000 metres, a matching
+proximity bias, and a 20-result limit. It returns only provider place ID,
+optional name and formatted address, valid coordinates, and optional distance.
+Features without a usable provider ID or coordinates are excluded rather than
+repaired with invented data.
+
+The combined response contains the resolved `location`, `radius_meters: 5000`,
+`result_limit: 20`, and `hotels`. A valid empty provider result is HTTP 200 with
+an empty list. Invalid ZIP, unresolved ZIP, missing configuration, and provider
+failure map to safe 400, 404, 503, and 502 responses. Mocked tests cover the
+contract, and one authorized live search on September 29, 2026, resolved ZIP
+`16802` and returned 20 sanitized hotel results through the local route.
+
+### Assignment 2 Part 1 frontend contract
+
+The new nearby-hotel section preserves both earlier ZIP lookup workflows and
+calls only `/api/hotels/nearby?zip_code={zip_code}`. It validates five ASCII
+digits, disables its controls while loading, and clears the resolved location,
+hotel list, marker data, and selection before each request or on failure. A
+resolved ZIP with no hotels keeps its location context and shows a specific
+empty result rather than a provider error.
+
+The parent nearby-hotel component owns one `selectedPlaceId`. Keyboard-operable
+list buttons and Leaflet marker clicks both update that value; the matching row
+and marker receive the selected treatment. The focused map component creates
+one Leaflet map, replaces its center and hotel layers together, fits valid
+points with a maximum zoom, and removes the map on component cleanup. It uses
+standard OpenStreetMap HTTPS tiles with Leaflet's visible attribution control.
+Hotel results separately display `Powered by Geoapify`. The bounded browser
+smoke test verified the live 20-hotel list and 20 hotel markers, visible
+Geoapify and OpenStreetMap attribution, list-to-marker and marker-to-list
+selection, honest missing-data behavior, safe local-only failure states, and a
+clean browser console. No source correction cycle was required.
 
 ## Public visual reference
 
@@ -290,5 +358,24 @@ the Vue refresh action succeeded, and the healthy browser console had no warning
 or error entries. No source correction cycle was required. The final manual
 review passed, the implementation checkpoint was preserved on the remote
 feature branch, and the verified non-fast-forward merge was published on
-`main`. The remaining task is the student's Part 2 Canvas submission of
-`report.md`.
+`main`.
+
+For Assignment 2, the fixed ZIP 16802 round trip was observed successfully on
+September 23, 2026. The entered-ZIP route, client, form, validation, and result
+table are now implemented. Automated verification passed with 57 backend tests,
+17 frontend API-client tests, clean Oxlint and ESLint runs, and a successful
+20-module production build. No live Geoapify request was made for this
+implementation gate. The browser smoke test then observed ZIP 16802 resolving
+to State College with coordinates `40.803167822`, `-77.861384958`; verified
+leading-zero, loading, validation, sanitized 404/502, hotel-search regression,
+and clean-console behavior; and required no source correction. The successful
+table was recreated once through a local-only mock using the already-observed
+live values so it could remain visible for manual evidence capture without
+another intentional provider call. The student subsequently captured and
+reviewed the live-results screenshot, synchronized-selection screenshot,
+validation screenshot, and demonstration recording. All four repository
+evidence files are readable and contain no reported key, secret, private, or
+unrelated content. The student then completed the final VS Code review and
+confirmed that all visible changes were intentional, protected and generated
+files were excluded, and no shortlist or Part 2 behavior was present. The next
+task is the Assignment 2 Part 1 Git checkpoint.
