@@ -35,6 +35,192 @@ JSON create and cancellation bodies, deletion with an empty `204` response,
 backend error details, and friendly fallbacks for empty or malformed error
 responses.
 
+## Assignment 2 ZIP lookup checks
+
+The backend route tests cover the fixed demonstration and the entered-ZIP
+contract:
+
+- `16802`, `02113`, and surrounding whitespace pass the normalized five-digit
+  string to the controller;
+- missing, blank, short, long, alphabetic, punctuation, Unicode-digit, and mixed
+  input return HTTP 400 without calling the provider controller;
+- unresolved, unconfigured, and provider-failure outcomes map to sanitized 404,
+  503, and 502 responses; and
+- no labeled fake credential or raw provider detail appears in an error.
+
+The frontend client tests cover the exact local GET path, URL encoding, leading
+zero preservation, successful parsing, backend details, and empty or malformed
+error fallbacks. No automated test contacts Geoapify.
+
+## Assignment 2 Part 1 nearby-hotel backend checks
+
+The Places-controller and combined-route tests use only labeled mock provider
+responses. They verify:
+
+- category `accommodation.hotel`, a strict 5,000-metre circle, matching
+  proximity bias, and limit 20;
+- longitude-before-latitude ordering in Geoapify request parameters;
+- provider place ID, optional name/address, valid coordinates, and optional
+  distance sanitization;
+- exclusion of features without a usable place ID or finite coordinates;
+- HTTP 200 with an empty `hotels` list for a valid empty result;
+- leading-zero ZIP preservation and use of the geocoder's returned center;
+- safe 400, 404, 503, and 502 route mappings; and
+- sanitized malformed, timeout, network, HTTP, and missing-configuration
+  failures without credentials or raw provider URLs.
+
+No automated test makes a live Geoapify geocoding or Places request. The live
+Places results and browser behaviors were verified separately in the bounded
+September 29 smoke test recorded below.
+
+On September 28, 2026, the focused Places/controller route selection passed 38
+tests and the complete backend suite passed 95 tests with the same two
+non-failing framework dependency warnings. The unchanged frontend passed all 17
+API-client tests, Oxlint, ESLint, and a 20-module Vite production build.
+
+## Assignment 2 Part 1 frontend checks
+
+The nearby-hotel API-client tests verify the exact local GET route and method,
+URL encoding, leading-zero preservation, a full success response, an empty hotel
+array, safe backend details, and empty or malformed error fallbacks. The Vite
+production build verifies that Leaflet 1.9.4 and its CSS bundle successfully.
+No component-test dependency is installed, so the following behaviors require
+the bounded browser smoke test:
+
+1. Enter `16802`, select **Search nearby hotels**, and observe loading with the
+   nearby ZIP input and button disabled.
+2. Confirm the resolved center and every list field match the local
+   `/api/hotels/nearby?zip_code=16802` response.
+3. Confirm the list and Leaflet map show the same provider hotels and no
+   invented price, rating, availability, or booking claims.
+4. Select a list result and confirm the same marker is emphasized and its popup
+   opens; select another marker and confirm the corresponding list button has
+   `aria-current="true"` and selected styling.
+5. Confirm the ZIP search-center marker is distinct, Geoapify attribution is
+   visible beside the list, and OpenStreetMap attribution is visible on the
+   map.
+6. Verify invalid, unresolved, no-hotels, and service-failure states with
+   local-only mocks where appropriate. Each failure must clear stale results,
+   markers, and selection.
+7. Verify the fixed ZIP demonstration, entered-ZIP location table, Assignment 1
+   hotel search, and booking history remain usable.
+8. Check the healthy browser console and Network panel for application errors,
+   provider calls from Vue, or credential exposure.
+
+On September 29, 2026, all 23 frontend API-client tests, Oxlint, ESLint, and a
+25-module Vite production build passed. No service was started and no live
+Geoapify or browser verification occurred during this implementation gate.
+
+### Observed nearby-hotel smoke test — September 29, 2026
+
+The complete gate was rerun before browser verification: 95 backend tests and
+23 frontend API-client tests passed; Oxlint and ESLint reported no findings;
+and the 25-module Vite production build succeeded. The backend emitted the same
+two non-failing framework dependency warnings. Documentation, protected CSV
+and dependency checksums, and ignore coverage also passed.
+
+Exactly one authorized live Vue search used ZIP `16802`. The backend recorded
+one HTTP 200 request to the local
+`/api/hotels/nearby?zip_code=16802` route. It resolved State College, country
+`us`, latitude `40.803167822`, and longitude `-77.861384958`, with the stated
+5,000-metre radius and 20-result limit. Geoapify returned 20 hotels. The page
+showed 20 list buttons and 20 numbered hotel markers, a distinct red search
+center, `Powered by Geoapify`, Leaflet attribution, and OpenStreetMap
+contributors attribution. No API key, provider URL, price, rating,
+availability, room, or booking claim appeared in the rendered nearby-hotel
+workflow.
+
+Selecting **Hotel State College** in the list set that button's
+`aria-current="true"` and opened the matching popup. Selecting the map marker
+for **Hyatt Place State College** moved selection to the corresponding list
+button and opened its matching popup. The browser console contained no warnings
+or errors. The fixed and entered-ZIP controls remained present, booking history
+loaded eight existing records, and `Harbor Lantern Hotel` still returned T001
+and T009. No booking mutation was performed.
+
+A removed local-only mock, with no Geoapify calls, verified delayed loading and
+disabled controls; leading-zero ZIP `02113`; honest `Name unavailable` and
+`Address unavailable` fallbacks; resolved-empty, unresolved 404, and provider
+502 states; and stale location, list, marker, and selection clearing. Blank,
+short, long, alphabetic, punctuation, and Unicode-digit values all displayed
+`Enter a five-digit U.S. ZIP code.`, cleared the result presentation, and made
+no backend request. The normal backend was restored afterward. Zero correction
+cycles were required.
+
+The student completed and reviewed all four repository evidence files. The
+three PNGs are readable and were visually inspected; the QuickTime recording is
+readable and was manually played and reviewed by the student. No key, secret,
+private information, or unrelated content was reported:
+
+- `evidence/assignment2-part1-live-hotels.png` — 2876 x 1696 PNG, SHA-256
+  `77fde335139eb798d759f5fd4c41e3450e1a20219e5e1aac93c7a7f41b04232d`
+- `evidence/assignment2-part1-selection.png` — 2870 x 1692 PNG, SHA-256
+  `f0005dbea808d5423e6ea61678c61af8e256ac6a7fb2c95b78884cdaf85a1197`
+- `evidence/assignment2-part1-states.png` — captured, 914 x 720 PNG, SHA-256
+  `2b08b1eb9f2442487f4359d9a35798a0fa06b63fff834aa4ef5e9accbefdbbc3`
+- `evidence/assignment2-part1-demo.mov` — 47,870,865-byte QuickTime movie,
+  SHA-256
+  `3ff4516cd2692745703255f0718898835d85ac521dd0c8b1af649401f3b38b17`
+
+After evidence capture, only the retained Hudson Travel backend and frontend
+were stopped. Ports 8000 and 5173 were confirmed free.
+
+The student completed the final Assignment 2 Part 1 VS Code review on September
+29, 2026. Every visible change was confirmed intentional; the four evidence
+files were correct and readable; secrets, generated output, caches, the ignored
+SQLite database, editor settings, and unrelated files were excluded; supplied
+CSV records were unchanged; and no shortlist or Part 2 behavior was present.
+
+### Entered-ZIP browser smoke test
+
+1. Confirm the fixed **Look up ZIP 16802** control still displays its location.
+2. Enter `16802`, submit the dynamic form, and confirm the plain table shows the
+   same postcode, locality, country code, latitude, and longitude returned by
+   the local FastAPI response.
+3. Confirm the browser requests only `/api/zip-location?zip_code=16802`, with no
+   API key in the URL or response.
+4. Check blank, short, long, alphabetic, punctuation, and Unicode-digit values.
+   Each must show validation feedback, make no request, and clear any earlier
+   dynamic result.
+5. Use local-only mocked responses to demonstrate leading-zero preservation,
+   unresolved ZIP feedback, and provider-failure feedback without consuming
+   Geoapify quota. Restore normal behavior afterward.
+6. Confirm the original hotel search and booking interface remain intact and
+   the healthy browser console has no application errors.
+
+### Observed September 23, 2026
+
+The implementation gate passed: 19 focused ZIP-route tests, 57 complete backend
+tests with two non-failing dependency warnings, 17 frontend API-client tests,
+clean Oxlint and ESLint runs, and a successful Vite production build with 20
+modules transformed. Documentation, checksums, ignore rules, and scope checks
+also passed.
+
+The entered-ZIP browser flow returned `16802`, `State College`, `us`, latitude
+`40.803167822`, and longitude `-77.861384958`. The local backend log showed
+`GET /api/zip-location?zip_code=16802` with HTTP 200; neither the local request
+path nor the rendered response contained the API key. A delayed local-only mock
+proved that both ZIP buttons disable during loading and that `02113` remains a
+five-character string in the request and table. Local-only 404 and 502 outcomes
+displayed `ZIP 00000 could not be resolved.` and `The location service is
+temporarily unavailable.` and removed the previous table.
+
+Blank, short, long, alphabetic, punctuation, and Unicode-digit values all
+displayed `Enter a five-digit U.S. ZIP code.`, cleared the previous dynamic
+table, and did not intentionally call the backend. `Harbor Lantern Hotel` still
+returned T001 and T009, and the healthy browser console had no warnings or
+errors. No source correction cycle was required.
+
+The automation tool failed to clear the field on its first blank-input attempt,
+so it unintentionally repeated the successful 16802 lookup once. After normal
+behavior was restored, additional local requests for ZIPs 18042 through 18050
+were detected from browser activity outside this test's scripted inputs; the
+backend started by this run was stopped immediately to protect quota. No key or
+provider URL appeared in the observed logs. The frontend was retained at that
+time for the earlier activity's manual evidence capture and was stopped later.
+Those earlier entered-ZIP evidence placeholders are separate from the completed
+Assignment 2 Part 1 hotel-list-and-map evidence recorded above.
+
 ## Development services
 
 The backend uses `127.0.0.1:8000` and the Vite frontend uses

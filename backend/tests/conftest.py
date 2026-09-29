@@ -17,6 +17,9 @@ def database_path(tmp_path: Path) -> Path:
 def client(database_path: Path) -> Iterator[TestClient]:
     original_database_path = app.state.database_path
     original_today_provider = app.state.today_provider
+    original_geoapify_key_provider = app.state.geoapify_key_provider
+    original_zip_location_lookup = app.state.zip_location_lookup
+    original_nearby_hotels_lookup = app.state.nearby_hotels_lookup
     app.state.database_path = database_path
     app.state.today_provider = lambda: date(2026, 9, 14)
     try:
@@ -25,3 +28,6 @@ def client(database_path: Path) -> Iterator[TestClient]:
     finally:
         app.state.database_path = original_database_path
         app.state.today_provider = original_today_provider
+        app.state.geoapify_key_provider = original_geoapify_key_provider
+        app.state.zip_location_lookup = original_zip_location_lookup
+        app.state.nearby_hotels_lookup = original_nearby_hotels_lookup

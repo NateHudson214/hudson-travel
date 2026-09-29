@@ -7,6 +7,7 @@ from typing import Literal
 from fastapi import FastAPI, HTTPException, Query, Response, status
 from pydantic import BaseModel
 
+from .config import get_geoapify_api_key
 from .database import (
     BookingNotFoundError,
     RelatedRecordNotFoundError,
@@ -17,6 +18,18 @@ from .database import (
     list_booking_records,
     list_user_records,
     search_trip_records,
+)
+from .geoapify import (
+    GeoapifyConfigurationError,
+    GeoapifyProviderError,
+    ZipLocationNotFoundError,
+    lookup_zip_location,
+)
+from .places import (
+    GEOAPIFY_PLACES_RADIUS_METERS,
+    GEOAPIFY_PLACES_RESULT_LIMIT,
+    NearbyHotel,
+    lookup_nearby_hotels,
 )
 
 
@@ -34,6 +47,38 @@ async def lifespan(application: FastAPI) -> AsyncIterator[None]:
 app = FastAPI(title="Hudson Travel API", lifespan=lifespan)
 app.state.database_path = DEFAULT_DATABASE_PATH
 app.state.today_provider = date.today
+app.state.geoapify_key_provider = get_geoapify_api_key
+app.state.zip_location_lookup = lookup_zip_location
+app.state.nearby_hotels_lookup = lookup_nearby_hotels
+
+
+class HealthResult(BaseModel):
+    status: Literal["ok"]
+    geoapify: Literal["key is configured", "key is not configured"]
+
+
+class ZipLocationResult(BaseModel):
+    postcode: str
+    country_code: str
+    latitude: float
+    longitude: float
+    locality: str | None = None
+
+
+class NearbyHotelResult(BaseModel):
+    place_id: str
+    name: str | None
+    formatted_address: str | None
+    latitude: float
+    longitude: float
+    distance_meters: float | None
+
+
+class NearbyHotelSearchResult(BaseModel):
+    location: ZipLocationResult
+    radius_meters: int
+    result_limit: int
+    hotels: list[NearbyHotelResult]
 
 
 class TripSearchResult(BaseModel):
@@ -86,6 +131,95 @@ def prepare_database() -> Path:
 def booking_not_found(booking_id: str) -> HTTPException:
     return HTTPException(
         status_code=404, detail=f"Booking {booking_id} was not found."
+    )
+
+
+@app.get("/api/health", response_model=HealthResult)
+async def health_check() -> HealthResult:
+    key_status = (
+        "key is configured"
+        if app.state.geoapify_key_provider() is not None
+        else "key is not configured"
+    )
+    return HealthResult(status="ok", geoapify=key_status)
+
+
+async def resolve_zip_location(postcode: str) -> ZipLocationResult:
+    try:
+        location = await app.state.zip_location_lookup(postcode)
+    except GeoapifyConfigurationError as error:
+        raise HTTPException(
+            status_code=503, detail="Geoapify is not configured."
+        ) from error
+    except ZipLocationNotFoundError as error:
+        raise HTTPException(
+            status_code=404, detail=f"ZIP {postcode} could not be resolved."
+        ) from error
+    except GeoapifyProviderError as error:
+        raise HTTPException(
+            status_code=502,
+            detail="The location service is temporarily unavailable.",
+        ) from error
+
+    return ZipLocationResult(
+        postcode=location.postcode,
+        country_code=location.country_code,
+        latitude=location.latitude,
+        longitude=location.longitude,
+        locality=location.locality,
+    )
+
+
+def normalize_zip_code(zip_code: str | None) -> str:
+    normalized_zip_code = zip_code.strip() if zip_code is not None else ""
+    if len(normalized_zip_code) != 5 or not all(
+        "0" <= character <= "9" for character in normalized_zip_code
+    ):
+        raise HTTPException(
+            status_code=400,
+            detail="Enter a five-digit U.S. ZIP code.",
+        )
+    return normalized_zip_code
+
+
+@app.get("/api/demo/zip-location", response_model=ZipLocationResult)
+async def demo_zip_location() -> ZipLocationResult:
+    return await resolve_zip_location("16802")
+
+
+@app.get("/api/zip-location", response_model=ZipLocationResult)
+async def zip_location(
+    zip_code: str | None = Query(default=None),
+) -> ZipLocationResult:
+    return await resolve_zip_location(normalize_zip_code(zip_code))
+
+
+@app.get("/api/hotels/nearby", response_model=NearbyHotelSearchResult)
+async def nearby_hotels(
+    zip_code: str | None = Query(default=None),
+) -> NearbyHotelSearchResult:
+    normalized_zip_code = normalize_zip_code(zip_code)
+    location = await resolve_zip_location(normalized_zip_code)
+
+    try:
+        hotels: list[NearbyHotel] = await app.state.nearby_hotels_lookup(
+            location.latitude, location.longitude
+        )
+    except GeoapifyConfigurationError as error:
+        raise HTTPException(
+            status_code=503, detail="Geoapify is not configured."
+        ) from error
+    except GeoapifyProviderError as error:
+        raise HTTPException(
+            status_code=502,
+            detail="The nearby hotel service is temporarily unavailable.",
+        ) from error
+
+    return NearbyHotelSearchResult(
+        location=location,
+        radius_meters=GEOAPIFY_PLACES_RADIUS_METERS,
+        result_limit=GEOAPIFY_PLACES_RESULT_LIMIT,
+        hotels=[NearbyHotelResult(**hotel.__dict__) for hotel in hotels],
     )
 
 

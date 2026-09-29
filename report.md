@@ -103,3 +103,117 @@ same history. This report is ready for the student's final Canvas upload.
 
 Major implementation instructions are retained in
 [`prompts/002-part2-sqlite-bookings.md`](prompts/002-part2-sqlite-bookings.md).
+
+## Assignment 2 public API ZIP-lookup addendum
+
+**Assignment:** A First Public API Request — graded ZIP extension
+
+**Due:** Thursday, September 24, 2026, at 4:00 PM ET
+
+The guided fixed button calls `/api/demo/zip-location`. The graded extension
+accepts a five-digit ZIP as text, preserves leading zeros, calls
+`/api/zip-location?zip_code={zip_code}` through FastAPI, and displays postcode,
+locality, country code, latitude, and longitude in a plain Vue table. The API
+key stays in the Python backend. Geoapify hotel retrieval, maps, Leaflet,
+shortlists, and later assignment behavior remain outside this activity.
+
+### Expected versus observed ZIP verification
+
+| Check | Expected | Observed September 23, 2026 |
+| --- | --- | --- |
+| Automated gate | ZIP route/client coverage plus clean regressions | 19 focused and 57 total backend tests passed with two non-failing dependency warnings; 17 frontend tests, both linters, and the 20-module build passed |
+| Live entered ZIP | `16802` returns a usable U.S. location | Passed: State College, `us`, `40.803167822`, `-77.861384958` |
+| Browser request | Vue calls only the local FastAPI route and receives no key | Backend recorded `GET /api/zip-location?zip_code=16802` with HTTP 200; no key appeared in the path or rendered response |
+| Loading | Loading feedback appears and conflicting ZIP controls disable | Passed with a delayed local-only response |
+| Leading zero | `02113` remains five characters | Passed through a local-only response and the Vue table |
+| Invalid input | Blank, short, long, letters, punctuation, and Unicode digits show validation, make no intentional request, and clear stale results | Passed for every listed value |
+| Safe failures | Unresolved and provider failure show clear feedback | Local-only 404 and 502 checks passed and removed stale tables |
+| Regression | Hotel search remains usable | `Harbor Lantern Hotel` returned T001 and T009 |
+| Console | No healthy application warnings or errors | Passed |
+
+One successful 16802 request was unintentionally repeated when the automation
+tool's first field-clear action did not change the input. Later, unexpected
+local requests for ZIPs 18042–18050 were observed from browser activity outside
+the scripted smoke-test inputs, so the test backend was stopped immediately.
+No credential or full provider URL was exposed. No source correction cycle was
+needed.
+
+### Request trace
+
+`ZipLookupDemo.vue` handles the entered value and display state;
+`frontend/src/api/location.js` builds the local request; `frontend/vite.config.js`
+proxies `/api`; `backend/app/main.py` validates and maps the route response;
+`backend/app/geoapify.py` sends and validates the provider request; and
+`backend/app/config.py` reads the backend-only setting. The sanitized response
+then returns through FastAPI and the Vite proxy to the Vue table.
+
+### Pending submission evidence
+
+- `evidence/assignment2-entered-zip-success.png` — **placeholder until the
+  student saves and reviews it**
+- `evidence/assignment2-entered-zip-validation.png` — **placeholder until the
+  student saves and reviews it**
+- Short screen recording of entered ZIP 16802, the result table, and the local
+  Network request — **placeholder until recorded and reviewed**
+
+The screenshot-ready success table was recreated through a one-request
+local-only mock using the exact previously observed live response. That
+recreated state is for visual capture and is not claimed as an additional live
+provider verification.
+
+## Assignment 2 Part 1 — live hotel search and map
+
+The authoritative Part 1 extension resolves a validated five-digit U.S. ZIP,
+uses the returned coordinates as the center of a Geoapify Places search for up
+to 20 `accommodation.hotel` results within 5,000 metres, and presents the
+provider-derived results in a connected Vue list and Leaflet map. The API key
+remains in the backend. Missing names, addresses, and distances are handled
+honestly; the interface does not invent prices, ratings, availability, rooms,
+or booking claims. Persistent shortlist behavior remains outside Part 1.
+
+### Expected versus observed Part 1 verification
+
+| Check | Expected | Observed September 29, 2026 |
+| --- | --- | --- |
+| Automated gate | Backend, frontend, lint, build, documentation, integrity, and ignore checks pass | 95 backend and 23 frontend tests passed; both linters and the 25-module build passed; protected checksums and ignore coverage passed |
+| Live search | One Vue search for `16802` returns the resolved center and live nearby hotels | Passed: State College, `us`, `40.803167822`, `-77.861384958`, 5,000 metres, limit 20, and 20 hotels |
+| Local request boundary | Vue calls only the local FastAPI route and exposes no credential | Backend recorded one HTTP 200 request to `/api/hotels/nearby?zip_code=16802`; no key or provider URL appeared in the rendered workflow or console |
+| List and map | The same returned hotels appear as list items and markers | Passed: 20 list buttons and 20 numbered hotel markers were rendered |
+| Selection | List and marker choices identify the same hotel | Passed for Hotel State College from the list and Hyatt Place State College from the map, including matching popup and `aria-current="true"` list selection |
+| Honest data and attribution | Missing data is not invented; provider and tile attribution are visible | Passed: honest local-only missing-field fallbacks; Geoapify, Leaflet, and OpenStreetMap attribution visible; no commercial hotel claims |
+| Browser states | Loading, invalid, empty, unresolved, and provider-failure states are clear and clear stale results | Passed using local-only mocks and all required invalid inputs; no additional provider request |
+| Regressions | Existing workflows remain intact and no booking changes occur | Fixed/entered ZIP controls remained present; Harbor Lantern Hotel returned T001/T009; eight booking rows loaded; no mutation performed |
+| Console and corrections | Healthy console is clean and defects are corrected | No warnings or errors; zero correction cycles |
+
+The temporary local mock was stopped and removed, and the normal backend was
+restored for evidence capture. The student then captured and reviewed all four
+evidence files, confirming that they are readable, show the required live,
+selection, attribution, and validation behavior, and contain no API key,
+secret, private information, or unrelated content. The retained services were
+stopped afterward and both application ports were released:
+
+- `evidence/assignment2-part1-live-hotels.png` — reviewed live-results PNG
+- `evidence/assignment2-part1-selection.png` — reviewed synchronized-selection PNG
+- `evidence/assignment2-part1-states.png` — reviewed validation-state PNG
+- `evidence/assignment2-part1-demo.mov` — reviewed demonstration recording
+
+### AI disclosure and evidence log
+
+OpenAI Codex, a GPT-5-based coding agent, was used to inspect the existing Vue,
+FastAPI, and SQLite architecture; research official Geoapify and Leaflet
+documentation; prepare the early repository-native mockup; implement the
+backend controllers and routes; implement the Vue list and Leaflet map; add and
+run tests; perform bounded browser verification; and prepare documentation and
+Git checkpoint evidence. The student supplied the authoritative requirements,
+approved the exact Leaflet dependency addition, created and retained the local
+Geoapify credential, performed the final VS Code review, and captured and
+reviewed the submission evidence.
+
+Selected prompt excerpts and their relationship to research, dependency
+decisions, implementation, verification, and revised approaches are recorded in
+[`prompts/003-assignment2-part1-live-hotels.md`](prompts/003-assignment2-part1-live-hotels.md).
+The evidence log includes the decision to keep the provider key backend-only,
+the explicit Leaflet approval, the 5 km/20-result Places contract, synchronized
+selection requirements, the one-live-search smoke-test boundary, and the
+revised manual capture approach when browser tooling could not safely preserve
+all required live screenshots and video automatically.

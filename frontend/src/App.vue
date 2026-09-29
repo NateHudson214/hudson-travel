@@ -11,8 +11,10 @@ import {
 import { searchTrips } from './api/trips'
 import BookingForm from './components/BookingForm.vue'
 import BookingHistory from './components/BookingHistory.vue'
+import NearbyHotelSearch from './components/NearbyHotelSearch.vue'
 import StayResultsTable from './components/StayResultsTable.vue'
 import StaySearch from './components/StaySearch.vue'
+import ZipLookupDemo from './components/ZipLookupDemo.vue'
 
 const trips = ref([])
 const error = ref('')
@@ -158,6 +160,10 @@ onMounted(refreshBookingData)
         <h1 id="page-title">Find an offered stay</h1>
         <p class="intro">Search offered stays, create simulated bookings, and manage booking history.</p>
       </header>
+
+      <ZipLookupDemo />
+
+      <NearbyHotelSearch />
 
       <StaySearch :is-loading="isLoading" @search="handleSearch" />
 

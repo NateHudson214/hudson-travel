@@ -50,3 +50,27 @@ test passed:
    account names, Codex UI, terminals, desktop content, or other private material
    is visible.
 7. Stop both services with **Control-C**.
+
+## Assignment 2 Part 1 live hotel-search evidence
+
+**Status:** Captured and reviewed September 29, 2026. The student confirmed
+that all four files are readable, demonstrate the required live search,
+synchronized selection, attribution, and validation behavior, and contain no
+API key, secret, private information, or unrelated content.
+
+- `assignment2-part1-live-hotels.png`: 2876 x 1696 PNG showing ZIP `16802`,
+  the State College search center, 20 provider hotels, the Leaflet map, and
+  attribution. SHA-256:
+  `77fde335139eb798d759f5fd4c41e3450e1a20219e5e1aac93c7a7f41b04232d`.
+- `assignment2-part1-selection.png`: 2870 x 1692 PNG showing Hotel State
+  College selected in the list and the matching map popup. SHA-256:
+  `f0005dbea808d5423e6ea61678c61af8e256ac6a7fb2c95b78884cdaf85a1197`.
+- `assignment2-part1-states.png`: 914 x 720 PNG showing five-digit ZIP
+  validation with no stale hotel result. SHA-256:
+  `2b08b1eb9f2442487f4359d9a35798a0fa06b63fff834aa4ef5e9accbefdbbc3`.
+- `assignment2-part1-demo.mov`: 47,870,865-byte QuickTime demonstration
+  recording reviewed by the student. SHA-256:
+  `3ff4516cd2692745703255f0718898835d85ac521dd0c8b1af649401f3b38b17`.
+
+Only the retained Hudson Travel backend and frontend were stopped after capture;
+ports 8000 and 5173 were confirmed free.

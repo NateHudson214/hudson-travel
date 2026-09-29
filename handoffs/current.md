@@ -1,8 +1,127 @@
 # Current Handoff
 
-**Updated:** September 14, 2026
+**Updated:** September 29, 2026
 
-**Checkpoint:** Part 1 preserved; Part 2 verified, merged, and published
+**Checkpoint:** Assignment 1 preserved; Assignment 2 Part 1 implementation,
+bounded live browser verification, evidence review, and final VS Code review
+complete; Git checkpoint pending
+
+## Assignment 2 Part 1 current stage
+
+- The authoritative Part 1 scope is live hotel search and a synchronized map,
+  not only the completed entered-ZIP demonstration.
+- Research notes are in `docs/assignment2-part1-research.md`.
+- The early, explicitly unimplemented design is
+  `docs/mockups/assignment2-part1-early.svg`.
+- The implemented backend flow resolves the exact U.S. ZIP, then requests up to 20
+  `accommodation.hotel` features inside a strict 5,000-metre circle with
+  proximity ordering.
+- The implemented frontend uses one `selectedPlaceId` so list and map selection
+  remain synchronized and keyboard-accessible.
+- Hotel fields will remain provider-derived; missing values receive honest
+  labels or omission, and no price, rating, availability, or booking claim will
+  be invented.
+- Geoapify and OpenStreetMap attribution must remain visible.
+- `httpx` remains the declared backend HTTP client. Leaflet 1.9.4 is now an
+  exact direct frontend dependency following the completed approval step.
+- `GET /api/hotels/nearby?zip_code={zip_code}` returns the resolved location,
+  5,000-metre radius, 20-result limit, and sanitized provider hotel records.
+- Mocked controller and route tests cover request parameters, honest optional
+  fields, invalid-feature exclusion, empty success, leading-zero ZIPs, safe
+  errors, and coordinate handoff from geocoding to Places.
+- Backend verification on September 28, 2026: 38 focused Places/route tests and
+  95 complete backend tests passed. The complete suite retained the same two
+  non-failing framework dependency warnings.
+- Existing frontend verification remained green: 17 API-client tests, Oxlint,
+  ESLint, and the 20-module Vite production build passed.
+- `NearbyHotelSearch.vue` provides a separate validated ZIP flow with distinct
+  initial, loading, validation, unresolved, empty, results, and service-error
+  states while preserving both earlier ZIP lookup workflows.
+- `NearbyHotelsMap.vue` owns one Leaflet map and replaceable marker layers. The
+  parent owns `selectedPlaceId`, so list-button and marker selection stay on one
+  provider identity.
+- Provider names, addresses, and distances are rendered honestly; Geoapify and
+  OpenStreetMap attribution are included, with no commercial travel fields.
+- Frontend verification on September 29, 2026: all 23 API-client tests, Oxlint,
+  ESLint, and the 25-module Vite production build passed.
+- The bounded smoke test on September 29 used exactly one live nearby-hotel
+  search for ZIP `16802`. It resolved State College and returned 20 provider
+  hotels through the local FastAPI route.
+- The live page showed 20 list results and 20 numbered map markers, a distinct
+  search-center marker, and visible Geoapify, Leaflet, and OpenStreetMap
+  attribution. List-to-marker and marker-to-list selection both passed.
+- Local-only mocks verified loading, leading-zero ZIP `02113`, honest missing
+  fields, empty results, 404 and 502 feedback, and stale-result clearing.
+- All six invalid-input classes produced client validation without a backend
+  request. Harbor Lantern Hotel still returned T001 and T009, eight existing
+  booking-history records loaded, and no booking was changed.
+- The healthy browser console had no warnings or errors. Zero correction cycles
+  were required. Shortlist behavior remains unimplemented and outside Part 1.
+- The student captured and reviewed all four required evidence files. The three
+  PNGs are readable and visibly show the required live, synchronized-selection,
+  and validation states. The readable QuickTime recording was manually reviewed
+  by the student. No key, secret, private, or unrelated content was reported.
+- The retained backend and frontend were stopped after capture; ports 8000 and
+  5173 are free.
+- The final VS Code review passed. The student confirmed that every visible
+  change was intentional, evidence was correct, protected/generated/private
+  files were excluded, CSV records were unchanged, and no shortlist or Part 2
+  behavior was included.
+
+## Assignment 2 public API activity
+
+- The backend-only Geoapify configuration helper and safe health status are in
+  place; the credential is never returned to Vue.
+- The fixed `GET /api/demo/zip-location` demonstration remains available and
+  was observed resolving ZIP 16802 to State College on September 23, 2026.
+- New `GET /api/zip-location?zip_code={zip_code}` accepts a string, trims it,
+  and requires exactly five ASCII digits before calling the existing controller.
+- The dynamic route preserves leading zeros and maps invalid input, unresolved
+  ZIPs, missing configuration, and provider failures to safe 400, 404, 503, and
+  502 responses.
+- Vue now provides a labeled text input and dynamic lookup action. It validates
+  five digits, disables both ZIP actions during a request, clears stale dynamic
+  results on failure, and displays success in a plain location table.
+- The fixed demonstration, hotel search, and booking interface remain intact.
+- Geoapify hotel retrieval, the results list, and the Leaflet map extend the
+  earlier ZIP-foundation activity and are now implemented and smoke-tested for
+  Assignment 2 Part 1. Shortlist behavior and its new persistence remain
+  outside Part 1.
+
+## Assignment 2 automated verification
+
+- Focused backend ZIP-route tests: 19 passed.
+- Complete backend suite: 57 passed with the same two non-failing framework
+  dependency warnings.
+- Frontend API-client tests: 17 passed.
+- Oxlint and ESLint: passed without auto-fix and without findings.
+- Vite production build: passed; 20 modules transformed.
+- No live Geoapify request was made during the implementation gate.
+- Dynamic browser verification passed September 23, 2026; the two PNG files and
+  student recording remain pending.
+
+## Assignment 2 browser verification
+
+- Live entered ZIP `16802` returned State College, country `us`, latitude
+  `40.803167822`, and longitude `-77.861384958` through the local FastAPI path.
+- Loading feedback appeared and both ZIP controls were disabled during a
+  delayed local-only response.
+- A local-only `02113` response retained its leading zero in the table.
+- Blank, short, long, alphabetic, punctuation, and Unicode-digit input showed
+  the five-digit validation message and no stale result table.
+- Local-only unresolved and provider-failure responses showed safe 404 and 502
+  feedback and cleared stale results.
+- `Harbor Lantern Hotel` still returned T001 and T009.
+- The healthy browser console contained no warnings or errors.
+- Zero source correction cycles were needed.
+- The first attempted automated field clear did not alter the actual value and
+  unintentionally repeated the successful 16802 provider request once.
+- After backend restoration, unexpected local requests for ZIPs 18042–18050
+  appeared from browser activity outside the scripted smoke-test inputs. The
+  backend was stopped immediately; the source of those requests was not proven.
+- The successful screenshot-ready state was recreated with the exact observed
+  live values through a one-request local mock. The mock is stopped. This
+  recreated state must not be described as a second live verification.
 
 ## Branch state
 
@@ -114,9 +233,10 @@ passed. The obsolete Boston and Seattle screenshots were removed.
 
 ## Next action
 
-Upload `report.md` to the Part 2 Canvas assignment and confirm the submitted
-file is the updated Part 2 report. Do not make further source changes unless a
-submission review identifies a specific issue.
+Prepare the reviewed Assignment 2 Part 1 feature-branch checkpoint, preserve it
+remotely, merge it into `main` with a non-fast-forward merge, rerun the complete
+gate, and record the exact hashes and URLs. Do not add shortlist behavior, new
+persistence, or begin Part 2.
 
 ## Part 2 backend slice
 
