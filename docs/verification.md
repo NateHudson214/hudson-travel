@@ -73,6 +73,87 @@ No automated test makes a live Geoapify geocoding or Places request. The live
 Places results and browser behaviors were verified separately in the bounded
 September 29 smoke test recorded below.
 
+## Assignment 2 Part 2 local-hotel automated checks
+
+The local-hotel tests use temporary SQLite files. They verify:
+
+- additive, repeatable creation of `saved_hotels`, `saved_hotel_searches`, and
+  `demo_hotel_nights` without changing Assignment 1 records;
+- exact provider-ID storage, nullable provider name/address, duplicate-save
+  protection, and multiple ZIP associations;
+- exactly five rows dated October 10–14, 2026 with default 10000-cent rates and
+  20 rooms;
+- preservation of a manually changed demo rate and room count across a repeated
+  save and database reinitialization;
+- saved-ID status, stored search context, saved-by-ZIP retrieval, strict ZIP
+  validation, and HTTP 200 empty local results;
+- safe database errors that do not expose internal details; and
+- transactional removal of only the selected provider hotel, its associations,
+  and its nights.
+
+The frontend API-client tests verify the exact saved-ID, local ZIP, create, and
+delete paths, methods, URL encoding, and JSON body. There is no installed
+component-test capability. The production build and manual browser check are
+therefore the verification boundaries for the local-first orchestration,
+source labels, action states, simulated night table, and list/map selection.
+
+### Observed local-hotel workflow — October 1, 2026
+
+- Preflight confirmed zero rows in all three local-hotel tables. The complete
+  gate passed with 123 backend tests, 29 frontend API-client tests, both linters,
+  and a 26-module Vite build. Protected hashes and ignore checks passed.
+- One authorized ZIP `16802` search requested the empty local collection first,
+  then made one live nearby-hotel request. It displayed 20 API results, the
+  resolved State College center, list/map markers, and Geoapify/OpenStreetMap
+  attribution.
+- Scholar Hotel State College and Hotel State College were added through Vue.
+  Each POST returned HTTP 201 before saved feedback appeared. SQLite then held
+  2 hotels, 2 ZIP associations, and 10 nights: five rows per hotel dated October
+  10–14 with 10000-cent and 20-room defaults.
+- After refresh, ZIP `16802` displayed only the two saved results with the
+  **Saved locally**, incomplete-subset, and simulated-data disclosures. Backend
+  logs contained the local GET and no `/api/hotels/nearby` request.
+- The student changed Hotel State College on `2026-10-12` to 12550 cents and 7
+  rooms in DB Browser and clicked **Write Changes**. Vue then showed `$125.50`
+  and 7 without a provider request.
+- Scholar Hotel State College was removed through Vue after explicit
+  confirmation. HTTP 204 preceded its removal from the interface. SQLite then
+  retained only Hotel State College, one ZIP association, and its five nights.
+- A complete stop/restart preserved the edited hotel and values, preserved the
+  removal, and created no duplicate rows. The post-restart local search again
+  made no provider request.
+- The fixed and entered-ZIP controls remained present; Harbor Lantern Hotel
+  returned T001 and T009; all eight existing booking rows remained; attribution
+  remained visible; and the healthy console had no warning or error entries.
+- Correction cycle 1 added Leaflet marker `keypress` selection after keyboard
+  activation opened the marker popup without updating the list. The complete
+  gate passed again, and keyboard list-to-map and map-to-list selection then
+  updated `aria-current` correctly. No further correction cycle was required.
+
+### Reviewed Part 2 evidence and cleanup — October 5, 2026
+
+The student captured and reviewed the three repository evidence files and
+confirmed that they are readable and contain no API key, secret, private
+information, or unrelated content. Visual inspection confirmed:
+
+- `evidence/assignment2-part2-edited-rate.png` — 2880 x 1696 PNG showing ZIP
+  `16802`, the **Saved locally** state, Hotel State College, its five simulated
+  nights, and the edited October 12 `$125.50` rate with 7 rooms. SHA-256:
+  `90eea9cdd5f6f1360842219281e8f0e12335f7c1bd264610a71d373fb04469de`.
+- `evidence/assignment2-part2-local-first.png` — 2858 x 1476 PNG showing the
+  **Saved locally** result and Safari Network panel with the local
+  `saved-hotels` request. No `/api/hotels/nearby` request is present in the
+  captured request list. SHA-256:
+  `f49cf3440b34cb33273b4160950fa2673bf7eceb375e61b52e4ef3986ae1f543`.
+- `evidence/assignment2-part2-database.png` — 2880 x 1792 PNG showing the joined
+  SQLite query and exactly five Hotel State College rows for October 10–14,
+  including `12550` cents and 7 rooms on October 12. SHA-256:
+  `0e6f05ee5de5ddbe5831b7edf68ee722491bda48b58f71e6cdf8a592e1581798`.
+
+Only the Hudson Travel backend and frontend started for the evidence session
+were stopped afterward. Ports 8000 and 5173 were confirmed free. The final
+manual VS Code review and Git checkpoint remain pending.
+
 On September 28, 2026, the focused Places/controller route selection passed 38
 tests and the complete backend suite passed 95 tests with the same two
 non-failing framework dependency warnings. The unchanged frontend passed all 17

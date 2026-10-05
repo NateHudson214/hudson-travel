@@ -83,6 +83,7 @@ function renderResults() {
 
   props.hotels.forEach((hotel, index) => {
     const point = [hotel.latitude, hotel.longitude]
+    const selectHotel = () => emit('select', hotel.place_id)
     const marker = L.marker(point, {
       icon: hotelIcon(index, hotel.place_id === props.selectedPlaceId),
       keyboard: true,
@@ -90,7 +91,8 @@ function renderResults() {
       title: hotel.name || 'Name unavailable',
     })
       .bindPopup(popupContent(hotel))
-      .on('click', () => emit('select', hotel.place_id))
+      .on('click', selectHotel)
+      .on('keypress', selectHotel)
       .addTo(hotelLayer)
 
     markerRecords.set(hotel.place_id, { marker, index })

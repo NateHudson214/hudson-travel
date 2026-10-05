@@ -105,6 +105,30 @@ DELETE /api/bookings/{booking_id}
 booking ID, booking date, and initial `confirmed` status. Cancellation retains
 the record with `cancelled` status, while deletion permanently removes it.
 
+The Assignment 2 Part 2 in-class local-hotel endpoints are:
+
+```text
+GET    /api/saved-hotels/ids
+GET    /api/saved-hotels?zip_code={zip_code}
+POST   /api/saved-hotels
+DELETE /api/saved-hotels/{provider_place_id}
+```
+
+`POST /api/saved-hotels` stores one provider hotel together with the searched
+ZIP and resolved location context. The provider `place_id` is retained exactly
+as the local hotel key; provider name and address remain nullable. The same
+transaction creates five simulated classroom nights for October 10–14, 2026.
+Their defaults are $100.00 (`10000` cents) and 20 rooms. Repeating a save does
+not duplicate rows or overwrite an edited rate or room count. Removing a saved
+hotel transactionally removes its ZIP associations and demo nights without
+touching Assignment 1 hotel, trip, user, or booking records.
+
+The SQLite additions are `saved_hotels`, `saved_hotel_searches`, and
+`demo_hotel_nights`. The association table supports multiple hotels for one ZIP
+and multiple ZIPs for one hotel while preventing a duplicate hotel/ZIP pair.
+An empty valid local ZIP lookup is HTTP 200 with an empty hotel list; a database
+failure remains a clear error and does not trigger a live-provider fallback.
+
 ## Frontend setup
 
 In a second terminal:
@@ -123,16 +147,20 @@ accepts an entered five-digit ZIP as text, validates it locally, sends it to
 `GET /api/zip-location`, and displays the returned location in a plain table.
 Invalid or failed entered-ZIP lookups clear stale dynamic results and show clear
 feedback. The Part 1 nearby-hotel interface uses a separate five-digit ZIP
-search, calls only the local combined FastAPI endpoint, and displays the
-resolved center with a provider-derived hotel list and Leaflet map. The list
-and markers share one selected provider place ID. Missing provider fields use
-honest fallbacks, while validation, unresolved ZIP, empty results, and service
-failures remain distinct. Leaflet uses standard OpenStreetMap tiles with visible
-tile attribution, and the results display Geoapify attribution. This frontend
-slice passed automated tests, lint, build, one bounded live Places/browser
-smoke test, synchronized list/map selection checks, safe local-only state
-checks, and final evidence review on September 29, 2026. Shortlist behavior
-remains outside Part 1.
+search. It now checks SQLite first. Saved matches are labeled **Saved locally**,
+include the five dated simulated rate/room rows, and are explicitly described as
+an incomplete subset. Only a successful empty local lookup falls through to the
+existing live endpoint, whose results are labeled **API results**. A local
+database error stops the search instead of contacting Geoapify. Live result
+cards offer **Add to Local**; saved provider IDs are reloaded after page refresh,
+and saved cards offer **Remove from Local**. The list and markers continue to
+share one selected provider place ID. Leaflet uses standard OpenStreetMap tiles
+with visible tile attribution, and provider identity/location attribution stays
+visible for live and saved records. Automated checks and the bounded October 1,
+2026 browser verification passed. That verification covered frontend Add and
+Remove, refresh and full-service restart persistence, local-first Network
+behavior, DB Browser editing, the visible edited rate/room values, existing
+workflow regressions, and a clean console.
 Search for a hotel,
 choose a traveler and one of the displayed offered stays, and use **Create
 booking**. The booking-history table is loaded from SQLite and provides

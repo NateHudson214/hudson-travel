@@ -79,3 +79,25 @@ The reviewed evidence is preserved in implementation checkpoint
 [`0f38ae0ac35808e332ec91472bb0d5393e5adfc8`](https://github.com/NateHudson214/hudson-travel/commit/0f38ae0ac35808e332ec91472bb0d5393e5adfc8)
 and its non-fast-forward `main` merge
 [`6739c4e5b4e4a93b74d6558253078024b1aa7cbf`](https://github.com/NateHudson214/hudson-travel/commit/6739c4e5b4e4a93b74d6558253078024b1aa7cbf).
+
+## Assignment 2 Part 2 local-hotel evidence
+
+**Status:** Captured and reviewed October 5, 2026. The student confirmed that
+all three files are readable and contain no API key, secret, private
+information, or unrelated content.
+
+- `assignment2-part2-edited-rate.png`: 2880 x 1696 PNG showing the ZIP `16802`
+  **Saved locally** result, Hotel State College, and the edited October 12
+  `$125.50` rate with 7 rooms. SHA-256:
+  `90eea9cdd5f6f1360842219281e8f0e12335f7c1bd264610a71d373fb04469de`.
+- `assignment2-part2-local-first.png`: 2858 x 1476 PNG showing the saved-local
+  interface and Safari Network evidence for the local `saved-hotels` request,
+  with no `/api/hotels/nearby` request in the captured list. SHA-256:
+  `f49cf3440b34cb33273b4160950fa2673bf7eceb375e61b52e4ef3986ae1f543`.
+- `assignment2-part2-database.png`: 2880 x 1792 PNG showing exactly five Hotel
+  State College rows for October 10–14, including `12550` cents and 7 rooms on
+  October 12. SHA-256:
+  `0e6f05ee5de5ddbe5831b7edf68ee722491bda48b58f71e6cdf8a592e1581798`.
+
+Only the Hudson Travel services used for evidence capture were stopped after
+review, and ports 8000 and 5173 were confirmed free.

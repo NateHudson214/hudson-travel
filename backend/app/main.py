@@ -2,21 +2,27 @@ from collections.abc import AsyncIterator
 from contextlib import asynccontextmanager
 from datetime import date
 from pathlib import Path
+import sqlite3
 from typing import Literal
 
 from fastapi import FastAPI, HTTPException, Query, Response, status
-from pydantic import BaseModel
+from pydantic import BaseModel, Field, FiniteFloat, field_validator
 
 from .config import get_geoapify_api_key
 from .database import (
     BookingNotFoundError,
     RelatedRecordNotFoundError,
+    SavedHotelNotFoundError,
     cancel_booking_record,
     create_booking_record,
     delete_booking_record,
+    delete_local_hotel_record,
     initialize_database,
     list_booking_records,
+    list_saved_hotel_ids,
+    list_saved_hotels_for_zip,
     list_user_records,
+    save_local_hotel_record,
     search_trip_records,
 )
 from .geoapify import (
@@ -81,6 +87,53 @@ class NearbyHotelSearchResult(BaseModel):
     hotels: list[NearbyHotelResult]
 
 
+class DemoHotelNightResult(BaseModel):
+    stay_date: str
+    nightly_rate_cents: int
+    rooms_available: int
+
+
+class SavedHotelResult(NearbyHotelResult):
+    nights: list[DemoHotelNightResult]
+
+
+class SavedHotelSearchResult(BaseModel):
+    searched_zip_code: str
+    location: ZipLocationResult | None
+    hotels: list[SavedHotelResult]
+
+
+class SavedHotelIdsResult(BaseModel):
+    place_ids: list[str]
+
+
+class ProviderHotelCreate(BaseModel):
+    place_id: str = Field(min_length=1)
+    name: str | None = None
+    formatted_address: str | None = None
+    latitude: FiniteFloat = Field(ge=-90, le=90)
+    longitude: FiniteFloat = Field(ge=-180, le=180)
+
+    @field_validator("place_id")
+    @classmethod
+    def reject_blank_place_id(cls, value: str) -> str:
+        if not value.strip():
+            raise ValueError("place_id must not be blank")
+        return value
+
+
+class SavedHotelCreate(BaseModel):
+    zip_code: str
+    location: ZipLocationResult
+    hotel: ProviderHotelCreate
+
+
+class SavedHotelCreateResult(BaseModel):
+    searched_zip_code: str
+    location: ZipLocationResult
+    hotel: SavedHotelResult
+
+
 class TripSearchResult(BaseModel):
     trip_id: str
     trip_name: str
@@ -131,6 +184,13 @@ def prepare_database() -> Path:
 def booking_not_found(booking_id: str) -> HTTPException:
     return HTTPException(
         status_code=404, detail=f"Booking {booking_id} was not found."
+    )
+
+
+def local_hotel_storage_error() -> HTTPException:
+    return HTTPException(
+        status_code=500,
+        detail="Local hotel storage is temporarily unavailable.",
     )
 
 
@@ -221,6 +281,78 @@ async def nearby_hotels(
         result_limit=GEOAPIFY_PLACES_RESULT_LIMIT,
         hotels=[NearbyHotelResult(**hotel.__dict__) for hotel in hotels],
     )
+
+
+@app.get("/api/saved-hotels/ids", response_model=SavedHotelIdsResult)
+async def saved_hotel_ids() -> SavedHotelIdsResult:
+    try:
+        place_ids = list_saved_hotel_ids(prepare_database())
+    except sqlite3.Error as error:
+        raise local_hotel_storage_error() from error
+    return SavedHotelIdsResult(place_ids=place_ids)
+
+
+@app.get("/api/saved-hotels", response_model=SavedHotelSearchResult)
+async def saved_hotels(
+    zip_code: str | None = Query(default=None),
+) -> SavedHotelSearchResult:
+    normalized_zip_code = normalize_zip_code(zip_code)
+    try:
+        record = list_saved_hotels_for_zip(
+            prepare_database(), normalized_zip_code
+        )
+    except sqlite3.Error as error:
+        raise local_hotel_storage_error() from error
+    return SavedHotelSearchResult(**record)
+
+
+@app.post(
+    "/api/saved-hotels",
+    response_model=SavedHotelCreateResult,
+    status_code=status.HTTP_201_CREATED,
+)
+async def save_hotel(payload: SavedHotelCreate) -> SavedHotelCreateResult:
+    normalized_zip_code = normalize_zip_code(payload.zip_code)
+    normalized_postcode = normalize_zip_code(payload.location.postcode)
+    if payload.location.country_code.casefold() != "us":
+        raise HTTPException(
+            status_code=400,
+            detail="Saved hotel location must be a U.S. ZIP code.",
+        )
+    try:
+        record = save_local_hotel_record(
+            prepare_database(),
+            place_id=payload.hotel.place_id,
+            name=payload.hotel.name,
+            formatted_address=payload.hotel.formatted_address,
+            latitude=payload.hotel.latitude,
+            longitude=payload.hotel.longitude,
+            zip_code=normalized_zip_code,
+            postcode=normalized_postcode,
+            country_code=payload.location.country_code,
+            search_latitude=payload.location.latitude,
+            search_longitude=payload.location.longitude,
+            locality=payload.location.locality,
+        )
+    except sqlite3.Error as error:
+        raise local_hotel_storage_error() from error
+    return SavedHotelCreateResult(**record)
+
+
+@app.delete(
+    "/api/saved-hotels/{hotel_id:path}", status_code=status.HTTP_204_NO_CONTENT
+)
+async def delete_saved_hotel(hotel_id: str) -> Response:
+    try:
+        delete_local_hotel_record(prepare_database(), hotel_id)
+    except SavedHotelNotFoundError as error:
+        raise HTTPException(
+            status_code=404,
+            detail="Saved hotel was not found.",
+        ) from error
+    except sqlite3.Error as error:
+        raise local_hotel_storage_error() from error
+    return Response(status_code=status.HTTP_204_NO_CONTENT)
 
 
 @app.get("/api/trips", response_model=list[TripSearchResult])

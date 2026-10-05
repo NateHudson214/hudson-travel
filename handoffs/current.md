@@ -1,11 +1,69 @@
 # Current Handoff
 
-**Updated:** September 29, 2026
+**Updated:** October 5, 2026
 
-**Checkpoint:** Assignment 1 preserved; Assignment 2 Part 1 implementation,
-bounded live browser verification, evidence review, and final VS Code review
-complete; feature checkpoint and non-fast-forward merge published; Canvas
-submission pending
+**Checkpoint:** Assignment 1 and Assignment 2 Part 1 remain preserved and
+published. Assignment 2 Part 2 local-hotel schema and local-first wiring are
+implemented but uncommitted on `assignment2_part2_in_class`; automated checks
+and bounded browser/restart verification pass. The final VS Code review passed,
+the three required Part 2 evidence screenshots are captured and reviewed, and
+the evidence services are stopped. The work remains uncommitted for the Git
+checkpoint.
+
+## Assignment 2 Part 2 current stage
+
+- The student manually verified the empty additive `saved_hotels` and
+  `demo_hotel_nights` schema in DB Browser without writing changes.
+- `saved_hotel_searches` now stores a unique provider-hotel/searched-ZIP pair
+  plus the resolved location context. Initialization is additive and repeatable.
+- Saving one provider hotel, its ZIP association, and the five October 10–14,
+  2026 demo nights is one transaction. Repeated saves preserve edited rate and
+  room values.
+- Removing a provider hotel transactionally cascades only its saved associations
+  and demo nights. Assignment 1 tables remain separate.
+- The API exposes saved IDs, saved hotels by validated ZIP, create, and delete.
+  Valid empty local searches return HTTP 200; database failures return a safe
+  error rather than falling through to Geoapify.
+- Vue loads saved IDs after refresh and performs a local ZIP lookup before live
+  search. Saved matches are labeled **Saved locally** and show simulated dated
+  data; live fallback results are labeled **API results**.
+- Add and Remove controls wait for backend confirmation. Existing list/map
+  synchronization and keyboard selection use the same provider IDs for both
+  result sources.
+- Automated verification passed with 123 backend tests, 29 frontend client
+  tests, both linters, and a 26-module build. The same two non-failing framework
+  dependency warnings remain.
+- The bounded October 1 browser run made one live `16802` request only after an
+  empty local result, added two hotels, and proved saved-only local lookup after
+  refresh without another provider request.
+- The student changed Hotel State College's October 12 demo row to 12550 cents
+  and 7 rooms in DB Browser. Vue displayed `$125.50` and 7, and the values
+  survived a full backend/frontend restart.
+- Scholar Hotel State College was removed through Vue with HTTP 204. After
+  restart, SQLite retained exactly one hotel, one ZIP association, and five
+  nights; the removed hotel remained absent and no rows duplicated.
+- One correction cycle connected Leaflet marker keypress selection to the shared
+  provider ID. The full gate and saved-result keyboard synchronization passed
+  afterward.
+- Existing ZIP controls, T001/T009 hotel search, eight booking rows,
+  attribution, and the browser console all passed without booking mutation.
+- The student captured and reviewed the edited-rate, local-first Network, and
+  SQLite database screenshots. Visual inspection confirmed the required states,
+  and the student confirmed that the files contain no key, secret, private, or
+  unrelated material.
+- Evidence paths: `evidence/assignment2-part2-edited-rate.png`,
+  `evidence/assignment2-part2-local-first.png`, and
+  `evidence/assignment2-part2-database.png`.
+- Only the Hudson Travel services retained for evidence capture were stopped;
+  ports 8000 and 5173 were confirmed free.
+- The final manual VS Code review passed on October 5, 2026. The student
+  confirmed that every visible change was intentional; all three evidence
+  screenshots were correct and readable; secrets, generated dependencies,
+  build output, caches, the ignored SQLite database, editor settings, and
+  unrelated files were excluded; and all supplied CSV files and protected
+  dependency declarations were unchanged.
+- Next required step: create, merge, verify, and publish the reviewed Git
+  checkpoint without beginning later work.
 
 ## Assignment 2 Part 1 current stage
 

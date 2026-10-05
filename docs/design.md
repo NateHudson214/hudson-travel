@@ -1,6 +1,12 @@
 # Hudson Travel — Project Design
 
-**Status:** Assignment 1 remains preserved and published. Assignment 2 Part 1 research, implementation, bounded live verification, evidence review, final VS Code review, feature-branch checkpoint, non-fast-forward merge, and merged-main gate are complete. The reviewed checkpoint is published in the Hudson Travel repository; only Canvas submission remains pending.
+**Status:** Assignment 1 and Assignment 2 Part 1 remain preserved and published.
+On the uncommitted `assignment2_part2_in_class` feature branch, the additive
+local-hotel schema and local-first storage workflow are implemented and pass
+automated and bounded browser verification, including restart persistence and
+the edited-rate demonstration. The three Part 2 evidence screenshots were
+captured and reviewed on October 5, 2026, and the retained verification services
+were stopped. Final VS Code review and Git checkpointing remain pending.
 
 ## Design revision
 
@@ -387,3 +393,67 @@ branch. The non-fast-forward merge into `main` is
 [`6739c4e5b4e4a93b74d6558253078024b1aa7cbf`](https://github.com/NateHudson214/hudson-travel/commit/6739c4e5b4e4a93b74d6558253078024b1aa7cbf).
 The complete automated gate passed both before the feature commit and after the
 merge. Assignment 1 checkpoints remain in the same history.
+
+## Assignment 2 Part 2 in-class local-hotel workflow
+
+This additive workflow does not merge Geoapify hotels into the instructor
+`hotels` table. Provider records use their exact `place_id` in `saved_hotels`.
+`saved_hotel_searches` connects each provider hotel to a searched five-digit ZIP
+and stores the resolved postcode, country code, coordinates, and optional
+locality. Its composite `(hotel_id, zip_code)` key prevents duplicate
+associations while allowing many hotels per ZIP and one hotel under multiple
+ZIP searches.
+
+`demo_hotel_nights` keeps one row per saved hotel and date. Saving creates the
+five dates from October 10 through October 14, 2026 in the same transaction as
+the hotel and search association. SQLite defaults supply `10000` cents and 20
+rooms. `INSERT OR IGNORE` makes the save repeatable without overwriting a rate
+or room count changed later in DB Browser. Foreign-key cascades let one removal
+transaction delete the selected provider hotel, its associations, and nights
+while leaving unrelated provider and Assignment 1 records intact.
+
+The additive API contract is:
+
+```text
+GET    /api/saved-hotels/ids
+GET    /api/saved-hotels?zip_code={zip_code}
+POST   /api/saved-hotels
+DELETE /api/saved-hotels/{provider_place_id}
+```
+
+The ZIP collection route uses the same trimmed, five-ASCII-digit validation as
+the live search. It returns stored location context, provider identity/location
+fields, and ordered demo nights. A valid ZIP without saved matches is a normal
+HTTP 200 empty result. SQLite failures map to a safe HTTP 500 and are never
+treated as permission to call Geoapify.
+
+The Vue nearby-hotel flow now reads saved IDs on page load and checks the local
+ZIP collection before live search. A nonempty local result is labeled **Saved
+locally**, is explicitly described as an incomplete saved subset, includes the
+simulated dates/rates/rooms, and makes no provider request. Only a successful
+empty local result falls through to the existing live endpoint, labeled **API
+results**. Add and Remove state changes occur only after FastAPI confirms them.
+The existing `selectedPlaceId` continues to synchronize keyboard-accessible
+list choices and Leaflet markers for both sources.
+
+Temporary-database and frontend API-client checks cover the implemented
+contract. The bounded October 1, 2026 browser check then used one live ZIP
+`16802` request, saved two provider hotels, proved the local-first short circuit,
+and displayed the saved subset after refresh. The student changed Hotel State
+College's October 12 row to 12,550 cents and 7 rooms in DB Browser; Vue displayed
+`$125.50` and 7, and both values survived a complete backend/frontend restart.
+Removing Scholar Hotel State College through Vue returned HTTP 204 and removed
+only that hotel, association, and five nights.
+
+One correction cycle addressed keyboard marker selection: Leaflet keyboard
+activation had opened a popup without updating the shared list selection. The
+marker now forwards both click and keypress selection to the parent. The full
+automated gate passed after the correction, and saved-result list-to-map and
+map-to-list keyboard synchronization then passed visibly.
+
+The reviewed repository evidence preserves three complementary views of this
+workflow: the saved-local interface with the edited `$125.50`/7-room row, the
+Safari Network panel showing the local saved-hotels request without a live
+nearby-hotels request, and the five persisted SQLite night rows. These captures
+are documentation evidence only; the ignored development database remains the
+source of the local verification state and is not intended for Git.
