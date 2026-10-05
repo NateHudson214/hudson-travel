@@ -263,7 +263,13 @@ files as the Canvas form permits.
 
 ## Assignment 2 Part 2 — local hotel in-class workflow
 
-The uncommitted `assignment2_part2_in_class` work adds separate SQLite storage
+**Implementation and evidence checkpoint:**
+[`77ae9b397caf3a3062d1ae8955aaf30cd0d1456d`](https://github.com/NateHudson214/hudson-travel/commit/77ae9b397caf3a3062d1ae8955aaf30cd0d1456d)
+
+**Non-fast-forward merge checkpoint:**
+[`79e0b6ddd0acb1909059ef344d1bc369f78fe25e`](https://github.com/NateHudson214/hudson-travel/commit/79e0b6ddd0acb1909059ef344d1bc369f78fe25e)
+
+The `assignment2_part2_in_class` work adds separate SQLite storage
 for Geoapify provider hotels without changing the instructor-supplied hotel,
 trip, user, or booking records. A unique provider hotel/ZIP association retains
 the resolved location context. Saving also creates five clearly labeled
@@ -294,7 +300,8 @@ SQLite mutation.
 The retained development database now contains one saved provider hotel, one
 ZIP association, and five demo-night rows. This local ignored database state is
 verification data, not a repository artifact. Git checkpointing, submission
-packaging, and publication have not yet been completed for Part 2.
+evidence packaging, and publication are complete; the required student
+submission remains.
 
 The student captured and reviewed the Part 2 submission evidence on October 5,
 2026. `evidence/assignment2-part2-edited-rate.png` shows the saved-local Hotel
@@ -305,13 +312,23 @@ local saved-hotels Network request without a nearby-provider request.
 for Hotel State College, including the edited `12550`/7 values. The student
 confirmed that the captures are readable and contain no API key, secret,
 private information, or unrelated content. The retained Hudson Travel services
-were stopped and ports 8000 and 5173 were confirmed free. The Git checkpoint
-remains pending.
+were stopped and ports 8000 and 5173 were confirmed free.
 
 The final manual VS Code review passed on October 5, 2026. The student confirmed
 that every visible change was intentional; the three evidence screenshots were
 correct and readable; no `.env` file, API key, credential, generated dependency,
 build output, cache, ignored SQLite database, editor setting, or unrelated file
 was included; and all supplied CSV files and protected dependency declarations
-remained unchanged. The reviewed implementation is ready for the bounded Git
-checkpoint and merge process.
+remained unchanged. The reviewed implementation was approved for the bounded
+Git checkpoint and merge process.
+
+The reviewed work was committed and published on the
+`assignment2_part2_in_class` feature branch at the implementation and evidence
+checkpoint above. It was then merged into `main` with a non-fast-forward merge.
+The full gate passed both before the feature commit and on merged `main`: 123
+backend tests with the same two non-failing dependency warnings, 29 frontend
+API-client tests, Oxlint, ESLint, the 26-module Vite production build,
+dependency consistency, documentation links, whitespace, protected hashes,
+evidence hashes, and ignore checks. No live Geoapify request occurred during
+either Git gate. The feature branch, merge, and final documentation state are
+published at [the Hudson Travel repository](https://github.com/NateHudson214/hudson-travel).

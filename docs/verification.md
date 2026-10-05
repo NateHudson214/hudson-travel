@@ -152,7 +152,28 @@ information, or unrelated content. Visual inspection confirmed:
 
 Only the Hudson Travel backend and frontend started for the evidence session
 were stopped afterward. Ports 8000 and 5173 were confirmed free. The final
-manual VS Code review and Git checkpoint remain pending.
+manual VS Code review and Git checkpoint were subsequently completed as
+recorded below.
+
+### Assignment 2 Part 2 Git checkpoint verification
+
+The final manual VS Code review passed on October 5, 2026. The complete gate
+then passed on `assignment2_part2_in_class` and again after its non-fast-forward
+merge into `main`. Each run produced 123 passing backend tests with the same two
+non-failing dependency warnings, 29 passing frontend API-client tests, clean
+Oxlint and ESLint runs, and a successful 26-module Vite build. Dependency
+consistency, Markdown links, `git diff --check`, protected hashes, evidence
+hashes, and ignore coverage also passed. No live Geoapify request was made.
+
+- Implementation and evidence checkpoint:
+  [`77ae9b397caf3a3062d1ae8955aaf30cd0d1456d`](https://github.com/NateHudson214/hudson-travel/commit/77ae9b397caf3a3062d1ae8955aaf30cd0d1456d)
+- Non-fast-forward merge checkpoint:
+  [`79e0b6ddd0acb1909059ef344d1bc369f78fe25e`](https://github.com/NateHudson214/hudson-travel/commit/79e0b6ddd0acb1909059ef344d1bc369f78fe25e)
+
+The feature branch and final `main` documentation state are published at
+<https://github.com/NateHudson214/hudson-travel>. The ignored development
+database remains local with one saved hotel, one ZIP association, and five
+demo-night rows, including 12550 cents and 7 rooms for October 12.
 
 On September 28, 2026, the focused Places/controller route selection passed 38
 tests and the complete backend suite passed 95 tests with the same two

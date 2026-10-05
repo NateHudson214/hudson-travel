@@ -4,11 +4,10 @@
 
 **Checkpoint:** Assignment 1 and Assignment 2 Part 1 remain preserved and
 published. Assignment 2 Part 2 local-hotel schema and local-first wiring are
-implemented but uncommitted on `assignment2_part2_in_class`; automated checks
-and bounded browser/restart verification pass. The final VS Code review passed,
-the three required Part 2 evidence screenshots are captured and reviewed, and
-the evidence services are stopped. The work remains uncommitted for the Git
-checkpoint.
+reviewed, verified, committed on `assignment2_part2_in_class`, merged into
+`main` with a non-fast-forward merge, and published. The three required Part 2
+evidence screenshots are captured and reviewed, and the evidence services are
+stopped.
 
 ## Assignment 2 Part 2 current stage
 
@@ -62,8 +61,18 @@ checkpoint.
   build output, caches, the ignored SQLite database, editor settings, and
   unrelated files were excluded; and all supplied CSV files and protected
   dependency declarations were unchanged.
-- Next required step: create, merge, verify, and publish the reviewed Git
-  checkpoint without beginning later work.
+- Implementation and evidence checkpoint:
+  `77ae9b397caf3a3062d1ae8955aaf30cd0d1456d`
+  (<https://github.com/NateHudson214/hudson-travel/commit/77ae9b397caf3a3062d1ae8955aaf30cd0d1456d>).
+- Non-fast-forward merge checkpoint:
+  `79e0b6ddd0acb1909059ef344d1bc369f78fe25e`
+  (<https://github.com/NateHudson214/hudson-travel/commit/79e0b6ddd0acb1909059ef344d1bc369f78fe25e>).
+- The full gate passed on the feature branch and merged `main`: 123 backend
+  tests with the same two non-failing warnings, 29 frontend tests, both linters,
+  the 26-module build, dependency and documentation consistency, protected and
+  evidence hashes, and ignore checks. No live provider request was made.
+- The feature branch and final `main` state are published. The next action is
+  the student's required submission step; do not begin later work until asked.
 
 ## Assignment 2 Part 1 current stage
 

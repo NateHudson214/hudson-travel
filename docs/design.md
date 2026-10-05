@@ -1,12 +1,12 @@
 # Hudson Travel — Project Design
 
 **Status:** Assignment 1 and Assignment 2 Part 1 remain preserved and published.
-On the uncommitted `assignment2_part2_in_class` feature branch, the additive
-local-hotel schema and local-first storage workflow are implemented and pass
-automated and bounded browser verification, including restart persistence and
-the edited-rate demonstration. The three Part 2 evidence screenshots were
-captured and reviewed on October 5, 2026, and the retained verification services
-were stopped. Final VS Code review and Git checkpointing remain pending.
+The Assignment 2 Part 2 additive local-hotel schema and local-first storage
+workflow are complete, reviewed, verified, and published. The substantial work
+is preserved on `assignment2_part2_in_class` and merged into `main` with a
+non-fast-forward merge. The three Part 2 evidence screenshots were captured and
+reviewed on October 5, 2026, and the retained verification services were
+stopped.
 
 ## Design revision
 
@@ -457,3 +457,11 @@ Safari Network panel showing the local saved-hotels request without a live
 nearby-hotels request, and the five persisted SQLite night rows. These captures
 are documentation evidence only; the ignored development database remains the
 source of the local verification state and is not intended for Git.
+
+The reviewed implementation and evidence checkpoint is
+[`77ae9b397caf3a3062d1ae8955aaf30cd0d1456d`](https://github.com/NateHudson214/hudson-travel/commit/77ae9b397caf3a3062d1ae8955aaf30cd0d1456d).
+It was published on `assignment2_part2_in_class`, merged into `main` at
+[`79e0b6ddd0acb1909059ef344d1bc369f78fe25e`](https://github.com/NateHudson214/hudson-travel/commit/79e0b6ddd0acb1909059ef344d1bc369f78fe25e),
+and the complete automated and integrity gate passed on both the feature branch
+and merged `main`. The final manual VS Code review also passed before the
+checkpoint was created.
