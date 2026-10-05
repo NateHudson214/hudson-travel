@@ -162,6 +162,15 @@ h1 {
   margin: 0;
 }
 
+.local-hotel-feedback {
+  min-height: 2.75rem;
+}
+
+.local-hotel-feedback p,
+.nearby-result-summary p {
+  margin: 0;
+}
+
 .nearby-location {
   display: grid;
   grid-template-columns: minmax(14rem, 1fr) minmax(18rem, 1fr);
@@ -218,27 +227,40 @@ h1 {
 }
 
 .nearby-hotel-card {
-  display: grid;
-  grid-template-columns: auto minmax(0, 1fr);
-  gap: 0.85rem;
   width: 100%;
-  padding: 1rem;
   border: 1px solid #c9d4e2;
+  border-radius: 0.65rem;
   color: #17233c;
   background: #ffffff;
-  text-align: left;
 }
 
-.nearby-hotel-card:hover:not(:disabled) {
+.nearby-hotel-card:hover {
   color: #17233c;
   background: #f0f6fd;
 }
 
 .nearby-hotel-selected,
-.nearby-hotel-selected:hover:not(:disabled) {
+.nearby-hotel-selected:hover {
   border: 2px solid #1768ac;
   background: #e7f2ff;
   box-shadow: 0 0 0 0.15rem rgb(23 104 172 / 12%);
+}
+
+.nearby-hotel-selection {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 0.85rem;
+  width: 100%;
+  padding: 1rem;
+  border-radius: 0;
+  color: #17233c;
+  background: transparent;
+  text-align: left;
+}
+
+.nearby-hotel-selection:hover:not(:disabled) {
+  color: #17233c;
+  background: rgb(255 255 255 / 55%);
 }
 
 .hotel-result-number {
@@ -272,6 +294,48 @@ h1 {
   margin: 0.4rem 0 0;
   color: #53657c;
   font-size: 0.82rem;
+}
+
+.result-source-label {
+  display: inline-block;
+  margin-bottom: 0.35rem;
+  padding: 0.25rem 0.55rem;
+  border-radius: 999px;
+  color: #174f86;
+  background: #dceeff;
+  font-size: 0.78rem;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.demo-night-panel {
+  padding: 0 1rem 0.8rem;
+}
+
+.demo-night-panel p {
+  margin: 0 0 0.45rem;
+  color: #53657c;
+  font-size: 0.82rem;
+}
+
+.demo-night-table-wrap {
+  overflow-x: auto;
+}
+
+.demo-night-table {
+  font-size: 0.78rem;
+}
+
+.demo-night-table th,
+.demo-night-table td {
+  padding: 0.4rem 0.35rem;
+}
+
+.local-hotel-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding: 0 1rem 1rem;
 }
 
 .nearby-hotels-map {

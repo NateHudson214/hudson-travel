@@ -260,3 +260,58 @@ Assignment 1 checkpoints remain in history. The remaining student action is to
 upload this `report.md` to the Assignment 2 Part 1 Canvas submission and include
 the repository, assessed commit, early mockup, and reviewed recording links or
 files as the Canvas form permits.
+
+## Assignment 2 Part 2 — local hotel in-class workflow
+
+The uncommitted `assignment2_part2_in_class` work adds separate SQLite storage
+for Geoapify provider hotels without changing the instructor-supplied hotel,
+trip, user, or booking records. A unique provider hotel/ZIP association retains
+the resolved location context. Saving also creates five clearly labeled
+simulated classroom nights for October 10–14, 2026. Repeated saves preserve
+existing night values, and removing a provider hotel transactionally removes
+only its associations and demo nights.
+
+Vue now checks saved hotels before the live provider. Saved matches are labeled
+**Saved locally**, display the simulated dates/rates/rooms, retain synchronized
+list and Leaflet selection, and do not trigger a Geoapify request. An empty
+successful local lookup falls through to the existing live endpoint, labeled
+**API results**. Add and Remove controls update only after FastAPI confirms the
+SQLite mutation.
+
+### Expected versus observed in-class verification
+
+| Check | Expected | Observed October 1, 2026 |
+| --- | --- | --- |
+| Automated gate | Database/API/client tests, lint, build, integrity, and ignore checks pass | 123 backend and 29 frontend tests passed; both linters and the 26-module build passed; protected hashes and ignore coverage passed |
+| Live fallback | Empty local ZIP results fall through once to the provider | ZIP 16802 requested local storage first, then one live request returned 20 API results |
+| Save | Two frontend saves create associations and five nights each | Both POST requests returned HTTP 201; counts became 2 hotels, 2 associations, and 10 nights |
+| Local-first refresh | Saved matches display without a provider request | Two saved results, disclosures, map/list, and dated rows displayed; no live route appeared in backend logs |
+| Edited classroom data | A DB Browser edit appears and persists | Hotel State College on October 12 displayed `$125.50` and 7 rooms before and after full service restart |
+| Remove | Removing one hotel preserves unrelated data | Scholar Hotel State College returned HTTP 204 and stayed absent; Hotel State College and its five nights remained |
+| Accessibility | List and map share one keyboard-accessible selection | One correction connected Leaflet marker keypress events; both directions then updated `aria-current` and the popup |
+| Regressions | Earlier ZIP, hotel, booking, attribution, and console behavior remains healthy | ZIP controls remained, Harbor Lantern returned T001/T009, eight bookings remained untouched, attribution was visible, and the console was clean |
+
+The retained development database now contains one saved provider hotel, one
+ZIP association, and five demo-night rows. This local ignored database state is
+verification data, not a repository artifact. Git checkpointing, submission
+packaging, and publication have not yet been completed for Part 2.
+
+The student captured and reviewed the Part 2 submission evidence on October 5,
+2026. `evidence/assignment2-part2-edited-rate.png` shows the saved-local Hotel
+State College result with the edited October 12 `$125.50` rate and 7 rooms.
+`evidence/assignment2-part2-local-first.png` shows the saved-local result and the
+local saved-hotels Network request without a nearby-provider request.
+`evidence/assignment2-part2-database.png` shows exactly five persisted nights
+for Hotel State College, including the edited `12550`/7 values. The student
+confirmed that the captures are readable and contain no API key, secret,
+private information, or unrelated content. The retained Hudson Travel services
+were stopped and ports 8000 and 5173 were confirmed free. The Git checkpoint
+remains pending.
+
+The final manual VS Code review passed on October 5, 2026. The student confirmed
+that every visible change was intentional; the three evidence screenshots were
+correct and readable; no `.env` file, API key, credential, generated dependency,
+build output, cache, ignored SQLite database, editor setting, or unrelated file
+was included; and all supplied CSV files and protected dependency declarations
+remained unchanged. The reviewed implementation is ready for the bounded Git
+checkpoint and merge process.

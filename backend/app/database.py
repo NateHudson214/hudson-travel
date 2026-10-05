@@ -1,9 +1,14 @@
 import csv
 import sqlite3
+from datetime import date, timedelta
 from pathlib import Path
 
 
 SEED_VERSION = "1"
+DEMO_STAY_START = date(2026, 10, 10)
+DEMO_STAY_DATES = tuple(
+    (DEMO_STAY_START + timedelta(days=offset)).isoformat() for offset in range(5)
+)
 
 SCHEMA_STATEMENTS = (
     """
@@ -45,6 +50,66 @@ SCHEMA_STATEMENTS = (
         status TEXT NOT NULL CHECK (status IN ('confirmed', 'cancelled'))
     )
     """,
+    """
+    CREATE TABLE IF NOT EXISTS saved_hotels (
+        hotel_id TEXT PRIMARY KEY NOT NULL CHECK (LENGTH(hotel_id) > 0),
+        name TEXT,
+        address TEXT,
+        latitude REAL NOT NULL CHECK (
+            TYPEOF(latitude) IN ('integer', 'real')
+            AND latitude BETWEEN -90.0 AND 90.0
+        ),
+        longitude REAL NOT NULL CHECK (
+            TYPEOF(longitude) IN ('integer', 'real')
+            AND longitude BETWEEN -180.0 AND 180.0
+        )
+    )
+    """,
+    """
+    CREATE TABLE IF NOT EXISTS saved_hotel_searches (
+        hotel_id TEXT NOT NULL
+            REFERENCES saved_hotels(hotel_id) ON DELETE CASCADE,
+        zip_code TEXT NOT NULL CHECK (
+            LENGTH(zip_code) = 5
+            AND zip_code NOT GLOB '*[^0-9]*'
+        ),
+        postcode TEXT NOT NULL CHECK (
+            LENGTH(postcode) = 5
+            AND postcode NOT GLOB '*[^0-9]*'
+        ),
+        country_code TEXT NOT NULL,
+        latitude REAL NOT NULL CHECK (
+            TYPEOF(latitude) IN ('integer', 'real')
+            AND latitude BETWEEN -90.0 AND 90.0
+        ),
+        longitude REAL NOT NULL CHECK (
+            TYPEOF(longitude) IN ('integer', 'real')
+            AND longitude BETWEEN -180.0 AND 180.0
+        ),
+        locality TEXT,
+        PRIMARY KEY (hotel_id, zip_code)
+    )
+    """,
+    """
+    CREATE TABLE IF NOT EXISTS demo_hotel_nights (
+        hotel_id TEXT NOT NULL
+            REFERENCES saved_hotels(hotel_id) ON DELETE CASCADE,
+        stay_date TEXT NOT NULL CHECK (
+            LENGTH(stay_date) = 10
+            AND stay_date GLOB
+                '[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]'
+        ),
+        nightly_rate_cents INTEGER NOT NULL DEFAULT 10000 CHECK (
+            TYPEOF(nightly_rate_cents) = 'integer'
+            AND nightly_rate_cents >= 0
+        ),
+        rooms_available INTEGER NOT NULL DEFAULT 20 CHECK (
+            TYPEOF(rooms_available) = 'integer'
+            AND rooms_available >= 0
+        ),
+        PRIMARY KEY (hotel_id, stay_date)
+    )
+    """,
 )
 
 BOOKING_SELECT = """
@@ -75,6 +140,10 @@ class BookingNotFoundError(Exception):
 
 
 class RelatedRecordNotFoundError(Exception):
+    pass
+
+
+class SavedHotelNotFoundError(Exception):
     pass
 
 
@@ -340,6 +409,207 @@ def delete_booking_record(database_path: Path, booking_id: str) -> None:
         )
         if result.rowcount == 0:
             raise BookingNotFoundError(booking_id)
+        connection.commit()
+    except Exception:
+        connection.rollback()
+        raise
+    finally:
+        connection.close()
+
+
+def _saved_hotel_from_row(
+    connection: sqlite3.Connection, row: sqlite3.Row
+) -> dict[str, object]:
+    nights = connection.execute(
+        """
+        SELECT stay_date, nightly_rate_cents, rooms_available
+        FROM demo_hotel_nights
+        WHERE hotel_id = ?
+        ORDER BY stay_date
+        """,
+        (row["hotel_id"],),
+    ).fetchall()
+    return {
+        "place_id": row["hotel_id"],
+        "name": row["name"],
+        "formatted_address": row["address"],
+        "latitude": row["hotel_latitude"],
+        "longitude": row["hotel_longitude"],
+        "distance_meters": None,
+        "nights": [dict(night) for night in nights],
+    }
+
+
+def save_local_hotel_record(
+    database_path: Path,
+    *,
+    place_id: str,
+    name: str | None,
+    formatted_address: str | None,
+    latitude: float,
+    longitude: float,
+    zip_code: str,
+    postcode: str,
+    country_code: str,
+    search_latitude: float,
+    search_longitude: float,
+    locality: str | None,
+) -> dict[str, object]:
+    connection = connect_database(database_path)
+    try:
+        connection.execute("BEGIN IMMEDIATE")
+        connection.execute(
+            """
+            INSERT OR IGNORE INTO saved_hotels (
+                hotel_id, name, address, latitude, longitude
+            ) VALUES (?, ?, ?, ?, ?)
+            """,
+            (place_id, name, formatted_address, latitude, longitude),
+        )
+        connection.execute(
+            """
+            INSERT OR IGNORE INTO saved_hotel_searches (
+                hotel_id,
+                zip_code,
+                postcode,
+                country_code,
+                latitude,
+                longitude,
+                locality
+            ) VALUES (?, ?, ?, ?, ?, ?, ?)
+            """,
+            (
+                place_id,
+                zip_code,
+                postcode,
+                country_code,
+                search_latitude,
+                search_longitude,
+                locality,
+            ),
+        )
+        connection.executemany(
+            """
+            INSERT OR IGNORE INTO demo_hotel_nights (hotel_id, stay_date)
+            VALUES (?, ?)
+            """,
+            [(place_id, stay_date) for stay_date in DEMO_STAY_DATES],
+        )
+        row = connection.execute(
+            """
+            SELECT
+                h.hotel_id,
+                h.name,
+                h.address,
+                h.latitude AS hotel_latitude,
+                h.longitude AS hotel_longitude,
+                s.zip_code,
+                s.postcode,
+                s.country_code,
+                s.latitude AS search_latitude,
+                s.longitude AS search_longitude,
+                s.locality
+            FROM saved_hotels AS h
+            JOIN saved_hotel_searches AS s ON s.hotel_id = h.hotel_id
+            WHERE h.hotel_id = ? AND s.zip_code = ?
+            """,
+            (place_id, zip_code),
+        ).fetchone()
+        if row is None:
+            raise RuntimeError("The saved hotel could not be read after saving.")
+        hotel = _saved_hotel_from_row(connection, row)
+        connection.commit()
+        return {
+            "searched_zip_code": row["zip_code"],
+            "location": {
+                "postcode": row["postcode"],
+                "country_code": row["country_code"],
+                "latitude": row["search_latitude"],
+                "longitude": row["search_longitude"],
+                "locality": row["locality"],
+            },
+            "hotel": hotel,
+        }
+    except Exception:
+        connection.rollback()
+        raise
+    finally:
+        connection.close()
+
+
+def list_saved_hotel_ids(database_path: Path) -> list[str]:
+    connection = connect_database(database_path)
+    try:
+        return [
+            row["hotel_id"]
+            for row in connection.execute(
+                "SELECT hotel_id FROM saved_hotels ORDER BY hotel_id"
+            )
+        ]
+    finally:
+        connection.close()
+
+
+def list_saved_hotels_for_zip(
+    database_path: Path, zip_code: str
+) -> dict[str, object]:
+    connection = connect_database(database_path)
+    try:
+        rows = connection.execute(
+            """
+            SELECT
+                h.hotel_id,
+                h.name,
+                h.address,
+                h.latitude AS hotel_latitude,
+                h.longitude AS hotel_longitude,
+                s.zip_code,
+                s.postcode,
+                s.country_code,
+                s.latitude AS search_latitude,
+                s.longitude AS search_longitude,
+                s.locality
+            FROM saved_hotel_searches AS s
+            JOIN saved_hotels AS h ON h.hotel_id = s.hotel_id
+            WHERE s.zip_code = ?
+            ORDER BY h.name IS NULL, CASEFOLD(h.name), h.hotel_id
+            """,
+            (zip_code,),
+        ).fetchall()
+        if not rows:
+            return {
+                "searched_zip_code": zip_code,
+                "location": None,
+                "hotels": [],
+            }
+
+        first = rows[0]
+        return {
+            "searched_zip_code": zip_code,
+            "location": {
+                "postcode": first["postcode"],
+                "country_code": first["country_code"],
+                "latitude": first["search_latitude"],
+                "longitude": first["search_longitude"],
+                "locality": first["locality"],
+            },
+            "hotels": [
+                _saved_hotel_from_row(connection, row) for row in rows
+            ],
+        }
+    finally:
+        connection.close()
+
+
+def delete_local_hotel_record(database_path: Path, hotel_id: str) -> None:
+    connection = connect_database(database_path)
+    try:
+        connection.execute("BEGIN IMMEDIATE")
+        result = connection.execute(
+            "DELETE FROM saved_hotels WHERE hotel_id = ?", (hotel_id,)
+        )
+        if result.rowcount == 0:
+            raise SavedHotelNotFoundError(hotel_id)
         connection.commit()
     except Exception:
         connection.rollback()
