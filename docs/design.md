@@ -684,3 +684,14 @@ It was published on `assignment2_part2_in_class`, merged into `main` at
 and the complete automated and integrity gate passed on both the feature branch
 and merged `main`. The final manual VS Code review also passed before the
 checkpoint was created.
+
+## Assignment 2 Part 2 chatbot checkpoint
+
+The reviewed implementation/evidence commit is
+[`acdd832c1a78c0351238ca18f1c54bb6b90340b7`](https://github.com/NateHudson214/hudson-travel/commit/acdd832c1a78c0351238ca18f1c54bb6b90340b7),
+and its non-fast-forward `main` merge is
+[`6ea8d491e286e11bdbc2dbb0c714d7a66a4ff7ef`](https://github.com/NateHudson214/hudson-travel/commit/6ea8d491e286e11bdbc2dbb0c714d7a66a4ff7ef).
+The final manual review passed. Both the feature branch and merged `main` passed
+the complete verification and integrity gate. The published checkpoint keeps
+the earlier Assignment 1, Assignment 2 Part 1, and local-hotel history intact;
+Canvas submission remains manual.

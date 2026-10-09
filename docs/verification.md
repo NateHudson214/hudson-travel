@@ -795,3 +795,16 @@ advisor POST or provider replay. The healthy console contained no warnings or
 errors. The reviewed Network PNG captures this GET-only restoration, and the
 student accepted the companion advisor PNG. Only the retained Hudson Travel
 services were stopped afterward, and ports 8000 and 5173 were free.
+
+### Assignment 2 Part 2 chatbot checkpoint gate
+
+The reviewed implementation/evidence commit is
+[`acdd832c1a78c0351238ca18f1c54bb6b90340b7`](https://github.com/NateHudson214/hudson-travel/commit/acdd832c1a78c0351238ca18f1c54bb6b90340b7),
+merged into `main` with non-fast-forward commit
+[`6ea8d491e286e11bdbc2dbb0c714d7a66a4ff7ef`](https://github.com/NateHudson214/hudson-travel/commit/6ea8d491e286e11bdbc2dbb0c714d7a66a4ff7ef).
+The feature and merged-main gates each passed: 328 backend tests with the same
+two non-failing framework dependency warnings, 38 frontend API-client tests,
+both linters, the 28-module production build, dependency consistency,
+documentation links, `git diff --check`, protected files, accepted evidence
+hashes, ignore rules, and read-only SQLite checksum/integrity/R000007 checks.
+The student completed the final VS Code review before checkpointing.

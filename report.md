@@ -457,3 +457,15 @@ Although these total 32550 cents (`$325.50`), the displayed answer reported
 another advisor POST, and the browser console remained clean. Because the
 answer failed both the expected checkout boundary and exact record grounding,
 no corrected success screenshot or recording is claimed.
+
+## Assignment 2 Part 2 chatbot checkpoint
+
+The reviewed implementation and accepted evidence are recorded in
+[`acdd832c1a78c0351238ca18f1c54bb6b90340b7`](https://github.com/NateHudson214/hudson-travel/commit/acdd832c1a78c0351238ca18f1c54bb6b90340b7).
+The non-fast-forward merge into `main` is
+[`6ea8d491e286e11bdbc2dbb0c714d7a66a4ff7ef`](https://github.com/NateHudson214/hudson-travel/commit/6ea8d491e286e11bdbc2dbb0c714d7a66a4ff7ef).
+The student completed the final manual VS Code review. The full automated,
+documentation, evidence, protected-file, ignore, and read-only database gate
+passed on both the feature branch and merged `main`. The feature branch and
+final merged checkpoint are published at the Hudson Travel repository; upload
+of this report and any requested evidence to Canvas remains manual.

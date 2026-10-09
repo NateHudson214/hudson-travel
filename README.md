@@ -382,3 +382,14 @@ Dependencies belong only in the project-local ignored directories
 remains local and ignored. The automated source checks, frontend-driven browser
 CRUD, browser refresh, controlled failure, and full process-restart persistence
 checks passed on September 14, 2026.
+
+## Assignment 2 Part 2 chatbot checkpoint
+
+The reviewed chatbot implementation and accepted evidence are preserved in
+[`acdd832c1a78c0351238ca18f1c54bb6b90340b7`](https://github.com/NateHudson214/hudson-travel/commit/acdd832c1a78c0351238ca18f1c54bb6b90340b7).
+The non-fast-forward merge into `main` is
+[`6ea8d491e286e11bdbc2dbb0c714d7a66a4ff7ef`](https://github.com/NateHudson214/hudson-travel/commit/6ea8d491e286e11bdbc2dbb0c714d7a66a4ff7ef).
+The student completed the final VS Code review, and the complete automated,
+documentation, evidence, protected-file, ignore, and read-only database gate
+passed on the feature branch and merged `main`. The feature branch and final
+merged checkpoint are published; Canvas submission remains a manual step.

@@ -499,3 +499,14 @@ persistence, or begin Part 2 until the student explicitly starts that work.
   every mutation.
 - The history table remains intact on search failure; search results remain
   intact on booking failure.
+
+## Assignment 2 Part 2 chatbot checkpoint
+
+- Implementation/evidence commit:
+  [`acdd832c1a78c0351238ca18f1c54bb6b90340b7`](https://github.com/NateHudson214/hudson-travel/commit/acdd832c1a78c0351238ca18f1c54bb6b90340b7).
+- Non-fast-forward `main` merge:
+  [`6ea8d491e286e11bdbc2dbb0c714d7a66a4ff7ef`](https://github.com/NateHudson214/hudson-travel/commit/6ea8d491e286e11bdbc2dbb0c714d7a66a4ff7ef).
+- The final VS Code review and complete feature/merged-main gates passed. The
+  accepted evidence hashes and ignored database checksum remained unchanged.
+- The feature branch and final merged checkpoint are published. The remaining
+  action is the student's manual Canvas submission; no later work has begun.

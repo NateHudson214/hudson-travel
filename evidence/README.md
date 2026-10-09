@@ -123,3 +123,10 @@ initial saves included an unintended `evidence:` prefix.
 Both reviewed images contain no visible credential, private information,
 database path, or unrelated content. Only the retained Hudson Travel services
 were stopped after review; ports 8000 and 5173 were confirmed free.
+
+The accepted advisor evidence is preserved in implementation commit
+[`acdd832c1a78c0351238ca18f1c54bb6b90340b7`](https://github.com/NateHudson214/hudson-travel/commit/acdd832c1a78c0351238ca18f1c54bb6b90340b7)
+and non-fast-forward merge
+[`6ea8d491e286e11bdbc2dbb0c714d7a66a4ff7ef`](https://github.com/NateHudson214/hudson-travel/commit/6ea8d491e286e11bdbc2dbb0c714d7a66a4ff7ef).
+The student completed the final VS Code review, both checkpoint gates passed,
+and Canvas upload remains manual.
