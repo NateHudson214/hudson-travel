@@ -160,6 +160,9 @@ def test_existing_seeded_database_receives_repeatable_additive_migration(
         assert dict(connection.execute("SELECT key, value FROM app_metadata")) == {
             "csv_seed_version": "1",
             "next_booking_number": "7",
+            "next_advisor_conversation_number": "1",
+            "next_advisor_message_number": "1",
+            "next_advisor_run_number": "1",
         }
     finally:
         connection.close()

@@ -1,13 +1,167 @@
 # Current Handoff
 
-**Updated:** October 5, 2026
+**Updated:** October 8, 2026
 
-**Checkpoint:** Assignment 1 and Assignment 2 Part 1 remain preserved and
-published. Assignment 2 Part 2 local-hotel schema and local-first wiring are
-reviewed, verified, committed on `assignment2_part2_in_class`, merged into
-`main` with a non-fast-forward merge, and published. The three required Part 2
-evidence screenshots are captured and reviewed, and the evidence services are
-stopped.
+**Checkpoint:** Assignment 1, Assignment 2 Part 1, and the additive local-hotel
+storage workflow remain preserved and published. Assignment 2 Part 2 work is on
+`assignment2-part2-rag-chatbot`. Research, backend-only configuration,
+provider-neutral contracts, preserved mocked OpenRouter support, the mocked
+OpenAI Responses client, read-only retrieval, and the mocked
+`POST /api/hotel-advisor` orchestration route, durable history, and the Vue
+advisor interface are implemented. The bounded mocked browser, refresh, and
+service-restart verification passed October 8, 2026. A later controlled live
+workflow completed both OpenAI stages, read-only retrieval, and durable
+refresh/restart restoration. Its yearless October question was bound to 2024,
+so it produced a truthful no-match rather than the intended matching 2026
+answer. The versioned prompt and focused regression tests now enforce 2026 for
+yearless October ranges. One authorized rerun used 2026 and persisted normally,
+but chose checkout October 13 and reported $32.55 for records totaling $325.50.
+No retry, dependency change, unrelated mutation, or success screenshot occurred.
+The subsequent mocked-only correction fixes the required checkout boundary and
+adds deterministic backend cents formatting without changing the public route.
+The next one-shot live attempt persisted `C000004`, `M000008`, and failed run
+`R000006`; the proposal was rejected locally as `unsafe_query`, so no assistant
+message, retrieval, grounded-answer request, retry, or success evidence exists.
+The read-only diagnosis found `UNION` and three joins, confirming that the
+validator behaved correctly. The prompt-only correction requires one flat
+`SELECT` and exactly two joins for the demonstration; mocked coverage was the
+only verification immediately after that change, so a corrected live result
+was still pending at that point.
+The final authorized October 9 live run then passed: the accepted flat query
+used exactly two joins and the exact date boundary, retrieval returned two
+nights and 20000 cents for Hotel State College, and the grounded answer displayed
+`$200.00`. `C000005`, `M000009`, `M000010`, and `R000007` persisted through
+refresh and restart without another provider request. A focused read-only
+history extension now restores the completed SQL, parameters, records, answer,
+run ID, and prompt version when `C000005` is reopened. Automated and visible
+restart verification passed with GET requests only and a clean console. Manual
+PNG capture was reviewed and accepted by the student. The Network image records
+GET-only restoration; the advisor image shows the question, answer, and
+simulated-data disclosure, while its lower fields are supported by the recorded
+browser verification. The retained services were stopped and both ports were
+confirmed free.
+
+## Assignment 2 Part 2 RAG research stage
+
+- The authoritative endpoint is a two-request grounded workflow: the LLM first
+  proposes SQL using a narrow schema and rules; the backend validates and runs a
+  read-only local query; the original question and bounded retrieved records
+  then return to the LLM for a grounded answer.
+- OpenAI is now the prioritized provider using `gpt-6-luna`; the earlier
+  OpenRouter/Nemotron client remains preserved. Provider availability, pricing,
+  quotas, and routing are external and may change.
+- The schema exposed to this feature is limited to `saved_hotels`,
+  `saved_hotel_searches`, and `demo_hotel_nights`. Assignment 1 records and
+  unrelated tables are excluded.
+- The implemented mocked API is `POST /api/hotel-advisor` with a `question` and
+  optional `conversation_id`. Its grading response preserves status, question,
+  proposed SQL, bound parameters, retrieved records, and answer, and adds the
+  conversation, message, run, and prompt-version identifiers.
+- The intended SQL boundary combines a single parameterized SELECT, explicit
+  table/column/function allowlists, SQLite URI `mode=ro`, `query_only`,
+  `trusted_schema=OFF`, an authorizer callback, progress and row limits, and
+  safe errors. A model-proposed query is never trusted merely because it came
+  from a forced tool call.
+- Existing `httpx`, `python-dotenv`, and standard-library `sqlite3` capabilities
+  appear sufficient. No dependency was installed or changed during research.
+- Research and security/test decisions are in
+  `docs/assignment2-part2-rag-research.md`.
+- Shared contracts and sanitized failure categories are provider-neutral. The
+  OpenAI client loads `prompts/hotel-assistant.md` through an explicit path and
+  exposes a deterministic SHA-256 prompt version for later persistence.
+- Mocked OpenAI tests cover the exact Responses endpoint and payload, strict
+  function schemas, proposal/answer parsing, all three result statuses, and
+  safe configuration/auth/rate/model/HTTP/transport/response failures. Those
+  tests make no live request; the later live no-match run is recorded below.
+  The route now uses the OpenAI callables by default; OpenRouter remains
+  preserved as compatibility work.
+- A per-call application-state transport provider lets end-to-end tests make
+  both OpenAI stages use fresh `MockTransport` instances. The tests execute an
+  accepted proposal through the real read-only query layer against a temporary
+  database, pass the exact records to the second call, and verify answered,
+  no-match, insufficient-data, blocked-write, and provider-failure behavior.
+- The early, explicitly unimplemented interface is
+  `docs/mockups/assignment2-part2-rag-early.svg`.
+- The ignored development database remains intact with one saved hotel, one ZIP
+  association, and five demo nights; the reviewed October 12 values remain
+  12550 cents and 7 rooms.
+- The route validates a trimmed 500-character question before any stage, then
+  runs injectable proposal, read-only retrieval, and grounded-answer callables
+  in order. Its second forced tool result contains only status and answer, and
+  local checks enforce record/status consistency.
+- Focused mocked tests cover all three statuses, exact stage inputs, early-stop
+  behavior, safe 400/422/429/500/502/503 mappings, and credential/path/query
+  sanitization. No live provider request is part of this stage.
+- Additive `advisor_conversations`, `advisor_messages`, and `advisor_runs`
+  persist ordered visible history plus proposed/executed query evidence,
+  bounded retrieval data, prompt version, status, and safe failures. Durable
+  counters allocate non-reused `C`, `M`, and `R` IDs in short transactions.
+- Follow-ups send at most 12 ordered prior user/assistant messages to both
+  mocked OpenAI stages. History endpoints expose only bounded visible content.
+  Temporary-database tests cover reinitialization, failed attempts, unknown
+  conversations, and safe field exclusion.
+- `HotelAdvisor.vue` and `frontend/src/api/advisor.js` now load and reopen
+  conversations, start new threads, send follow-ups, reread SQLite-backed
+  messages, and render SQL, parameters, records, answer, and status. Failures
+  retain valid history and clear stale evidence without touching travel state.
+- The frontend client suite, non-fixing linters, and 28-module production build
+  pass. No component-test capability was added.
+- The bounded mocked browser workflow passed with zero source-correction
+  cycles. It exercised grounded new and follow-up questions, SQL/parameter/row
+  evidence, new/reopened history, refresh and restart persistence, no-match and
+  insufficient-data states, and safe 404/422/429/500/502/503 outcomes.
+- The final temporary state had `C000001` through `C000003`, `M000001` through
+  `M000019`, and `R000001` through `R000012`, with next counters 4, 20, and 13,
+  no foreign-key violations, and no duplicate rows. The temporary services and
+  database were removed after verification; the ignored development database
+  stayed unchanged.
+- Existing entered-ZIP, saved/local-first hotel/map and attribution, Harbor
+  Lantern T001/T009, and booking-history behavior passed without mutation; the
+  healthy console had no warnings or errors.
+- The initial controlled live attempts returned local HTTP 502 because the
+  ignored `OPEN_AI` value was malformed. A sanitized diagnostic identified
+  HTTP 401 `invalid_api_key`; the student replaced the key without exposing it.
+- The authorized live Vue run then completed as `C000002`, messages `M000004`
+  and `M000005`, and `R000004`, with the current prompt version. Its accepted
+  query used only the three approved tables, but parameters selected 2024-10-10
+  through 2024-10-12. Retrieval was empty and the grounded status was
+  `no_matches`. Refresh and full restart restored it without another POST.
+- The browser console remained clean. Backend logs showed exactly one local
+  `POST /api/hotel-advisor`; no credential appeared in the UI. All pre-existing
+  travel-table hashes remained unchanged and foreign-key integrity passed.
+- The focused correction adds the October 10–14, 2026 course-data range and
+  requires 2026 for yearless October month/day ranges while preserving an
+  explicit user year. Prompt, client, route-integration, validator, and
+  persistence regression tests pass without live traffic.
+- The corrected-year live run persisted as `C000003`, messages `M000006` and
+  `M000007`, and `R000005`, using prompt version
+  `sha256:929d2aa1fa49742461662563e2067ea7bb4c23266f51097aa574575f48356173`.
+  Refresh and full service restart restored it without another advisor POST;
+  the browser console was clean.
+- The follow-up mocked regression coverage requires `2026-10-10` through the
+  excluded `2026-10-12` checkout, retrieves two 10000-cent nights, and renders
+  `$200.00` from a verified structured integer. Shifted totals and free-form
+  provider dollar amounts are rejected before assistant-message persistence.
+- The persisted `R000006` proposal was inspected read-only and never executed.
+  It contained a prohibited compound `UNION` and three joins, so no validator
+  compatibility change was justified.
+- The prompt now requires one flat non-compound demonstration query with exactly
+  two joins, the 2026-10-10/2026-10-12 boundary, grouped availability checks,
+  and integer-cent totals. Mocked tests verify the safe shape and `$200.00`
+  grounding; no live provider request followed this correction.
+- The final separately authorized two-call demonstration passed as `C000005` /
+  `R000007`. Refresh and restart used only history GET requests, and the browser
+  console remained clean.
+- The optional `latest_completed_run` history field now restores only safe
+  completed evidence. Failed and pending runs do not appear as successful
+  evidence, and no executed SQL, provider detail, hidden prompt, error, or
+  database path is exposed.
+- The reviewed Network evidence shows only the local conversation-list and
+  `C000005` GETs. The student accepted the readable advisor screenshot as
+  supporting evidence; fields below its crop remain verified separately.
+- Next step: manually capture and review the successful advisor and browser
+  Network evidence files, then update the documentation and stop the retained
+  services. Do not submit another advisor question.
 
 ## Assignment 2 Part 2 current stage
 

@@ -1,0 +1,118 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="1260" viewBox="0 0 1440 1260" role="img" aria-labelledby="title description">
+  <title id="title">Hudson Travel Assignment 2 Part 2 early RAG chatbot design</title>
+  <description id="description">Early interface mockup showing a hotel-advisor question, loading state, proposed SQL, retrieved records, grounded answer, and alternate no-match, insufficient-data, unsafe-query, and provider-failure states.</description>
+  <defs>
+    <style>
+      .bg { fill: #f4f7fb; }
+      .nav { fill: #15314b; }
+      .card { fill: #ffffff; stroke: #c9d5df; stroke-width: 2; }
+      .soft { fill: #edf5fa; stroke: #b9cedd; stroke-width: 2; }
+      .success { fill: #e8f6ee; stroke: #77ae8b; stroke-width: 2; }
+      .warn { fill: #fff6df; stroke: #d4ae4b; stroke-width: 2; }
+      .danger { fill: #fff0f0; stroke: #d27b7b; stroke-width: 2; }
+      .ink { fill: #172a3a; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+      .muted { fill: #526979; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+      .mono { fill: #173042; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+      .white { fill: #ffffff; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+      .h1 { font-size: 28px; font-weight: 700; }
+      .h2 { font-size: 20px; font-weight: 700; }
+      .h3 { font-size: 16px; font-weight: 700; }
+      .body { font-size: 15px; }
+      .small { font-size: 13px; }
+      .button { fill: #176b87; }
+      .line { stroke: #c9d5df; stroke-width: 1; }
+    </style>
+  </defs>
+
+  <rect class="bg" width="1440" height="1260"/>
+  <rect class="nav" width="1440" height="92"/>
+  <text class="white h1" x="70" y="48">Hudson Travel · Hotel Advisor</text>
+  <text class="white body" x="70" y="73">EARLY DESIGN — NOT IMPLEMENTED</text>
+
+  <rect class="warn" x="70" y="118" width="1300" height="58" rx="10"/>
+  <text class="ink h3" x="94" y="143">Demonstration data disclosure</text>
+  <text class="ink body" x="94" y="164">Answers use only locally saved hotels and simulated nightly rates and room counts. They are not live prices, availability, or booking offers.</text>
+
+  <rect class="card" x="70" y="200" width="1300" height="196" rx="14"/>
+  <text class="ink h2" x="98" y="238">Ask about saved hotels</text>
+  <text class="ink body" x="98" y="268">Natural-language question</text>
+  <rect class="soft" x="98" y="282" width="1030" height="72" rx="8"/>
+  <text class="ink body" x="116" y="310">Which saved hotel has rooms from October 10 through October 12,</text>
+  <text class="ink body" x="116" y="334">and what is the total cost?</text>
+  <rect class="button" x="1150" y="282" width="190" height="52" rx="8"/>
+  <text class="white h3" x="1221" y="314">Ask</text>
+  <text class="muted small" x="1150" y="356">Button disabled while loading</text>
+  <text class="muted body" x="98" y="379">Loading: preparing a safe local query and retrieving saved records…</text>
+
+  <rect class="card" x="70" y="420" width="636" height="304" rx="14"/>
+  <text class="ink h2" x="98" y="458">1 · Proposed SQL</text>
+  <rect fill="#142635" x="98" y="478" width="580" height="176" rx="8"/>
+  <text fill="#d8edf5" class="mono small" x="116" y="505">SELECT h.hotel_id, h.name,</text>
+  <text fill="#d8edf5" class="mono small" x="116" y="527">       SUM(n.nightly_rate_cents) AS total_cents,</text>
+  <text fill="#d8edf5" class="mono small" x="116" y="549">       MIN(n.rooms_available) AS rooms_available</text>
+  <text fill="#d8edf5" class="mono small" x="116" y="571">FROM saved_hotels h JOIN demo_hotel_nights n ...</text>
+  <text fill="#d8edf5" class="mono small" x="116" y="593">WHERE n.stay_date &gt;= :check_in</text>
+  <text fill="#d8edf5" class="mono small" x="116" y="615">  AND n.stay_date &lt; :check_out ... LIMIT 50</text>
+  <text class="muted small" x="98" y="683">Parameters: check_in = 2026-10-10 · check_out = 2026-10-12</text>
+  <text class="muted small" x="98" y="705">Validated and executed through a read-only SQLite connection.</text>
+
+  <rect class="card" x="734" y="420" width="636" height="304" rx="14"/>
+  <text class="ink h2" x="762" y="458">2 · Retrieved records</text>
+  <rect class="soft" x="762" y="478" width="580" height="40" rx="4"/>
+  <text class="ink h3" x="776" y="503">Hotel</text>
+  <text class="ink h3" x="980" y="503">Nights</text>
+  <text class="ink h3" x="1070" y="503">Total</text>
+  <text class="ink h3" x="1180" y="503">Rooms</text>
+  <line class="line" x1="762" y1="536" x2="1342" y2="536"/>
+  <text class="ink body" x="776" y="562">Hotel State College</text>
+  <text class="ink body" x="980" y="562">2</text>
+  <text class="ink body" x="1070" y="562">$225.50</text>
+  <text class="ink body" x="1180" y="562">7 minimum</text>
+  <line class="line" x1="762" y1="580" x2="1342" y2="580"/>
+  <text class="muted small" x="762" y="614">Bounded to 50 rows. Missing dates are not treated as available.</text>
+  <text class="muted small" x="762" y="638">Checkout date is excluded from the nightly total.</text>
+
+  <rect class="success" x="70" y="748" width="1300" height="138" rx="14"/>
+  <text class="ink h2" x="98" y="786">3 · Grounded answer</text>
+  <text class="ink body" x="98" y="817">Hotel State College has simulated rooms available for both requested nights.</text>
+  <text class="ink body" x="98" y="842">The simulated total for October 10 and 11 is $225.50; checkout October 12 is not charged.</text>
+  <text class="ink small" x="98" y="869">Action: review the saved nightly records before making any real travel decision.</text>
+
+  <text class="ink h2" x="70" y="930">Required alternate states</text>
+
+  <rect class="warn" x="70" y="950" width="300" height="220" rx="12"/>
+  <text class="ink h3" x="92" y="982">No match</text>
+  <text class="ink body" x="92" y="1010">No saved hotel matched the</text>
+  <text class="ink body" x="92" y="1032">question. No answer is invented.</text>
+  <line class="line" x1="92" y1="1054" x2="348" y2="1054"/>
+  <text class="ink h3" x="92" y="1082">Insufficient data</text>
+  <text class="ink body" x="92" y="1110">One or more requested nights</text>
+  <text class="ink body" x="92" y="1132">are missing from local records.</text>
+
+  <rect class="danger" x="392" y="950" width="300" height="220" rx="12"/>
+  <text class="ink h3" x="414" y="982">Unsafe query rejected</text>
+  <text class="ink body" x="414" y="1012">The proposed query was not run.</text>
+  <text class="ink body" x="414" y="1036">Only bounded read-only access to</text>
+  <text class="ink body" x="414" y="1060">the three advisor tables is allowed.</text>
+  <text class="muted small" x="414" y="1100">No database details or raw model</text>
+  <text class="muted small" x="414" y="1120">output are exposed.</text>
+
+  <rect class="danger" x="714" y="950" width="300" height="220" rx="12"/>
+  <text class="ink h3" x="736" y="982">Provider/service failure</text>
+  <text class="ink body" x="736" y="1012">The advisor is temporarily</text>
+  <text class="ink body" x="736" y="1036">unavailable. Existing hotel search,</text>
+  <text class="ink body" x="736" y="1060">map, and saved data remain usable.</text>
+  <text class="muted small" x="736" y="1100">No credential, provider URL, or</text>
+  <text class="muted small" x="736" y="1120">raw exception is displayed.</text>
+
+  <rect class="soft" x="1036" y="950" width="334" height="220" rx="12"/>
+  <text class="ink h3" x="1058" y="982">Frozen behavior stays available</text>
+  <text class="ink body" x="1058" y="1012">• ZIP and live hotel search</text>
+  <text class="ink body" x="1058" y="1038">• List and Leaflet map selection</text>
+  <text class="ink body" x="1058" y="1064">• Add / Remove from Local</text>
+  <text class="ink body" x="1058" y="1090">• Assignment 1 bookings</text>
+  <text class="ink body" x="1058" y="1116">• Visible map attribution</text>
+  <text class="muted small" x="1058" y="1148">The advisor does not book travel.</text>
+
+  <text class="muted small" x="70" y="1218">Security boundary: Vue sends a question only to FastAPI. FastAPI owns both LLM calls, SQL validation, read-only retrieval, and safe responses.</text>
+</svg>

@@ -1,12 +1,59 @@
 # Hudson Travel — Project Design
 
-**Status:** Assignment 1 and Assignment 2 Part 1 remain preserved and published.
-The Assignment 2 Part 2 additive local-hotel schema and local-first storage
-workflow are complete, reviewed, verified, and published. The substantial work
-is preserved on `assignment2_part2_in_class` and merged into `main` with a
-non-fast-forward merge. The three Part 2 evidence screenshots were captured and
-reviewed on October 5, 2026, and the retained verification services were
-stopped.
+**Status:** Assignment 1, Assignment 2 Part 1, and the additive local-hotel
+storage checkpoint remain preserved and published. Assignment 2 Part 2 chatbot
+work continues on `assignment2-part2-rag-chatbot`. Research, early design,
+backend-only configuration, safe health reporting, preserved OpenRouter
+compatibility, and a mocked two-request OpenAI client are implemented. The
+read-only SQL boundary and durable advisor history are verified with temporary
+databases, and `POST /api/hotel-advisor` orchestrates both model stages around
+that boundary. The Vue advisor interface has now completed a bounded
+visible-browser workflow using deterministic local-only provider mocks and a
+temporary database, including refresh and service-restart persistence. A
+controlled live request then completed both OpenAI stages, read-only retrieval,
+and durable refresh/restart restoration. The model bound an otherwise yearless
+October question to 2024 rather than the stored 2026 demo dates, so the live
+result was a truthful no-match rather than the intended matching answer. The
+versioned prompt now contains a focused 2026 yearless-date rule. A single live
+rerun used 2026 and completed both stages, but interpreted "through October 12"
+as checkout October 13 and produced an incorrect decimal total. The run was not
+accepted as grounded-answer evidence and was not retried.
+
+The focused follow-up retains the public endpoint shape while tightening the
+internal provider contract. Total-cost retrieval returns integer
+`total_cost_cents`; the provider returns that integer with a single
+`{{total_cost}}` marker rather than formatting currency. The provider-neutral
+route boundary accepts only a retrieved total and renders dollars itself by
+dividing cents by 100 with two decimal places. It also rejects provider-written
+dollar text whenever a structured retrieved total is available. Mocked coverage
+now proves the required October 10 inclusive/October 12 exclusive boundary and
+the deterministic `$200.00` rendering. Live verification remains pending.
+
+The next single authorized live attempt stopped at the existing SQL boundary:
+the proposal was rejected as unsafe before local retrieval or the grounded
+answer stage. The sanitized HTTP 422 result persisted as a failed audit run.
+No retry or design change was made during that demonstration.
+
+The subsequent read-only diagnostic found a compound `UNION` and three joins.
+Both violate the existing validator, so the rejection was correct and the
+validator remains unchanged. The smallest correction is prompt-only: the
+demonstration proposal must be one flat `SELECT`, use exactly two joins across
+the three approved tables, bind the October 10 inclusive/October 12 exclusive
+range, group once, and return the requested-night, minimum-room, and integer-
+cent aggregates. Mocked tests covered this shape before the final live run.
+
+The final authorized live run on October 9, 2026 validated that design. Its
+single flat query used exactly two joins, only the three allowed tables, and the
+required date boundary. The accepted read-only result contained Hotel State
+College, two nights, 20 minimum rooms, and 20000 cents; deterministic backend
+formatting produced `$200.00`. The completed conversation and answer persisted
+through browser refresh and full service restart without provider replay.
+The read-only history contract now includes an optional
+`latest_completed_run` with only status, proposed SQL, structured parameters,
+retrieved records, run ID, and prompt version. Vue combines that object with the
+persisted assistant message to restore the full evidence panel. Failed and
+pending runs, executed SQL, provider details, hidden prompts, errors, and
+database paths remain excluded.
 
 ## Design revision
 
@@ -83,6 +130,178 @@ smoke test verified the live 20-hotel list and 20 hotel markers, visible
 Geoapify and OpenStreetMap attribution, list-to-marker and marker-to-list
 selection, honest missing-data behavior, safe local-only failure states, and a
 clean browser console. No source correction cycle was required.
+
+## Assignment 2 Part 2 — grounded hotel advisor
+
+The authoritative Part 2 endpoint adds a natural-language advisor over only
+the locally saved provider hotels, saved search associations, and clearly
+labeled simulated nightly rates and availability. The newly prioritized
+provider is OpenAI with `gpt-6-luna`; the earlier OpenRouter/Nemotron client is
+preserved while the backend moves shared contracts behind provider-neutral
+types. Provider availability, limits, model routing, and pricing can change and
+are not application guarantees.
+
+The smallest design uses one `POST /api/hotel-advisor` endpoint. The first
+backend-only model request receives the question, the exact three-table schema,
+and strict query rules, and must propose a parameterized query through a forced
+tool call. The backend then validates the proposal through layered controls and
+executes it with a read-only SQLite URI, query-only mode, a restrictive
+authorizer, bound parameters, progress and row limits, and sanitized errors.
+Only after successful retrieval does a second backend-only request receive the
+original question, accepted query and parameters, and bounded records to
+produce a grounded answer. Vue will display the question, proposed SQL,
+retrieved records, answer, and a clear answered, no-match, or
+insufficient-data status.
+
+The complete official-source research, provider limitations, schema boundary,
+security controls, provisional API shape, and test strategy are recorded in
+[`docs/assignment2-part2-rag-research.md`](assignment2-part2-rag-research.md).
+The explicitly unimplemented early interface is
+[`docs/mockups/assignment2-part2-rag-early.svg`](mockups/assignment2-part2-rag-early.svg).
+The frozen Part 1 list/map behavior, local-first lookup, Add/Remove workflow,
+persistence, Assignment 1 records, and attribution remain unchanged.
+
+### Implemented provider client boundaries
+
+The route-independent backend client now provides two separately callable
+operations. `propose_hotel_query` sends the question with only the approved
+three-table schema and forces exactly one tool call containing SQL and bound
+parameters. The returned proposal is explicitly untrusted and is not executed.
+`generate_grounded_answer` sends the original question, an already accepted
+query and parameters, and bounded retrieved records with instructions to use no
+other facts and to label the nightly data as simulated. It forces one strict
+`return_grounded_answer` tool result containing only `status` and `answer`.
+Local checks reject `answered` for an empty result and `no_matches` for a
+nonempty result; `insufficient_data` remains available when required data is
+missing.
+
+Both operations use backend-only configuration, a finite timeout, deterministic
+temperature, bounded output tokens, and injectable HTTP behavior. Focused
+internal exceptions distinguish missing configuration, authentication,
+quota/rate limiting, unavailable model, transport, other provider HTTP, and
+malformed-response failures without surfacing credentials or raw provider
+details. The contract is verified only with mocked responses; live OpenRouter
+success remains unverified.
+
+Shared query, answer, and sanitized failure contracts now live outside either
+provider client. Existing OpenRouter exception types remain compatibility
+subclasses so its existing client and tests continue to behave unchanged. The OpenAI
+Responses client reads only backend configuration, loads the repository prompt
+from `prompts/hotel-assistant.md`, includes its deterministic SHA-256 version,
+sets `store: false`, and forces one strict function result per stage. Named SQL
+parameters use a strict array of name/value objects on the provider boundary
+and are converted to the shared dictionary contract before validation.
+
+The OpenAI client is now the route default. Application-state providers supply
+the backend key, model, prompt loader, and an optional per-call HTTP transport;
+production owns and closes its clients while tests return fresh
+`MockTransport` instances. Its exact endpoint, method, model, headers, timeout,
+payload, function schemas, parsing, status consistency, and sanitized error
+categories are covered without a live OpenAI request.
+
+### Implemented read-only SQL boundary
+
+The query layer validates an untrusted proposal before opening SQLite. It
+accepts only one bounded, named-parameter `SELECT` or non-recursive
+`WITH ... SELECT`; limits SQL and parameters; rejects comments, multiple
+statements, writes, schema operations, PRAGMAs, attach/detach, transactions,
+recursive or compound queries, unrelated tables, table reuse, excessive joins,
+and unbounded output; and requires parameter names to match placeholders.
+
+For execution it opens only the explicitly supplied path with SQLite URI
+`mode=ro`, applies `query_only` and `trusted_schema=OFF`, and then installs a
+deny-by-default authorizer. The authorizer allows reads only from documented
+columns in `saved_hotels`, `saved_hotel_searches`, and `demo_hotel_nights`, plus
+a minimal aggregate/scalar function set. A progress handler, 50-row fetch cap,
+text-cell limit, serialized-size limit, and scalar conversion checks bound the
+result. All errors are sanitized. Temporary-database tests prove multi-night
+inclusive-check-in/exclusive-checkout retrieval, integer-cent totals, leading
+zero preservation, honest nulls, parameter binding, adversarial rejection, and
+record preservation.
+
+### Implemented mocked orchestration endpoint
+
+`POST /api/hotel-advisor` accepts a JSON `question`, trims it, and rejects a
+missing, blank, non-string, or over-500-character value before any workflow
+stage. Injectable application-state callables run proposal, read-only retrieval,
+and grounded answer exactly in that order. The retrieval receives the
+application database path and exact proposal; the second request receives the
+normalized original question, accepted SQL, exact parameters, and exact bounded
+records.
+
+Only a fully successful workflow returns the grading evidence fields plus
+conversation, message, run, and prompt-version identifiers. An empty valid
+result still reaches the second model stage. Rejected/excessive
+queries stop before the second call and map to 422; database failures map to
+500; missing configuration maps to 503; quota/rate limiting maps to 429; and
+other provider or malformed responses map to a sanitized 502. Mocked route
+tests cover stage order, arguments, all statuses, early stops, and error
+sanitization without live provider traffic or development-database mutation.
+An additional end-to-end mocked test uses the route defaults, two mocked OpenAI
+Responses calls, and actual bounded retrieval from a temporary SQLite database.
+It proves that an unsafe proposal stops before the second provider call and
+that safe provider failures retain the documented HTTP mappings.
+
+### Implemented advisor persistence boundary
+
+Three additive tables record durable advisor state without changing the saved
+hotel schema. `advisor_conversations` owns created/updated timestamps;
+`advisor_messages` stores ordered user/assistant content; and `advisor_runs`
+stores the prompt version, normalized question, proposed and executed SQL,
+JSON-encoded bound parameters and bounded records, final status, and only a
+safe failure category/message. Foreign keys connect every message and run to
+its conversation. CHECK and UNIQUE constraints restrict roles, statuses, and
+message order.
+
+Durable `C`, `M`, and `R` identifiers come from independent metadata counters
+advanced inside `BEGIN IMMEDIATE` transactions, so failed or removed history
+cannot cause reuse. The route opens separate short transactions before the
+first provider call, after proposal, after retrieval, and after the answer; no
+provider wait holds a write lock. A failed stage updates its pending run with a
+safe failure record when storage remains available.
+
+The request accepts an optional `conversation_id`. A known ID supplies the 12
+most recent ordered user/assistant messages to both OpenAI stages; an unknown ID
+returns 404 before provider access. Successful responses add conversation,
+message, run, and prompt-version identifiers while preserving all grading
+fields. Two bounded read-only endpoints expose only user-visible summaries and
+messages. Temporary-database and mocked-provider tests verify this design; the
+ignored development database and live provider remain untouched.
+
+### Implemented Vue conversation interface
+
+`HotelAdvisor.vue` owns only advisor state. It loads bounded summaries, reopens
+the latest conversation after page load, starts a new conversation without
+deleting history, and sends the active ID for follow-up questions. After a
+successful POST it retains the returned evidence, rereads the conversation from
+SQLite, and refreshes the summaries. A browser refresh can therefore reconstruct
+visible history from the backend instead of browser-only storage.
+
+The panel renders ordered user/assistant messages, all grading evidence, and
+explicit answered, no-match, and insufficient-data states. Invalid questions,
+unknown history, SQL rejection, configuration, rate-limit, provider, retrieval,
+and history failures use safe messages. Existing valid messages remain visible
+after a failed follow-up, while stale SQL/record/answer evidence is cleared. No
+state is shared with the existing travel workflows. The October 8, 2026
+bounded browser check used the normal local routes, SQL validator, read-only
+executor, persistence layer, and Vue client with deterministic provider mocks.
+It verified loading/disabled controls, exact evidence rendering, ordered
+follow-ups, new and reopened conversations, refresh and full-service restart
+persistence, safe 404/422/429/500/502/503 states, travel-workflow isolation,
+and a clean console. After the local API-key typo was corrected, the later
+controlled live attempt completed both provider stages and returned HTTP 200.
+Run `R000004` used only the three approved tables through the read-only
+validator/executor and persisted conversation `C000002`. Its parameters were
+`checkin=2024-10-10` and `checkout=2024-10-12`, so retrieval returned no rows
+and the second stage produced a consistent, simulated-data-labeled no-match
+answer. Refresh and full service restart restored the conversation without a
+new provider request. The focused prompt correction now states that the course
+data covers October 10–14, 2026 and that yearless October ranges must bind to
+2026 without inventing another year. Mocked regression coverage passes. The
+next live proposal used 2026, but chose checkout October 13 and the second stage
+reported $32.55 even though its three retrieved nightly values totaled $325.50.
+This exposes separate date-boundary and arithmetic-grounding defects; the
+intended live demonstration remains unverified.
 
 ## Public visual reference
 

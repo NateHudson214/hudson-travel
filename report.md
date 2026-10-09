@@ -332,3 +332,128 @@ dependency consistency, documentation links, whitespace, protected hashes,
 evidence hashes, and ignore checks. No live Geoapify request occurred during
 either Git gate. The feature branch, merge, and final documentation state are
 published at [the Hudson Travel repository](https://github.com/NateHudson214/hudson-travel).
+
+## Assignment 2 Part 2 — RAG hotel advisor draft
+
+**Status as of October 8, 2026:** implementation, automated verification, and a
+bounded visible-browser test using deterministic local-only provider mocks are
+complete on `assignment2-part2-rag-chatbot`. A controlled live OpenAI workflow
+also completed both model stages and local retrieval, but returned a grounded
+no-match because the model chose 2024 for the yearless October question instead
+of the stored 2026 demonstration dates. The prompt and regression tests now
+require 2026 for yearless October ranges. A single corrected-year live run used
+2026 and retrieved records, but its checkout boundary and reported total were
+incorrect, so corrected submission evidence remains pending.
+
+The next mocked-only correction removes both failure modes without changing the
+public endpoint. The prompt defines October 12 as the excluded checkout boundary
+for the required question. Total-cost retrieval exposes an integer
+`total_cost_cents`; the provider returns the exact integer and a marker, and the
+backend verifies the value before formatting dollars by dividing by 100. Tests
+prove that two 10000-cent nights render as `$200.00` and reject shifted or
+free-form dollar amounts. No further live request or evidence is claimed yet.
+
+One subsequent authorized live attempt submitted the required question once
+but stopped after the proposal stage. The local validator returned HTTP 422 and
+persisted safe `unsafe_query` audit evidence as `C000004`, `M000008`, and
+`R000006`; there is no assistant message. Retrieval and the grounded-answer
+stage did not run, and no retry or success screenshot is claimed.
+
+A read-only diagnostic later confirmed that the rejected proposal contained a
+compound `UNION` and three joins. Both exceed deliberate validator limits, so
+the validator was not loosened. The repository prompt now requires the graded
+demonstration to use one flat `SELECT` with exactly two joins across the three
+approved saved-hotel tables. Mocked integration verifies the exact 2026 date
+boundary, two retrieved nights, a 20000-cent total, and backend-rendered
+`$200.00`; no corrected live result or screenshot was claimed at that stage.
+
+The final authorized live run on October 9, 2026 produced the intended matching
+result. Its flat SQL used exactly two joins over the three approved tables and
+bound `2026-10-10`, `2026-10-12`, two nights, and a limit of 50. The validator
+accepted the query, and read-only retrieval returned Hotel State College with
+two requested nights, 20 minimum rooms, and `total_cost_cents: 20000`. The
+grounded answer named October 10 and 11, identified October 12 as checkout,
+displayed `$200.00`, and disclosed that rates and availability are simulated.
+
+The persisted grading identifiers are `C000005`, `M000009`, `M000010`, and
+`R000007`, with prompt version
+`sha256:40e8a2b6ebd334d5c2ce5f58e7825cd14abbfe6045ac0e8ee85e5ad1a5c7b7ec`.
+Browser refresh and full service restart restored the visible conversation with
+only local GET requests and no provider replay. The console was clean. Manual
+captures were then saved and reviewed. The Network PNG clearly records the two
+local history GETs and no advisor POST. The advisor PNG records C000005, the
+question, `$200.00` answer, and simulated-data disclosure, but its current crop
+does not include the lower SQL, parameters, 20000-cent row, R000007, or prompt
+version. The student accepted this crop as supporting submission evidence; the
+omitted lower fields remain documented by the visible-browser and automated
+verification rather than being attributed to the screenshot itself.
+
+The follow-up read-only restoration slice now rehydrates the complete grading
+panel from the latest completed run when a saved conversation is opened. The
+public detail response is limited to status, proposed SQL, structured bound
+parameters, retrieved records, run ID, and prompt version; Vue obtains the
+grounded answer from the persisted assistant message. Visible verification
+restored all `C000005`/`R000007` evidence before and after a full service restart
+using history GET requests only, with no new advisor POST or provider request.
+
+The backend accepts a natural-language hotel question, asks OpenAI for a
+structured SQL proposal, validates and executes one bounded read-only SQLite
+query over saved hotels and simulated nightly data, then asks OpenAI for an
+answer grounded in the retrieved records. Provider calls are backend-only. The
+response includes the question, proposed SQL, bound parameters, retrieved rows,
+answer, status, and durable conversation/message/run identifiers.
+
+Additive SQLite tables preserve ordered conversations, user/assistant messages,
+prompt version, proposed and executed SQL, parameters, retrieved records,
+result status, and safe failures. The Vue panel can start or reopen a
+conversation, ask follow-ups, display the complete grading evidence, and reload
+history from SQLite. It clearly identifies rates and availability as simulated
+course data and keeps advisor failures isolated from the existing ZIP, map,
+saved-hotel, booking, and Assignment 1 workflows.
+
+Automated checks use temporary databases and mocked provider responses. The
+Vue API client, linters, and production build pass. The October 8 bounded
+browser check used the real local Vue/FastAPI/validator/read-only
+SQLite/persistence path with deterministic provider mocks. It showed the
+question, SQL, parameters, exact rows, grounded answer, simulated-data label,
+ordered follow-up history, refresh and restart persistence, safe controlled
+failures, local-only request paths, healthy existing travel workflows, and a
+console with no warnings or errors. Conversation `C000003` and its four
+messages persisted through the final restart; IDs advanced through `M000019`
+and `R000012` without reuse. A correct matching live demonstration and its
+submission recording remain required before this section is submission-ready.
+
+The October 8 controlled live attempt submitted the required question exactly
+once. Vue showed loading and disabled advisor controls, then displayed the safe
+service-unavailable message after local HTTP 502. The database retained
+`C000001`, user message `M000001`, and failed run `R000001` with no proposed or
+executed SQL. The first provider stage therefore failed before retrieval, and
+the second provider stage was not called. No retry or screenshot was claimed.
+All pre-existing travel-data row counts and content hashes remained unchanged;
+only the additive advisor schema, counters, and safe failed-attempt audit record
+were added to the ignored development database.
+
+After the malformed local key value was replaced, a sanitized first-stage
+diagnostic returned HTTP 200. One authorized Vue request then completed both
+live OpenAI stages. Conversation `C000002`, user message `M000004`, assistant
+message `M000005`, and run `R000004` persisted through browser refresh and a
+full service restart without another provider request. The accepted read-only
+query referenced only `saved_hotels`, `saved_hotel_searches`, and
+`demo_hotel_nights`; its parameters were `2024-10-10` and `2024-10-12`, so it
+retrieved no records. The grounded `no_matches` answer agreed with that empty
+result and retained the simulated-data disclosure. This proves the complete
+live technical round trip, but the invented 2024 year means it is not yet the
+intended matching 2026 submission demonstration. The focused prompt correction
+documents the October 10–14, 2026 course-data range, preserves explicit years,
+and prohibits inventing another year. No final evidence screenshot is claimed
+from the earlier no-match run; a correct live result remains required.
+
+The separately authorized rerun created conversation `C000003`, messages
+`M000006` and `M000007`, and run `R000005`. Its proposal used 2026 and passed the
+read-only validator, but selected checkout `2026-10-13` rather than the required
+`2026-10-12`. It retrieved three nightly rows: 10000, 10000, and 12550 cents.
+Although these total 32550 cents (`$325.50`), the displayed answer reported
+`$32.55`. Refresh and a full service restart restored the conversation without
+another advisor POST, and the browser console remained clean. Because the
+answer failed both the expected checkout boundary and exact record grounding,
+no corrected success screenshot or recording is claimed.

@@ -1,14 +1,53 @@
 from collections.abc import AsyncIterator
 from contextlib import asynccontextmanager
-from datetime import date
+from contextvars import ContextVar
+from datetime import date, datetime, timezone
 from pathlib import Path
 import sqlite3
-from typing import Literal
+from typing import Any, Literal
 
-from fastapi import FastAPI, HTTPException, Query, Response, status
+from fastapi import Body, FastAPI, HTTPException, Query, Response, status
 from pydantic import BaseModel, Field, FiniteFloat, field_validator
 
-from .config import get_geoapify_api_key
+from .advisor_contracts import (
+    AdvisorProviderAuthenticationError,
+    AdvisorProviderConfigurationError,
+    AdvisorProviderHTTPError,
+    AdvisorProviderModelUnavailableError,
+    AdvisorProviderRateLimitError,
+    AdvisorProviderResponseError,
+    AdvisorProviderTransportError,
+    GroundedAnswer,
+    QueryParameter,
+    QueryProposal,
+)
+from .advisor_query import (
+    AdvisorQueryExecutionError,
+    AdvisorQueryLimitError,
+    AdvisorQueryRejectedError,
+    AdvisorQueryResultError,
+    ResultScalar,
+    execute_read_only_query,
+)
+from .advisor_history import (
+    AdvisorConversationNotFoundError,
+    AdvisorPersistenceError,
+    complete_advisor_run,
+    fail_advisor_run,
+    get_advisor_conversation,
+    list_advisor_conversations,
+    record_advisor_proposal,
+    record_advisor_retrieval,
+    start_advisor_run,
+)
+from .advisor_prompt import AdvisorPromptError, load_hotel_assistant_prompt
+from .config import (
+    get_geoapify_api_key,
+    get_openai_api_key,
+    get_openai_model,
+    get_openrouter_api_key,
+    get_openrouter_model,
+)
 from .database import (
     BookingNotFoundError,
     RelatedRecordNotFoundError,
@@ -37,6 +76,11 @@ from .places import (
     NearbyHotel,
     lookup_nearby_hotels,
 )
+from .openai_client import (
+    TOTAL_COST_PLACEHOLDER,
+    generate_grounded_answer_openai,
+    propose_hotel_query_openai,
+)
 
 
 BACKEND_DIRECTORY = Path(__file__).resolve().parent.parent
@@ -54,13 +98,72 @@ app = FastAPI(title="Hudson Travel API", lifespan=lifespan)
 app.state.database_path = DEFAULT_DATABASE_PATH
 app.state.today_provider = date.today
 app.state.geoapify_key_provider = get_geoapify_api_key
+app.state.openrouter_key_provider = get_openrouter_api_key
+app.state.openrouter_model_provider = get_openrouter_model
+app.state.openai_key_provider = get_openai_api_key
+app.state.openai_model_provider = get_openai_model
 app.state.zip_location_lookup = lookup_zip_location
 app.state.nearby_hotels_lookup = lookup_nearby_hotels
+app.state.advisor_query_executor = execute_read_only_query
+app.state.advisor_prompt_provider = load_hotel_assistant_prompt
+app.state.advisor_http_transport_provider = lambda: None
+app.state.advisor_now_provider = lambda: datetime.now(timezone.utc)
+advisor_history_context: ContextVar[list[dict[str, str]]] = ContextVar(
+    "advisor_history_context", default=[]
+)
+
+
+async def propose_hotel_query_with_openai(question: str) -> QueryProposal:
+    api_key = app.state.openai_key_provider()
+    return await propose_hotel_query_openai(
+        question,
+        api_key_provider=lambda: api_key,
+        model_provider=app.state.openai_model_provider,
+        prompt_provider=app.state.advisor_prompt_provider,
+        transport=(
+            app.state.advisor_http_transport_provider()
+            if api_key is not None
+            else None
+        ),
+        conversation_history=advisor_history_context.get(),
+    )
+
+
+async def generate_grounded_answer_with_openai(
+    question: str,
+    proposed_sql: str,
+    query_parameters: dict[str, QueryParameter],
+    retrieved_records: list[dict[str, Any]],
+) -> GroundedAnswer:
+    api_key = app.state.openai_key_provider()
+    return await generate_grounded_answer_openai(
+        question,
+        proposed_sql,
+        query_parameters,
+        retrieved_records,
+        api_key_provider=lambda: api_key,
+        model_provider=app.state.openai_model_provider,
+        prompt_provider=app.state.advisor_prompt_provider,
+        transport=(
+            app.state.advisor_http_transport_provider()
+            if api_key is not None
+            else None
+        ),
+        conversation_history=advisor_history_context.get(),
+    )
+
+
+app.state.advisor_query_proposer = propose_hotel_query_with_openai
+app.state.advisor_answer_generator = generate_grounded_answer_with_openai
 
 
 class HealthResult(BaseModel):
     status: Literal["ok"]
     geoapify: Literal["key is configured", "key is not configured"]
+    openrouter: Literal["key is configured", "key is not configured"]
+    openrouter_model: str
+    openai: Literal["key is configured", "key is not configured"]
+    openai_model: str
 
 
 class ZipLocationResult(BaseModel):
@@ -177,6 +280,52 @@ class BookingStatusUpdate(BaseModel):
     status: Literal["cancelled"]
 
 
+class HotelAdvisorResult(BaseModel):
+    status: Literal["answered", "no_matches", "insufficient_data"]
+    question: str
+    proposed_sql: str
+    query_parameters: dict[str, QueryParameter]
+    retrieved_records: list[dict[str, ResultScalar]]
+    answer: str
+    conversation_id: str
+    user_message_id: str
+    assistant_message_id: str
+    run_id: str
+    prompt_version: str
+
+
+class AdvisorConversationSummary(BaseModel):
+    conversation_id: str
+    created_at: str
+    updated_at: str
+    message_count: int
+    latest_message: str | None
+
+
+class AdvisorMessageResult(BaseModel):
+    message_id: str
+    role: Literal["user", "assistant"]
+    content: str
+    created_at: str
+
+
+class AdvisorCompletedRunResult(BaseModel):
+    status: Literal["answered", "no_matches", "insufficient_data"]
+    proposed_sql: str
+    query_parameters: dict[str, QueryParameter]
+    retrieved_records: list[dict[str, ResultScalar]]
+    run_id: str
+    prompt_version: str
+
+
+class AdvisorConversationResult(BaseModel):
+    conversation_id: str
+    created_at: str
+    updated_at: str
+    messages: list[AdvisorMessageResult]
+    latest_completed_run: AdvisorCompletedRunResult | None
+
+
 def prepare_database() -> Path:
     return Path(app.state.database_path)
 
@@ -194,16 +343,355 @@ def local_hotel_storage_error() -> HTTPException:
     )
 
 
+def hotel_advisor_provider_error() -> HTTPException:
+    return HTTPException(
+        status_code=502,
+        detail="The hotel advisor service is temporarily unavailable.",
+    )
+
+
+def validate_advisor_request(payload: Any) -> tuple[str, str | None]:
+    question = payload.get("question") if isinstance(payload, dict) else None
+    if not isinstance(question, str):
+        raise HTTPException(
+            status_code=400,
+            detail="Enter a hotel question of 500 characters or fewer.",
+        )
+    normalized_question = question.strip()
+    if not normalized_question or len(normalized_question) > 500:
+        raise HTTPException(
+            status_code=400,
+            detail="Enter a hotel question of 500 characters or fewer.",
+        )
+    conversation_id = payload.get("conversation_id")
+    if conversation_id is not None and (
+        not isinstance(conversation_id, str)
+        or not conversation_id.startswith("C")
+        or not conversation_id[1:].isdigit()
+        or len(conversation_id) > 32
+    ):
+        raise HTTPException(
+            status_code=400,
+            detail="The conversation ID is invalid.",
+        )
+    return normalized_question, conversation_id
+
+
+def advisor_timestamp() -> str:
+    timestamp = app.state.advisor_now_provider()
+    if not isinstance(timestamp, datetime):
+        raise AdvisorPersistenceError("Advisor history is unavailable.")
+    if timestamp.tzinfo is None:
+        timestamp = timestamp.replace(tzinfo=timezone.utc)
+    return timestamp.astimezone(timezone.utc).isoformat()
+
+
+def fail_run_or_raise(
+    run_id: str, *, category: str, message: str
+) -> None:
+    fail_advisor_run(
+        prepare_database(),
+        run_id,
+        error_category=category,
+        error_message=message,
+        now=advisor_timestamp(),
+    )
+
+
+def advisor_storage_error() -> HTTPException:
+    return HTTPException(
+        status_code=500,
+        detail="The hotel advisor history is temporarily unavailable.",
+    )
+
+
+def ensure_consistent_grounded_answer(
+    grounded_answer: GroundedAnswer,
+    retrieved_records: list[dict[str, ResultScalar]],
+) -> GroundedAnswer:
+    if (
+        not isinstance(grounded_answer, GroundedAnswer)
+        or (not retrieved_records and grounded_answer.status == "answered")
+        or (retrieved_records and grounded_answer.status == "no_matches")
+    ):
+        raise AdvisorProviderResponseError(
+            "The provider returned an inconsistent grounded answer."
+        )
+
+    retrieved_totals = {
+        value
+        for record in retrieved_records
+        if (
+            isinstance((value := record.get("total_cost_cents")), int)
+            and not isinstance(value, bool)
+            and value >= 0
+        )
+    }
+    placeholder_count = grounded_answer.answer.count(TOTAL_COST_PLACEHOLDER)
+
+    if grounded_answer.status != "answered" or not retrieved_totals:
+        if grounded_answer.total_cost_cents is not None or placeholder_count:
+            raise AdvisorProviderResponseError(
+                "The provider returned an inconsistent grounded answer."
+            )
+        return grounded_answer
+
+    if (
+        grounded_answer.total_cost_cents not in retrieved_totals
+        or placeholder_count != 1
+        or "$" in grounded_answer.answer
+    ):
+        raise AdvisorProviderResponseError(
+            "The provider returned an inconsistent grounded answer."
+        )
+
+    cents = grounded_answer.total_cost_cents
+    formatted_total = f"${cents // 100}.{cents % 100:02d}"
+    return GroundedAnswer(
+        status=grounded_answer.status,
+        answer=grounded_answer.answer.replace(
+            TOTAL_COST_PLACEHOLDER, formatted_total
+        ),
+        total_cost_cents=cents,
+    )
+
+
 @app.get("/api/health", response_model=HealthResult)
 async def health_check() -> HealthResult:
-    key_status = (
+    geoapify_status = (
         "key is configured"
         if app.state.geoapify_key_provider() is not None
         else "key is not configured"
     )
-    return HealthResult(status="ok", geoapify=key_status)
+    openrouter_status = (
+        "key is configured"
+        if app.state.openrouter_key_provider() is not None
+        else "key is not configured"
+    )
+    openai_status = (
+        "key is configured"
+        if app.state.openai_key_provider() is not None
+        else "key is not configured"
+    )
+    return HealthResult(
+        status="ok",
+        geoapify=geoapify_status,
+        openrouter=openrouter_status,
+        openrouter_model=app.state.openrouter_model_provider(),
+        openai=openai_status,
+        openai_model=app.state.openai_model_provider(),
+    )
 
 
+@app.post("/api/hotel-advisor", response_model=HotelAdvisorResult)
+async def hotel_advisor(
+    payload: Any = Body(default=None),
+) -> HotelAdvisorResult:
+    question, conversation_id = validate_advisor_request(payload)
+
+    try:
+        try:
+            prompt_version = app.state.advisor_prompt_provider().version
+        except AdvisorPromptError:
+            prompt_version = "unavailable"
+        run = start_advisor_run(
+            prepare_database(),
+            question=question,
+            conversation_id=conversation_id,
+            prompt_version=prompt_version,
+            now=advisor_timestamp(),
+        )
+    except AdvisorConversationNotFoundError as error:
+        raise HTTPException(
+            status_code=404,
+            detail="The advisor conversation was not found.",
+        ) from error
+    except AdvisorPersistenceError as error:
+        raise advisor_storage_error() from error
+
+    history_token = advisor_history_context.set(run.history)
+
+    try:
+        try:
+            proposal = await app.state.advisor_query_proposer(question)
+            record_advisor_proposal(
+                prepare_database(),
+                run.run_id,
+                proposed_sql=proposal.sql,
+                query_parameters=proposal.parameters,
+            )
+        except AdvisorProviderConfigurationError as error:
+            fail_run_or_raise(
+                run.run_id,
+                category="provider_configuration",
+                message="The hotel advisor is not configured.",
+            )
+            raise HTTPException(
+                status_code=503,
+                detail="The hotel advisor is not configured.",
+            ) from error
+        except AdvisorProviderRateLimitError as error:
+            fail_run_or_raise(
+                run.run_id,
+                category="provider_rate_limit",
+                message="The hotel advisor rate limit was reached.",
+            )
+            raise HTTPException(
+                status_code=429,
+                detail="The hotel advisor rate limit was reached. Try again later.",
+            ) from error
+        except (
+            AdvisorProviderAuthenticationError,
+            AdvisorProviderModelUnavailableError,
+            AdvisorProviderTransportError,
+            AdvisorProviderHTTPError,
+            AdvisorProviderResponseError,
+        ) as error:
+            fail_run_or_raise(
+                run.run_id,
+                category="provider_failure",
+                message="The hotel advisor service is temporarily unavailable.",
+            )
+            raise hotel_advisor_provider_error() from error
+
+        try:
+            records = app.state.advisor_query_executor(
+                Path(app.state.database_path), proposal
+            )
+            record_advisor_retrieval(
+                prepare_database(),
+                run.run_id,
+                executed_sql=proposal.sql,
+                query_parameters=proposal.parameters,
+                retrieved_records=records,
+            )
+        except (AdvisorQueryRejectedError, AdvisorQueryLimitError) as error:
+            fail_run_or_raise(
+                run.run_id,
+                category="unsafe_query",
+                message="The proposed hotel query was rejected for safety.",
+            )
+            raise HTTPException(
+                status_code=422,
+                detail="The proposed hotel query was rejected for safety.",
+            ) from error
+        except (AdvisorQueryExecutionError, AdvisorQueryResultError) as error:
+            fail_run_or_raise(
+                run.run_id,
+                category="retrieval_failure",
+                message="The local hotel advisor data could not be retrieved.",
+            )
+            raise HTTPException(
+                status_code=500,
+                detail="The local hotel advisor data could not be retrieved.",
+            ) from error
+
+        try:
+            grounded_answer = await app.state.advisor_answer_generator(
+                question,
+                proposal.sql,
+                proposal.parameters,
+                records,
+            )
+            grounded_answer = ensure_consistent_grounded_answer(
+                grounded_answer, records
+            )
+        except AdvisorProviderConfigurationError as error:
+            fail_run_or_raise(
+                run.run_id,
+                category="provider_configuration",
+                message="The hotel advisor is not configured.",
+            )
+            raise HTTPException(
+                status_code=503,
+                detail="The hotel advisor is not configured.",
+            ) from error
+        except AdvisorProviderRateLimitError as error:
+            fail_run_or_raise(
+                run.run_id,
+                category="provider_rate_limit",
+                message="The hotel advisor rate limit was reached.",
+            )
+            raise HTTPException(
+                status_code=429,
+                detail="The hotel advisor rate limit was reached. Try again later.",
+            ) from error
+        except (
+            AdvisorProviderAuthenticationError,
+            AdvisorProviderModelUnavailableError,
+            AdvisorProviderTransportError,
+            AdvisorProviderHTTPError,
+            AdvisorProviderResponseError,
+        ) as error:
+            fail_run_or_raise(
+                run.run_id,
+                category="provider_failure",
+                message="The hotel advisor service is temporarily unavailable.",
+            )
+            raise hotel_advisor_provider_error() from error
+
+        try:
+            assistant_message_id = complete_advisor_run(
+                prepare_database(),
+                run.run_id,
+                answer=grounded_answer.answer,
+                result_status=grounded_answer.status,
+                now=advisor_timestamp(),
+            )
+        except AdvisorPersistenceError as error:
+            raise advisor_storage_error() from error
+
+        return HotelAdvisorResult(
+            status=grounded_answer.status,
+            question=question,
+            proposed_sql=proposal.sql,
+            query_parameters=proposal.parameters,
+            retrieved_records=records,
+            answer=grounded_answer.answer,
+            conversation_id=run.conversation_id,
+            user_message_id=run.user_message_id,
+            assistant_message_id=assistant_message_id,
+            run_id=run.run_id,
+            prompt_version=prompt_version,
+        )
+    except AdvisorPersistenceError as error:
+        raise advisor_storage_error() from error
+    finally:
+        advisor_history_context.reset(history_token)
+
+
+@app.get(
+    "/api/advisor/conversations",
+    response_model=list[AdvisorConversationSummary],
+)
+async def advisor_conversations() -> list[AdvisorConversationSummary]:
+    try:
+        return [
+            AdvisorConversationSummary(**record)
+            for record in list_advisor_conversations(prepare_database())
+        ]
+    except AdvisorPersistenceError as error:
+        raise advisor_storage_error() from error
+
+
+@app.get(
+    "/api/advisor/conversations/{conversation_id}",
+    response_model=AdvisorConversationResult,
+)
+async def advisor_conversation(
+    conversation_id: str,
+) -> AdvisorConversationResult:
+    try:
+        return AdvisorConversationResult(
+            **get_advisor_conversation(prepare_database(), conversation_id)
+        )
+    except AdvisorConversationNotFoundError as error:
+        raise HTTPException(
+            status_code=404,
+            detail="The advisor conversation was not found.",
+        ) from error
+    except AdvisorPersistenceError as error:
+        raise advisor_storage_error() from error
 async def resolve_zip_location(postcode: str) -> ZipLocationResult:
     try:
         location = await app.state.zip_location_lookup(postcode)

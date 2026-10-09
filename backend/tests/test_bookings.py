@@ -50,7 +50,13 @@ def test_seed_preserves_all_records_and_repeated_initialization_is_safe(
     finally:
         connection.close()
 
-    assert metadata == {"csv_seed_version": "1", "next_booking_number": "7"}
+    assert metadata == {
+        "csv_seed_version": "1",
+        "next_booking_number": "7",
+        "next_advisor_conversation_number": "1",
+        "next_advisor_message_number": "1",
+        "next_advisor_run_number": "1",
+    }
     assert foreign_keys_enabled == 1
 
 

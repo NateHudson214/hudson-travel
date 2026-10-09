@@ -20,7 +20,8 @@ body {
 
 button,
 input,
-select {
+select,
+textarea {
   font: inherit;
 }
 
@@ -399,8 +400,20 @@ select {
   background: #ffffff;
 }
 
+textarea {
+  width: 100%;
+  min-width: 0;
+  resize: vertical;
+  padding: 0.85rem 1rem;
+  border: 1px solid #9cabc0;
+  border-radius: 0.65rem;
+  color: #17233c;
+  background: #ffffff;
+}
+
 input:focus-visible,
 select:focus-visible,
+textarea:focus-visible,
 button:focus-visible {
   outline: 0.2rem solid #69a6e8;
   outline-offset: 0.15rem;
@@ -422,7 +435,8 @@ button:hover:not(:disabled) {
 
 button:disabled,
 input:disabled,
-select:disabled {
+select:disabled,
+textarea:disabled {
   cursor: wait;
   opacity: 0.65;
 }
@@ -554,6 +568,132 @@ h2 {
   background: #f8dfe2;
 }
 
+.advisor-section {
+  padding: clamp(1.5rem, 4vw, 2.5rem);
+  border-bottom: 1px solid #e3e8f0;
+  background: #f6f9fd;
+}
+
+.advisor-heading {
+  align-items: center;
+}
+
+.advisor-history-picker {
+  display: grid;
+  gap: 0.5rem;
+  max-width: 42rem;
+}
+
+.advisor-state {
+  margin: 1rem 0 0;
+}
+
+.advisor-messages {
+  display: grid;
+  gap: 0.75rem;
+  max-height: 24rem;
+  overflow-y: auto;
+  margin: 1.25rem 0;
+  padding: 0;
+  list-style: none;
+}
+
+.advisor-message {
+  max-width: 52rem;
+  padding: 0.9rem 1rem;
+  border: 1px solid #cbd8e7;
+  border-radius: 0.8rem;
+  background: #ffffff;
+}
+
+.advisor-message-user {
+  justify-self: end;
+  border-color: #8db7df;
+  background: #eaf4ff;
+}
+
+.advisor-message p {
+  margin: 0.35rem 0 0;
+  white-space: pre-wrap;
+}
+
+.advisor-form {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: end;
+  gap: 1rem;
+  margin-top: 1.25rem;
+}
+
+.advisor-feedback {
+  min-height: 3rem;
+  padding-top: 1rem;
+}
+
+.advisor-feedback p {
+  margin: 0;
+}
+
+.advisor-evidence {
+  display: grid;
+  gap: 1rem;
+  margin-top: 0.5rem;
+  padding: 1.25rem;
+  border: 1px solid #b9c9dc;
+  border-radius: 0.9rem;
+  background: #ffffff;
+}
+
+.advisor-answer h3 {
+  margin: 0.75rem 0 0.35rem;
+}
+
+.advisor-answer p {
+  margin: 0;
+}
+
+.advisor-evidence details {
+  border-top: 1px solid #dce3ed;
+  padding-top: 0.85rem;
+}
+
+.advisor-evidence summary {
+  cursor: pointer;
+  font-weight: 800;
+}
+
+.advisor-evidence pre {
+  max-width: 100%;
+  overflow-x: auto;
+  padding: 0.9rem;
+  border-radius: 0.65rem;
+  color: #dcecff;
+  background: #17233c;
+  white-space: pre-wrap;
+}
+
+.advisor-table-wrap {
+  padding: 0.75rem 0 0;
+}
+
+.advisor-status-answered {
+  color: #17683a;
+  background: #daf2e4;
+}
+
+.advisor-status-no_matches,
+.advisor-status-insufficient_data {
+  color: #71531a;
+  background: #fff0c7;
+}
+
+.advisor-audit-note {
+  margin: 0;
+  overflow-wrap: anywhere;
+  color: #53657c;
+  font-size: 0.78rem;
+}
+
 .table-wrap {
   overflow-x: auto;
   padding: 1.25rem clamp(1.5rem, 4vw, 2.5rem) 2.5rem;
@@ -590,6 +730,7 @@ th {
   .zip-demo,
   .zip-entry-form,
   .nearby-search-form,
+  .advisor-form,
   .nearby-location,
   .nearby-results-layout {
     grid-template-columns: 1fr;

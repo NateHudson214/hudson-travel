@@ -471,3 +471,327 @@ history** cleared the error. The healthy console contained no warnings or
 errors. Service logs recorded the Vue-driven GET, POST, PATCH, DELETE, and
 follow-up GET requests. Zero source correction cycles were required, and only
 the smoke-test services were stopped afterward.
+
+## Assignment 2 Part 2 mocked hotel-advisor backend checks
+
+The backend workflow is verified without live OpenRouter or Geoapify traffic
+and without opening the development database. Focused tests replace all three
+application-state callables and use the normal temporary test database.
+
+Verify:
+
+1. Missing, blank, non-string, and trimmed questions longer than 500 characters
+   return HTTP 400 before proposal, retrieval, or answer generation.
+2. A successful request runs proposal, retrieval, and grounded answer once and
+   in order. Retrieval receives `app.state.database_path` and the exact
+   `QueryProposal`; answer generation receives the normalized question,
+   accepted SQL, exact parameters, and exact records.
+3. Responses preserve `status`, `question`, `proposed_sql`,
+   `query_parameters`, `retrieved_records`, and `answer`, and add conversation,
+   message, run, and prompt-version identifiers.
+4. `answered` requires nonempty records, `no_matches` requires empty records,
+   and `insufficient_data` is accepted for missing required data. Inconsistent
+   provider status becomes a safe HTTP 502.
+5. Empty valid retrieval still reaches answer generation. Rejected or excessive
+   SQL returns 422 before the second model stage; local execution/result failure
+   returns 500 before it.
+6. Missing configuration returns 503, rate limiting returns 429, and
+   authentication, model availability, transport, provider HTTP, or malformed
+   output returns a sanitized 502.
+7. No response reveals a key, authorization header, provider URL, database
+   path, accepted SQL, raw SQLite/provider error, or hidden prompt.
+
+The provider-neutral/OpenAI foundation additionally verifies:
+
+1. Shared query and answer value objects contain no provider-specific fields,
+   while existing OpenRouter errors preserve the shared sanitized categories.
+2. The explicit repository prompt contains only the three approved tables,
+   required joins and query rules, honest simulated-data language, and no key.
+   Its version is the SHA-256 of the exact file bytes.
+3. Mocked OpenAI calls use only `POST /v1/responses`, the configured model,
+   backend authorization, `store: false`, finite timeouts, bounded output, and
+   one forced strict function tool.
+4. Proposal and answer parsing accepts the three supported answer states and
+   rejects missing, incomplete, duplicate, malformed, extra, or inconsistent
+   tool results.
+5. Missing configuration, authentication, rate-limit, model, HTTP, timeout,
+   network, and malformed-response errors remain distinct internally and never
+   expose a credential, authorization header, provider URL, or database path.
+
+The route now uses OpenAI by default. Mocked end-to-end tests additionally prove
+that a question reaches the first Responses request, accepted SQL executes only
+against a temporary read-only database, exact records reach the second request,
+and the grading fields return to the caller. Matching, no-match,
+insufficient-data, blocked-write, configuration, authentication, rate-limit,
+model, HTTP, timeout, network, and malformed-response paths are covered without
+live traffic. Mocked Vue integration is recorded below; a live LLM round trip
+remains unverified.
+
+### Advisor persistence and follow-up checks
+
+Persistence tests use only temporary SQLite files and mocked OpenAI transports:
+
+1. Repeated initialization creates the three additive advisor tables once and
+   preserves every existing Assignment 1 and saved-hotel record.
+2. A new request durably creates a conversation, ordered user message, and
+   pending run before provider work. Completion records the assistant message,
+   prompt version, proposal, executed SQL, exact parameters, bounded records,
+   status, and timestamps.
+3. Each persistence operation owns a short transaction. Tests do not hold a
+   database write transaction while either mocked provider response is pending.
+4. A follow-up request reuses its conversation ID and supplies the prior ordered
+   user/assistant messages to both mocked Responses calls.
+5. Reinitializing the same temporary database retains completed and failed
+   history. Independent durable counters prevent ID reuse.
+6. Unsafe SQL stops before execution and the second provider call while leaving
+   a safe failed run. Configuration, authentication, rate, model, transport,
+   HTTP, malformed-output, and retrieval failures likewise retain safe audit
+   state when storage is available.
+7. Unknown conversation IDs return 404 before provider access. History endpoints
+   expose only bounded user-visible messages and never expose prompts, audit
+   SQL, error internals, keys, provider URLs, authorization headers, or paths.
+8. No automated test makes a live provider request or modifies the ignored
+   development database. Browser, live-provider, and refresh/restart results
+   are recorded below.
+
+### Vue advisor implementation gate
+
+Frontend API-client tests verify the exact local GET and POST paths,
+URL-encoded conversation IDs, normalized new questions with a null conversation
+ID, exact follow-up IDs, preservation of every evidence/identifier field, safe
+backend details, and fallback behavior for empty or malformed errors.
+
+The implemented panel must later be smoke-tested to prove:
+
+1. Page load lists and reopens persisted history without contacting a provider.
+2. A new mocked question shows loading, disables conflicting advisor controls,
+   and displays ordered messages, SQL, parameters, records, answer, and status.
+3. A mocked follow-up sends the active conversation ID and displays persisted
+   ordered history after the backend reread.
+4. New conversation clears only current advisor display state and never deletes
+   stored history.
+5. Validation and mocked 404/422/429/500/502/503 responses show safe feedback,
+   retain valid messages, clear stale evidence, and leave every existing travel
+   workflow unchanged.
+6. Browser refresh and backend/frontend restart restore persisted history from
+   SQLite, while the healthy console and Network panel remain credential-free.
+
+No component-test dependency exists, so no component tests were added.
+
+### Mocked advisor browser and persistence smoke test — October 8, 2026
+
+The complete gate passed first: 321 backend tests and 37 frontend API-client
+tests passed; the same two non-failing framework dependency warnings remained;
+Oxlint, ESLint, the 28-module Vite build, dependency consistency,
+documentation, whitespace, protected-file, ignore, and database-preservation
+checks passed. Zero source-correction cycles were required.
+
+The browser used the normal Vue client, FastAPI advisor routes, SQL validator,
+read-only executor, and persistence layer against one temporary SQLite copy.
+Both model stages were deterministic local-only mocks, so no OpenAI,
+OpenRouter, or Geoapify request occurred. The first question created
+conversation `C000001` and runs `R000001`/`R000002`; its initial answer showed
+three retrieved nights and a simulated `$325.50` total, and the follow-up
+showed October 12 at `$125.50` with 7 rooms. Later, after a service restart,
+the exact required question and follow-up created `C000003`, `R000011`, and
+`R000012`; all four messages survived a second full restart.
+
+Loading feedback appeared while the textarea, Ask button, and New conversation
+button were disabled. The visible evidence included the question, checked SQL,
+bound parameters, exact records, grounded answer, status, conversation ID, run
+ID, and safe prompt hash. New conversation cleared only the current display;
+reopening restored SQLite-backed messages. Blank input made no POST. Local-only
+outcomes visibly verified no-match, insufficient-data, rejected unsafe SQL
+(422), unknown conversation (404), rate limit (429), missing configuration
+(503), provider failure (502), retrieval failure (500), and history failure
+(500). Each message was safe, stale evidence cleared, and prior valid messages
+remained visible.
+
+Before final cleanup the temporary database contained three conversations, 19
+messages, and 12 runs. IDs were contiguous through `C000003`, `M000019`, and
+`R000012`; next counters were 4, 20, and 13, and `foreign_key_check` was empty.
+Failed attempts remained recorded, reinitialization created no duplicate rows,
+and the browser console had no warnings or errors. The entered-ZIP controls,
+saved/local-first result for 16802, selected hotel/map state and attribution,
+Harbor Lantern Hotel results T001/T009, and booking history remained intact;
+no hotel, booking, or development-database mutation occurred. Live OpenAI
+results are recorded below.
+
+### Controlled live OpenAI attempt — October 8, 2026
+
+The complete gate passed before provider traffic: 321 backend tests and 37
+frontend API-client tests passed, the same two non-failing framework warnings
+remained, both non-fixing linters passed, and the 28-module Vite build,
+dependency consistency, documentation links, whitespace, protected-file,
+ignore, and read-only database checks passed. One documentation-consistency
+correction cycle removed stale statements that the mocked browser check was
+still pending.
+
+The sanitized health response reported `status: ok`, both existing provider
+keys configured, OpenAI configured, and `openai_model: gpt-6-luna`. The visible
+Vue panel submitted the required question exactly once. Loading feedback
+appeared while the question, Ask, and New conversation controls were disabled.
+The local `POST /api/hotel-advisor` returned HTTP 502 and Vue displayed only
+`The hotel advisor service is temporarily unavailable.` Controls recovered and
+the browser console had no warnings or errors. No retry, follow-up, model
+switch, or evidence screenshot was made.
+
+SQLite recorded conversation `C000001`, user message `M000001`, and failed run
+`R000001` with safe category `provider_failure`. Both proposed and executed SQL
+were null, so retrieval and the second provider stage did not occur. This was
+one attempted OpenAI request, not a successful two-call demonstration. The
+startup-created advisor schema and failed audit record changed the database
+file checksum as expected; all pre-existing hotel, trip, user, booking,
+saved-hotel, search-association, and demo-night row counts and content hashes
+remained identical. Integrity and foreign-key checks passed.
+
+### Controlled live OpenAI two-stage result — October 8, 2026
+
+After a sanitized diagnostic identified HTTP 401 `invalid_api_key`, the student
+corrected the ignored `OPEN_AI` value without exposing it. A single first-stage
+diagnostic then returned HTTP 200. The authorized Vue demonstration created a
+new conversation and submitted the required question exactly once. Loading was
+visible and conflicting advisor controls were disabled. Backend logs recorded
+exactly one local `POST /api/hotel-advisor` returning HTTP 200; no retry or
+follow-up occurred.
+
+Both live OpenAI stages completed. The proposed CTE query passed the existing
+validator and read-only executor and referenced only `saved_hotels`,
+`saved_hotel_searches`, and `demo_hotel_nights`. It bound `checkin` to
+`2024-10-10` and `checkout` to `2024-10-12`. Because the retained demo nights
+are in 2026, retrieval returned `[]`. The second stage returned status
+`no_matches` and a grounded answer stating that no matching saved records were
+retrieved and that nightly rates and availability are simulated data. The
+answer was consistent with the exact empty retrieval, but the model's invented
+2024 year means the intended matching 2026 acceptance result did not pass.
+
+The completed state persisted as conversation `C000002`, user message
+`M000004`, assistant message `M000005`, and run `R000004`, with prompt version
+`sha256:a162ad0c8c357c291040144c83072a0bb7d835676beef9815a989d993bc03fb1`.
+Browser refresh and a full backend/frontend restart restored it without another
+advisor POST or provider request. The console contained no warnings or errors.
+Pre-existing travel-table row counts and content hashes remained unchanged;
+foreign-key integrity passed. No final screenshot was created because this
+no-match output does not demonstrate the intended matching answer. A focused
+prompt/test correction now explicitly requires 2026 for the yearless October
+question and is covered by focused mocked tests. The separately authorized live
+rerun is recorded below.
+
+### Corrected-year live rerun — October 8, 2026
+
+One new Vue submission authorized exactly two OpenAI requests and received HTTP
+200. The proposal used the corrected year and passed the read-only validator,
+but bound `check_in` to `2026-10-10` and `check_out` to `2026-10-13`. It queried
+only `saved_hotels`, `saved_hotel_searches`, and `demo_hotel_nights`, retrieving
+the October 10 and 11 rows at 10000 cents and the October 12 row at 12550 cents.
+The answer described three nights but reported `$32.55`; the retrieved values
+total 32550 cents, or `$325.50`. This failed the required October 12 checkout
+boundary and exact grounding checks. No retry occurred and no success evidence
+was captured.
+
+The run persisted as conversation `C000003`, messages `M000006` and `M000007`,
+and run `R000005`, with prompt version
+`sha256:929d2aa1fa49742461662563e2067ea7bb4c23266f51097aa574575f48356173`.
+Refresh and full backend/frontend restart restored it using only local GET
+requests. The browser console contained no warning or error. Server evidence
+showed exactly one local advisor POST; browser-tool Network-panel inspection was
+not available, so that specific panel observation remains unverified.
+
+### Date-boundary and cents-grounding correction
+
+Mocked prompt, OpenAI-client, route-integration, validator, and persistence
+tests now require the exact demonstration parameters `2026-10-10` and
+`2026-10-12`. Temporary retrieval returns two nights, 10000 cents each, as one
+`total_cost_cents: 20000` record. The provider must return the exact retrieved
+integer plus one `{{total_cost}}` marker; the backend deterministically renders
+`$200.00`. Mocked totals of 2000 or 200 cents and free-form `$20.00` are rejected
+with the existing sanitized provider-failure response before an assistant
+message is persisted. No live request was made for this correction.
+
+### Final authorized live attempt — October 8, 2026
+
+Vue submitted the required question once. The first OpenAI stage returned a
+proposal, but the local SQL validator rejected it before execution. The local
+endpoint returned HTTP 422 with `The proposed hotel query was rejected for
+safety.` The run persisted safely as conversation `C000004`, user message
+`M000008`, and run `R000006`, with no assistant message and error category
+`unsafe_query`. The grounded-answer request did not run. No retry, refresh,
+restart, Network screenshot, console claim, or success evidence was produced.
+
+### Rejected-proposal diagnosis and mocked correction
+
+A read-only diagnostic inspected only the persisted proposal and parameters for
+`R000006`; it did not execute the SQL. The proposal used `UNION` and three
+joins. The validator correctly rejects compound queries first and would also
+reject the join count above two. Its date parameters were the intended
+`2026-10-10` and `2026-10-12` values.
+
+The validator was not relaxed. The versioned prompt now requires one flat
+`SELECT`, no CTE or compound form, and exactly two joins across the three
+approved saved-hotel tables. Mocked route coverage executes that accepted shape
+against a temporary database, retrieves only October 10 and 11, returns
+`requested_nights: 2`, `minimum_rooms: 20`, and `total_cost_cents: 20000`, and
+renders `$200.00` through the existing deterministic backend safeguard. Separate
+mocked proposals prove that `UNION` and more than two joins still stop before
+retrieval and before the second provider call. No live request was made.
+
+### Corrected live matching result — October 9, 2026
+
+One new Vue conversation submitted the required question exactly once. The
+local `POST /api/hotel-advisor` returned HTTP 200 after the two authorized
+OpenAI stages. The accepted proposal was one flat parameterized `SELECT`, used
+exactly two joins, contained no compound query form, and referenced only
+`saved_hotels`, `saved_hotel_searches`, and `demo_hotel_nights`. Its bound
+parameters were `check_in=2026-10-10`, `check_out=2026-10-12`,
+`night_count=2`, and `limit=50`.
+
+Read-only retrieval returned one Hotel State College record with
+`requested_nights: 2`, `minimum_rooms: 20`, and `total_cost_cents: 20000`.
+The displayed answered result identified October 10 and 11, treated October 12
+as checkout, disclosed that rates and rooms are simulated demonstration data,
+and rendered `$200.00` through the backend safeguard. The persisted identifiers
+are conversation `C000005`, user message `M000009`, assistant message `M000010`,
+run `R000007`, and prompt version
+`sha256:40e8a2b6ebd334d5c2ce5f58e7825cd14abbfe6045ac0e8ee85e5ad1a5c7b7ec`.
+
+The browser console contained no warnings or errors. Backend request evidence
+showed one local advisor POST for the live workflow. Browser Network-panel
+capture was unavailable through the safe automation interface, so that panel
+still requires manual evidence. Browser refresh and a full backend/frontend
+restart restored the saved question and answer using only local GET requests;
+neither action made another advisor POST or provider request. SQLite integrity
+and foreign-key checks passed after the run.
+
+The student saved and reviewed these files:
+
+- `evidence/assignment2-part2-live-chatbot-corrected.png`
+- `evidence/assignment2-part2-live-chatbot-network-corrected.png`
+
+Independent inspection confirmed that the Network screenshot is readable and
+shows the local conversation-list and `C000005` GET requests without an advisor
+POST or credential. The advisor screenshot is also readable and shows C000005,
+the required question, the persisted `$200.00` answer, and the simulated-data
+disclosure. Its crop ends before the checked SQL, 2026 parameters, 20000-cent
+record, R000007, and prompt version. The student accepted the current image as
+supporting evidence; those lower fields remain supported by the recorded visible
+browser verification and automated response checks.
+
+### Persisted advisor-evidence restoration — October 9, 2026
+
+The conversation-detail endpoint was extended read-only to return the latest
+completed run's safe evidence fields. Automated coverage verified structured
+parameters and records, exact field exclusion, safe conversations without a
+completed run, and exclusion of failed and pending runs. The complete gate
+passed with 328 backend tests (the same two non-failing dependency warnings),
+38 frontend API-client tests, both linters, and a 28-module production build.
+
+In the visible browser, reopening `C000005` restored its question, persisted
+assistant answer, flat checked SQL, `2026-10-10`/`2026-10-12` parameters,
+`total_cost_cents: 20000` record, `$200.00`, run `R000007`, prompt version, and
+simulated-data disclosure. The same panel returned after stopping and restarting
+both services against the unchanged database. Backend logs contained only GET
+requests for conversation history and normal application data; there was no
+advisor POST or provider replay. The healthy console contained no warnings or
+errors. The reviewed Network PNG captures this GET-only restoration, and the
+student accepted the companion advisor PNG. Only the retained Hudson Travel
+services were stopped afterward, and ports 8000 and 5173 were free.
