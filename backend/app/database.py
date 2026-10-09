@@ -110,6 +110,83 @@ SCHEMA_STATEMENTS = (
         PRIMARY KEY (hotel_id, stay_date)
     )
     """,
+    """
+    CREATE TABLE IF NOT EXISTS advisor_conversations (
+        conversation_id TEXT PRIMARY KEY NOT NULL
+            CHECK (conversation_id GLOB 'C[0-9]*'),
+        created_at TEXT NOT NULL,
+        updated_at TEXT NOT NULL
+    )
+    """,
+    """
+    CREATE TABLE IF NOT EXISTS advisor_messages (
+        message_id TEXT PRIMARY KEY NOT NULL
+            CHECK (message_id GLOB 'M[0-9]*'),
+        conversation_id TEXT NOT NULL
+            REFERENCES advisor_conversations(conversation_id)
+            ON DELETE CASCADE,
+        sequence_number INTEGER NOT NULL CHECK (sequence_number > 0),
+        role TEXT NOT NULL CHECK (role IN ('user', 'assistant')),
+        content TEXT NOT NULL CHECK (LENGTH(content) > 0),
+        created_at TEXT NOT NULL,
+        UNIQUE (conversation_id, sequence_number)
+    )
+    """,
+    """
+    CREATE TABLE IF NOT EXISTS advisor_runs (
+        run_id TEXT PRIMARY KEY NOT NULL CHECK (run_id GLOB 'R[0-9]*'),
+        conversation_id TEXT NOT NULL
+            REFERENCES advisor_conversations(conversation_id)
+            ON DELETE CASCADE,
+        user_message_id TEXT NOT NULL
+            REFERENCES advisor_messages(message_id),
+        assistant_message_id TEXT
+            REFERENCES advisor_messages(message_id),
+        prompt_version TEXT NOT NULL,
+        normalized_question TEXT NOT NULL,
+        proposed_sql TEXT,
+        executed_sql TEXT,
+        query_parameters_json TEXT NOT NULL DEFAULT '{}',
+        retrieved_records_json TEXT NOT NULL DEFAULT '[]',
+        status TEXT NOT NULL
+            CHECK (status IN ('pending', 'completed', 'failed')),
+        result_status TEXT CHECK (
+            result_status IS NULL OR result_status IN (
+                'answered', 'no_matches', 'insufficient_data'
+            )
+        ),
+        error_category TEXT,
+        error_message TEXT,
+        created_at TEXT NOT NULL,
+        completed_at TEXT,
+        CHECK (
+            (status = 'pending'
+                AND assistant_message_id IS NULL
+                AND error_category IS NULL
+                AND error_message IS NULL
+                AND result_status IS NULL
+                AND completed_at IS NULL)
+            OR (status = 'completed'
+                AND assistant_message_id IS NOT NULL
+                AND result_status IS NOT NULL
+                AND error_category IS NULL
+                AND error_message IS NULL
+                AND completed_at IS NOT NULL)
+            OR (status = 'failed'
+                AND assistant_message_id IS NULL
+                AND result_status IS NULL
+                AND error_category IS NOT NULL
+                AND error_message IS NOT NULL
+                AND completed_at IS NOT NULL)
+        )
+    )
+    """,
+)
+
+ADVISOR_COUNTERS = (
+    ("next_advisor_conversation_number", "1"),
+    ("next_advisor_message_number", "1"),
+    ("next_advisor_run_number", "1"),
 )
 
 BOOKING_SELECT = """
@@ -175,6 +252,10 @@ def initialize_database(database_path: Path, data_directory: Path) -> None:
         connection.execute("BEGIN IMMEDIATE")
         for statement in SCHEMA_STATEMENTS:
             connection.execute(statement)
+        connection.executemany(
+            "INSERT OR IGNORE INTO app_metadata (key, value) VALUES (?, ?)",
+            ADVISOR_COUNTERS,
+        )
 
         seed_marker = connection.execute(
             "SELECT value FROM app_metadata WHERE key = 'csv_seed_version'"

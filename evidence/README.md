@@ -101,3 +101,25 @@ information, or unrelated content.
 
 Only the Hudson Travel services used for evidence capture were stopped after
 review, and ports 8000 and 5173 were confirmed free.
+
+## Assignment 2 Part 2 advisor restoration evidence
+
+**Status:** Reviewed October 9, 2026. The filenames were corrected after the
+initial saves included an unintended `evidence:` prefix.
+
+- `assignment2-part2-live-chatbot-corrected.png`: 2860 x 1486 PNG showing
+  conversation C000005, the required question, the persisted `$200.00` answer,
+  and simulated-data disclosure. SHA-256:
+  `d4f0dd82daf357deeaccd0237e175567ebe07278b2bd5ea7de3b290a31a20f83`.
+  The current crop ends before the SQL, 2026 parameters, 20000-cent record,
+  R000007, and prompt version. The student accepted the image as supporting
+  evidence; those lower fields are established by the separate browser and
+  automated verification record.
+- `assignment2-part2-live-chatbot-network-corrected.png`: 2880 x 382 PNG
+  showing the local conversation-list and C000005 GET requests with no advisor
+  POST. SHA-256:
+  `a8475773db09f83ab5ddd0f6d1c647709e573a7e82a8d1bf64f3388ab0a5a39c`.
+
+Both reviewed images contain no visible credential, private information,
+database path, or unrelated content. Only the retained Hudson Travel services
+were stopped after review; ports 8000 and 5173 were confirmed free.

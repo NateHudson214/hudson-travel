@@ -11,6 +11,7 @@ import {
 import { searchTrips } from './api/trips'
 import BookingForm from './components/BookingForm.vue'
 import BookingHistory from './components/BookingHistory.vue'
+import HotelAdvisor from './components/HotelAdvisor.vue'
 import NearbyHotelSearch from './components/NearbyHotelSearch.vue'
 import StayResultsTable from './components/StayResultsTable.vue'
 import StaySearch from './components/StaySearch.vue'
@@ -164,6 +165,8 @@ onMounted(refreshBookingData)
       <ZipLookupDemo />
 
       <NearbyHotelSearch />
+
+      <HotelAdvisor />
 
       <StaySearch :is-loading="isLoading" @search="handleSearch" />
 
