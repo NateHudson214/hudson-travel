@@ -28,7 +28,44 @@ These instructions apply to the entire repository.
 - Run relevant backend and frontend checks before declaring a change complete.
 - If dependencies are unavailable, state which checks could not be run.
 
+## Assignment 3 Skills Prototype
+
+- Keep Assignment 3 as a separate view in this repository with its own database;
+  preserve existing travel behavior and course CSVs. Keep the FastAPI entry point
+  and frontend/backend layout described above.
+- Part 1 is documentation-only unless the student explicitly requests an
+  implementation experiment. Read docs/assignment3-part1-plan.md,
+  docs/assignment3-part1-experience.md, and docs/assignment3-part1-technical.md
+  before developing the skills experience. Clearly label proposals and
+  distinguish measured results from design targets.
+- Initial skill: six cycles of four-second inhale and six-second exhale, targeting
+  60 active seconds. Keep the reviewed sequence in application-owned context.
+  Do not let a model change the skill, timing, navigation, or saved preferences.
+- Conversation is optional before/after breathing. The selected model boundary
+  is reviewed reply IDs and approved fact IDs, rendered by the application;
+  arbitrary model-written therapeutic prose is not an approved output.
+- Keep Crisis support, Leave, and relevant Pause/Stop controls available during
+  loading, failures, simpler view, and exercises. U.S. resource information must
+  be labeled and independently bundled, not gated by a model or detector. Read
+  docs/assignment3-part1-resources.md; reverify contacts before implementation.
+- Use only fictional scenarios. Do not diagnose, claim therapy or monitoring,
+  or offer/deploy/link the prototype as support for a real person in distress.
+  Do not contact crisis services as a coursework test.
+- Default tests and peer sessions to mocked responses. Live peer-testing calls
+  require host selection and a durable budget of at most fifty dispatched calls;
+  return to mock mode at the limit. No live calls are part of Part 1.
+- Record timing from first exercise instruction through final planned step,
+  including application delays. Report setup separately; exclude user-chosen
+  pauses and crisis-resource access. Do not force users to leave at a deadline.
+- Retain AI-USE.md and curated, redacted evidence. Never fabricate observations,
+  failures, recordings, model identifiers, or submitted commits. Each milestone
+  needs its own report.md; use assignment3/part1/report.md for this milestone
+  without overwriting earlier reports.
+
 ## Course Macros
+
+The existing macros below verify Hudson Travel. A skills-specific verification
+procedure must be defined when the skills application is implemented.
 
 ### AutoLoop
 

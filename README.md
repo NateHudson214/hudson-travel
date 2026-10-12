@@ -7,6 +7,51 @@ frontend-driven booking creation, history, cancellation, and deletion.
 
 The source CSV files in `backend/data/` are read-only seed inputs.
 
+## Assignment 3.1 — Skills prototype design
+
+Assignment 3 adds a separate **Skills Prototype** view in this repository, with
+its own planned SQLite database. This is currently a documentation-only design
+milestone: the view, skills endpoints, and database are not implemented. The
+travel setup below runs Hudson Travel, not the proposed skills experience.
+
+The selected scope is six cycles of paced breathing (four seconds in, six
+seconds out; 60 active seconds) with optional model conversation before or
+after. Timing and navigation belong to the application. The model selects
+reviewed replies and facts; it does not generate therapeutic instructions.
+Clearly labeled U.S. crisis information is planned as a persistent, locally
+rendered route independent of the model and backend responses.
+
+This is a coursework skills prototype for fictional testing only. It must not
+diagnose, provide therapy, imply monitoring, or be offered/deployed as support
+for someone in distress. Findings inform software design, not effectiveness.
+
+Part 1 materials:
+
+- [Requirements and milestone plan](docs/assignment3-part1-plan.md)
+- [Experience flow, sketch, and R/D tradeoffs](docs/assignment3-part1-experience.md)
+- [Technical design and planned reuse](docs/assignment3-part1-technical.md)
+- [U.S. resource design and source verification](docs/assignment3-part1-resources.md)
+- [Curated, redacted evidence log](evidence/assignment3-part1-log.md)
+- [Documentation verification and runtime limits](docs/assignment3-part1-verification.md)
+- [AI-use disclosure draft](AI-USE.md)
+- [Part 1 submission report draft](assignment3/part1/report.md)
+- [Final readiness review and checkpoint/submission steps](docs/assignment3-part1-readiness.md)
+
+No new installation, dependency, environment variable, credential, or service
+startup is needed to review Part 1. Read the Markdown files in a viewer that
+renders Mermaid to see the flow diagram. The structural text sketch is also
+included. The proposed database is backend/instance/skills_prototype.sqlite3;
+it has not been created. Existing .env values are backend-only and must not be
+copied into design evidence. Document future settings in .env.example before
+implementation; no new settings are declared at this milestone.
+
+The Part 1 report remains a draft until student review, an exact submitted
+commit, published document links, and Canvas upload are
+complete. The student-reported drafting model is GPT-6.1 Sol with medium effort;
+desktop version is unavailable. Runtime duration, safety-route availability,
+SQLite persistence, accessibility, model selection quality, and clean-checkout run behavior remain
+unverified for the skills prototype.
+
 ## Prerequisites
 
 - Python 3.11 or newer
