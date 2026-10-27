@@ -1,0 +1,269 @@
+{
+  "scope": "Fictional, temporary readiness QA; no live provider calls; epoch 2 was fixture setup",
+  "schema_version": 4,
+  "history_epoch": 2,
+  "measured_session_id": "c521a852-66d8-45bd-aae9-2e5dc9a08b80",
+  "sessions": [
+    {
+      "session_id": "3439b4ff-5e34-4cac-bf63-523cb8978d7c",
+      "skill_id": "paced_breathing_4_6",
+      "skill_version": "1",
+      "status": "completed",
+      "revision": 13,
+      "settings_json": "{\"motion_mode\":\"static\",\"simpler_view\":true}",
+      "created_at": "2026-10-27T02:43:56.372030+00:00",
+      "updated_at": "2026-10-27T02:44:56.391489+00:00",
+      "started_at": "2026-10-27T02:43:56.383509+00:00",
+      "ended_at": "2026-10-27T02:44:56.391489+00:00",
+      "active_ms": 60014,
+      "pause_ms": 0,
+      "support_ms": 0,
+      "setup_ms": 42305,
+      "cycles_completed": 6,
+      "phase": "exhale",
+      "phase_remaining_ms": 0,
+      "support_open": 0
+    },
+    {
+      "session_id": "c521a852-66d8-45bd-aae9-2e5dc9a08b80",
+      "skill_id": "paced_breathing_4_6",
+      "skill_version": "1",
+      "status": "completed",
+      "revision": 13,
+      "settings_json": "{\"motion_mode\":\"static\",\"simpler_view\":true}",
+      "created_at": "2026-10-27T02:49:20.761095+00:00",
+      "updated_at": "2026-10-27T02:50:20.773341+00:00",
+      "started_at": "2026-10-27T02:49:20.770455+00:00",
+      "ended_at": "2026-10-27T02:50:20.773341+00:00",
+      "active_ms": 60010,
+      "pause_ms": 0,
+      "support_ms": 0,
+      "setup_ms": 12055,
+      "cycles_completed": 6,
+      "phase": "exhale",
+      "phase_remaining_ms": 0,
+      "support_open": 0
+    },
+    {
+      "session_id": "650b11c2-13b6-40dc-b5e1-9c60e730cdff",
+      "skill_id": "paced_breathing_4_6",
+      "skill_version": "1",
+      "status": "stopped",
+      "revision": 6,
+      "settings_json": "{\"motion_mode\":\"static\",\"simpler_view\":false}",
+      "created_at": "2026-10-27T02:51:56.493766+00:00",
+      "updated_at": "2026-10-27T02:52:04.628610+00:00",
+      "started_at": "2026-10-27T02:51:56.502866+00:00",
+      "ended_at": "2026-10-27T02:52:04.628610+00:00",
+      "active_ms": 803,
+      "pause_ms": 6958,
+      "support_ms": 373,
+      "setup_ms": 619,
+      "cycles_completed": 0,
+      "phase": "inhale",
+      "phase_remaining_ms": 3197,
+      "support_open": 0
+    },
+    {
+      "session_id": "5ab322f5-6e6d-4409-a401-c6d526063618",
+      "skill_id": "paced_breathing_4_6",
+      "skill_version": "1",
+      "status": "stopped",
+      "revision": 2,
+      "settings_json": "{\"motion_mode\":\"static\",\"simpler_view\":false}",
+      "created_at": "2026-10-27T02:52:05.362332+00:00",
+      "updated_at": "2026-10-27T02:52:05.827747+00:00",
+      "started_at": "2026-10-27T02:52:05.370350+00:00",
+      "ended_at": "2026-10-27T02:52:05.827747+00:00",
+      "active_ms": 466,
+      "pause_ms": 0,
+      "support_ms": 0,
+      "setup_ms": 269,
+      "cycles_completed": 0,
+      "phase": "inhale",
+      "phase_remaining_ms": 3534,
+      "support_open": 0
+    }
+  ],
+  "conversations": [
+    {
+      "conversation_id": "9cc11fe9-fce0-46c8-a222-c31899506585",
+      "session_id": null,
+      "placement": "before",
+      "created_at": "2026-10-27T02:43:45.159238+00:00",
+      "updated_at": "2026-10-27T02:43:45.159238+00:00",
+      "revision": 2
+    },
+    {
+      "conversation_id": "0ee67a6d-a1f2-4a67-9761-2e15bd48e2fa",
+      "session_id": null,
+      "placement": "before",
+      "created_at": "2026-10-27T02:49:09.223754+00:00",
+      "updated_at": "2026-10-27T02:49:09.223754+00:00",
+      "revision": 2
+    },
+    {
+      "conversation_id": "8c3c034b-1823-4076-bd56-41759141d484",
+      "session_id": "c521a852-66d8-45bd-aae9-2e5dc9a08b80",
+      "placement": "after",
+      "created_at": "2026-10-27T02:50:47.929761+00:00",
+      "updated_at": "2026-10-27T02:51:17.756537+00:00",
+      "revision": 4
+    }
+  ],
+  "messages": [
+    {
+      "message_id": "96c8cb89-1ee6-46d5-9abf-606e8b9d13a8",
+      "conversation_id": "0ee67a6d-a1f2-4a67-9761-2e15bd48e2fa",
+      "sequence": 1,
+      "role": "user",
+      "content": "Fictional production-preview readiness question about typing.",
+      "source": "user",
+      "created_at": "2026-10-27T02:49:09.223754+00:00",
+      "reply_id": null,
+      "fact_ids_json": "[]"
+    },
+    {
+      "message_id": "95e711c6-1d80-44a4-a285-3d7c25b26e17",
+      "conversation_id": "0ee67a6d-a1f2-4a67-9761-2e15bd48e2fa",
+      "sequence": 2,
+      "role": "assistant",
+      "content": "This prototype offers one paced breathing exercise. No typing is required during the exercise. You can pause, stop, or leave at any time.",
+      "source": "mock-selected-template",
+      "created_at": "2026-10-27T02:49:09.223754+00:00",
+      "reply_id": "explain_available_skill",
+      "fact_ids_json": "[\"no_typing_required\",\"pause_or_stop\"]"
+    },
+    {
+      "message_id": "6c82ef93-6975-4444-b44e-9ef0f99549f1",
+      "conversation_id": "8c3c034b-1823-4076-bd56-41759141d484",
+      "sequence": 1,
+      "role": "user",
+      "content": "Fictional readiness follow-up about display choices after finishing.",
+      "source": "user",
+      "created_at": "2026-10-27T02:50:47.929761+00:00",
+      "reply_id": null,
+      "fact_ids_json": "[]"
+    },
+    {
+      "message_id": "908ebf89-0c58-4961-92cc-0f8ae2f68480",
+      "conversation_id": "8c3c034b-1823-4076-bd56-41759141d484",
+      "sequence": 2,
+      "role": "assistant",
+      "content": "You can choose what to do next. You can choose a static display instead of motion.",
+      "source": "mock-selected-template",
+      "created_at": "2026-10-27T02:50:47.929761+00:00",
+      "reply_id": "neutral_acknowledgment",
+      "fact_ids_json": "[\"static_display_option\"]"
+    },
+    {
+      "message_id": "04a280a5-0c87-4b1f-9efe-5ad5c3b6236c",
+      "conversation_id": "8c3c034b-1823-4076-bd56-41759141d484",
+      "sequence": 3,
+      "role": "user",
+      "content": "Fictional malformed readiness fixture",
+      "source": "user",
+      "created_at": "2026-10-27T02:51:17.756537+00:00",
+      "reply_id": null,
+      "fact_ids_json": "[]"
+    },
+    {
+      "message_id": "8652d407-7f50-462a-8f6d-675ea46273b9",
+      "conversation_id": "8c3c034b-1823-4076-bd56-41759141d484",
+      "sequence": 4,
+      "role": "assistant",
+      "content": "Conversation is unavailable. You can continue without it. Crisis support remains available.",
+      "source": "application-fallback",
+      "created_at": "2026-10-27T02:51:17.756537+00:00",
+      "reply_id": null,
+      "fact_ids_json": "[]"
+    },
+    {
+      "message_id": "45ec52b8-fe03-417f-bf1f-b43bd3cc9c32",
+      "conversation_id": "9cc11fe9-fce0-46c8-a222-c31899506585",
+      "sequence": 1,
+      "role": "user",
+      "content": "Fictional readiness question: is typing required during breathing?",
+      "source": "user",
+      "created_at": "2026-10-27T02:43:45.159238+00:00",
+      "reply_id": null,
+      "fact_ids_json": "[]"
+    },
+    {
+      "message_id": "7402552a-2228-4be2-a97c-f22aad562c94",
+      "conversation_id": "9cc11fe9-fce0-46c8-a222-c31899506585",
+      "sequence": 2,
+      "role": "assistant",
+      "content": "This prototype offers one paced breathing exercise. No typing is required during the exercise. You can pause, stop, or leave at any time.",
+      "source": "mock-selected-template",
+      "created_at": "2026-10-27T02:43:45.159238+00:00",
+      "reply_id": "explain_available_skill",
+      "fact_ids_json": "[\"no_typing_required\",\"pause_or_stop\"]"
+    }
+  ],
+  "runs": [
+    {
+      "request_id": "85e0ad10-55b4-408c-8633-db89a6eaa4f7",
+      "conversation_id": "9cc11fe9-fce0-46c8-a222-c31899506585",
+      "status": "completed",
+      "mode": "mock",
+      "model_id": "local-fixed-fixture-v1",
+      "context_version": "skills-replies-v1",
+      "context_hash": "7699614c2dbaeb25ce8c04aa622e0bf065b93894611b94452b79058bf1ec12d6",
+      "error_category": null,
+      "created_at": "2026-10-27T02:43:45.159238+00:00"
+    },
+    {
+      "request_id": "1dc025fc-b61f-457f-8f78-d561eca1b3d4",
+      "conversation_id": "0ee67a6d-a1f2-4a67-9761-2e15bd48e2fa",
+      "status": "completed",
+      "mode": "mock",
+      "model_id": "local-fixed-fixture-v1",
+      "context_version": "skills-replies-v1",
+      "context_hash": "b6166b6f9dc148ef334ff234858bbfa59ab0cce81e495ec3df6e1365511fdce3",
+      "error_category": null,
+      "created_at": "2026-10-27T02:49:09.223754+00:00"
+    },
+    {
+      "request_id": "3ca2805f-79ae-44c1-8037-abc3afb8a923",
+      "conversation_id": "8c3c034b-1823-4076-bd56-41759141d484",
+      "status": "completed",
+      "mode": "mock",
+      "model_id": "local-fixed-fixture-v1",
+      "context_version": "skills-replies-v1",
+      "context_hash": "41c24da8086388d043f5a01885d2b106b402e4a96d3e4d9b8be6354f12c65ee1",
+      "error_category": null,
+      "created_at": "2026-10-27T02:50:47.929761+00:00"
+    },
+    {
+      "request_id": "4035143b-5d11-4482-a805-b52ad4d076a7",
+      "conversation_id": "8c3c034b-1823-4076-bd56-41759141d484",
+      "status": "failed",
+      "mode": "mock",
+      "model_id": "local-fixed-fixture-v1",
+      "context_version": "skills-replies-v1",
+      "context_hash": "3f961c75133db86f7b56064978461d5044b072c4ddbce8c1d95717a3c72f85ec",
+      "error_category": "mock_reply_rejected",
+      "created_at": "2026-10-27T02:51:17.756537+00:00"
+    }
+  ],
+  "exercise_request_window_checks": [
+    {
+      "session_id": "3439b4ff-5e34-4cac-bf63-523cb8978d7c",
+      "mock_runs_created_during_exercise": []
+    },
+    {
+      "session_id": "c521a852-66d8-45bd-aae9-2e5dc9a08b80",
+      "mock_runs_created_during_exercise": []
+    }
+  ],
+  "preferences": {
+    "revision": 1,
+    "has_saved": 1,
+    "simpler_view": 1,
+    "motion_mode": "static"
+  },
+  "integrity_check": "ok",
+  "foreign_key_check": [],
+  "development_databases_unchanged": true
+}

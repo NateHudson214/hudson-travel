@@ -1,0 +1,560 @@
+{
+  "scope": "Fictional temporary browser-test records only; client-reported timing",
+  "integrity_check": "ok",
+  "tables": {
+    "skills_metadata": [
+      {
+        "key": "schema_version",
+        "value": "1"
+      }
+    ],
+    "skills_sessions": [
+      {
+        "session_id": "9f7362f7-d803-4b0e-833c-9f9d87791a4f",
+        "skill_id": "paced_breathing_4_6",
+        "skill_version": "1",
+        "status": "stopped",
+        "revision": 7,
+        "settings_json": "{\"motion_mode\":\"static\",\"simpler_view\":false}",
+        "created_at": "2026-10-22T18:19:49.338215+00:00",
+        "updated_at": "2026-10-22T18:21:02.411735+00:00",
+        "started_at": "2026-10-22T18:20:53.273140+00:00",
+        "ended_at": "2026-10-22T18:21:02.411735+00:00",
+        "active_ms": 8468,
+        "pause_ms": 77870,
+        "support_ms": 4117,
+        "setup_ms": 132990,
+        "cycles_completed": 0,
+        "phase": "exhale",
+        "phase_remaining_ms": 1533,
+        "support_open": 0
+      },
+      {
+        "session_id": "d5fd2550-23ac-42b8-8716-98e81120f60a",
+        "skill_id": "paced_breathing_4_6",
+        "skill_version": "1",
+        "status": "completed",
+        "revision": 13,
+        "settings_json": "{\"motion_mode\":\"system\",\"simpler_view\":false}",
+        "created_at": "2026-10-22T18:21:41.922579+00:00",
+        "updated_at": "2026-10-22T18:22:41.902557+00:00",
+        "started_at": "2026-10-22T18:21:41.931461+00:00",
+        "ended_at": "2026-10-22T18:22:41.902557+00:00",
+        "active_ms": 60000,
+        "pause_ms": 0,
+        "support_ms": 0,
+        "setup_ms": 9345,
+        "cycles_completed": 6,
+        "phase": "exhale",
+        "phase_remaining_ms": 0,
+        "support_open": 0
+      },
+      {
+        "session_id": "01a7adb6-ae78-4fd6-b4d4-0c8aa7c08a76",
+        "skill_id": "paced_breathing_4_6",
+        "skill_version": "1",
+        "status": "completed",
+        "revision": 13,
+        "settings_json": "{\"motion_mode\":\"system\",\"simpler_view\":false}",
+        "created_at": "2026-10-22T18:24:27.452859+00:00",
+        "updated_at": "2026-10-22T18:25:27.516761+00:00",
+        "started_at": "2026-10-22T18:24:27.472141+00:00",
+        "ended_at": "2026-10-22T18:25:27.516761+00:00",
+        "active_ms": 60003,
+        "pause_ms": 0,
+        "support_ms": 0,
+        "setup_ms": 215,
+        "cycles_completed": 6,
+        "phase": "exhale",
+        "phase_remaining_ms": 0,
+        "support_open": 0
+      },
+      {
+        "session_id": "34111bfd-9d20-49e3-b6a8-6bc974295663",
+        "skill_id": "paced_breathing_4_6",
+        "skill_version": "1",
+        "status": "stopped",
+        "revision": 4,
+        "settings_json": "{\"motion_mode\":\"system\",\"simpler_view\":false}",
+        "created_at": "2026-10-22T18:27:29.284908+00:00",
+        "updated_at": "2026-10-22T18:27:29.309850+00:00",
+        "started_at": "2026-10-22T18:27:29.294017+00:00",
+        "ended_at": "2026-10-22T18:27:29.309850+00:00",
+        "active_ms": 5950,
+        "pause_ms": 0,
+        "support_ms": 9452,
+        "setup_ms": 253,
+        "cycles_completed": 0,
+        "phase": "exhale",
+        "phase_remaining_ms": 4050,
+        "support_open": 1
+      },
+      {
+        "session_id": "642c9d76-29bb-4039-a79f-62b8f28442f2",
+        "skill_id": "paced_breathing_4_6",
+        "skill_version": "1",
+        "status": "interrupted",
+        "revision": 2,
+        "settings_json": "{\"motion_mode\":\"system\",\"simpler_view\":false}",
+        "created_at": "2026-10-22T18:27:57.612882+00:00",
+        "updated_at": "2026-10-22T18:28:20.611812+00:00",
+        "started_at": "2026-10-22T18:27:57.629424+00:00",
+        "ended_at": "2026-10-22T18:28:20.611812+00:00",
+        "active_ms": 0,
+        "pause_ms": 0,
+        "support_ms": 0,
+        "setup_ms": 18290,
+        "cycles_completed": 0,
+        "phase": "inhale",
+        "phase_remaining_ms": 4000,
+        "support_open": 0
+      },
+      {
+        "session_id": "9b57ccc9-0ed7-41b9-bdfc-e5d5b28d50a8",
+        "skill_id": "paced_breathing_4_6",
+        "skill_version": "1",
+        "status": "interrupted",
+        "revision": 2,
+        "settings_json": "{\"motion_mode\":\"system\",\"simpler_view\":false}",
+        "created_at": "2026-10-22T18:30:52.239645+00:00",
+        "updated_at": "2026-10-22T18:30:59.297680+00:00",
+        "started_at": "2026-10-22T18:30:52.252343+00:00",
+        "ended_at": "2026-10-22T18:30:59.297680+00:00",
+        "active_ms": 0,
+        "pause_ms": 0,
+        "support_ms": 0,
+        "setup_ms": 5357,
+        "cycles_completed": 0,
+        "phase": "inhale",
+        "phase_remaining_ms": 4000,
+        "support_open": 0
+      },
+      {
+        "session_id": "f1494c8f-a13a-4060-a9d9-68da23047822",
+        "skill_id": "paced_breathing_4_6",
+        "skill_version": "1",
+        "status": "stopped",
+        "revision": 5,
+        "settings_json": "{\"motion_mode\":\"static\",\"simpler_view\":true}",
+        "created_at": "2026-10-22T18:31:17.300437+00:00",
+        "updated_at": "2026-10-22T18:31:27.045689+00:00",
+        "started_at": "2026-10-22T18:31:17.314304+00:00",
+        "ended_at": "2026-10-22T18:31:27.045689+00:00",
+        "active_ms": 9250,
+        "pause_ms": 135,
+        "support_ms": 366,
+        "setup_ms": 17598,
+        "cycles_completed": 0,
+        "phase": "exhale",
+        "phase_remaining_ms": 750,
+        "support_open": 0
+      },
+      {
+        "session_id": "4f5261a2-9c62-4055-b2b6-2a89a28ef287",
+        "skill_id": "paced_breathing_4_6",
+        "skill_version": "1",
+        "status": "stopped",
+        "revision": 2,
+        "settings_json": "{\"motion_mode\":\"static\",\"simpler_view\":true}",
+        "created_at": "2026-10-22T18:32:34.573644+00:00",
+        "updated_at": "2026-10-22T18:32:34.955769+00:00",
+        "started_at": "2026-10-22T18:32:34.589144+00:00",
+        "ended_at": "2026-10-22T18:32:34.955769+00:00",
+        "active_ms": 383,
+        "pause_ms": 0,
+        "support_ms": 0,
+        "setup_ms": 262,
+        "cycles_completed": 0,
+        "phase": "inhale",
+        "phase_remaining_ms": 3617,
+        "support_open": 0
+      }
+    ],
+    "skills_session_events": [
+      {
+        "event_id": "f86b4327-ccef-4f3f-9a8b-ff9f8cc24a1c",
+        "session_id": "9f7362f7-d803-4b0e-833c-9f9d87791a4f",
+        "sequence": 1,
+        "kind": "start",
+        "created_at": "2026-10-22T18:20:53.273140+00:00",
+        "payload_json": "{\"event_id\":\"f86b4327-ccef-4f3f-9a8b-ff9f8cc24a1c\",\"expected_revision\":0,\"kind\":\"start\",\"reason\":null,\"sequence\":1,\"snapshot\":{\"active_ms\":0,\"cycles_completed\":0,\"pause_ms\":0,\"phase\":\"inhale\",\"phase_remaining_ms\":4000,\"setup_ms\":132990,\"support_ms\":0}}"
+      },
+      {
+        "event_id": "a947d402-9d02-4395-ad72-5baef18827ef",
+        "session_id": "9f7362f7-d803-4b0e-833c-9f9d87791a4f",
+        "sequence": 2,
+        "kind": "checkpoint",
+        "created_at": "2026-10-22T18:20:53.281132+00:00",
+        "payload_json": "{\"event_id\":\"a947d402-9d02-4395-ad72-5baef18827ef\",\"expected_revision\":1,\"kind\":\"checkpoint\",\"reason\":null,\"sequence\":2,\"snapshot\":{\"active_ms\":4000,\"cycles_completed\":0,\"pause_ms\":0,\"phase\":\"exhale\",\"phase_remaining_ms\":6000,\"setup_ms\":132990,\"support_ms\":0}}"
+      },
+      {
+        "event_id": "cdf30e7d-3483-42be-8b7c-83e76f040f1d",
+        "session_id": "9f7362f7-d803-4b0e-833c-9f9d87791a4f",
+        "sequence": 3,
+        "kind": "pause",
+        "created_at": "2026-10-22T18:20:53.284811+00:00",
+        "payload_json": "{\"event_id\":\"cdf30e7d-3483-42be-8b7c-83e76f040f1d\",\"expected_revision\":2,\"kind\":\"pause\",\"reason\":\"user\",\"sequence\":3,\"snapshot\":{\"active_ms\":4167,\"cycles_completed\":0,\"pause_ms\":0,\"phase\":\"exhale\",\"phase_remaining_ms\":5833,\"setup_ms\":132990,\"support_ms\":0}}"
+      },
+      {
+        "event_id": "66a6946d-1fe2-43f7-a5b1-4d47475b079d",
+        "session_id": "9f7362f7-d803-4b0e-833c-9f9d87791a4f",
+        "sequence": 4,
+        "kind": "support_open",
+        "created_at": "2026-10-22T18:20:53.288547+00:00",
+        "payload_json": "{\"event_id\":\"66a6946d-1fe2-43f7-a5b1-4d47475b079d\",\"expected_revision\":3,\"kind\":\"support_open\",\"reason\":null,\"sequence\":4,\"snapshot\":{\"active_ms\":4167,\"cycles_completed\":0,\"pause_ms\":9350,\"phase\":\"exhale\",\"phase_remaining_ms\":5833,\"setup_ms\":132990,\"support_ms\":0}}"
+      },
+      {
+        "event_id": "098bd0d9-8f86-4931-86c4-d560d3953085",
+        "session_id": "9f7362f7-d803-4b0e-833c-9f9d87791a4f",
+        "sequence": 5,
+        "kind": "support_close",
+        "created_at": "2026-10-22T18:20:53.291884+00:00",
+        "payload_json": "{\"event_id\":\"098bd0d9-8f86-4931-86c4-d560d3953085\",\"expected_revision\":4,\"kind\":\"support_close\",\"reason\":null,\"sequence\":5,\"snapshot\":{\"active_ms\":4167,\"cycles_completed\":0,\"pause_ms\":9350,\"phase\":\"exhale\",\"phase_remaining_ms\":5833,\"setup_ms\":132990,\"support_ms\":4117}}"
+      },
+      {
+        "event_id": "0ee9e92e-b2bd-41f0-9d49-fba6574eff12",
+        "session_id": "9f7362f7-d803-4b0e-833c-9f9d87791a4f",
+        "sequence": 6,
+        "kind": "resume",
+        "created_at": "2026-10-22T18:20:58.111753+00:00",
+        "payload_json": "{\"event_id\":\"0ee9e92e-b2bd-41f0-9d49-fba6574eff12\",\"expected_revision\":5,\"kind\":\"resume\",\"reason\":null,\"sequence\":6,\"snapshot\":{\"active_ms\":4167,\"cycles_completed\":0,\"pause_ms\":77870,\"phase\":\"exhale\",\"phase_remaining_ms\":5833,\"setup_ms\":132990,\"support_ms\":4117}}"
+      },
+      {
+        "event_id": "60da360c-5543-4d02-9e8e-01ce732dbdab",
+        "session_id": "9f7362f7-d803-4b0e-833c-9f9d87791a4f",
+        "sequence": 7,
+        "kind": "stop",
+        "created_at": "2026-10-22T18:21:02.411735+00:00",
+        "payload_json": "{\"event_id\":\"60da360c-5543-4d02-9e8e-01ce732dbdab\",\"expected_revision\":6,\"kind\":\"stop\",\"reason\":null,\"sequence\":7,\"snapshot\":{\"active_ms\":8468,\"cycles_completed\":0,\"pause_ms\":77870,\"phase\":\"exhale\",\"phase_remaining_ms\":1533,\"setup_ms\":132990,\"support_ms\":4117}}"
+      },
+      {
+        "event_id": "15127387-b418-4f49-9609-370a2b240778",
+        "session_id": "d5fd2550-23ac-42b8-8716-98e81120f60a",
+        "sequence": 1,
+        "kind": "start",
+        "created_at": "2026-10-22T18:21:41.931461+00:00",
+        "payload_json": "{\"event_id\":\"15127387-b418-4f49-9609-370a2b240778\",\"expected_revision\":0,\"kind\":\"start\",\"reason\":null,\"sequence\":1,\"snapshot\":{\"active_ms\":0,\"cycles_completed\":0,\"pause_ms\":0,\"phase\":\"inhale\",\"phase_remaining_ms\":4000,\"setup_ms\":9345,\"support_ms\":0}}"
+      },
+      {
+        "event_id": "2fa90a04-1cc3-4ff6-bbef-5b18b2cf6633",
+        "session_id": "d5fd2550-23ac-42b8-8716-98e81120f60a",
+        "sequence": 2,
+        "kind": "checkpoint",
+        "created_at": "2026-10-22T18:21:45.914256+00:00",
+        "payload_json": "{\"event_id\":\"2fa90a04-1cc3-4ff6-bbef-5b18b2cf6633\",\"expected_revision\":1,\"kind\":\"checkpoint\",\"reason\":null,\"sequence\":2,\"snapshot\":{\"active_ms\":4014,\"cycles_completed\":0,\"pause_ms\":0,\"phase\":\"exhale\",\"phase_remaining_ms\":5986,\"setup_ms\":9345,\"support_ms\":0}}"
+      },
+      {
+        "event_id": "e8931190-5a18-4558-aff8-979d8e2002ad",
+        "session_id": "d5fd2550-23ac-42b8-8716-98e81120f60a",
+        "sequence": 3,
+        "kind": "checkpoint",
+        "created_at": "2026-10-22T18:21:51.910575+00:00",
+        "payload_json": "{\"event_id\":\"e8931190-5a18-4558-aff8-979d8e2002ad\",\"expected_revision\":2,\"kind\":\"checkpoint\",\"reason\":null,\"sequence\":3,\"snapshot\":{\"active_ms\":10014,\"cycles_completed\":1,\"pause_ms\":0,\"phase\":\"inhale\",\"phase_remaining_ms\":3986,\"setup_ms\":9345,\"support_ms\":0}}"
+      },
+      {
+        "event_id": "9084bebf-17b7-4949-8229-171c085fe40a",
+        "session_id": "d5fd2550-23ac-42b8-8716-98e81120f60a",
+        "sequence": 4,
+        "kind": "checkpoint",
+        "created_at": "2026-10-22T18:21:55.915853+00:00",
+        "payload_json": "{\"event_id\":\"9084bebf-17b7-4949-8229-171c085fe40a\",\"expected_revision\":3,\"kind\":\"checkpoint\",\"reason\":null,\"sequence\":4,\"snapshot\":{\"active_ms\":14015,\"cycles_completed\":1,\"pause_ms\":0,\"phase\":\"exhale\",\"phase_remaining_ms\":5985,\"setup_ms\":9345,\"support_ms\":0}}"
+      },
+      {
+        "event_id": "0e22237c-b9d7-457e-938a-4e839a2a621d",
+        "session_id": "d5fd2550-23ac-42b8-8716-98e81120f60a",
+        "sequence": 5,
+        "kind": "checkpoint",
+        "created_at": "2026-10-22T18:22:01.917562+00:00",
+        "payload_json": "{\"event_id\":\"0e22237c-b9d7-457e-938a-4e839a2a621d\",\"expected_revision\":4,\"kind\":\"checkpoint\",\"reason\":null,\"sequence\":5,\"snapshot\":{\"active_ms\":20015,\"cycles_completed\":2,\"pause_ms\":0,\"phase\":\"inhale\",\"phase_remaining_ms\":3985,\"setup_ms\":9345,\"support_ms\":0}}"
+      },
+      {
+        "event_id": "2c3e3705-2219-469f-9967-3d11081ee62e",
+        "session_id": "d5fd2550-23ac-42b8-8716-98e81120f60a",
+        "sequence": 6,
+        "kind": "checkpoint",
+        "created_at": "2026-10-22T18:22:05.916079+00:00",
+        "payload_json": "{\"event_id\":\"2c3e3705-2219-469f-9967-3d11081ee62e\",\"expected_revision\":5,\"kind\":\"checkpoint\",\"reason\":null,\"sequence\":6,\"snapshot\":{\"active_ms\":24015,\"cycles_completed\":2,\"pause_ms\":0,\"phase\":\"exhale\",\"phase_remaining_ms\":5985,\"setup_ms\":9345,\"support_ms\":0}}"
+      },
+      {
+        "event_id": "27b55c0d-192f-4216-b471-755e61fb6bf3",
+        "session_id": "d5fd2550-23ac-42b8-8716-98e81120f60a",
+        "sequence": 7,
+        "kind": "checkpoint",
+        "created_at": "2026-10-22T18:22:12.050013+00:00",
+        "payload_json": "{\"event_id\":\"27b55c0d-192f-4216-b471-755e61fb6bf3\",\"expected_revision\":6,\"kind\":\"checkpoint\",\"reason\":null,\"sequence\":7,\"snapshot\":{\"active_ms\":30015,\"cycles_completed\":3,\"pause_ms\":0,\"phase\":\"inhale\",\"phase_remaining_ms\":3985,\"setup_ms\":9345,\"support_ms\":0}}"
+      },
+      {
+        "event_id": "e92cb6b8-4b4b-44fd-8b7e-aea6f6785f24",
+        "session_id": "d5fd2550-23ac-42b8-8716-98e81120f60a",
+        "sequence": 8,
+        "kind": "checkpoint",
+        "created_at": "2026-10-22T18:22:15.925954+00:00",
+        "payload_json": "{\"event_id\":\"e92cb6b8-4b4b-44fd-8b7e-aea6f6785f24\",\"expected_revision\":7,\"kind\":\"checkpoint\",\"reason\":null,\"sequence\":8,\"snapshot\":{\"active_ms\":34018,\"cycles_completed\":3,\"pause_ms\":0,\"phase\":\"exhale\",\"phase_remaining_ms\":5982,\"setup_ms\":9345,\"support_ms\":0}}"
+      },
+      {
+        "event_id": "c5820eca-acb9-4c3b-9129-12f133bbd935",
+        "session_id": "d5fd2550-23ac-42b8-8716-98e81120f60a",
+        "sequence": 9,
+        "kind": "checkpoint",
+        "created_at": "2026-10-22T18:22:21.915898+00:00",
+        "payload_json": "{\"event_id\":\"c5820eca-acb9-4c3b-9129-12f133bbd935\",\"expected_revision\":8,\"kind\":\"checkpoint\",\"reason\":null,\"sequence\":9,\"snapshot\":{\"active_ms\":40016,\"cycles_completed\":4,\"pause_ms\":0,\"phase\":\"inhale\",\"phase_remaining_ms\":3984,\"setup_ms\":9345,\"support_ms\":0}}"
+      },
+      {
+        "event_id": "1c8363a0-9569-4c7c-a58e-a14b0e3690b0",
+        "session_id": "d5fd2550-23ac-42b8-8716-98e81120f60a",
+        "sequence": 10,
+        "kind": "checkpoint",
+        "created_at": "2026-10-22T18:22:25.914879+00:00",
+        "payload_json": "{\"event_id\":\"1c8363a0-9569-4c7c-a58e-a14b0e3690b0\",\"expected_revision\":9,\"kind\":\"checkpoint\",\"reason\":null,\"sequence\":10,\"snapshot\":{\"active_ms\":44016,\"cycles_completed\":4,\"pause_ms\":0,\"phase\":\"exhale\",\"phase_remaining_ms\":5984,\"setup_ms\":9345,\"support_ms\":0}}"
+      },
+      {
+        "event_id": "a33e9144-6ece-4cee-ae48-dd3e42dae764",
+        "session_id": "d5fd2550-23ac-42b8-8716-98e81120f60a",
+        "sequence": 11,
+        "kind": "checkpoint",
+        "created_at": "2026-10-22T18:22:31.923166+00:00",
+        "payload_json": "{\"event_id\":\"a33e9144-6ece-4cee-ae48-dd3e42dae764\",\"expected_revision\":10,\"kind\":\"checkpoint\",\"reason\":null,\"sequence\":11,\"snapshot\":{\"active_ms\":50016,\"cycles_completed\":5,\"pause_ms\":0,\"phase\":\"inhale\",\"phase_remaining_ms\":3984,\"setup_ms\":9345,\"support_ms\":0}}"
+      },
+      {
+        "event_id": "60ee39ea-e1e0-4f22-9884-720ae3c87ced",
+        "session_id": "d5fd2550-23ac-42b8-8716-98e81120f60a",
+        "sequence": 12,
+        "kind": "checkpoint",
+        "created_at": "2026-10-22T18:22:35.911814+00:00",
+        "payload_json": "{\"event_id\":\"60ee39ea-e1e0-4f22-9884-720ae3c87ced\",\"expected_revision\":11,\"kind\":\"checkpoint\",\"reason\":null,\"sequence\":12,\"snapshot\":{\"active_ms\":54016,\"cycles_completed\":5,\"pause_ms\":0,\"phase\":\"exhale\",\"phase_remaining_ms\":5984,\"setup_ms\":9345,\"support_ms\":0}}"
+      },
+      {
+        "event_id": "46fb671d-f4f6-4737-915b-02f72fddbf4f",
+        "session_id": "d5fd2550-23ac-42b8-8716-98e81120f60a",
+        "sequence": 13,
+        "kind": "complete",
+        "created_at": "2026-10-22T18:22:41.902557+00:00",
+        "payload_json": "{\"event_id\":\"46fb671d-f4f6-4737-915b-02f72fddbf4f\",\"expected_revision\":12,\"kind\":\"complete\",\"reason\":null,\"sequence\":13,\"snapshot\":{\"active_ms\":60000,\"cycles_completed\":6,\"pause_ms\":0,\"phase\":\"exhale\",\"phase_remaining_ms\":0,\"setup_ms\":9345,\"support_ms\":0}}"
+      },
+      {
+        "event_id": "d22ac783-6fe5-4b19-a50b-30de11240b52",
+        "session_id": "01a7adb6-ae78-4fd6-b4d4-0c8aa7c08a76",
+        "sequence": 1,
+        "kind": "start",
+        "created_at": "2026-10-22T18:24:27.472141+00:00",
+        "payload_json": "{\"event_id\":\"d22ac783-6fe5-4b19-a50b-30de11240b52\",\"expected_revision\":0,\"kind\":\"start\",\"reason\":null,\"sequence\":1,\"snapshot\":{\"active_ms\":0,\"cycles_completed\":0,\"pause_ms\":0,\"phase\":\"inhale\",\"phase_remaining_ms\":4000,\"setup_ms\":215,\"support_ms\":0}}"
+      },
+      {
+        "event_id": "c7704be2-96f0-4423-a61f-4253a3af58eb",
+        "session_id": "01a7adb6-ae78-4fd6-b4d4-0c8aa7c08a76",
+        "sequence": 2,
+        "kind": "checkpoint",
+        "created_at": "2026-10-22T18:24:31.417912+00:00",
+        "payload_json": "{\"event_id\":\"c7704be2-96f0-4423-a61f-4253a3af58eb\",\"expected_revision\":1,\"kind\":\"checkpoint\",\"reason\":null,\"sequence\":2,\"snapshot\":{\"active_ms\":4016,\"cycles_completed\":0,\"pause_ms\":0,\"phase\":\"exhale\",\"phase_remaining_ms\":5984,\"setup_ms\":215,\"support_ms\":0}}"
+      },
+      {
+        "event_id": "ed5e481c-d983-4b32-afa6-dcb1aa71fcfa",
+        "session_id": "01a7adb6-ae78-4fd6-b4d4-0c8aa7c08a76",
+        "sequence": 3,
+        "kind": "checkpoint",
+        "created_at": "2026-10-22T18:24:37.424162+00:00",
+        "payload_json": "{\"event_id\":\"ed5e481c-d983-4b32-afa6-dcb1aa71fcfa\",\"expected_revision\":2,\"kind\":\"checkpoint\",\"reason\":null,\"sequence\":3,\"snapshot\":{\"active_ms\":10016,\"cycles_completed\":1,\"pause_ms\":0,\"phase\":\"inhale\",\"phase_remaining_ms\":3984,\"setup_ms\":215,\"support_ms\":0}}"
+      },
+      {
+        "event_id": "462d691e-2e13-40a7-96a5-67382a5224aa",
+        "session_id": "01a7adb6-ae78-4fd6-b4d4-0c8aa7c08a76",
+        "sequence": 4,
+        "kind": "checkpoint",
+        "created_at": "2026-10-22T18:24:41.414366+00:00",
+        "payload_json": "{\"event_id\":\"462d691e-2e13-40a7-96a5-67382a5224aa\",\"expected_revision\":3,\"kind\":\"checkpoint\",\"reason\":null,\"sequence\":4,\"snapshot\":{\"active_ms\":14001,\"cycles_completed\":1,\"pause_ms\":0,\"phase\":\"exhale\",\"phase_remaining_ms\":5999,\"setup_ms\":215,\"support_ms\":0}}"
+      },
+      {
+        "event_id": "db8cf2fd-6d09-4d45-bb61-6fd2fa68046c",
+        "session_id": "01a7adb6-ae78-4fd6-b4d4-0c8aa7c08a76",
+        "sequence": 5,
+        "kind": "checkpoint",
+        "created_at": "2026-10-22T18:24:47.405941+00:00",
+        "payload_json": "{\"event_id\":\"db8cf2fd-6d09-4d45-bb61-6fd2fa68046c\",\"expected_revision\":4,\"kind\":\"checkpoint\",\"reason\":null,\"sequence\":5,\"snapshot\":{\"active_ms\":20001,\"cycles_completed\":2,\"pause_ms\":0,\"phase\":\"inhale\",\"phase_remaining_ms\":3999,\"setup_ms\":215,\"support_ms\":0}}"
+      },
+      {
+        "event_id": "8168559f-678d-48a3-88c2-f4d443e7a80f",
+        "session_id": "01a7adb6-ae78-4fd6-b4d4-0c8aa7c08a76",
+        "sequence": 6,
+        "kind": "checkpoint",
+        "created_at": "2026-10-22T18:24:51.399538+00:00",
+        "payload_json": "{\"event_id\":\"8168559f-678d-48a3-88c2-f4d443e7a80f\",\"expected_revision\":5,\"kind\":\"checkpoint\",\"reason\":null,\"sequence\":6,\"snapshot\":{\"active_ms\":24001,\"cycles_completed\":2,\"pause_ms\":0,\"phase\":\"exhale\",\"phase_remaining_ms\":5999,\"setup_ms\":215,\"support_ms\":0}}"
+      },
+      {
+        "event_id": "2789f553-48aa-4da2-80d2-52c6e392b808",
+        "session_id": "01a7adb6-ae78-4fd6-b4d4-0c8aa7c08a76",
+        "sequence": 7,
+        "kind": "checkpoint",
+        "created_at": "2026-10-22T18:24:57.403828+00:00",
+        "payload_json": "{\"event_id\":\"2789f553-48aa-4da2-80d2-52c6e392b808\",\"expected_revision\":6,\"kind\":\"checkpoint\",\"reason\":null,\"sequence\":7,\"snapshot\":{\"active_ms\":30000,\"cycles_completed\":3,\"pause_ms\":0,\"phase\":\"inhale\",\"phase_remaining_ms\":4000,\"setup_ms\":215,\"support_ms\":0}}"
+      },
+      {
+        "event_id": "41650763-df74-45dc-8e94-79e1851b6db2",
+        "session_id": "01a7adb6-ae78-4fd6-b4d4-0c8aa7c08a76",
+        "sequence": 8,
+        "kind": "checkpoint",
+        "created_at": "2026-10-22T18:25:01.401865+00:00",
+        "payload_json": "{\"event_id\":\"41650763-df74-45dc-8e94-79e1851b6db2\",\"expected_revision\":7,\"kind\":\"checkpoint\",\"reason\":null,\"sequence\":8,\"snapshot\":{\"active_ms\":34001,\"cycles_completed\":3,\"pause_ms\":0,\"phase\":\"exhale\",\"phase_remaining_ms\":5999,\"setup_ms\":215,\"support_ms\":0}}"
+      },
+      {
+        "event_id": "72002aa6-75ed-45fc-8a8f-d30abda7d5b4",
+        "session_id": "01a7adb6-ae78-4fd6-b4d4-0c8aa7c08a76",
+        "sequence": 9,
+        "kind": "checkpoint",
+        "created_at": "2026-10-22T18:25:07.398183+00:00",
+        "payload_json": "{\"event_id\":\"72002aa6-75ed-45fc-8a8f-d30abda7d5b4\",\"expected_revision\":8,\"kind\":\"checkpoint\",\"reason\":null,\"sequence\":9,\"snapshot\":{\"active_ms\":40001,\"cycles_completed\":4,\"pause_ms\":0,\"phase\":\"inhale\",\"phase_remaining_ms\":3999,\"setup_ms\":215,\"support_ms\":0}}"
+      },
+      {
+        "event_id": "6a14309a-fcfc-49db-b836-6f3cdaf8afa4",
+        "session_id": "01a7adb6-ae78-4fd6-b4d4-0c8aa7c08a76",
+        "sequence": 10,
+        "kind": "checkpoint",
+        "created_at": "2026-10-22T18:25:11.399557+00:00",
+        "payload_json": "{\"event_id\":\"6a14309a-fcfc-49db-b836-6f3cdaf8afa4\",\"expected_revision\":9,\"kind\":\"checkpoint\",\"reason\":null,\"sequence\":10,\"snapshot\":{\"active_ms\":44002,\"cycles_completed\":4,\"pause_ms\":0,\"phase\":\"exhale\",\"phase_remaining_ms\":5998,\"setup_ms\":215,\"support_ms\":0}}"
+      },
+      {
+        "event_id": "da3f8c98-f052-45c4-a55a-b516bf8affdf",
+        "session_id": "01a7adb6-ae78-4fd6-b4d4-0c8aa7c08a76",
+        "sequence": 11,
+        "kind": "checkpoint",
+        "created_at": "2026-10-22T18:25:17.402773+00:00",
+        "payload_json": "{\"event_id\":\"da3f8c98-f052-45c4-a55a-b516bf8affdf\",\"expected_revision\":10,\"kind\":\"checkpoint\",\"reason\":null,\"sequence\":11,\"snapshot\":{\"active_ms\":50003,\"cycles_completed\":5,\"pause_ms\":0,\"phase\":\"inhale\",\"phase_remaining_ms\":3998,\"setup_ms\":215,\"support_ms\":0}}"
+      },
+      {
+        "event_id": "8920d842-e4a0-4fdf-b01a-dca10e6cf780",
+        "session_id": "01a7adb6-ae78-4fd6-b4d4-0c8aa7c08a76",
+        "sequence": 12,
+        "kind": "checkpoint",
+        "created_at": "2026-10-22T18:25:21.428177+00:00",
+        "payload_json": "{\"event_id\":\"8920d842-e4a0-4fdf-b01a-dca10e6cf780\",\"expected_revision\":11,\"kind\":\"checkpoint\",\"reason\":null,\"sequence\":12,\"snapshot\":{\"active_ms\":54003,\"cycles_completed\":5,\"pause_ms\":0,\"phase\":\"exhale\",\"phase_remaining_ms\":5998,\"setup_ms\":215,\"support_ms\":0}}"
+      },
+      {
+        "event_id": "0369bb4d-37e4-45d4-a964-f3a0588dc89e",
+        "session_id": "01a7adb6-ae78-4fd6-b4d4-0c8aa7c08a76",
+        "sequence": 13,
+        "kind": "complete",
+        "created_at": "2026-10-22T18:25:27.516761+00:00",
+        "payload_json": "{\"event_id\":\"0369bb4d-37e4-45d4-a964-f3a0588dc89e\",\"expected_revision\":12,\"kind\":\"complete\",\"reason\":null,\"sequence\":13,\"snapshot\":{\"active_ms\":60003,\"cycles_completed\":6,\"pause_ms\":0,\"phase\":\"exhale\",\"phase_remaining_ms\":0,\"setup_ms\":215,\"support_ms\":0}}"
+      },
+      {
+        "event_id": "a546b31c-b764-48c9-a09e-e499f336f4a4",
+        "session_id": "34111bfd-9d20-49e3-b6a8-6bc974295663",
+        "sequence": 1,
+        "kind": "start",
+        "created_at": "2026-10-22T18:27:29.294017+00:00",
+        "payload_json": "{\"event_id\":\"a546b31c-b764-48c9-a09e-e499f336f4a4\",\"expected_revision\":0,\"kind\":\"start\",\"reason\":null,\"sequence\":1,\"snapshot\":{\"active_ms\":0,\"cycles_completed\":0,\"pause_ms\":0,\"phase\":\"inhale\",\"phase_remaining_ms\":4000,\"setup_ms\":253,\"support_ms\":0}}"
+      },
+      {
+        "event_id": "113119e0-962d-4f6e-a2e3-e77407a5dfaa",
+        "session_id": "34111bfd-9d20-49e3-b6a8-6bc974295663",
+        "sequence": 2,
+        "kind": "checkpoint",
+        "created_at": "2026-10-22T18:27:29.297802+00:00",
+        "payload_json": "{\"event_id\":\"113119e0-962d-4f6e-a2e3-e77407a5dfaa\",\"expected_revision\":1,\"kind\":\"checkpoint\",\"reason\":null,\"sequence\":2,\"snapshot\":{\"active_ms\":4016,\"cycles_completed\":0,\"pause_ms\":0,\"phase\":\"exhale\",\"phase_remaining_ms\":5984,\"setup_ms\":253,\"support_ms\":0}}"
+      },
+      {
+        "event_id": "68c3c39a-c56b-4470-baff-937b72a2be4a",
+        "session_id": "34111bfd-9d20-49e3-b6a8-6bc974295663",
+        "sequence": 3,
+        "kind": "support_open",
+        "created_at": "2026-10-22T18:27:29.303203+00:00",
+        "payload_json": "{\"event_id\":\"68c3c39a-c56b-4470-baff-937b72a2be4a\",\"expected_revision\":2,\"kind\":\"support_open\",\"reason\":null,\"sequence\":3,\"snapshot\":{\"active_ms\":5950,\"cycles_completed\":0,\"pause_ms\":0,\"phase\":\"exhale\",\"phase_remaining_ms\":4050,\"setup_ms\":253,\"support_ms\":0}}"
+      },
+      {
+        "event_id": "cc2c9655-0e03-4111-8fdd-70a0c5f50644",
+        "session_id": "34111bfd-9d20-49e3-b6a8-6bc974295663",
+        "sequence": 4,
+        "kind": "stop",
+        "created_at": "2026-10-22T18:27:29.309850+00:00",
+        "payload_json": "{\"event_id\":\"cc2c9655-0e03-4111-8fdd-70a0c5f50644\",\"expected_revision\":3,\"kind\":\"stop\",\"reason\":null,\"sequence\":4,\"snapshot\":{\"active_ms\":5950,\"cycles_completed\":0,\"pause_ms\":0,\"phase\":\"exhale\",\"phase_remaining_ms\":4050,\"setup_ms\":253,\"support_ms\":9452}}"
+      },
+      {
+        "event_id": "124d08ed-441e-4a70-92b1-c07118d3dd3f",
+        "session_id": "642c9d76-29bb-4039-a79f-62b8f28442f2",
+        "sequence": 1,
+        "kind": "start",
+        "created_at": "2026-10-22T18:27:57.629424+00:00",
+        "payload_json": "{\"event_id\":\"124d08ed-441e-4a70-92b1-c07118d3dd3f\",\"expected_revision\":0,\"kind\":\"start\",\"reason\":null,\"sequence\":1,\"snapshot\":{\"active_ms\":0,\"cycles_completed\":0,\"pause_ms\":0,\"phase\":\"inhale\",\"phase_remaining_ms\":4000,\"setup_ms\":18290,\"support_ms\":0}}"
+      },
+      {
+        "event_id": "fc725563-f290-4ad3-a100-f21b058a84cf",
+        "session_id": "642c9d76-29bb-4039-a79f-62b8f28442f2",
+        "sequence": 2,
+        "kind": "interrupt",
+        "created_at": "2026-10-22T18:28:20.611812+00:00",
+        "payload_json": "{\"event_id\":\"fc725563-f290-4ad3-a100-f21b058a84cf\",\"expected_revision\":1,\"kind\":\"interrupt\",\"reason\":null,\"sequence\":2,\"snapshot\":{\"active_ms\":0,\"cycles_completed\":0,\"pause_ms\":0,\"phase\":\"inhale\",\"phase_remaining_ms\":4000,\"setup_ms\":18290,\"support_ms\":0}}"
+      },
+      {
+        "event_id": "dcd7346c-8cbc-47a6-b07c-ba267f967603",
+        "session_id": "9b57ccc9-0ed7-41b9-bdfc-e5d5b28d50a8",
+        "sequence": 1,
+        "kind": "start",
+        "created_at": "2026-10-22T18:30:52.252343+00:00",
+        "payload_json": "{\"event_id\":\"dcd7346c-8cbc-47a6-b07c-ba267f967603\",\"expected_revision\":0,\"kind\":\"start\",\"reason\":null,\"sequence\":1,\"snapshot\":{\"active_ms\":0,\"cycles_completed\":0,\"pause_ms\":0,\"phase\":\"inhale\",\"phase_remaining_ms\":4000,\"setup_ms\":5357,\"support_ms\":0}}"
+      },
+      {
+        "event_id": "cad9e577-eca9-45f8-9238-2efbb33de091",
+        "session_id": "9b57ccc9-0ed7-41b9-bdfc-e5d5b28d50a8",
+        "sequence": 2,
+        "kind": "interrupt",
+        "created_at": "2026-10-22T18:30:59.297680+00:00",
+        "payload_json": "{\"event_id\":\"cad9e577-eca9-45f8-9238-2efbb33de091\",\"expected_revision\":1,\"kind\":\"interrupt\",\"reason\":null,\"sequence\":2,\"snapshot\":{\"active_ms\":0,\"cycles_completed\":0,\"pause_ms\":0,\"phase\":\"inhale\",\"phase_remaining_ms\":4000,\"setup_ms\":5357,\"support_ms\":0}}"
+      },
+      {
+        "event_id": "a8fa15ff-0856-4464-bfdf-28ab0feb3dec",
+        "session_id": "f1494c8f-a13a-4060-a9d9-68da23047822",
+        "sequence": 1,
+        "kind": "start",
+        "created_at": "2026-10-22T18:31:17.314304+00:00",
+        "payload_json": "{\"event_id\":\"a8fa15ff-0856-4464-bfdf-28ab0feb3dec\",\"expected_revision\":0,\"kind\":\"start\",\"reason\":null,\"sequence\":1,\"snapshot\":{\"active_ms\":0,\"cycles_completed\":0,\"pause_ms\":0,\"phase\":\"inhale\",\"phase_remaining_ms\":4000,\"setup_ms\":17598,\"support_ms\":0}}"
+      },
+      {
+        "event_id": "724cf3ce-1d99-4453-abdf-fb38e86c3d5d",
+        "session_id": "f1494c8f-a13a-4060-a9d9-68da23047822",
+        "sequence": 2,
+        "kind": "checkpoint",
+        "created_at": "2026-10-22T18:31:21.317918+00:00",
+        "payload_json": "{\"event_id\":\"724cf3ce-1d99-4453-abdf-fb38e86c3d5d\",\"expected_revision\":1,\"kind\":\"checkpoint\",\"reason\":null,\"sequence\":2,\"snapshot\":{\"active_ms\":4017,\"cycles_completed\":0,\"pause_ms\":0,\"phase\":\"exhale\",\"phase_remaining_ms\":5983,\"setup_ms\":17598,\"support_ms\":0}}"
+      },
+      {
+        "event_id": "44b748fe-4746-48f1-9798-a22e778182cf",
+        "session_id": "f1494c8f-a13a-4060-a9d9-68da23047822",
+        "sequence": 3,
+        "kind": "support_open",
+        "created_at": "2026-10-22T18:31:26.548302+00:00",
+        "payload_json": "{\"event_id\":\"44b748fe-4746-48f1-9798-a22e778182cf\",\"expected_revision\":2,\"kind\":\"support_open\",\"reason\":null,\"sequence\":3,\"snapshot\":{\"active_ms\":9250,\"cycles_completed\":0,\"pause_ms\":0,\"phase\":\"exhale\",\"phase_remaining_ms\":750,\"setup_ms\":17598,\"support_ms\":0}}"
+      },
+      {
+        "event_id": "3e0b1125-8f43-4180-813b-9d848bad7af4",
+        "session_id": "f1494c8f-a13a-4060-a9d9-68da23047822",
+        "sequence": 4,
+        "kind": "support_close",
+        "created_at": "2026-10-22T18:31:26.914587+00:00",
+        "payload_json": "{\"event_id\":\"3e0b1125-8f43-4180-813b-9d848bad7af4\",\"expected_revision\":3,\"kind\":\"support_close\",\"reason\":null,\"sequence\":4,\"snapshot\":{\"active_ms\":9250,\"cycles_completed\":0,\"pause_ms\":0,\"phase\":\"exhale\",\"phase_remaining_ms\":750,\"setup_ms\":17598,\"support_ms\":366}}"
+      },
+      {
+        "event_id": "dfddcd9a-4497-44be-9254-bcdd1a748089",
+        "session_id": "f1494c8f-a13a-4060-a9d9-68da23047822",
+        "sequence": 5,
+        "kind": "stop",
+        "created_at": "2026-10-22T18:31:27.045689+00:00",
+        "payload_json": "{\"event_id\":\"dfddcd9a-4497-44be-9254-bcdd1a748089\",\"expected_revision\":4,\"kind\":\"stop\",\"reason\":null,\"sequence\":5,\"snapshot\":{\"active_ms\":9250,\"cycles_completed\":0,\"pause_ms\":135,\"phase\":\"exhale\",\"phase_remaining_ms\":750,\"setup_ms\":17598,\"support_ms\":366}}"
+      },
+      {
+        "event_id": "e38f901a-151d-4758-a3ad-4e4b3e6fd65c",
+        "session_id": "4f5261a2-9c62-4055-b2b6-2a89a28ef287",
+        "sequence": 1,
+        "kind": "start",
+        "created_at": "2026-10-22T18:32:34.589144+00:00",
+        "payload_json": "{\"event_id\":\"e38f901a-151d-4758-a3ad-4e4b3e6fd65c\",\"expected_revision\":0,\"kind\":\"start\",\"reason\":null,\"sequence\":1,\"snapshot\":{\"active_ms\":0,\"cycles_completed\":0,\"pause_ms\":0,\"phase\":\"inhale\",\"phase_remaining_ms\":4000,\"setup_ms\":262,\"support_ms\":0}}"
+      },
+      {
+        "event_id": "9a764923-40c9-4563-b50a-b9d71bbfcfad",
+        "session_id": "4f5261a2-9c62-4055-b2b6-2a89a28ef287",
+        "sequence": 2,
+        "kind": "stop",
+        "created_at": "2026-10-22T18:32:34.955769+00:00",
+        "payload_json": "{\"event_id\":\"9a764923-40c9-4563-b50a-b9d71bbfcfad\",\"expected_revision\":1,\"kind\":\"stop\",\"reason\":null,\"sequence\":2,\"snapshot\":{\"active_ms\":383,\"cycles_completed\":0,\"pause_ms\":0,\"phase\":\"inhale\",\"phase_remaining_ms\":3617,\"setup_ms\":262,\"support_ms\":0}}"
+      }
+    ]
+  }
+}

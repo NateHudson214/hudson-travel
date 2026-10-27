@@ -54,18 +54,27 @@ These instructions apply to the entire repository.
 - Default tests and peer sessions to mocked responses. Live peer-testing calls
   require host selection and a durable budget of at most fifty dispatched calls;
   return to mock mode at the limit. No live calls are part of Part 1.
+  The current student-selected skills allowance is ten dispatched calls/$1 total;
+  preserve its durable ledger across history clearing and keep live mode disabled
+  until separately authorized. See docs/assignment3-part2-adapter.md.
 - Record timing from first exercise instruction through final planned step,
   including application delays. Report setup separately; exclude user-chosen
   pauses and crisis-resource access. Do not force users to leave at a deadline.
 - Retain AI-USE.md and curated, redacted evidence. Never fabricate observations,
   failures, recordings, model identifiers, or submitted commits. Each milestone
-  needs its own report.md; use assignment3/part1/report.md for this milestone
-  without overwriting earlier reports.
+  needs its own report.md: preserve assignment3/part1/report.md for Part 1 and
+  use assignment3/part2/report.md for Part 2 without overwriting earlier reports.
 
 ## Course Macros
 
 The existing macros below verify Hudson Travel. A skills-specific verification
 procedure must be defined when the skills application is implemented.
+
+Skills verification and current submission blockers are documented in
+`docs/assignment3-part2-readiness.md` and the linked step verification guides.
+A passing mock suite does not establish the actual model contribution required
+by Part 2. Do not label a fixed mock or earlier hotel-model call as skills-model
+evidence; live integration and calls require separate authorization.
 
 ### AutoLoop
 

@@ -1,0 +1,25 @@
+{
+  "schema": 5,
+  "budget": {
+    "singleton_id": 1,
+    "model_id": "gpt-6-luna",
+    "call_limit": 10,
+    "dollar_limit_micro": 1000000,
+    "reserved_calls": 0,
+    "reserved_micro": 0
+  },
+  "runs": [
+    {
+      "status": "completed",
+      "mode": "mock",
+      "model_id": "local-fixed-fixture-v1"
+    },
+    {
+      "status": "completed",
+      "mode": "mock",
+      "model_id": "local-fixed-fixture-v1"
+    }
+  ],
+  "integrity": "ok",
+  "foreign_key_errors": []
+}

@@ -69,3 +69,8 @@ def openai_api_key_status(env_file: Path = ENV_FILE) -> str:
 def get_openai_model(env_file: Path = ENV_FILE) -> str:
     """Return the configured OpenAI model or the reviewed default."""
     return _get_optional_setting(OPENAI_MODEL_NAME, env_file) or DEFAULT_OPENAI_MODEL
+
+
+def skills_live_enabled() -> bool:
+    """Host-only opt-in; independent of travel model configuration."""
+    return _get_optional_setting("SKILLS_MODEL_MODE", ENV_FILE) == "live"

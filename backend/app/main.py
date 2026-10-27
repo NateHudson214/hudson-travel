@@ -47,6 +47,7 @@ from .config import (
     get_openai_model,
     get_openrouter_api_key,
     get_openrouter_model,
+    skills_live_enabled,
 )
 from .database import (
     BookingNotFoundError,
@@ -81,6 +82,7 @@ from .openai_client import (
     generate_grounded_answer_openai,
     propose_hotel_query_openai,
 )
+from .skills.routes import router as skills_router
 
 
 BACKEND_DIRECTORY = Path(__file__).resolve().parent.parent
@@ -96,6 +98,11 @@ async def lifespan(application: FastAPI) -> AsyncIterator[None]:
 
 app = FastAPI(title="Hudson Travel API", lifespan=lifespan)
 app.state.database_path = DEFAULT_DATABASE_PATH
+app.state.skills_database_path = BACKEND_DIRECTORY / "instance" / "skills_prototype.sqlite3"
+app.state.skills_now_provider = lambda: datetime.now(timezone.utc)
+app.state.skills_live_enabled_provider = skills_live_enabled
+app.state.skills_live_transport_provider = lambda: None
+app.include_router(skills_router)
 app.state.today_provider = date.today
 app.state.geoapify_key_provider = get_geoapify_api_key
 app.state.openrouter_key_provider = get_openrouter_api_key

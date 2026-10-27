@@ -1,0 +1,22 @@
+{
+  "scope": "Fictional normal-startup preference QA only",
+  "schema_version": 3,
+  "integrity_check": "ok",
+  "preferences_after_reset": {
+    "revision": 4,
+    "has_saved": 0,
+    "simpler_view": 0,
+    "motion_mode": "system",
+    "updated_at": "2026-10-27T01:00:47.753600+00:00"
+  },
+  "history_unchanged_by_reset": true,
+  "history_counts": {
+    "skills_sessions": 1,
+    "skills_session_events": 4,
+    "skills_conversations": 0,
+    "skills_messages": 0,
+    "skills_model_runs": 0
+  },
+  "travel_sha256_before": "984f739427049ddf1454d78cc26ce36179477936ef290f0ecece9a2a79a1108b",
+  "travel_sha256_after": "984f739427049ddf1454d78cc26ce36179477936ef290f0ecece9a2a79a1108b"
+}

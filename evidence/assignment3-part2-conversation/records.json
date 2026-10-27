@@ -1,0 +1,168 @@
+{
+  "scope": "Fictional temporary browser QA only, including injected malformed/delayed local mocks",
+  "schema_version": 2,
+  "integrity_check": "ok",
+  "conversations": [
+    {
+      "conversation_id": "3f1f933a-34d0-4747-8e57-137e85547362",
+      "session_id": null,
+      "placement": "before",
+      "created_at": "2026-10-27T00:30:10.259033+00:00",
+      "updated_at": "2026-10-27T00:30:21.432341+00:00",
+      "revision": 6
+    },
+    {
+      "conversation_id": "12466429-6a7c-4917-bb80-c09c6be62fb5",
+      "session_id": "b805b189-176e-4245-9644-b9e73d1faa8d",
+      "placement": "after",
+      "created_at": "2026-10-27T00:30:39.285033+00:00",
+      "updated_at": "2026-10-27T00:30:39.285033+00:00",
+      "revision": 2
+    }
+  ],
+  "messages": [
+    {
+      "message_id": "159b4905-173d-4a31-b8ed-8da077725233",
+      "conversation_id": "12466429-6a7c-4917-bb80-c09c6be62fb5",
+      "sequence": 1,
+      "role": "user",
+      "content": "Fictional test: show an optional display fact.",
+      "source": "user",
+      "created_at": "2026-10-27T00:30:39.285033+00:00",
+      "reply_id": null,
+      "fact_ids_json": "[]"
+    },
+    {
+      "message_id": "9a38a8d3-577b-489e-9a47-67917357b5cf",
+      "conversation_id": "12466429-6a7c-4917-bb80-c09c6be62fb5",
+      "sequence": 2,
+      "role": "assistant",
+      "content": "You can choose what to do next. You can choose a static display instead of motion.",
+      "source": "mock-selected-template",
+      "created_at": "2026-10-27T00:30:39.285033+00:00",
+      "reply_id": "neutral_acknowledgment",
+      "fact_ids_json": "[\"static_display_option\"]"
+    },
+    {
+      "message_id": "5ba77c5e-bf76-4ba1-8893-bedee12aa308",
+      "conversation_id": "3f1f933a-34d0-4747-8e57-137e85547362",
+      "sequence": 1,
+      "role": "user",
+      "content": "Fictional test: is typing required during the exercise?",
+      "source": "user",
+      "created_at": "2026-10-27T00:30:10.259033+00:00",
+      "reply_id": null,
+      "fact_ids_json": "[]"
+    },
+    {
+      "message_id": "866b006d-24f2-4dba-b6ac-26c2cc8512cf",
+      "conversation_id": "3f1f933a-34d0-4747-8e57-137e85547362",
+      "sequence": 2,
+      "role": "assistant",
+      "content": "This prototype offers one paced breathing exercise. No typing is required during the exercise. You can pause, stop, or leave at any time.",
+      "source": "mock-selected-template",
+      "created_at": "2026-10-27T00:30:10.259033+00:00",
+      "reply_id": "explain_available_skill",
+      "fact_ids_json": "[\"no_typing_required\",\"pause_or_stop\"]"
+    },
+    {
+      "message_id": "7da16993-808a-4db0-a146-b8d863341cc0",
+      "conversation_id": "3f1f933a-34d0-4747-8e57-137e85547362",
+      "sequence": 3,
+      "role": "user",
+      "content": "Fictional invalid fixture",
+      "source": "user",
+      "created_at": "2026-10-27T00:30:15.070711+00:00",
+      "reply_id": null,
+      "fact_ids_json": "[]"
+    },
+    {
+      "message_id": "2d630c69-5cc7-4747-8382-a4ec3ac1c2d9",
+      "conversation_id": "3f1f933a-34d0-4747-8e57-137e85547362",
+      "sequence": 4,
+      "role": "assistant",
+      "content": "Conversation is unavailable. You can continue without it. Crisis support remains available.",
+      "source": "application-fallback",
+      "created_at": "2026-10-27T00:30:15.070711+00:00",
+      "reply_id": null,
+      "fact_ids_json": "[]"
+    },
+    {
+      "message_id": "369aa366-fa1c-4d26-9f92-ef8c79a8a9a0",
+      "conversation_id": "3f1f933a-34d0-4747-8e57-137e85547362",
+      "sequence": 5,
+      "role": "user",
+      "content": "Fictional slow fixture",
+      "source": "user",
+      "created_at": "2026-10-27T00:30:21.432341+00:00",
+      "reply_id": null,
+      "fact_ids_json": "[]"
+    },
+    {
+      "message_id": "61263577-c6ce-46ed-9a02-3a7c0650183d",
+      "conversation_id": "3f1f933a-34d0-4747-8e57-137e85547362",
+      "sequence": 6,
+      "role": "assistant",
+      "content": "This prototype offers one paced breathing exercise. No typing is required during the exercise. You can pause, stop, or leave at any time.",
+      "source": "mock-selected-template",
+      "created_at": "2026-10-27T00:30:21.432341+00:00",
+      "reply_id": "explain_available_skill",
+      "fact_ids_json": "[\"no_typing_required\",\"pause_or_stop\"]"
+    }
+  ],
+  "runs": [
+    {
+      "request_id": "7c4f28f6-b0a3-4e3d-95fa-ae6460ed42c2",
+      "conversation_id": "3f1f933a-34d0-4747-8e57-137e85547362",
+      "status": "completed",
+      "mode": "mock",
+      "model_id": "local-fixed-fixture-v1",
+      "context_version": "skills-replies-v1",
+      "context_hash": "74c43f08fec773466e15469338dcca733e6e7f27788b3d4822159a8ea577f570",
+      "error_category": null,
+      "created_at": "2026-10-27T00:30:10.259033+00:00"
+    },
+    {
+      "request_id": "f10d2b8b-d317-43a5-9234-9d864359f0d2",
+      "conversation_id": "3f1f933a-34d0-4747-8e57-137e85547362",
+      "status": "failed",
+      "mode": "mock",
+      "model_id": "local-fixed-fixture-v1",
+      "context_version": "skills-replies-v1",
+      "context_hash": "a99057d035bf9f7fa47907ba784965b7ff8e413aaf80b5dff77579243f8c0458",
+      "error_category": "mock_reply_rejected",
+      "created_at": "2026-10-27T00:30:15.070711+00:00"
+    },
+    {
+      "request_id": "b380b4d7-32a0-4f4f-8a43-268423200672",
+      "conversation_id": "3f1f933a-34d0-4747-8e57-137e85547362",
+      "status": "completed",
+      "mode": "mock",
+      "model_id": "local-fixed-fixture-v1",
+      "context_version": "skills-replies-v1",
+      "context_hash": "2104af43056c50532c8a391f0f47d54eeb2fe3cb45a1ac5e74deac86c7f352f3",
+      "error_category": null,
+      "created_at": "2026-10-27T00:30:21.432341+00:00"
+    },
+    {
+      "request_id": "494d2976-772d-4851-8bfe-989d35d37eb4",
+      "conversation_id": "12466429-6a7c-4917-bb80-c09c6be62fb5",
+      "status": "completed",
+      "mode": "mock",
+      "model_id": "local-fixed-fixture-v1",
+      "context_version": "skills-replies-v1",
+      "context_hash": "6ca403c8466169be2e715528ad5371411fc8c2e27893fcc87ee8a8c76e92fc75",
+      "error_category": null,
+      "created_at": "2026-10-27T00:30:39.285033+00:00"
+    }
+  ],
+  "sessions": [
+    {
+      "session_id": "b805b189-176e-4245-9644-b9e73d1faa8d",
+      "status": "stopped",
+      "revision": 3,
+      "active_ms": 4383,
+      "settings_json": "{\"motion_mode\":\"system\",\"simpler_view\":false}"
+    }
+  ]
+}

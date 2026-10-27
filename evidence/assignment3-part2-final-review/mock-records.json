@@ -1,0 +1,28 @@
+{
+  "sessions": [
+    {
+      "status": "stopped",
+      "active_ms": 571,
+      "pause_ms": 8492,
+      "support_ms": 4972,
+      "cycles_completed": 0
+    }
+  ],
+  "runs": [
+    {
+      "status": "failed",
+      "mode": "mock",
+      "error_category": "mock_reply_rejected"
+    }
+  ],
+  "budget": {
+    "singleton_id": 1,
+    "model_id": "gpt-6-luna",
+    "call_limit": 10,
+    "dollar_limit_micro": 1000000,
+    "reserved_calls": 0,
+    "reserved_micro": 0
+  },
+  "integrity": "ok",
+  "foreign_key_errors": []
+}

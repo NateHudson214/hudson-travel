@@ -1,0 +1,78 @@
+{
+  "live_run_records": [
+    {
+      "request_id": "5143358b-6a0f-4b81-a6e5-741db606c5a1",
+      "conversation_id": "28778750-eca4-4c78-8930-b68d9b4d8aac",
+      "status": "completed",
+      "mode": "live",
+      "model_id": "gpt-6-luna",
+      "context_version": "skills-selector-v1/skills-replies-v1",
+      "context_hash": "b14d2e6434c7fba76e4b878e2906bc284ab9668ba0652a0029ebf816af5dd21e"
+    },
+    {
+      "request_id": "0025c160-14c5-426e-ae46-baebbae009d4",
+      "conversation_id": "efb346f2-7d43-41a6-9c8d-ca8b398dc1f6",
+      "status": "completed",
+      "mode": "live",
+      "model_id": "gpt-6-luna",
+      "context_version": "skills-selector-v1/skills-replies-v1",
+      "context_hash": "0a492735c9c8a497c5d26c8febf91861f7cc847bf876e4b2777151aa160327b7"
+    },
+    {
+      "request_id": "c40e44d1-651e-412a-b52a-ce3b6162f32c",
+      "conversation_id": "28778750-eca4-4c78-8930-b68d9b4d8aac",
+      "status": "completed",
+      "mode": "live",
+      "model_id": "gpt-6-luna",
+      "context_version": "skills-selector-v1/skills-replies-v1",
+      "context_hash": "8da69bf901d4a47732f6cf056018af159d21df4cf85ba0d9346c995f1fb23fba"
+    },
+    {
+      "request_id": "bef44d33-f625-4eaa-89bf-6f9661cd30d9",
+      "conversation_id": "13de8879-63f0-491a-a762-83cda467bbfc",
+      "status": "completed",
+      "mode": "live",
+      "model_id": "gpt-6-luna",
+      "context_version": "skills-selector-v1/skills-replies-v1",
+      "context_hash": "fa0e111d6702272e9504fa8f366b5977abf39123adc4c0505b661cba29ef2e5e"
+    }
+  ],
+  "budget": {
+    "singleton_id": 1,
+    "model_id": "gpt-6-luna",
+    "call_limit": 10,
+    "dollar_limit_micro": 1000000,
+    "reserved_calls": 4,
+    "reserved_micro": 400000
+  },
+  "remaining_calls": 6,
+  "remaining_reservation_usd": 0.6,
+  "provider_usage_totals": {
+    "input_tokens": 2204,
+    "output_tokens": 329,
+    "total_tokens": 2533
+  },
+  "preferences": {
+    "has_saved": 0,
+    "simpler_view": 0,
+    "motion_mode": "system"
+  },
+  "pending_runs": 0,
+  "integrity": "ok",
+  "foreign_key_errors": [],
+  "history_restored_from_new_connection": true,
+  "post_restore_status": {
+    "mode": "mock",
+    "model_id": "local-fixed-fixture-v1",
+    "live_enabled": false,
+    "allowance_exhausted": false,
+    "budget": {
+      "singleton_id": 1,
+      "model_id": "gpt-6-luna",
+      "call_limit": 10,
+      "dollar_limit_micro": 1000000,
+      "reserved_calls": 4,
+      "reserved_micro": 400000
+    }
+  }
+}

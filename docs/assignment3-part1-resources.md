@@ -1,7 +1,7 @@
 # Assignment 3.1 — U.S. crisis resource design
 
-Status: source-backed design notes, not an implemented or tested support panel.
-Last source review: October 12, 2026. Student selected U.S. resources.
+Status: Part 1 design notes with an implementation verification addendum below.
+Last contact lookup review: October 26, 2026. Official page inspected October 22. Student selected U.S. resources.
 
 The proposed panel is titled "Crisis support — United States." Bundle its text
 and links with the frontend so opening it needs no model/classifier or backend
@@ -43,3 +43,28 @@ For coursework, test panel rendering and link destinations with fictional
 scenarios and mocks. Do not initiate calls/texts/chats to test a real service.
 Reverify this source information when implementation begins and before any
 course demonstration. The prototype must never be offered as real support.
+
+## Part 2 implementation verification — October 22, 2026
+
+Retrieved fresh U.S. contacts through the local helpline lookup and reopened the
+official Get Help page. Phone/text 988, the lookup-returned public chat URL, and
+U.S./territory scope agree with the bundled frontend resource module. No new
+emergency-services copy, response-time, privacy, or availability promise was added.
+The earlier October 12 retrieval limitations above remain historical observations.
+
+The implemented native dialog opens from a persistent control in normal/simpler
+views, during exercise and save failure. Browser testing with the backend stopped
+confirmed all bundled text/links rendered; Escape returned to a paused exercise,
+and Leave worked locally. Links were inspected without activating phone, SMS,
+or chat services. This verifies an already-loaded frontend during API failure,
+not cold-start offline loading, service availability, device handlers, or full
+resource accessibility. No crisis service was contacted. Recheck before a course
+demonstration. See [browser evidence](assignment3-part2-browser-verification.md).
+
+## Mock-conversation continuation — October 26, 2026
+
+Fresh local helpline lookup returned the same listed contact links and U.S./territory
+scope. Updated the bundled contact review date and resource test. The official
+Get Help page was not freshly retrieved this turn. No service was contacted;
+resource availability/device handlers remain untested. The existing independent
+panel rendered from a failed conversation request without a backend.

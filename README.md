@@ -7,19 +7,107 @@ frontend-driven booking creation, history, cancellation, and deletion.
 
 The source CSV files in `backend/data/` are read-only seed inputs.
 
-## Assignment 3.1 — Skills prototype design
+## Assignment 3 Part 2 — Implementation progress
 
-Assignment 3 adds a separate **Skills Prototype** view in this repository, with
-its own planned SQLite database. This is currently a documentation-only design
-milestone: the view, skills endpoints, and database are not implemented. The
-travel setup below runs Hudson Travel, not the proposed skills experience.
+Open **Skills Prototype** in the application navigation (`/#skills`); Hudson
+Travel remains the default (`/#travel`). The separate Vue view connects the
+application-owned six-cycle breathing timer to isolated session APIs. It provides
+Start, Pause, Resume, Stop, Leave, saved session history, simpler/static display
+options, and persistent locally bundled U.S. crisis information. Device reduced
+motion always keeps the cue still. Returning from crisis access stays paused.
+
+Checkpoints save in order without blocking controls. Failures show **Not saved**
+and an explicit retry. Reload never restarts breathing; review an unfinished
+saved session and explicitly mark it interrupted only if it is no longer active
+elsewhere. Closing the tab or choosing another exercise can lose unsent changes;
+history reflects only acknowledged checkpoints. Display settings are recorded
+per session. Explicit saved display choices are now available on the ready
+screen: **Save display choices**, **Use last setup**, and **Reset display choices**.
+Reload offers a saved setup without applying it; reuse never starts breathing.
+Reset restores full view/device motion and clears only the saved setup, preserving
+history. Reduced motion still overrides a saved gentle cue. Saving/reuse is optional;
+changing controls or receiving a mock reply does not save choices automatically.
+See [preferences and verification](docs/assignment3-part2-preferences.md).
+
+No new dependency, environment setting, API key, or setup step is required.
+Run the existing backend suite as documented below and npm test in frontend/;
+the latter now includes both API-client and skills state-machine tests.
+Skills session storage and lifecycle/history endpoints are now implemented under
+`/api/skills/sessions`. The existing backend command serves them from
+`backend/app/main.py`; the first skills request initializes the separate ignored
+`backend/instance/skills_prototype.sqlite3` file. Travel startup and data remain
+independent. No extra setup, dependency, environment variable, or model call is
+needed. [Session API guide](docs/assignment3-part2-sessions.md) documents request
+bodies, retries, state transitions, history pagination, and failure responses.
+
+Optional **conversation before/after breathing** (mock by default) and separate read-only
+conversation history are now connected. Text is stored locally without encryption;
+use fictional messages only. Replies come from the approved application catalog,
+with no live calls in default mode or automatic changes to the exercise. Exact retries
+prevent duplicate pairs; skipping/Leave ignores late results. A sent turn may
+finish saving before cancellation arrives. The existing skills database migrates from schema
+v1–v4 to v5 without removing existing session, conversation, or preference data. No setup change is required for mocks.
+See the [conversation API, verification, and limits](docs/assignment3-part2-conversations.md).
+
+Both history views now offer **Clear saved skills history** with explicit
+confirmation. It clears skills sessions/conversations and their child records,
+keeps display choices/travel data, and rejects earlier queued saves/retries.
+Cancel, Crisis support and Leave remain available in the confirmation. Failed
+requests retain their original clear request for explicit retry; new activity
+requires the current history generation. See [clear-history verification](docs/assignment3-part2-clear-history.md).
+
+**Part 2 is not submission-ready:** four authorized real-model checks now
+demonstrate basic reviewed reply/fact selection, and the app is back in mock mode. The approved checkpoint must be identified by its actual full SHA and
+verified pinned links in the separate upload report. The
+[readiness review and exact remaining steps](docs/assignment3-part2-readiness.md)
+and [Part 2 report draft](assignment3/part2/report.md) distinguish these remaining
+publication/review steps from later Part 3 work. The October 27 final review
+rechecked mock failures, paused support return, Stop, offline support/Leave and
+actual saved live replies in read-only browser history without new model calls.
+The student approved the documented simpler-view and history-status-copy limits
+on October 27 and authorized the checkpoint. The separate upload copy must still
+record its actual commit and pinned evidence links. Follow the [checkpoint/submission checklist](docs/assignment3-part2-submission-checklist.md).
+The last unchanged-source gate passed 492 backend/85 frontend tests, lint/build.
+
+The pre-adapter readiness review ran 465 backend tests, 81 frontend tests, both linters and the
+production build. One earlier verified production-preview run observed all twelve DOM
+phase cues over 60.011 active seconds (clock 60.010 s; setup 12.055 s, ready-view
+creation through Start). This is a single DOM observation, not hardware-paint or
+clinical evidence. [Review evidence](docs/assignment3-part2-readiness.md) separates
+it from an earlier run whose DOM timing was lost after reload and the prior
+[60.004-second UI-step observation](docs/assignment3-part2-browser-verification.md).
+
+The disabled adapter uses fixed `gpt-6-luna` and the backend-only `OPEN_AI` key.
+`SKILLS_MODEL_MODE=mock` is the default; the actual environment file was not changed.
+Do not enable live testing without separate student authorization. The selected
+skills allowance is ten dispatched attempts/$1 total, enforced by a durable
+ledger in the separate database. Each attempt reserves $0.10; failures/cancellation
+are not refunded. History clearing preserves this ledger. Exhaustion returns new
+turns to labeled mocks; retries never dispatch twice. There is no refill endpoint.
+This is a conservative local reservation budget, not actual provider billing.
+Use a single backend worker as in the startup commands. See the
+[adapter contract, limits, and verification](docs/assignment3-part2-adapter.md).
+No dependency change is required. Live account access/selection quality remains
+subject to broader evaluation. Four authorized real skills-provider calls passed
+their recorded expectations; no failed attempts or retries occurred. The durable
+ledger has four reservations ($0.40), leaving six attempts/$0.60. These are
+conservative reservations, not billed cost. See the
+[live-check results and limits](docs/assignment3-part2-live-checks.md).
+
+## Assignment 3.1 — Skills prototype design checkpoint
+
+Assignment 3's approved design specifies a separate **Skills Prototype** view
+and SQLite database in this repository. Part 1 was documentation-only; its
+published documents preserve that proposal. Current implementation progress is
+described above. The setup below runs the travel interface and shared backend;
+both travel and the skills interface are connected.
 
 The selected scope is six cycles of paced breathing (four seconds in, six
 seconds out; 60 active seconds) with optional model conversation before or
 after. Timing and navigation belong to the application. The model selects
 reviewed replies and facts; it does not generate therapeutic instructions.
-Clearly labeled U.S. crisis information is planned as a persistent, locally
-rendered route independent of the model and backend responses.
+Clearly labeled U.S. crisis information is now a persistent, locally rendered
+panel independent of the model and backend responses.
 
 This is a coursework skills prototype for fictional testing only. It must not
 diagnose, provide therapy, imply monitoring, or be offered/deployed as support
@@ -40,17 +128,17 @@ Part 1 materials:
 No new installation, dependency, environment variable, credential, or service
 startup is needed to review Part 1. Read the Markdown files in a viewer that
 renders Mermaid to see the flow diagram. The structural text sketch is also
-included. The proposed database is backend/instance/skills_prototype.sqlite3;
-it has not been created. Existing .env values are backend-only and must not be
+included. Part 1 proposed backend/instance/skills_prototype.sqlite3; Part 2 now
+creates it lazily on the first skills API request. Existing .env values are backend-only and must not be
 copied into design evidence. Document future settings in .env.example before
 implementation; no new settings are declared at this milestone.
 
 The Part 1 report remains a draft until student review, an exact submitted
 commit, published document links, and Canvas upload are
 complete. The student-reported drafting model is GPT-6.1 Sol with medium effort;
-desktop version is unavailable. Runtime duration, safety-route availability,
-SQLite persistence, accessibility, model selection quality, and clean-checkout run behavior remain
-unverified for the skills prototype.
+desktop version is unavailable. Part 2 browser evidence now covers one timed exercise, backend-outage resource
+access, and persistence after service restart. Full accessibility, broader live model
+selection reliability, and clean-checkout behavior remain unverified.
 
 ## Prerequisites
 
@@ -174,7 +262,7 @@ From the repository root:
 python3 -m venv backend/.venv
 source backend/.venv/bin/activate
 python -m pip install -r backend/requirements.txt
-uvicorn app.main:app --reload --app-dir backend
+uvicorn app.main:app --reload --reload-dir backend/app --app-dir backend
 ```
 
 The API is available at <http://127.0.0.1:8000>. On first startup it creates

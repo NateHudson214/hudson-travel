@@ -1,0 +1,59 @@
+{
+  "scope": "Disposable temporary QA databases only; production/development databases excluded",
+  "before": {
+    "epoch": 0,
+    "counts": {
+      "skills_sessions": 2,
+      "skills_session_events": 2,
+      "skills_conversations": 1,
+      "skills_messages": 2,
+      "skills_model_runs": 1
+    },
+    "preferences": {
+      "revision": 1,
+      "has_saved": 1,
+      "simpler_view": 1,
+      "motion_mode": "static",
+      "updated_at": "2026-10-26T12:00:00+00:00"
+    },
+    "travel_sha256": "758af3d584258d17163e08ff679f4955a61cae106f56b7fc0d0020443263cb83",
+    "old_session": {
+      "session_id": "a160cf7f-8934-4ccc-9148-fc7e7f8bfe66"
+    }
+  },
+  "after_clear": {
+    "epoch": 1,
+    "counts": {
+      "skills_sessions": 0,
+      "skills_session_events": 0,
+      "skills_conversations": 0,
+      "skills_messages": 0,
+      "skills_model_runs": 0
+    },
+    "preferences": {
+      "revision": 1,
+      "has_saved": 1,
+      "simpler_view": 1,
+      "motion_mode": "static",
+      "updated_at": "2026-10-26T12:00:00+00:00"
+    },
+    "travel_sha256": "758af3d584258d17163e08ff679f4955a61cae106f56b7fc0d0020443263cb83"
+  },
+  "old_session_retry_blocked": true,
+  "old_conversation_retry_blocked": true,
+  "development_databases_unchanged": true,
+  "integrity_check": "ok",
+  "after_new_activity_and_restart": {
+    "epoch": 1,
+    "counts": {
+      "skills_sessions": 0,
+      "skills_session_events": 0,
+      "skills_conversations": 1,
+      "skills_messages": 2,
+      "skills_model_runs": 1
+    },
+    "cleared_session_ids_absent": true,
+    "cleared_conversation_ids_absent": true,
+    "new_user_chosen_conversation_saved": true
+  }
+}

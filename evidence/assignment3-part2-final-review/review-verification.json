@@ -1,0 +1,18 @@
+{
+  "review_date": "2026-10-27",
+  "live_enabled": false,
+  "additional_live_calls": 0,
+  "original_skills_database_unchanged": true,
+  "saved_live_run_statuses": [
+    [
+      "completed",
+      4
+    ]
+  ],
+  "reserved_calls": 4,
+  "reserved_microdollars": 400000,
+  "pending_runs": 0,
+  "read_only_live_history_ui_verified": true,
+  "test_services_and_tab_closed": true,
+  "application_source_unchanged": true
+}

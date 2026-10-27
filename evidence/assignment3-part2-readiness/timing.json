@@ -1,0 +1,21 @@
+{
+  "clockActiveMs": 60010,
+  "domActiveMs": 60011,
+  "phases": [
+    "1:inhale",
+    "1:exhale",
+    "2:inhale",
+    "2:exhale",
+    "3:inhale",
+    "3:exhale",
+    "4:inhale",
+    "4:exhale",
+    "5:inhale",
+    "5:exhale",
+    "6:inhale",
+    "6:exhale"
+  ],
+  "staticCue": "true",
+  "status": "completed",
+  "visible": "visible"
+}
