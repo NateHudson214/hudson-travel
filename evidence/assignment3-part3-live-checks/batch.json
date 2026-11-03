@@ -1,0 +1,645 @@
+{
+  "started_at": "2026-11-02T20:34:12.179197+00:00",
+  "phase": "finished",
+  "provider": "OpenAI",
+  "configured_model": "gpt-6-luna",
+  "maximum_attempts": 4,
+  "dispatches": 4,
+  "automatic_retries": 0,
+  "prompt_hash": "37b7993ef6711fd8dc771e084230cb31f9643717a7c2ddfda864a2e6c0d3168c",
+  "method": "Actual FastAPI ASGI route and production adapter, observed real HTTPS transport; four independent conversations, no browser Send",
+  "pricing": {
+    "verified_date": "2026-11-02",
+    "source": "https://developers.openai.com/api/docs/pricing",
+    "input_per_million_usd": 0.1,
+    "output_per_million_usd": 0.5,
+    "cached_input_per_million_usd": 0.01,
+    "cache_write_30m_per_million_usd": 0.125,
+    "cache_write_12h_per_million_usd": 0.25,
+    "reservation_usd_per_attempt": 0.1,
+    "conservative_20000_input_512_output_cost_usd": 0.005256
+  },
+  "results": [
+    {
+      "case": "typing",
+      "repeat": 1,
+      "request_id": "9af991c9-7bc6-48d9-9861-f05fb25a3dc4",
+      "conversation_id": "c4afffec-5643-47e3-8f67-e0436243f1c5",
+      "fictional_message": "Fictional test: does this character need to type during the breathing exercise?",
+      "expected_reply_id": "explain_available_skill",
+      "required_facts": [
+        "no_typing_required"
+      ],
+      "started_at": "2026-11-02T20:34:12.188404+00:00",
+      "dispatched_at": "2026-11-02T20:34:12.245528+00:00",
+      "route_http_status": 200,
+      "result": {
+        "conversation": {
+          "conversation_id": "c4afffec-5643-47e3-8f67-e0436243f1c5",
+          "session_id": null,
+          "placement": "before",
+          "created_at": "2026-11-02T20:34:12.209173+00:00",
+          "updated_at": "2026-11-02T20:34:15.248799+00:00",
+          "revision": 2
+        },
+        "messages": [
+          {
+            "content": "Fictional test: does this character need to type during the breathing exercise?",
+            "conversation_id": "c4afffec-5643-47e3-8f67-e0436243f1c5",
+            "created_at": "2026-11-02T20:34:12.209173+00:00",
+            "fact_ids": [],
+            "message_id": "e4e998c9-1d2a-4aa3-a157-3233282d3d92",
+            "reply_id": null,
+            "role": "user",
+            "sequence": 1,
+            "source": "user"
+          },
+          {
+            "message_id": "a9f47d18-e7a5-4b6d-804f-5fb5c8bb302f",
+            "conversation_id": "c4afffec-5643-47e3-8f67-e0436243f1c5",
+            "sequence": 2,
+            "role": "assistant",
+            "content": "Conversation is unavailable. You can continue without it. Crisis support remains available.",
+            "source": "application-fallback",
+            "created_at": "2026-11-02T20:34:15.248799+00:00",
+            "reply_id": null,
+            "fact_ids": []
+          }
+        ],
+        "replayed": false,
+        "run": {
+          "context_hash": "b14d2e6434c7fba76e4b878e2906bc284ab9668ba0652a0029ebf816af5dd21e",
+          "context_version": "skills-selector-v1/skills-replies-v1",
+          "error_category": "timeout",
+          "mode": "live",
+          "model_id": "gpt-6-luna",
+          "request_id": "9af991c9-7bc6-48d9-9861-f05fb25a3dc4",
+          "status": "failed"
+        }
+      },
+      "expected_selection_met": false,
+      "elapsed_ms": 3066,
+      "finished_at": "2026-11-02T20:34:15.254697+00:00"
+    },
+    {
+      "case": "typing",
+      "repeat": 2,
+      "request_id": "d9f222c4-4789-4a60-ac80-748fa50ef80f",
+      "conversation_id": "bb3b75a7-e8b5-4e94-a7cf-31f5e8241dec",
+      "fictional_message": "Fictional test: does this character need to type during the breathing exercise?",
+      "expected_reply_id": "explain_available_skill",
+      "required_facts": [
+        "no_typing_required"
+      ],
+      "started_at": "2026-11-02T20:34:15.256140+00:00",
+      "dispatched_at": "2026-11-02T20:34:15.269093+00:00",
+      "provider_http_status": 200,
+      "provider_observation": {
+        "model": "gpt-6-luna",
+        "status": "completed",
+        "usage": {
+          "input_tokens": 535,
+          "input_tokens_details": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0
+          },
+          "output_tokens": 47,
+          "output_tokens_details": {
+            "reasoning_tokens": 19
+          },
+          "total_tokens": 582
+        }
+      },
+      "route_http_status": 200,
+      "result": {
+        "conversation": {
+          "conversation_id": "bb3b75a7-e8b5-4e94-a7cf-31f5e8241dec",
+          "session_id": null,
+          "placement": "before",
+          "created_at": "2026-11-02T20:34:15.258811+00:00",
+          "updated_at": "2026-11-02T20:34:16.774343+00:00",
+          "revision": 2
+        },
+        "messages": [
+          {
+            "content": "Fictional test: does this character need to type during the breathing exercise?",
+            "conversation_id": "bb3b75a7-e8b5-4e94-a7cf-31f5e8241dec",
+            "created_at": "2026-11-02T20:34:15.258811+00:00",
+            "fact_ids": [],
+            "message_id": "f40b6a9c-2732-4355-86ba-d72663a8fc2e",
+            "reply_id": null,
+            "role": "user",
+            "sequence": 1,
+            "source": "user"
+          },
+          {
+            "message_id": "30b31292-3325-4c50-9653-a17d707a0a8f",
+            "conversation_id": "bb3b75a7-e8b5-4e94-a7cf-31f5e8241dec",
+            "sequence": 2,
+            "role": "assistant",
+            "content": "This prototype offers one paced breathing exercise. No typing is required during the exercise.",
+            "source": "live-selected-template",
+            "created_at": "2026-11-02T20:34:16.774343+00:00",
+            "reply_id": "explain_available_skill",
+            "fact_ids": [
+              "no_typing_required"
+            ]
+          }
+        ],
+        "replayed": false,
+        "run": {
+          "context_hash": "b14d2e6434c7fba76e4b878e2906bc284ab9668ba0652a0029ebf816af5dd21e",
+          "context_version": "skills-selector-v1/skills-replies-v1",
+          "error_category": null,
+          "mode": "live",
+          "model_id": "gpt-6-luna",
+          "request_id": "d9f222c4-4789-4a60-ac80-748fa50ef80f",
+          "status": "completed"
+        }
+      },
+      "expected_selection_met": true,
+      "elapsed_ms": 1522,
+      "finished_at": "2026-11-02T20:34:16.778380+00:00"
+    },
+    {
+      "case": "motion",
+      "repeat": 1,
+      "request_id": "198bcf4f-74b1-40cf-99e3-b2223f8ad4ab",
+      "conversation_id": "10e834b0-565e-4e1d-bd12-784d98366854",
+      "fictional_message": "Fictional test after breathing: the character dislikes moving cues and would like a still display. What option is available?",
+      "expected_reply_id": "neutral_acknowledgment",
+      "required_facts": [
+        "static_display_option"
+      ],
+      "started_at": "2026-11-02T20:34:16.780309+00:00",
+      "dispatched_at": "2026-11-02T20:34:16.795945+00:00",
+      "provider_http_status": 200,
+      "provider_observation": {
+        "model": "gpt-6-luna",
+        "status": "completed",
+        "usage": {
+          "input_tokens": 543,
+          "input_tokens_details": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0
+          },
+          "output_tokens": 59,
+          "output_tokens_details": {
+            "reasoning_tokens": 31
+          },
+          "total_tokens": 602
+        }
+      },
+      "route_http_status": 200,
+      "result": {
+        "conversation": {
+          "conversation_id": "10e834b0-565e-4e1d-bd12-784d98366854",
+          "session_id": null,
+          "placement": "after",
+          "created_at": "2026-11-02T20:34:16.784677+00:00",
+          "updated_at": "2026-11-02T20:34:19.471376+00:00",
+          "revision": 2
+        },
+        "messages": [
+          {
+            "content": "Fictional test after breathing: the character dislikes moving cues and would like a still display. What option is available?",
+            "conversation_id": "10e834b0-565e-4e1d-bd12-784d98366854",
+            "created_at": "2026-11-02T20:34:16.784677+00:00",
+            "fact_ids": [],
+            "message_id": "0399764c-bf09-4810-90e7-21ff9ddaff2a",
+            "reply_id": null,
+            "role": "user",
+            "sequence": 1,
+            "source": "user"
+          },
+          {
+            "message_id": "4d4ef1d0-d2fd-4d94-97e9-5dd109150353",
+            "conversation_id": "10e834b0-565e-4e1d-bd12-784d98366854",
+            "sequence": 2,
+            "role": "assistant",
+            "content": "You can choose what to do next. You can choose a static display instead of motion.",
+            "source": "live-selected-template",
+            "created_at": "2026-11-02T20:34:19.471376+00:00",
+            "reply_id": "neutral_acknowledgment",
+            "fact_ids": [
+              "static_display_option"
+            ]
+          }
+        ],
+        "replayed": false,
+        "run": {
+          "context_hash": "0a492735c9c8a497c5d26c8febf91861f7cc847bf876e4b2777151aa160327b7",
+          "context_version": "skills-selector-v1/skills-replies-v1",
+          "error_category": null,
+          "mode": "live",
+          "model_id": "gpt-6-luna",
+          "request_id": "198bcf4f-74b1-40cf-99e3-b2223f8ad4ab",
+          "status": "completed"
+        }
+      },
+      "expected_selection_met": true,
+      "elapsed_ms": 2693,
+      "finished_at": "2026-11-02T20:34:19.474133+00:00"
+    },
+    {
+      "case": "motion",
+      "repeat": 2,
+      "request_id": "5aa5e7e0-5bd7-430d-990e-95dc23a2c557",
+      "conversation_id": "5bc7d364-6fa6-4895-975e-97d935e42783",
+      "fictional_message": "Fictional test after breathing: the character dislikes moving cues and would like a still display. What option is available?",
+      "expected_reply_id": "neutral_acknowledgment",
+      "required_facts": [
+        "static_display_option"
+      ],
+      "started_at": "2026-11-02T20:34:19.480028+00:00",
+      "dispatched_at": "2026-11-02T20:34:19.503432+00:00",
+      "provider_http_status": 200,
+      "provider_observation": {
+        "model": "gpt-6-luna",
+        "status": "completed",
+        "usage": {
+          "input_tokens": 543,
+          "input_tokens_details": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0
+          },
+          "output_tokens": 51,
+          "output_tokens_details": {
+            "reasoning_tokens": 23
+          },
+          "total_tokens": 594
+        }
+      },
+      "route_http_status": 200,
+      "result": {
+        "conversation": {
+          "conversation_id": "5bc7d364-6fa6-4895-975e-97d935e42783",
+          "session_id": null,
+          "placement": "after",
+          "created_at": "2026-11-02T20:34:19.489738+00:00",
+          "updated_at": "2026-11-02T20:34:21.318417+00:00",
+          "revision": 2
+        },
+        "messages": [
+          {
+            "content": "Fictional test after breathing: the character dislikes moving cues and would like a still display. What option is available?",
+            "conversation_id": "5bc7d364-6fa6-4895-975e-97d935e42783",
+            "created_at": "2026-11-02T20:34:19.489738+00:00",
+            "fact_ids": [],
+            "message_id": "815884fb-24dd-490b-93e1-c34672de7952",
+            "reply_id": null,
+            "role": "user",
+            "sequence": 1,
+            "source": "user"
+          },
+          {
+            "message_id": "7c58e4f3-3de5-446f-9318-f815b307d603",
+            "conversation_id": "5bc7d364-6fa6-4895-975e-97d935e42783",
+            "sequence": 2,
+            "role": "assistant",
+            "content": "You can choose what to do next. You can choose a static display instead of motion.",
+            "source": "live-selected-template",
+            "created_at": "2026-11-02T20:34:21.318417+00:00",
+            "reply_id": "neutral_acknowledgment",
+            "fact_ids": [
+              "static_display_option"
+            ]
+          }
+        ],
+        "replayed": false,
+        "run": {
+          "context_hash": "0a492735c9c8a497c5d26c8febf91861f7cc847bf876e4b2777151aa160327b7",
+          "context_version": "skills-selector-v1/skills-replies-v1",
+          "error_category": null,
+          "mode": "live",
+          "model_id": "gpt-6-luna",
+          "request_id": "5aa5e7e0-5bd7-430d-990e-95dc23a2c557",
+          "status": "completed"
+        }
+      },
+      "expected_selection_met": true,
+      "elapsed_ms": 1838,
+      "finished_at": "2026-11-02T20:34:21.321624+00:00"
+    }
+  ],
+  "before": {
+    "budget": {
+      "singleton_id": 1,
+      "model_id": "gpt-6-luna",
+      "call_limit": 10,
+      "dollar_limit_micro": 1000000,
+      "reserved_calls": 4,
+      "reserved_micro": 400000
+    },
+    "history": [
+      {
+        "singleton_id": 1,
+        "epoch": 0,
+        "last_request_id": null,
+        "last_payload_json": null,
+        "last_response_json": null
+      }
+    ],
+    "preferences": [
+      {
+        "singleton_id": 1,
+        "revision": 6,
+        "has_saved": 0,
+        "simpler_view": 0,
+        "motion_mode": "system",
+        "updated_at": "2026-10-27T16:00:08.374224+00:00",
+        "last_request_id": "05f9f28b-4708-45b9-b0e3-7431bee8bc2f",
+        "last_payload_json": "{\"action\":\"reset\",\"display_settings\":null,\"expected_revision\":5,\"request_id\":\"05f9f28b-4708-45b9-b0e3-7431bee8bc2f\"}"
+      }
+    ],
+    "sessions": [
+      {
+        "session_id": "156a8944-0a0a-4ee3-a6be-6286a93a89b6",
+        "skill_id": "paced_breathing_4_6",
+        "skill_version": "1",
+        "status": "stopped",
+        "revision": 4,
+        "settings_json": "{\"motion_mode\":\"static\",\"simpler_view\":true}",
+        "created_at": "2026-10-27T00:55:39.289284+00:00",
+        "updated_at": "2026-10-27T00:55:52.589066+00:00",
+        "started_at": "2026-10-27T00:55:39.304730+00:00",
+        "ended_at": "2026-10-27T00:55:52.589066+00:00",
+        "active_ms": 534,
+        "pause_ms": 817,
+        "support_ms": 11950,
+        "setup_ms": 32652,
+        "cycles_completed": 0,
+        "phase": "inhale",
+        "phase_remaining_ms": 3466,
+        "support_open": 0
+      },
+      {
+        "session_id": "f4fb02f9-7e69-4d00-adb8-bc4686da2ed4",
+        "skill_id": "paced_breathing_4_6",
+        "skill_version": "1",
+        "status": "stopped",
+        "revision": 8,
+        "settings_json": "{\"motion_mode\":\"system\",\"simpler_view\":false}",
+        "created_at": "2026-10-27T15:50:26.322298+00:00",
+        "updated_at": "2026-10-27T15:50:59.530606+00:00",
+        "started_at": "2026-10-27T15:50:26.333663+00:00",
+        "ended_at": "2026-10-27T15:50:59.530606+00:00",
+        "active_ms": 7505,
+        "pause_ms": 23824,
+        "support_ms": 1904,
+        "setup_ms": 431411,
+        "cycles_completed": 0,
+        "phase": "exhale",
+        "phase_remaining_ms": 2495,
+        "support_open": 0
+      },
+      {
+        "session_id": "96831727-2b4e-4144-867a-739efc6506c1",
+        "skill_id": "paced_breathing_4_6",
+        "skill_version": "1",
+        "status": "completed",
+        "revision": 13,
+        "settings_json": "{\"motion_mode\":\"static\",\"simpler_view\":false}",
+        "created_at": "2026-10-27T15:58:02.873861+00:00",
+        "updated_at": "2026-10-27T15:59:02.897958+00:00",
+        "started_at": "2026-10-27T15:58:02.887205+00:00",
+        "ended_at": "2026-10-27T15:59:02.897958+00:00",
+        "active_ms": 60014,
+        "pause_ms": 0,
+        "support_ms": 0,
+        "setup_ms": 368213,
+        "cycles_completed": 6,
+        "phase": "exhale",
+        "phase_remaining_ms": 0,
+        "support_open": 0
+      },
+      {
+        "session_id": "3b0ef1eb-fe97-43e3-8145-81cbdf07be4c",
+        "skill_id": "paced_breathing_4_6",
+        "skill_version": "1",
+        "status": "stopped",
+        "revision": 7,
+        "settings_json": "{\"motion_mode\":\"system\",\"simpler_view\":false}",
+        "created_at": "2026-10-27T16:00:14.792027+00:00",
+        "updated_at": "2026-10-27T16:00:33.478412+00:00",
+        "started_at": "2026-10-27T16:00:14.808745+00:00",
+        "ended_at": "2026-10-27T16:00:33.478412+00:00",
+        "active_ms": 7784,
+        "pause_ms": 6751,
+        "support_ms": 4150,
+        "setup_ms": 53574,
+        "cycles_completed": 0,
+        "phase": "exhale",
+        "phase_remaining_ms": 2216,
+        "support_open": 0
+      }
+    ],
+    "counts": {
+      "skills_conversations": 4,
+      "skills_messages": 10,
+      "skills_model_runs": 5
+    },
+    "pending": 0,
+    "integrity": "ok",
+    "foreign_key_errors": []
+  },
+  "preserved_hashes_before": {
+    ".env": "38d7baadd6c49c9915587dd2085758b5c3d5ea1afb9883937d1eba41d830881f",
+    "backend/instance/hudson_travel.sqlite3": "984f739427049ddf1454d78cc26ce36179477936ef290f0ecece9a2a79a1108b",
+    "assignment3/part1/report.md": "a8b251414e86b9b97b0794dd78f7c42a9f1b4e55c9149708162de5c4d9928dfb",
+    "assignment3/part2/report.md": "3a72c9e99505a09eb06e431683b77939548164c7fc176fb9037053454f8e7aa6"
+  },
+  "planned_cases": [
+    {
+      "case": "typing",
+      "repeat": 1,
+      "message": "Fictional test: does this character need to type during the breathing exercise?",
+      "placement": "before",
+      "expected_reply_id": "explain_available_skill",
+      "required_facts": [
+        "no_typing_required"
+      ]
+    },
+    {
+      "case": "typing",
+      "repeat": 2,
+      "message": "Fictional test: does this character need to type during the breathing exercise?",
+      "placement": "before",
+      "expected_reply_id": "explain_available_skill",
+      "required_facts": [
+        "no_typing_required"
+      ]
+    },
+    {
+      "case": "motion",
+      "repeat": 1,
+      "message": "Fictional test after breathing: the character dislikes moving cues and would like a still display. What option is available?",
+      "placement": "after",
+      "expected_reply_id": "neutral_acknowledgment",
+      "required_facts": [
+        "static_display_option"
+      ]
+    },
+    {
+      "case": "motion",
+      "repeat": 2,
+      "message": "Fictional test after breathing: the character dislikes moving cues and would like a still display. What option is available?",
+      "placement": "after",
+      "expected_reply_id": "neutral_acknowledgment",
+      "required_facts": [
+        "static_display_option"
+      ]
+    }
+  ],
+  "restored_status": {
+    "mode": "mock",
+    "model_id": "local-fixed-fixture-v1",
+    "live_enabled": false,
+    "allowance_exhausted": false,
+    "budget": {
+      "singleton_id": 1,
+      "model_id": "gpt-6-luna",
+      "call_limit": 10,
+      "dollar_limit_micro": 1000000,
+      "reserved_calls": 8,
+      "reserved_micro": 800000
+    }
+  },
+  "history_read_statuses": [
+    200,
+    200,
+    200,
+    200
+  ],
+  "default_live_enabled_after": false,
+  "after": {
+    "budget": {
+      "singleton_id": 1,
+      "model_id": "gpt-6-luna",
+      "call_limit": 10,
+      "dollar_limit_micro": 1000000,
+      "reserved_calls": 8,
+      "reserved_micro": 800000
+    },
+    "history": [
+      {
+        "singleton_id": 1,
+        "epoch": 0,
+        "last_request_id": null,
+        "last_payload_json": null,
+        "last_response_json": null
+      }
+    ],
+    "preferences": [
+      {
+        "singleton_id": 1,
+        "revision": 6,
+        "has_saved": 0,
+        "simpler_view": 0,
+        "motion_mode": "system",
+        "updated_at": "2026-10-27T16:00:08.374224+00:00",
+        "last_request_id": "05f9f28b-4708-45b9-b0e3-7431bee8bc2f",
+        "last_payload_json": "{\"action\":\"reset\",\"display_settings\":null,\"expected_revision\":5,\"request_id\":\"05f9f28b-4708-45b9-b0e3-7431bee8bc2f\"}"
+      }
+    ],
+    "sessions": [
+      {
+        "session_id": "156a8944-0a0a-4ee3-a6be-6286a93a89b6",
+        "skill_id": "paced_breathing_4_6",
+        "skill_version": "1",
+        "status": "stopped",
+        "revision": 4,
+        "settings_json": "{\"motion_mode\":\"static\",\"simpler_view\":true}",
+        "created_at": "2026-10-27T00:55:39.289284+00:00",
+        "updated_at": "2026-10-27T00:55:52.589066+00:00",
+        "started_at": "2026-10-27T00:55:39.304730+00:00",
+        "ended_at": "2026-10-27T00:55:52.589066+00:00",
+        "active_ms": 534,
+        "pause_ms": 817,
+        "support_ms": 11950,
+        "setup_ms": 32652,
+        "cycles_completed": 0,
+        "phase": "inhale",
+        "phase_remaining_ms": 3466,
+        "support_open": 0
+      },
+      {
+        "session_id": "f4fb02f9-7e69-4d00-adb8-bc4686da2ed4",
+        "skill_id": "paced_breathing_4_6",
+        "skill_version": "1",
+        "status": "stopped",
+        "revision": 8,
+        "settings_json": "{\"motion_mode\":\"system\",\"simpler_view\":false}",
+        "created_at": "2026-10-27T15:50:26.322298+00:00",
+        "updated_at": "2026-10-27T15:50:59.530606+00:00",
+        "started_at": "2026-10-27T15:50:26.333663+00:00",
+        "ended_at": "2026-10-27T15:50:59.530606+00:00",
+        "active_ms": 7505,
+        "pause_ms": 23824,
+        "support_ms": 1904,
+        "setup_ms": 431411,
+        "cycles_completed": 0,
+        "phase": "exhale",
+        "phase_remaining_ms": 2495,
+        "support_open": 0
+      },
+      {
+        "session_id": "96831727-2b4e-4144-867a-739efc6506c1",
+        "skill_id": "paced_breathing_4_6",
+        "skill_version": "1",
+        "status": "completed",
+        "revision": 13,
+        "settings_json": "{\"motion_mode\":\"static\",\"simpler_view\":false}",
+        "created_at": "2026-10-27T15:58:02.873861+00:00",
+        "updated_at": "2026-10-27T15:59:02.897958+00:00",
+        "started_at": "2026-10-27T15:58:02.887205+00:00",
+        "ended_at": "2026-10-27T15:59:02.897958+00:00",
+        "active_ms": 60014,
+        "pause_ms": 0,
+        "support_ms": 0,
+        "setup_ms": 368213,
+        "cycles_completed": 6,
+        "phase": "exhale",
+        "phase_remaining_ms": 0,
+        "support_open": 0
+      },
+      {
+        "session_id": "3b0ef1eb-fe97-43e3-8145-81cbdf07be4c",
+        "skill_id": "paced_breathing_4_6",
+        "skill_version": "1",
+        "status": "stopped",
+        "revision": 7,
+        "settings_json": "{\"motion_mode\":\"system\",\"simpler_view\":false}",
+        "created_at": "2026-10-27T16:00:14.792027+00:00",
+        "updated_at": "2026-10-27T16:00:33.478412+00:00",
+        "started_at": "2026-10-27T16:00:14.808745+00:00",
+        "ended_at": "2026-10-27T16:00:33.478412+00:00",
+        "active_ms": 7784,
+        "pause_ms": 6751,
+        "support_ms": 4150,
+        "setup_ms": 53574,
+        "cycles_completed": 0,
+        "phase": "exhale",
+        "phase_remaining_ms": 2216,
+        "support_open": 0
+      }
+    ],
+    "counts": {
+      "skills_conversations": 8,
+      "skills_messages": 18,
+      "skills_model_runs": 9
+    },
+    "pending": 0,
+    "integrity": "ok",
+    "foreign_key_errors": []
+  },
+  "preserved_hashes_after": {
+    ".env": "38d7baadd6c49c9915587dd2085758b5c3d5ea1afb9883937d1eba41d830881f",
+    "backend/instance/hudson_travel.sqlite3": "984f739427049ddf1454d78cc26ce36179477936ef290f0ecece9a2a79a1108b",
+    "assignment3/part1/report.md": "a8b251414e86b9b97b0794dd78f7c42a9f1b4e55c9149708162de5c4d9928dfb",
+    "assignment3/part2/report.md": "3a72c9e99505a09eb06e431683b77939548164c7fc176fb9037053454f8e7aa6"
+  },
+  "preserved_files_unchanged": true,
+  "preferences_sessions_epoch_unchanged": true,
+  "finished_at": "2026-11-02T20:34:21.331903+00:00"
+}

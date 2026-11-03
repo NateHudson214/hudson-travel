@@ -1,0 +1,43 @@
+{
+  "review_date": "2026-11-03",
+  "filename": "assignment3-part3-process.mov",
+  "sha256": "a4ecb99fe4a8aaebf8779d0f5ef502ce8215ff6200dad7158a681e0899b8c5fe",
+  "bytes": 30462496,
+  "audio_tracks": 0,
+  "duration_seconds": 202.53,
+  "height": 1494,
+  "sample_count": 22,
+  "sample_interval_seconds": 10,
+  "video_tracks": 1,
+  "width": 2866,
+  "method": "22 decoded samples at ten-second intervals plus last second; all three contact sheets and targeted full-resolution error/code/closing frames inspected; not continuous playback certification",
+  "observed_sections": [
+    "historical failure introduction",
+    "actual 362 passed/130 error output",
+    "before/during/after-undo reproduction",
+    "mapping-based test fixture repair",
+    "444/48 revision and492 passing result with state-restoration proof",
+    "fixed breathing constants",
+    "actual elapsed/pause timing",
+    "explicit resume after support",
+    "reply shape validator",
+    "approved-catalog rendering",
+    "bounded provider deadline",
+    "four actual live outcomes",
+    "surprising finding and unresolved limitations"
+  ],
+  "content_assessment": "core process/failure/evidence/decision/generated-code content present and readable in samples; no new test or provider call represented as having run in this recording",
+  "limitations": [
+    "no control supplement precedes walkthrough; introductory prepared-text reference is not proof of a recorded supplement",
+    "some evidence/source footers reach capture edge; important inspected error/code text readable",
+    "Control Center/recording controls appear near ending; optional trim",
+    "not a continuous-playback/all-frames privacy review"
+  ],
+  "user_direction": "User explicitly accepts video A framing as-is; no retake or supplement is required by this review.",
+  "remaining_media_gates": [
+    "user watches both complete final files",
+    "actual host URLs and instructor access unverified"
+  ],
+  "original_video_modified": false,
+  "uploads": 0
+}

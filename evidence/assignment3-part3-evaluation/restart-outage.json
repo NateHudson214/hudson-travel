@@ -1,0 +1,14 @@
+{
+  "S14": {
+    "before_status": "paused",
+    "after_status": "interrupted",
+    "acknowledged_active_ms": 283,
+    "restored_active_ms": 283,
+    "explicit_interruption_preserved_checkpoint": true
+  },
+  "S10": {
+    "unsent_outage_draft_absent_from_database": true,
+    "automatic_retry_not_used": true
+  },
+  "history_reads_added_model_runs": 0
+}

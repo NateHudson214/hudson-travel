@@ -1,0 +1,160 @@
+{
+  "version": "0.0.0",
+  "name": "frontend",
+  "dependencies": {
+    "@vitejs/plugin-vue": {
+      "version": "6.0.8",
+      "resolved": "https://registry.npmjs.org/@vitejs/plugin-vue/-/plugin-vue-6.0.8.tgz",
+      "overridden": false,
+      "dependencies": {
+        "vite": {
+          "version": "8.2.2"
+        }
+      }
+    },
+    "eslint": {
+      "version": "10.9.1",
+      "resolved": "https://registry.npmjs.org/eslint/-/eslint-10.9.1.tgz",
+      "overridden": false,
+      "dependencies": {
+        "@eslint/config-array": {
+          "version": "0.23.5",
+          "resolved": "https://registry.npmjs.org/@eslint/config-array/-/config-array-0.23.5.tgz",
+          "overridden": false,
+          "dependencies": {
+            "minimatch": {
+              "version": "10.2.6"
+            }
+          }
+        },
+        "minimatch": {
+          "version": "10.2.6",
+          "resolved": "https://registry.npmjs.org/minimatch/-/minimatch-10.2.6.tgz",
+          "overridden": false,
+          "dependencies": {
+            "brace-expansion": {
+              "version": "5.0.9",
+              "resolved": "https://registry.npmjs.org/brace-expansion/-/brace-expansion-5.0.9.tgz",
+              "overridden": false
+            }
+          }
+        }
+      }
+    },
+    "npm-run-all2": {
+      "version": "9.0.3",
+      "resolved": "https://registry.npmjs.org/npm-run-all2/-/npm-run-all2-9.0.3.tgz",
+      "overridden": false,
+      "dependencies": {
+        "shell-quote": {
+          "version": "1.10.0",
+          "resolved": "https://registry.npmjs.org/shell-quote/-/shell-quote-1.10.0.tgz",
+          "overridden": false
+        }
+      }
+    },
+    "vite-plugin-vue-devtools": {
+      "version": "8.2.1",
+      "resolved": "https://registry.npmjs.org/vite-plugin-vue-devtools/-/vite-plugin-vue-devtools-8.2.1.tgz",
+      "overridden": false,
+      "dependencies": {
+        "vite-plugin-inspect": {
+          "version": "11.4.1",
+          "resolved": "https://registry.npmjs.org/vite-plugin-inspect/-/vite-plugin-inspect-11.4.1.tgz",
+          "overridden": false,
+          "dependencies": {
+            "vite-dev-rpc": {
+              "version": "2.0.0",
+              "resolved": "https://registry.npmjs.org/vite-dev-rpc/-/vite-dev-rpc-2.0.0.tgz",
+              "overridden": false,
+              "dependencies": {
+                "vite-hot-client": {
+                  "version": "2.2.0",
+                  "resolved": "https://registry.npmjs.org/vite-hot-client/-/vite-hot-client-2.2.0.tgz",
+                  "overridden": false,
+                  "dependencies": {
+                    "vite": {
+                      "version": "8.2.2"
+                    }
+                  }
+                },
+                "vite": {
+                  "version": "8.2.2"
+                }
+              }
+            },
+            "vite": {
+              "version": "8.2.2"
+            }
+          }
+        },
+        "vite-plugin-vue-inspector": {
+          "version": "6.0.0",
+          "resolved": "https://registry.npmjs.org/vite-plugin-vue-inspector/-/vite-plugin-vue-inspector-6.0.0.tgz",
+          "overridden": false,
+          "dependencies": {
+            "vite": {
+              "version": "8.2.2"
+            }
+          }
+        },
+        "vite": {
+          "version": "8.2.2"
+        }
+      }
+    },
+    "vite": {
+      "version": "8.2.2",
+      "resolved": "https://registry.npmjs.org/vite/-/vite-8.2.2.tgz",
+      "overridden": false,
+      "dependencies": {
+        "postcss": {
+          "version": "8.5.28",
+          "resolved": "https://registry.npmjs.org/postcss/-/postcss-8.5.28.tgz",
+          "overridden": false,
+          "dependencies": {
+            "source-map-js": {
+              "version": "1.2.1",
+              "resolved": "https://registry.npmjs.org/source-map-js/-/source-map-js-1.2.1.tgz",
+              "overridden": false
+            }
+          }
+        }
+      }
+    },
+    "vue": {
+      "version": "3.5.42",
+      "resolved": "https://registry.npmjs.org/vue/-/vue-3.5.42.tgz",
+      "overridden": false,
+      "dependencies": {
+        "@vue/compiler-dom": {
+          "version": "3.5.42",
+          "resolved": "https://registry.npmjs.org/@vue/compiler-dom/-/compiler-dom-3.5.42.tgz",
+          "overridden": false,
+          "dependencies": {
+            "@vue/compiler-core": {
+              "version": "3.5.42",
+              "resolved": "https://registry.npmjs.org/@vue/compiler-core/-/compiler-core-3.5.42.tgz",
+              "overridden": false,
+              "dependencies": {
+                "source-map-js": {
+                  "version": "1.2.1"
+                }
+              }
+            }
+          }
+        },
+        "@vue/compiler-sfc": {
+          "version": "3.5.42",
+          "resolved": "https://registry.npmjs.org/@vue/compiler-sfc/-/compiler-sfc-3.5.42.tgz",
+          "overridden": false,
+          "dependencies": {
+            "source-map-js": {
+              "version": "1.2.1"
+            }
+          }
+        }
+      }
+    }
+  }
+}

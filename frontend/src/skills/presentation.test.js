@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict'
 import test from 'node:test'
-import { useStaticCue } from './presentation.js'
+import { canOfferConversation, useStaticCue } from './presentation.js'
 import { CRISIS_RESOURCES } from './crisisResources.js'
 
 test('reduced motion always produces a stationary cue, including an earlier gentle choice', () => {
@@ -8,6 +8,22 @@ test('reduced motion always produces a stationary cue, including an earlier gent
   assert.equal(useStaticCue('static', false), true)
   assert.equal(useStaticCue('system', false), false)
   assert.equal(useStaticCue('gentle', false), false)
+})
+
+test('simpler view removes optional conversation entries before and after breathing', () => {
+  for (const status of ['ready', 'completed', 'stopped']) {
+    assert.equal(canOfferConversation('exercise', status, true), false)
+    assert.equal(canOfferConversation('exercise', status, false), true)
+  }
+})
+
+test('conversation entries never appear during pacing, pauses, history or an already chosen conversation', () => {
+  for (const status of ['running', 'paused', 'interrupted', 'unknown']) {
+    assert.equal(canOfferConversation('exercise', status, false), false)
+  }
+  for (const page of ['idle', 'history', 'conversation-history', 'conversation']) {
+    assert.equal(canOfferConversation(page, 'completed', false), false)
+  }
 })
 
 test('crisis contacts are independently bundled, geographically labeled, and immutable', () => {

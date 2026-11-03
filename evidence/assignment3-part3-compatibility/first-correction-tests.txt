@@ -1,0 +1,874 @@
+........................................................................ [ 14%]
+...........................................EEEEEEEEEEEEEEEEEEEEEEEEEEEEE [ 29%]
+EEEEEEEEE.EEEEEEEEEE.................................................... [ 43%]
+........................................................................ [ 58%]
+........................................................................ [ 73%]
+........................................................................ [ 87%]
+............................................................             [100%]
+==================================== ERRORS ====================================
+_ ERROR at setup of test_full_lifecycle_keeps_pause_support_and_setup_separate _
+
+client = <starlette.testclient.TestClient object at 0x10b7369c0>
+tmp_path = PosixPath('/private/var/folders/nj/wwm32g054d78r7fjs2xw9wbh0000gn/T/pytest-of-natehudson/pytest-128/test_full_lifecycle_keeps_paus0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x10b5f2430>
+
+    @pytest.fixture
+    def skills_client(client, tmp_path, monkeypatch):
+        # Patch State storage directly so pytest undo restores dynamic attributes.
+        monkeypatch.setitem(app.state._state, "skills_database_path", tmp_path / "skills.sqlite3")
+>       monkeypatch.setattr(
+            app.state, "skills_now_provider",
+            lambda: datetime(2026, 10, 21, 12, tzinfo=timezone.utc),
+        )
+E       AttributeError: <starlette.datastructures.State object at 0x10b14d400> has no attribute 'skills_now_provider'
+
+backend/tests/skills/test_sessions.py:20: AttributeError
+___ ERROR at setup of test_opening_support_does_not_autostart_or_autoresume ____
+
+client = <starlette.testclient.TestClient object at 0x10b737570>
+tmp_path = PosixPath('/private/var/folders/nj/wwm32g054d78r7fjs2xw9wbh0000gn/T/pytest-of-natehudson/pytest-128/test_opening_support_does_not_0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x10b7b62e0>
+
+    @pytest.fixture
+    def skills_client(client, tmp_path, monkeypatch):
+        # Patch State storage directly so pytest undo restores dynamic attributes.
+        monkeypatch.setitem(app.state._state, "skills_database_path", tmp_path / "skills.sqlite3")
+>       monkeypatch.setattr(
+            app.state, "skills_now_provider",
+            lambda: datetime(2026, 10, 21, 12, tzinfo=timezone.utc),
+        )
+E       AttributeError: <starlette.datastructures.State object at 0x10b14d400> has no attribute 'skills_now_provider'
+
+backend/tests/skills/test_sessions.py:20: AttributeError
+_ ERROR at setup of test_repeated_event_is_idempotent_even_after_later_events __
+
+client = <starlette.testclient.TestClient object at 0x10b737ce0>
+tmp_path = PosixPath('/private/var/folders/nj/wwm32g054d78r7fjs2xw9wbh0000gn/T/pytest-of-natehudson/pytest-128/test_repeated_event_is_idempot0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x10b29c750>
+
+    @pytest.fixture
+    def skills_client(client, tmp_path, monkeypatch):
+        # Patch State storage directly so pytest undo restores dynamic attributes.
+        monkeypatch.setitem(app.state._state, "skills_database_path", tmp_path / "skills.sqlite3")
+>       monkeypatch.setattr(
+            app.state, "skills_now_provider",
+            lambda: datetime(2026, 10, 21, 12, tzinfo=timezone.utc),
+        )
+E       AttributeError: <starlette.datastructures.State object at 0x10b14d400> has no attribute 'skills_now_provider'
+
+backend/tests/skills/test_sessions.py:20: AttributeError
+_ ERROR at setup of test_leave_or_interruption_is_terminal_from_any_nonterminal_state[ready-stop] _
+
+client = <starlette.testclient.TestClient object at 0x10b736f10>
+tmp_path = PosixPath('/private/var/folders/nj/wwm32g054d78r7fjs2xw9wbh0000gn/T/pytest-of-natehudson/pytest-128/test_leave_or_interruption_is_0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x10b7b4600>
+
+    @pytest.fixture
+    def skills_client(client, tmp_path, monkeypatch):
+        # Patch State storage directly so pytest undo restores dynamic attributes.
+        monkeypatch.setitem(app.state._state, "skills_database_path", tmp_path / "skills.sqlite3")
+>       monkeypatch.setattr(
+            app.state, "skills_now_provider",
+            lambda: datetime(2026, 10, 21, 12, tzinfo=timezone.utc),
+        )
+E       AttributeError: <starlette.datastructures.State object at 0x10b14d400> has no attribute 'skills_now_provider'
+
+backend/tests/skills/test_sessions.py:20: AttributeError
+_ ERROR at setup of test_leave_or_interruption_is_terminal_from_any_nonterminal_state[ready-interrupt] _
+
+client = <starlette.testclient.TestClient object at 0x10b737020>
+tmp_path = PosixPath('/private/var/folders/nj/wwm32g054d78r7fjs2xw9wbh0000gn/T/pytest-of-natehudson/pytest-128/test_leave_or_interruption_is_1')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x10b29c7c0>
+
+    @pytest.fixture
+    def skills_client(client, tmp_path, monkeypatch):
+        # Patch State storage directly so pytest undo restores dynamic attributes.
+        monkeypatch.setitem(app.state._state, "skills_database_path", tmp_path / "skills.sqlite3")
+>       monkeypatch.setattr(
+            app.state, "skills_now_provider",
+            lambda: datetime(2026, 10, 21, 12, tzinfo=timezone.utc),
+        )
+E       AttributeError: <starlette.datastructures.State object at 0x10b14d400> has no attribute 'skills_now_provider'
+
+backend/tests/skills/test_sessions.py:20: AttributeError
+_ ERROR at setup of test_leave_or_interruption_is_terminal_from_any_nonterminal_state[running-stop] _
+
+client = <starlette.testclient.TestClient object at 0x10b736e00>
+tmp_path = PosixPath('/private/var/folders/nj/wwm32g054d78r7fjs2xw9wbh0000gn/T/pytest-of-natehudson/pytest-128/test_leave_or_interruption_is_2')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x10b5f2040>
+
+    @pytest.fixture
+    def skills_client(client, tmp_path, monkeypatch):
+        # Patch State storage directly so pytest undo restores dynamic attributes.
+        monkeypatch.setitem(app.state._state, "skills_database_path", tmp_path / "skills.sqlite3")
+>       monkeypatch.setattr(
+            app.state, "skills_now_provider",
+            lambda: datetime(2026, 10, 21, 12, tzinfo=timezone.utc),
+        )
+E       AttributeError: <starlette.datastructures.State object at 0x10b14d400> has no attribute 'skills_now_provider'
+
+backend/tests/skills/test_sessions.py:20: AttributeError
+_ ERROR at setup of test_leave_or_interruption_is_terminal_from_any_nonterminal_state[running-interrupt] _
+
+client = <starlette.testclient.TestClient object at 0x10b736690>
+tmp_path = PosixPath('/private/var/folders/nj/wwm32g054d78r7fjs2xw9wbh0000gn/T/pytest-of-natehudson/pytest-128/test_leave_or_interruption_is_3')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x10b5f2f20>
+
+    @pytest.fixture
+    def skills_client(client, tmp_path, monkeypatch):
+        # Patch State storage directly so pytest undo restores dynamic attributes.
+        monkeypatch.setitem(app.state._state, "skills_database_path", tmp_path / "skills.sqlite3")
+>       monkeypatch.setattr(
+            app.state, "skills_now_provider",
+            lambda: datetime(2026, 10, 21, 12, tzinfo=timezone.utc),
+        )
+E       AttributeError: <starlette.datastructures.State object at 0x10b14d400> has no attribute 'skills_now_provider'
+
+backend/tests/skills/test_sessions.py:20: AttributeError
+_ ERROR at setup of test_leave_or_interruption_is_terminal_from_any_nonterminal_state[paused-stop] _
+
+client = <starlette.testclient.TestClient object at 0x10b824270>
+tmp_path = PosixPath('/private/var/folders/nj/wwm32g054d78r7fjs2xw9wbh0000gn/T/pytest-of-natehudson/pytest-128/test_leave_or_interruption_is_4')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x10b5f1710>
+
+    @pytest.fixture
+    def skills_client(client, tmp_path, monkeypatch):
+        # Patch State storage directly so pytest undo restores dynamic attributes.
+        monkeypatch.setitem(app.state._state, "skills_database_path", tmp_path / "skills.sqlite3")
+>       monkeypatch.setattr(
+            app.state, "skills_now_provider",
+            lambda: datetime(2026, 10, 21, 12, tzinfo=timezone.utc),
+        )
+E       AttributeError: <starlette.datastructures.State object at 0x10b14d400> has no attribute 'skills_now_provider'
+
+backend/tests/skills/test_sessions.py:20: AttributeError
+_ ERROR at setup of test_leave_or_interruption_is_terminal_from_any_nonterminal_state[paused-interrupt] _
+
+client = <starlette.testclient.TestClient object at 0x10b8249e0>
+tmp_path = PosixPath('/private/var/folders/nj/wwm32g054d78r7fjs2xw9wbh0000gn/T/pytest-of-natehudson/pytest-128/test_leave_or_interruption_is_5')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x10b5f2820>
+
+    @pytest.fixture
+    def skills_client(client, tmp_path, monkeypatch):
+        # Patch State storage directly so pytest undo restores dynamic attributes.
+        monkeypatch.setitem(app.state._state, "skills_database_path", tmp_path / "skills.sqlite3")
+>       monkeypatch.setattr(
+            app.state, "skills_now_provider",
+            lambda: datetime(2026, 10, 21, 12, tzinfo=timezone.utc),
+        )
+E       AttributeError: <starlette.datastructures.State object at 0x10b14d400> has no attribute 'skills_now_provider'
+
+backend/tests/skills/test_sessions.py:20: AttributeError
+_____ ERROR at setup of test_invalid_session_inputs_are_rejected[payload0] _____
+
+client = <starlette.testclient.TestClient object at 0x10b825150>
+tmp_path = PosixPath('/private/var/folders/nj/wwm32g054d78r7fjs2xw9wbh0000gn/T/pytest-of-natehudson/pytest-128/test_invalid_session_inputs_ar0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x10b8481a0>
+
+    @pytest.fixture
+    def skills_client(client, tmp_path, monkeypatch):
+        # Patch State storage directly so pytest undo restores dynamic attributes.
+        monkeypatch.setitem(app.state._state, "skills_database_path", tmp_path / "skills.sqlite3")
+>       monkeypatch.setattr(
+            app.state, "skills_now_provider",
+            lambda: datetime(2026, 10, 21, 12, tzinfo=timezone.utc),
+        )
+E       AttributeError: <starlette.datastructures.State object at 0x10b14d400> has no attribute 'skills_now_provider'
+
+backend/tests/skills/test_sessions.py:20: AttributeError
+_____ ERROR at setup of test_invalid_session_inputs_are_rejected[payload1] _____
+
+client = <starlette.testclient.TestClient object at 0x10b736690>
+tmp_path = PosixPath('/private/var/folders/nj/wwm32g054d78r7fjs2xw9wbh0000gn/T/pytest-of-natehudson/pytest-128/test_invalid_session_inputs_ar1')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x10b7b4bb0>
+
+    @pytest.fixture
+    def skills_client(client, tmp_path, monkeypatch):
+        # Patch State storage directly so pytest undo restores dynamic attributes.
+        monkeypatch.setitem(app.state._state, "skills_database_path", tmp_path / "skills.sqlite3")
+>       monkeypatch.setattr(
+            app.state, "skills_now_provider",
+            lambda: datetime(2026, 10, 21, 12, tzinfo=timezone.utc),
+        )
+E       AttributeError: <starlette.datastructures.State object at 0x10b14d400> has no attribute 'skills_now_provider'
+
+backend/tests/skills/test_sessions.py:20: AttributeError
+_____ ERROR at setup of test_invalid_session_inputs_are_rejected[payload2] _____
+
+client = <starlette.testclient.TestClient object at 0x10b736e00>
+tmp_path = PosixPath('/private/var/folders/nj/wwm32g054d78r7fjs2xw9wbh0000gn/T/pytest-of-natehudson/pytest-128/test_invalid_session_inputs_ar2')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x10b57f000>
+
+    @pytest.fixture
+    def skills_client(client, tmp_path, monkeypatch):
+        # Patch State storage directly so pytest undo restores dynamic attributes.
+        monkeypatch.setitem(app.state._state, "skills_database_path", tmp_path / "skills.sqlite3")
+>       monkeypatch.setattr(
+            app.state, "skills_now_provider",
+            lambda: datetime(2026, 10, 21, 12, tzinfo=timezone.utc),
+        )
+E       AttributeError: <starlette.datastructures.State object at 0x10b14d400> has no attribute 'skills_now_provider'
+
+backend/tests/skills/test_sessions.py:20: AttributeError
+_____ ERROR at setup of test_invalid_session_inputs_are_rejected[payload3] _____
+
+client = <starlette.testclient.TestClient object at 0x10b7349e0>
+tmp_path = PosixPath('/private/var/folders/nj/wwm32g054d78r7fjs2xw9wbh0000gn/T/pytest-of-natehudson/pytest-128/test_invalid_session_inputs_ar3')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x10b29cec0>
+
+    @pytest.fixture
+    def skills_client(client, tmp_path, monkeypatch):
+        # Patch State storage directly so pytest undo restores dynamic attributes.
+        monkeypatch.setitem(app.state._state, "skills_database_path", tmp_path / "skills.sqlite3")
+>       monkeypatch.setattr(
+            app.state, "skills_now_provider",
+            lambda: datetime(2026, 10, 21, 12, tzinfo=timezone.utc),
+        )
+E       AttributeError: <starlette.datastructures.State object at 0x10b14d400> has no attribute 'skills_now_provider'
+
+backend/tests/skills/test_sessions.py:20: AttributeError
+_ ERROR at setup of test_invalid_snapshot_never_creates_an_event[active_ms--1] _
+
+client = <starlette.testclient.TestClient object at 0x10b737460>
+tmp_path = PosixPath('/private/var/folders/nj/wwm32g054d78r7fjs2xw9wbh0000gn/T/pytest-of-natehudson/pytest-128/test_invalid_snapshot_never_cr0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x10b7b7d90>
+
+    @pytest.fixture
+    def skills_client(client, tmp_path, monkeypatch):
+        # Patch State storage directly so pytest undo restores dynamic attributes.
+        monkeypatch.setitem(app.state._state, "skills_database_path", tmp_path / "skills.sqlite3")
+>       monkeypatch.setattr(
+            app.state, "skills_now_provider",
+            lambda: datetime(2026, 10, 21, 12, tzinfo=timezone.utc),
+        )
+E       AttributeError: <starlette.datastructures.State object at 0x10b14d400> has no attribute 'skills_now_provider'
+
+backend/tests/skills/test_sessions.py:20: AttributeError
+_ ERROR at setup of test_invalid_snapshot_never_creates_an_event[active_ms-True] _
+
+client = <starlette.testclient.TestClient object at 0x10b737ce0>
+tmp_path = PosixPath('/private/var/folders/nj/wwm32g054d78r7fjs2xw9wbh0000gn/T/pytest-of-natehudson/pytest-128/test_invalid_snapshot_never_cr1')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x10b5f1860>
+
+    @pytest.fixture
+    def skills_client(client, tmp_path, monkeypatch):
+        # Patch State storage directly so pytest undo restores dynamic attributes.
+        monkeypatch.setitem(app.state._state, "skills_database_path", tmp_path / "skills.sqlite3")
+>       monkeypatch.setattr(
+            app.state, "skills_now_provider",
+            lambda: datetime(2026, 10, 21, 12, tzinfo=timezone.utc),
+        )
+E       AttributeError: <starlette.datastructures.State object at 0x10b14d400> has no attribute 'skills_now_provider'
+
+backend/tests/skills/test_sessions.py:20: AttributeError
+_ ERROR at setup of test_invalid_snapshot_never_creates_an_event[active_ms-1.5] _
+
+client = <starlette.testclient.TestClient object at 0x10b737570>
+tmp_path = PosixPath('/private/var/folders/nj/wwm32g054d78r7fjs2xw9wbh0000gn/T/pytest-of-natehudson/pytest-128/test_invalid_snapshot_never_cr2')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x10b5f0b40>
+
+    @pytest.fixture
+    def skills_client(client, tmp_path, monkeypatch):
+        # Patch State storage directly so pytest undo restores dynamic attributes.
+        monkeypatch.setitem(app.state._state, "skills_database_path", tmp_path / "skills.sqlite3")
+>       monkeypatch.setattr(
+            app.state, "skills_now_provider",
+            lambda: datetime(2026, 10, 21, 12, tzinfo=timezone.utc),
+        )
+E       AttributeError: <starlette.datastructures.State object at 0x10b14d400> has no attribute 'skills_now_provider'
+
+backend/tests/skills/test_sessions.py:20: AttributeError
+_ ERROR at setup of test_invalid_snapshot_never_creates_an_event[pause_ms-1000] _
+
+client = <starlette.testclient.TestClient object at 0x10b7369c0>
+tmp_path = PosixPath('/private/var/folders/nj/wwm32g054d78r7fjs2xw9wbh0000gn/T/pytest-of-natehudson/pytest-128/test_invalid_snapshot_never_cr3')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x10b5f1940>
+
+    @pytest.fixture
+    def skills_client(client, tmp_path, monkeypatch):
+        # Patch State storage directly so pytest undo restores dynamic attributes.
+        monkeypatch.setitem(app.state._state, "skills_database_path", tmp_path / "skills.sqlite3")
+>       monkeypatch.setattr(
+            app.state, "skills_now_provider",
+            lambda: datetime(2026, 10, 21, 12, tzinfo=timezone.utc),
+        )
+E       AttributeError: <starlette.datastructures.State object at 0x10b14d400> has no attribute 'skills_now_provider'
+
+backend/tests/skills/test_sessions.py:20: AttributeError
+_ ERROR at setup of test_invalid_snapshot_never_creates_an_event[active_ms-9007199254740992] _
+
+client = <starlette.testclient.TestClient object at 0x10b737df0>
+tmp_path = PosixPath('/private/var/folders/nj/wwm32g054d78r7fjs2xw9wbh0000gn/T/pytest-of-natehudson/pytest-128/test_invalid_snapshot_never_cr4')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x10b5f2e40>
+
+    @pytest.fixture
+    def skills_client(client, tmp_path, monkeypatch):
+        # Patch State storage directly so pytest undo restores dynamic attributes.
+        monkeypatch.setitem(app.state._state, "skills_database_path", tmp_path / "skills.sqlite3")
+>       monkeypatch.setattr(
+            app.state, "skills_now_provider",
+            lambda: datetime(2026, 10, 21, 12, tzinfo=timezone.utc),
+        )
+E       AttributeError: <starlette.datastructures.State object at 0x10b14d400> has no attribute 'skills_now_provider'
+
+backend/tests/skills/test_sessions.py:20: AttributeError
+_ ERROR at setup of test_invalid_snapshot_never_creates_an_event[cycles_completed-7] _
+
+client = <starlette.testclient.TestClient object at 0x10b825590>
+tmp_path = PosixPath('/private/var/folders/nj/wwm32g054d78r7fjs2xw9wbh0000gn/T/pytest-of-natehudson/pytest-128/test_invalid_snapshot_never_cr5')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x10b5f1780>
+
+    @pytest.fixture
+    def skills_client(client, tmp_path, monkeypatch):
+        # Patch State storage directly so pytest undo restores dynamic attributes.
+        monkeypatch.setitem(app.state._state, "skills_database_path", tmp_path / "skills.sqlite3")
+>       monkeypatch.setattr(
+            app.state, "skills_now_provider",
+            lambda: datetime(2026, 10, 21, 12, tzinfo=timezone.utc),
+        )
+E       AttributeError: <starlette.datastructures.State object at 0x10b14d400> has no attribute 'skills_now_provider'
+
+backend/tests/skills/test_sessions.py:20: AttributeError
+_ ERROR at setup of test_invalid_snapshot_never_creates_an_event[phase_remaining_ms-6001] _
+
+client = <starlette.testclient.TestClient object at 0x10b824050>
+tmp_path = PosixPath('/private/var/folders/nj/wwm32g054d78r7fjs2xw9wbh0000gn/T/pytest-of-natehudson/pytest-128/test_invalid_snapshot_never_cr6')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x10b848c20>
+
+    @pytest.fixture
+    def skills_client(client, tmp_path, monkeypatch):
+        # Patch State storage directly so pytest undo restores dynamic attributes.
+        monkeypatch.setitem(app.state._state, "skills_database_path", tmp_path / "skills.sqlite3")
+>       monkeypatch.setattr(
+            app.state, "skills_now_provider",
+            lambda: datetime(2026, 10, 21, 12, tzinfo=timezone.utc),
+        )
+E       AttributeError: <starlette.datastructures.State object at 0x10b14d400> has no attribute 'skills_now_provider'
+
+backend/tests/skills/test_sessions.py:20: AttributeError
+__ ERROR at setup of test_invalid_snapshot_never_creates_an_event[phase-hold] __
+
+client = <starlette.testclient.TestClient object at 0x10b824490>
+tmp_path = PosixPath('/private/var/folders/nj/wwm32g054d78r7fjs2xw9wbh0000gn/T/pytest-of-natehudson/pytest-128/test_invalid_snapshot_never_cr7')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x10b848280>
+
+    @pytest.fixture
+    def skills_client(client, tmp_path, monkeypatch):
+        # Patch State storage directly so pytest undo restores dynamic attributes.
+        monkeypatch.setitem(app.state._state, "skills_database_path", tmp_path / "skills.sqlite3")
+>       monkeypatch.setattr(
+            app.state, "skills_now_provider",
+            lambda: datetime(2026, 10, 21, 12, tzinfo=timezone.utc),
+        )
+E       AttributeError: <starlette.datastructures.State object at 0x10b14d400> has no attribute 'skills_now_provider'
+
+backend/tests/skills/test_sessions.py:20: AttributeError
+_ ERROR at setup of test_invalid_snapshot_never_creates_an_event[instructions-invented content] _
+
+client = <starlette.testclient.TestClient object at 0x10b8257b0>
+tmp_path = PosixPath('/private/var/folders/nj/wwm32g054d78r7fjs2xw9wbh0000gn/T/pytest-of-natehudson/pytest-128/test_invalid_snapshot_never_cr8')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x10b848360>
+
+    @pytest.fixture
+    def skills_client(client, tmp_path, monkeypatch):
+        # Patch State storage directly so pytest undo restores dynamic attributes.
+        monkeypatch.setitem(app.state._state, "skills_database_path", tmp_path / "skills.sqlite3")
+>       monkeypatch.setattr(
+            app.state, "skills_now_provider",
+            lambda: datetime(2026, 10, 21, 12, tzinfo=timezone.utc),
+        )
+E       AttributeError: <starlette.datastructures.State object at 0x10b14d400> has no attribute 'skills_now_provider'
+
+backend/tests/skills/test_sessions.py:20: AttributeError
+_ ERROR at setup of test_stale_out_of_order_and_invalid_transitions_rollback[change0] _
+
+client = <starlette.testclient.TestClient object at 0x10b737f00>
+tmp_path = PosixPath('/private/var/folders/nj/wwm32g054d78r7fjs2xw9wbh0000gn/T/pytest-of-natehudson/pytest-128/test_stale_out_of_order_and_in0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x10b5f0830>
+
+    @pytest.fixture
+    def skills_client(client, tmp_path, monkeypatch):
+        # Patch State storage directly so pytest undo restores dynamic attributes.
+        monkeypatch.setitem(app.state._state, "skills_database_path", tmp_path / "skills.sqlite3")
+>       monkeypatch.setattr(
+            app.state, "skills_now_provider",
+            lambda: datetime(2026, 10, 21, 12, tzinfo=timezone.utc),
+        )
+E       AttributeError: <starlette.datastructures.State object at 0x10b14d400> has no attribute 'skills_now_provider'
+
+backend/tests/skills/test_sessions.py:20: AttributeError
+_ ERROR at setup of test_stale_out_of_order_and_invalid_transitions_rollback[change1] _
+
+client = <starlette.testclient.TestClient object at 0x10b737350>
+tmp_path = PosixPath('/private/var/folders/nj/wwm32g054d78r7fjs2xw9wbh0000gn/T/pytest-of-natehudson/pytest-128/test_stale_out_of_order_and_in1')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x10b7b6c80>
+
+    @pytest.fixture
+    def skills_client(client, tmp_path, monkeypatch):
+        # Patch State storage directly so pytest undo restores dynamic attributes.
+        monkeypatch.setitem(app.state._state, "skills_database_path", tmp_path / "skills.sqlite3")
+>       monkeypatch.setattr(
+            app.state, "skills_now_provider",
+            lambda: datetime(2026, 10, 21, 12, tzinfo=timezone.utc),
+        )
+E       AttributeError: <starlette.datastructures.State object at 0x10b14d400> has no attribute 'skills_now_provider'
+
+backend/tests/skills/test_sessions.py:20: AttributeError
+_ ERROR at setup of test_stale_out_of_order_and_invalid_transitions_rollback[change2] _
+
+client = <starlette.testclient.TestClient object at 0x10b7368b0>
+tmp_path = PosixPath('/private/var/folders/nj/wwm32g054d78r7fjs2xw9wbh0000gn/T/pytest-of-natehudson/pytest-128/test_stale_out_of_order_and_in2')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x10b5f2e40>
+
+    @pytest.fixture
+    def skills_client(client, tmp_path, monkeypatch):
+        # Patch State storage directly so pytest undo restores dynamic attributes.
+        monkeypatch.setitem(app.state._state, "skills_database_path", tmp_path / "skills.sqlite3")
+>       monkeypatch.setattr(
+            app.state, "skills_now_provider",
+            lambda: datetime(2026, 10, 21, 12, tzinfo=timezone.utc),
+        )
+E       AttributeError: <starlette.datastructures.State object at 0x10b14d400> has no attribute 'skills_now_provider'
+
+backend/tests/skills/test_sessions.py:20: AttributeError
+_ ERROR at setup of test_stale_out_of_order_and_invalid_transitions_rollback[change3] _
+
+client = <starlette.testclient.TestClient object at 0x10b737ac0>
+tmp_path = PosixPath('/private/var/folders/nj/wwm32g054d78r7fjs2xw9wbh0000gn/T/pytest-of-natehudson/pytest-128/test_stale_out_of_order_and_in3')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x10b29c360>
+
+    @pytest.fixture
+    def skills_client(client, tmp_path, monkeypatch):
+        # Patch State storage directly so pytest undo restores dynamic attributes.
+        monkeypatch.setitem(app.state._state, "skills_database_path", tmp_path / "skills.sqlite3")
+>       monkeypatch.setattr(
+            app.state, "skills_now_provider",
+            lambda: datetime(2026, 10, 21, 12, tzinfo=timezone.utc),
+        )
+E       AttributeError: <starlette.datastructures.State object at 0x10b14d400> has no attribute 'skills_now_provider'
+
+backend/tests/skills/test_sessions.py:20: AttributeError
+_ ERROR at setup of test_stale_out_of_order_and_invalid_transitions_rollback[change4] _
+
+client = <starlette.testclient.TestClient object at 0x10b737130>
+tmp_path = PosixPath('/private/var/folders/nj/wwm32g054d78r7fjs2xw9wbh0000gn/T/pytest-of-natehudson/pytest-128/test_stale_out_of_order_and_in4')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x10b7b67b0>
+
+    @pytest.fixture
+    def skills_client(client, tmp_path, monkeypatch):
+        # Patch State storage directly so pytest undo restores dynamic attributes.
+        monkeypatch.setitem(app.state._state, "skills_database_path", tmp_path / "skills.sqlite3")
+>       monkeypatch.setattr(
+            app.state, "skills_now_provider",
+            lambda: datetime(2026, 10, 21, 12, tzinfo=timezone.utc),
+        )
+E       AttributeError: <starlette.datastructures.State object at 0x10b14d400> has no attribute 'skills_now_provider'
+
+backend/tests/skills/test_sessions.py:20: AttributeError
+_ ERROR at setup of test_timing_and_progress_cannot_move_backward_or_advance_while_paused _
+
+client = <starlette.testclient.TestClient object at 0x10b736cf0>
+tmp_path = PosixPath('/private/var/folders/nj/wwm32g054d78r7fjs2xw9wbh0000gn/T/pytest-of-natehudson/pytest-128/test_timing_and_progress_canno0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x10b29c440>
+
+    @pytest.fixture
+    def skills_client(client, tmp_path, monkeypatch):
+        # Patch State storage directly so pytest undo restores dynamic attributes.
+        monkeypatch.setitem(app.state._state, "skills_database_path", tmp_path / "skills.sqlite3")
+>       monkeypatch.setattr(
+            app.state, "skills_now_provider",
+            lambda: datetime(2026, 10, 21, 12, tzinfo=timezone.utc),
+        )
+E       AttributeError: <starlette.datastructures.State object at 0x10b14d400> has no attribute 'skills_now_provider'
+
+backend/tests/skills/test_sessions.py:20: AttributeError
+_ ERROR at setup of test_completion_requires_six_cycles_and_preserves_over_limit_duration _
+
+client = <starlette.testclient.TestClient object at 0x10b737240>
+tmp_path = PosixPath('/private/var/folders/nj/wwm32g054d78r7fjs2xw9wbh0000gn/T/pytest-of-natehudson/pytest-128/test_completion_requires_six_c0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x10b848980>
+
+    @pytest.fixture
+    def skills_client(client, tmp_path, monkeypatch):
+        # Patch State storage directly so pytest undo restores dynamic attributes.
+        monkeypatch.setitem(app.state._state, "skills_database_path", tmp_path / "skills.sqlite3")
+>       monkeypatch.setattr(
+            app.state, "skills_now_provider",
+            lambda: datetime(2026, 10, 21, 12, tzinfo=timezone.utc),
+        )
+E       AttributeError: <starlette.datastructures.State object at 0x10b14d400> has no attribute 'skills_now_provider'
+
+backend/tests/skills/test_sessions.py:20: AttributeError
+_ ERROR at setup of test_history_cursor_and_event_pagination_have_no_gaps_or_duplicates _
+
+client = <starlette.testclient.TestClient object at 0x10b75b8a0>
+tmp_path = PosixPath('/private/var/folders/nj/wwm32g054d78r7fjs2xw9wbh0000gn/T/pytest-of-natehudson/pytest-128/test_history_cursor_and_event_0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x10b848210>
+
+    @pytest.fixture
+    def skills_client(client, tmp_path, monkeypatch):
+        # Patch State storage directly so pytest undo restores dynamic attributes.
+        monkeypatch.setitem(app.state._state, "skills_database_path", tmp_path / "skills.sqlite3")
+>       monkeypatch.setattr(
+            app.state, "skills_now_provider",
+            lambda: datetime(2026, 10, 21, 12, tzinfo=timezone.utc),
+        )
+E       AttributeError: <starlette.datastructures.State object at 0x10b14d400> has no attribute 'skills_now_provider'
+
+backend/tests/skills/test_sessions.py:20: AttributeError
+_______ ERROR at setup of test_invalid_cursor_is_sanitized[not base64!] ________
+
+client = <starlette.testclient.TestClient object at 0x10b825bf0>
+tmp_path = PosixPath('/private/var/folders/nj/wwm32g054d78r7fjs2xw9wbh0000gn/T/pytest-of-natehudson/pytest-128/test_invalid_cursor_is_sanitiz0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x10b84a890>
+
+    @pytest.fixture
+    def skills_client(client, tmp_path, monkeypatch):
+        # Patch State storage directly so pytest undo restores dynamic attributes.
+        monkeypatch.setitem(app.state._state, "skills_database_path", tmp_path / "skills.sqlite3")
+>       monkeypatch.setattr(
+            app.state, "skills_now_provider",
+            lambda: datetime(2026, 10, 21, 12, tzinfo=timezone.utc),
+        )
+E       AttributeError: <starlette.datastructures.State object at 0x10b14d400> has no attribute 'skills_now_provider'
+
+backend/tests/skills/test_sessions.py:20: AttributeError
+___________ ERROR at setup of test_invalid_cursor_is_sanitized[e30=] ___________
+
+client = <starlette.testclient.TestClient object at 0x10b8249e0>
+tmp_path = PosixPath('/private/var/folders/nj/wwm32g054d78r7fjs2xw9wbh0000gn/T/pytest-of-natehudson/pytest-128/test_invalid_cursor_is_sanitiz1')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x10b848910>
+
+    @pytest.fixture
+    def skills_client(client, tmp_path, monkeypatch):
+        # Patch State storage directly so pytest undo restores dynamic attributes.
+        monkeypatch.setitem(app.state._state, "skills_database_path", tmp_path / "skills.sqlite3")
+>       monkeypatch.setattr(
+            app.state, "skills_now_provider",
+            lambda: datetime(2026, 10, 21, 12, tzinfo=timezone.utc),
+        )
+E       AttributeError: <starlette.datastructures.State object at 0x10b14d400> has no attribute 'skills_now_provider'
+
+backend/tests/skills/test_sessions.py:20: AttributeError
+_____ ERROR at setup of test_invalid_cursor_is_sanitized[W251bGwsbnVsbF0=] _____
+
+client = <starlette.testclient.TestClient object at 0x10b825260>
+tmp_path = PosixPath('/private/var/folders/nj/wwm32g054d78r7fjs2xw9wbh0000gn/T/pytest-of-natehudson/pytest-128/test_invalid_cursor_is_sanitiz2')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x10b848fa0>
+
+    @pytest.fixture
+    def skills_client(client, tmp_path, monkeypatch):
+        # Patch State storage directly so pytest undo restores dynamic attributes.
+        monkeypatch.setitem(app.state._state, "skills_database_path", tmp_path / "skills.sqlite3")
+>       monkeypatch.setattr(
+            app.state, "skills_now_provider",
+            lambda: datetime(2026, 10, 21, 12, tzinfo=timezone.utc),
+        )
+E       AttributeError: <starlette.datastructures.State object at 0x10b14d400> has no attribute 'skills_now_provider'
+
+backend/tests/skills/test_sessions.py:20: AttributeError
+___________ ERROR at setup of test_invalid_cursor_is_sanitized[W10=] ___________
+
+client = <starlette.testclient.TestClient object at 0x10b825370>
+tmp_path = PosixPath('/private/var/folders/nj/wwm32g054d78r7fjs2xw9wbh0000gn/T/pytest-of-natehudson/pytest-128/test_invalid_cursor_is_sanitiz3')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x10b8496a0>
+
+    @pytest.fixture
+    def skills_client(client, tmp_path, monkeypatch):
+        # Patch State storage directly so pytest undo restores dynamic attributes.
+        monkeypatch.setitem(app.state._state, "skills_database_path", tmp_path / "skills.sqlite3")
+>       monkeypatch.setattr(
+            app.state, "skills_now_provider",
+            lambda: datetime(2026, 10, 21, 12, tzinfo=timezone.utc),
+        )
+E       AttributeError: <starlette.datastructures.State object at 0x10b14d400> has no attribute 'skills_now_provider'
+
+backend/tests/skills/test_sessions.py:20: AttributeError
+___________ ERROR at setup of test_query_bounds_and_missing_session ____________
+
+client = <starlette.testclient.TestClient object at 0x10b736e00>
+tmp_path = PosixPath('/private/var/folders/nj/wwm32g054d78r7fjs2xw9wbh0000gn/T/pytest-of-natehudson/pytest-128/test_query_bounds_and_missing_0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x10b7b66d0>
+
+    @pytest.fixture
+    def skills_client(client, tmp_path, monkeypatch):
+        # Patch State storage directly so pytest undo restores dynamic attributes.
+        monkeypatch.setitem(app.state._state, "skills_database_path", tmp_path / "skills.sqlite3")
+>       monkeypatch.setattr(
+            app.state, "skills_now_provider",
+            lambda: datetime(2026, 10, 21, 12, tzinfo=timezone.utc),
+        )
+E       AttributeError: <starlette.datastructures.State object at 0x10b14d400> has no attribute 'skills_now_provider'
+
+backend/tests/skills/test_sessions.py:20: AttributeError
+_ ERROR at setup of test_reopening_storage_and_get_requests_preserve_unfinished_state _
+
+client = <starlette.testclient.TestClient object at 0x10b7349e0>
+tmp_path = PosixPath('/private/var/folders/nj/wwm32g054d78r7fjs2xw9wbh0000gn/T/pytest-of-natehudson/pytest-128/test_reopening_storage_and_get0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x10b5f0de0>
+
+    @pytest.fixture
+    def skills_client(client, tmp_path, monkeypatch):
+        # Patch State storage directly so pytest undo restores dynamic attributes.
+        monkeypatch.setitem(app.state._state, "skills_database_path", tmp_path / "skills.sqlite3")
+>       monkeypatch.setattr(
+            app.state, "skills_now_provider",
+            lambda: datetime(2026, 10, 21, 12, tzinfo=timezone.utc),
+        )
+E       AttributeError: <starlette.datastructures.State object at 0x10b14d400> has no attribute 'skills_now_provider'
+
+backend/tests/skills/test_sessions.py:20: AttributeError
+____ ERROR at setup of test_concurrent_same_revision_has_exactly_one_winner ____
+
+client = <starlette.testclient.TestClient object at 0x10b737460>
+tmp_path = PosixPath('/private/var/folders/nj/wwm32g054d78r7fjs2xw9wbh0000gn/T/pytest-of-natehudson/pytest-128/test_concurrent_same_revision_0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x10b29c440>
+
+    @pytest.fixture
+    def skills_client(client, tmp_path, monkeypatch):
+        # Patch State storage directly so pytest undo restores dynamic attributes.
+        monkeypatch.setitem(app.state._state, "skills_database_path", tmp_path / "skills.sqlite3")
+>       monkeypatch.setattr(
+            app.state, "skills_now_provider",
+            lambda: datetime(2026, 10, 21, 12, tzinfo=timezone.utc),
+        )
+E       AttributeError: <starlette.datastructures.State object at 0x10b14d400> has no attribute 'skills_now_provider'
+
+backend/tests/skills/test_sessions.py:20: AttributeError
+_ ERROR at setup of test_concurrent_retries_of_same_event_do_not_double_count __
+
+client = <starlette.testclient.TestClient object at 0x10b737ce0>
+tmp_path = PosixPath('/private/var/folders/nj/wwm32g054d78r7fjs2xw9wbh0000gn/T/pytest-of-natehudson/pytest-128/test_concurrent_retries_of_sam0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x10b57fa80>
+
+    @pytest.fixture
+    def skills_client(client, tmp_path, monkeypatch):
+        # Patch State storage directly so pytest undo restores dynamic attributes.
+        monkeypatch.setitem(app.state._state, "skills_database_path", tmp_path / "skills.sqlite3")
+>       monkeypatch.setattr(
+            app.state, "skills_now_provider",
+            lambda: datetime(2026, 10, 21, 12, tzinfo=timezone.utc),
+        )
+E       AttributeError: <starlette.datastructures.State object at 0x10b14d400> has no attribute 'skills_now_provider'
+
+backend/tests/skills/test_sessions.py:20: AttributeError
+__ ERROR at setup of test_locked_database_returns_safe_error_without_changes ___
+
+client = <starlette.testclient.TestClient object at 0x10b737df0>
+tmp_path = PosixPath('/private/var/folders/nj/wwm32g054d78r7fjs2xw9wbh0000gn/T/pytest-of-natehudson/pytest-128/test_locked_database_returns_s0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x10b84b850>
+
+    @pytest.fixture
+    def skills_client(client, tmp_path, monkeypatch):
+        # Patch State storage directly so pytest undo restores dynamic attributes.
+        monkeypatch.setitem(app.state._state, "skills_database_path", tmp_path / "skills.sqlite3")
+>       monkeypatch.setattr(
+            app.state, "skills_now_provider",
+            lambda: datetime(2026, 10, 21, 12, tzinfo=timezone.utc),
+        )
+E       AttributeError: <starlette.datastructures.State object at 0x10b14d400> has no attribute 'skills_now_provider'
+
+backend/tests/skills/test_sessions.py:20: AttributeError
+_ ERROR at setup of test_travel_database_is_untouched_and_only_skills_tables_exist _
+
+client = <starlette.testclient.TestClient object at 0x10b826690>
+tmp_path = PosixPath('/private/var/folders/nj/wwm32g054d78r7fjs2xw9wbh0000gn/T/pytest-of-natehudson/pytest-128/test_travel_database_is_untouc0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x10b8482f0>
+
+    @pytest.fixture
+    def skills_client(client, tmp_path, monkeypatch):
+        # Patch State storage directly so pytest undo restores dynamic attributes.
+        monkeypatch.setitem(app.state._state, "skills_database_path", tmp_path / "skills.sqlite3")
+>       monkeypatch.setattr(
+            app.state, "skills_now_provider",
+            lambda: datetime(2026, 10, 21, 12, tzinfo=timezone.utc),
+        )
+E       AttributeError: <starlette.datastructures.State object at 0x10b14d400> has no attribute 'skills_now_provider'
+
+backend/tests/skills/test_sessions.py:20: AttributeError
+_ ERROR at setup of test_storage_failures_are_safe_and_travel_remains_available[same_path] _
+
+client = <starlette.testclient.TestClient object at 0x10b827ce0>
+tmp_path = PosixPath('/private/var/folders/nj/wwm32g054d78r7fjs2xw9wbh0000gn/T/pytest-of-natehudson/pytest-128/test_storage_failures_are_safe0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x10b848ec0>
+
+    @pytest.fixture
+    def skills_client(client, tmp_path, monkeypatch):
+        # Patch State storage directly so pytest undo restores dynamic attributes.
+        monkeypatch.setitem(app.state._state, "skills_database_path", tmp_path / "skills.sqlite3")
+>       monkeypatch.setattr(
+            app.state, "skills_now_provider",
+            lambda: datetime(2026, 10, 21, 12, tzinfo=timezone.utc),
+        )
+E       AttributeError: <starlette.datastructures.State object at 0x10b14d400> has no attribute 'skills_now_provider'
+
+backend/tests/skills/test_sessions.py:20: AttributeError
+_ ERROR at setup of test_storage_failures_are_safe_and_travel_remains_available[hard_link] _
+
+client = <starlette.testclient.TestClient object at 0x10b8f4160>
+tmp_path = PosixPath('/private/var/folders/nj/wwm32g054d78r7fjs2xw9wbh0000gn/T/pytest-of-natehudson/pytest-128/test_storage_failures_are_safe1')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x10b84b700>
+
+    @pytest.fixture
+    def skills_client(client, tmp_path, monkeypatch):
+        # Patch State storage directly so pytest undo restores dynamic attributes.
+        monkeypatch.setitem(app.state._state, "skills_database_path", tmp_path / "skills.sqlite3")
+>       monkeypatch.setattr(
+            app.state, "skills_now_provider",
+            lambda: datetime(2026, 10, 21, 12, tzinfo=timezone.utc),
+        )
+E       AttributeError: <starlette.datastructures.State object at 0x10b14d400> has no attribute 'skills_now_provider'
+
+backend/tests/skills/test_sessions.py:20: AttributeError
+_ ERROR at setup of test_storage_failures_are_safe_and_travel_remains_available[travel_copy] _
+
+client = <starlette.testclient.TestClient object at 0x10b8f4490>
+tmp_path = PosixPath('/private/var/folders/nj/wwm32g054d78r7fjs2xw9wbh0000gn/T/pytest-of-natehudson/pytest-128/test_storage_failures_are_safe2')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x10b84b0e0>
+
+    @pytest.fixture
+    def skills_client(client, tmp_path, monkeypatch):
+        # Patch State storage directly so pytest undo restores dynamic attributes.
+        monkeypatch.setitem(app.state._state, "skills_database_path", tmp_path / "skills.sqlite3")
+>       monkeypatch.setattr(
+            app.state, "skills_now_provider",
+            lambda: datetime(2026, 10, 21, 12, tzinfo=timezone.utc),
+        )
+E       AttributeError: <starlette.datastructures.State object at 0x10b14d400> has no attribute 'skills_now_provider'
+
+backend/tests/skills/test_sessions.py:20: AttributeError
+_ ERROR at setup of test_storage_failures_are_safe_and_travel_remains_available[directory] _
+
+client = <starlette.testclient.TestClient object at 0x10b8f47c0>
+tmp_path = PosixPath('/private/var/folders/nj/wwm32g054d78r7fjs2xw9wbh0000gn/T/pytest-of-natehudson/pytest-128/test_storage_failures_are_safe3')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x10b908520>
+
+    @pytest.fixture
+    def skills_client(client, tmp_path, monkeypatch):
+        # Patch State storage directly so pytest undo restores dynamic attributes.
+        monkeypatch.setitem(app.state._state, "skills_database_path", tmp_path / "skills.sqlite3")
+>       monkeypatch.setattr(
+            app.state, "skills_now_provider",
+            lambda: datetime(2026, 10, 21, 12, tzinfo=timezone.utc),
+        )
+E       AttributeError: <starlette.datastructures.State object at 0x10b14d400> has no attribute 'skills_now_provider'
+
+backend/tests/skills/test_sessions.py:20: AttributeError
+_ ERROR at setup of test_storage_failures_are_safe_and_travel_remains_available[newer_schema] _
+
+client = <starlette.testclient.TestClient object at 0x10b8f4af0>
+tmp_path = PosixPath('/private/var/folders/nj/wwm32g054d78r7fjs2xw9wbh0000gn/T/pytest-of-natehudson/pytest-128/test_storage_failures_are_safe4')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x10b908910>
+
+    @pytest.fixture
+    def skills_client(client, tmp_path, monkeypatch):
+        # Patch State storage directly so pytest undo restores dynamic attributes.
+        monkeypatch.setitem(app.state._state, "skills_database_path", tmp_path / "skills.sqlite3")
+>       monkeypatch.setattr(
+            app.state, "skills_now_provider",
+            lambda: datetime(2026, 10, 21, 12, tzinfo=timezone.utc),
+        )
+E       AttributeError: <starlette.datastructures.State object at 0x10b14d400> has no attribute 'skills_now_provider'
+
+backend/tests/skills/test_sessions.py:20: AttributeError
+_ ERROR at setup of test_storage_failures_are_safe_and_travel_remains_available[partial_schema] _
+
+client = <starlette.testclient.TestClient object at 0x10b827ce0>
+tmp_path = PosixPath('/private/var/folders/nj/wwm32g054d78r7fjs2xw9wbh0000gn/T/pytest-of-natehudson/pytest-128/test_storage_failures_are_safe5')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x10b84b8c0>
+
+    @pytest.fixture
+    def skills_client(client, tmp_path, monkeypatch):
+        # Patch State storage directly so pytest undo restores dynamic attributes.
+        monkeypatch.setitem(app.state._state, "skills_database_path", tmp_path / "skills.sqlite3")
+>       monkeypatch.setattr(
+            app.state, "skills_now_provider",
+            lambda: datetime(2026, 10, 21, 12, tzinfo=timezone.utc),
+        )
+E       AttributeError: <starlette.datastructures.State object at 0x10b14d400> has no attribute 'skills_now_provider'
+
+backend/tests/skills/test_sessions.py:20: AttributeError
+_ ERROR at setup of test_storage_failures_are_safe_and_travel_remains_available[corrupt] _
+
+client = <starlette.testclient.TestClient object at 0x10b826690>
+tmp_path = PosixPath('/private/var/folders/nj/wwm32g054d78r7fjs2xw9wbh0000gn/T/pytest-of-natehudson/pytest-128/test_storage_failures_are_safe6')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x10b84b230>
+
+    @pytest.fixture
+    def skills_client(client, tmp_path, monkeypatch):
+        # Patch State storage directly so pytest undo restores dynamic attributes.
+        monkeypatch.setitem(app.state._state, "skills_database_path", tmp_path / "skills.sqlite3")
+>       monkeypatch.setattr(
+            app.state, "skills_now_provider",
+            lambda: datetime(2026, 10, 21, 12, tzinfo=timezone.utc),
+        )
+E       AttributeError: <starlette.datastructures.State object at 0x10b14d400> has no attribute 'skills_now_provider'
+
+backend/tests/skills/test_sessions.py:20: AttributeError
+_ ERROR at setup of test_transaction_failure_does_not_leave_session_ahead_of_its_event _
+
+client = <starlette.testclient.TestClient object at 0x10b826030>
+tmp_path = PosixPath('/private/var/folders/nj/wwm32g054d78r7fjs2xw9wbh0000gn/T/pytest-of-natehudson/pytest-128/test_transaction_failure_does_0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x10b84a190>
+
+    @pytest.fixture
+    def skills_client(client, tmp_path, monkeypatch):
+        # Patch State storage directly so pytest undo restores dynamic attributes.
+        monkeypatch.setitem(app.state._state, "skills_database_path", tmp_path / "skills.sqlite3")
+>       monkeypatch.setattr(
+            app.state, "skills_now_provider",
+            lambda: datetime(2026, 10, 21, 12, tzinfo=timezone.utc),
+        )
+E       AttributeError: <starlette.datastructures.State object at 0x10b14d400> has no attribute 'skills_now_provider'
+
+backend/tests/skills/test_sessions.py:20: AttributeError
+=========================== short test summary info ============================
+ERROR backend/tests/skills/test_sessions.py::test_full_lifecycle_keeps_pause_support_and_setup_separate
+ERROR backend/tests/skills/test_sessions.py::test_opening_support_does_not_autostart_or_autoresume
+ERROR backend/tests/skills/test_sessions.py::test_repeated_event_is_idempotent_even_after_later_events
+ERROR backend/tests/skills/test_sessions.py::test_leave_or_interruption_is_terminal_from_any_nonterminal_state[ready-stop]
+ERROR backend/tests/skills/test_sessions.py::test_leave_or_interruption_is_terminal_from_any_nonterminal_state[ready-interrupt]
+ERROR backend/tests/skills/test_sessions.py::test_leave_or_interruption_is_terminal_from_any_nonterminal_state[running-stop]
+ERROR backend/tests/skills/test_sessions.py::test_leave_or_interruption_is_terminal_from_any_nonterminal_state[running-interrupt]
+ERROR backend/tests/skills/test_sessions.py::test_leave_or_interruption_is_terminal_from_any_nonterminal_state[paused-stop]
+ERROR backend/tests/skills/test_sessions.py::test_leave_or_interruption_is_terminal_from_any_nonterminal_state[paused-interrupt]
+ERROR backend/tests/skills/test_sessions.py::test_invalid_session_inputs_are_rejected[payload0]
+ERROR backend/tests/skills/test_sessions.py::test_invalid_session_inputs_are_rejected[payload1]
+ERROR backend/tests/skills/test_sessions.py::test_invalid_session_inputs_are_rejected[payload2]
+ERROR backend/tests/skills/test_sessions.py::test_invalid_session_inputs_are_rejected[payload3]
+ERROR backend/tests/skills/test_sessions.py::test_invalid_snapshot_never_creates_an_event[active_ms--1]
+ERROR backend/tests/skills/test_sessions.py::test_invalid_snapshot_never_creates_an_event[active_ms-True]
+ERROR backend/tests/skills/test_sessions.py::test_invalid_snapshot_never_creates_an_event[active_ms-1.5]
+ERROR backend/tests/skills/test_sessions.py::test_invalid_snapshot_never_creates_an_event[pause_ms-1000]
+ERROR backend/tests/skills/test_sessions.py::test_invalid_snapshot_never_creates_an_event[active_ms-9007199254740992]
+ERROR backend/tests/skills/test_sessions.py::test_invalid_snapshot_never_creates_an_event[cycles_completed-7]
+ERROR backend/tests/skills/test_sessions.py::test_invalid_snapshot_never_creates_an_event[phase_remaining_ms-6001]
+ERROR backend/tests/skills/test_sessions.py::test_invalid_snapshot_never_creates_an_event[phase-hold]
+ERROR backend/tests/skills/test_sessions.py::test_invalid_snapshot_never_creates_an_event[instructions-invented content]
+ERROR backend/tests/skills/test_sessions.py::test_stale_out_of_order_and_invalid_transitions_rollback[change0]
+ERROR backend/tests/skills/test_sessions.py::test_stale_out_of_order_and_invalid_transitions_rollback[change1]
+ERROR backend/tests/skills/test_sessions.py::test_stale_out_of_order_and_invalid_transitions_rollback[change2]
+ERROR backend/tests/skills/test_sessions.py::test_stale_out_of_order_and_invalid_transitions_rollback[change3]
+ERROR backend/tests/skills/test_sessions.py::test_stale_out_of_order_and_invalid_transitions_rollback[change4]
+ERROR backend/tests/skills/test_sessions.py::test_timing_and_progress_cannot_move_backward_or_advance_while_paused
+ERROR backend/tests/skills/test_sessions.py::test_completion_requires_six_cycles_and_preserves_over_limit_duration
+ERROR backend/tests/skills/test_sessions.py::test_history_cursor_and_event_pagination_have_no_gaps_or_duplicates
+ERROR backend/tests/skills/test_sessions.py::test_invalid_cursor_is_sanitized[not base64!]
+ERROR backend/tests/skills/test_sessions.py::test_invalid_cursor_is_sanitized[e30=]
+ERROR backend/tests/skills/test_sessions.py::test_invalid_cursor_is_sanitized[W251bGwsbnVsbF0=]
+ERROR backend/tests/skills/test_sessions.py::test_invalid_cursor_is_sanitized[W10=]
+ERROR backend/tests/skills/test_sessions.py::test_query_bounds_and_missing_session
+ERROR backend/tests/skills/test_sessions.py::test_reopening_storage_and_get_requests_preserve_unfinished_state
+ERROR backend/tests/skills/test_sessions.py::test_concurrent_same_revision_has_exactly_one_winner
+ERROR backend/tests/skills/test_sessions.py::test_concurrent_retries_of_same_event_do_not_double_count
+ERROR backend/tests/skills/test_sessions.py::test_locked_database_returns_safe_error_without_changes
+ERROR backend/tests/skills/test_sessions.py::test_travel_database_is_untouched_and_only_skills_tables_exist
+ERROR backend/tests/skills/test_sessions.py::test_storage_failures_are_safe_and_travel_remains_available[same_path]
+ERROR backend/tests/skills/test_sessions.py::test_storage_failures_are_safe_and_travel_remains_available[hard_link]
+ERROR backend/tests/skills/test_sessions.py::test_storage_failures_are_safe_and_travel_remains_available[travel_copy]
+ERROR backend/tests/skills/test_sessions.py::test_storage_failures_are_safe_and_travel_remains_available[directory]
+ERROR backend/tests/skills/test_sessions.py::test_storage_failures_are_safe_and_travel_remains_available[newer_schema]
+ERROR backend/tests/skills/test_sessions.py::test_storage_failures_are_safe_and_travel_remains_available[partial_schema]
+ERROR backend/tests/skills/test_sessions.py::test_storage_failures_are_safe_and_travel_remains_available[corrupt]
+ERROR backend/tests/skills/test_sessions.py::test_transaction_failure_does_not_leave_session_ahead_of_its_event
+444 passed, 48 errors in 3.43s

@@ -1,0 +1,60 @@
+{
+  "date": "2026-11-02",
+  "kind": "read-only source/evidence consistency and documentation review; no new runtime or timing claim",
+  "requirements_source": "student-uploaded full assignment text plus supplied R1-R4/D1-D6 table",
+  "mock_mode_enabled": true,
+  "original_protected_files_and_ledger_unchanged": true,
+  "original_ledger": [
+    [
+      1,
+      "gpt-6-luna",
+      10,
+      1000000,
+      8,
+      800000
+    ]
+  ],
+  "pending_original_runs": 0,
+  "evaluated_application_source_matches": true,
+  "repaired_tests_match": true,
+  "verified_dependency_lock_matches": true,
+  "mock_scenarios": 15,
+  "behavior_checks": [
+    "B1",
+    "B2",
+    "B3"
+  ],
+  "timing_ms": {
+    "dom": 60005,
+    "clock": 60002,
+    "setup": 17146
+  },
+  "part3_live_attempts": 4,
+  "part3_expected_live_selections": 3,
+  "part3_live_timeout": 1,
+  "additional_calls_this_review": 0,
+  "latest_gate": "492 backend /87 frontend/non-fixing lint/Vite 8.2.4 build; evidence reused, not rerun",
+  "remaining_advisories": {
+    "info": 0,
+    "low": 0,
+    "moderate": 7,
+    "high": 0,
+    "critical": 0,
+    "total": 7
+  },
+  "submission_blockers": [
+    "recordings/code explanation not created or reviewed",
+    "seven moderate lint-tool findings unresolved; no acceptance presumed",
+    "committed clean checkout not verified",
+    "Part 3 submitted SHA/publication/pinned links pending",
+    "media and repository grader access not verified"
+  ],
+  "prohibited_actions_performed": [],
+  "documentation_local_links_checked": 164,
+  "caption_cards": 16,
+  "caption_html_parsed": true,
+  "caption_script_node_syntax_check": "passed",
+  "caption_browser_preview": "blocked by tool local-file protocol policy; no workaround; manual visual check pending",
+  "recordings_created_this_review": 0,
+  "original_preservation_final_check": true
+}

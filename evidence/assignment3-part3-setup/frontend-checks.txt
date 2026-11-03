@@ -1,0 +1,113 @@
+
+> frontend@0.0.0 test
+> node --test src/api/*.test.js src/skills/*.test.js
+
+✔ loads advisor conversation summaries from the exact local route (2.982833ms)
+✔ loads one encoded advisor conversation from the exact local route (1.107541ms)
+✔ loads a conversation without completed evidence (0.103667ms)
+✔ starts a conversation with a normalized question and null ID (0.154416ms)
+✔ sends a follow-up with the exact conversation ID (0.135125ms)
+✔ preserves every grading and persistence response field (0.102916ms)
+✔ surfaces a safe backend advisor error detail (0.325875ms)
+✔ uses a clear fallback for an empty advisor error response (0.137667ms)
+✔ uses a clear fallback for a malformed advisor error response (0.158708ms)
+✔ loads users from the users endpoint (1.324209ms)
+✔ loads joined booking history (1.969917ms)
+✔ creates a booking with the exact JSON body (0.529334ms)
+✔ cancels a booking with PATCH and cancelled status (0.17125ms)
+✔ deletes a booking with DELETE and accepts an empty 204 response (0.148083ms)
+✔ surfaces HTTP error details (0.310333ms)
+✔ uses a clear fallback for an empty error response (0.412833ms)
+✔ uses a clear fallback for a malformed error response (5.278208ms)
+✔ looks up the demonstration ZIP through the exact local GET route (11.250125ms)
+✔ looks up an entered ZIP through the encoded dynamic local GET route (0.438917ms)
+✔ preserves a leading zero in the dynamic ZIP request (0.361709ms)
+✔ dynamic lookup surfaces a safe backend error detail (0.827375ms)
+✔ dynamic lookup uses a clear fallback for an empty error response (0.210834ms)
+✔ dynamic lookup uses a clear fallback for a malformed error response (0.275ms)
+✔ requests the exact encoded local nearby-hotel GET route (2.738333ms)
+✔ preserves a leading-zero ZIP in the nearby-hotel request (0.353ms)
+✔ returns a successful empty nearby-hotel result (0.164333ms)
+✔ surfaces safe nearby-hotel backend error details (0.336333ms)
+✔ uses a clear fallback for an empty nearby-hotel error response (0.120166ms)
+✔ uses a clear fallback for a malformed nearby-hotel error response (0.164458ms)
+✔ loads saved provider IDs from the exact status route (2.662416ms)
+✔ requests the exact encoded local-first ZIP route (0.406291ms)
+✔ saves only the provider hotel and current ZIP location context (0.501958ms)
+✔ deletes the encoded provider ID and accepts an empty 204 response (0.396ms)
+✔ surfaces safe local-storage backend details (0.717791ms)
+✔ uses a clear saved-status fallback for a malformed response (0.190791ms)
+✔ creates only a skills session with explicit display settings and an abortable request (1.163166ms)
+✔ event bodies and UUIDs are preserved exactly for server idempotency (0.189833ms)
+✔ history GETs use bounded pages, encoded cursors and event sequence without provider POSTs (0.217542ms)
+✔ network, invalid JSON and storage failures have bounded user-facing errors (0.483625ms)
+✔ mock conversation and read-only history use skills-only routes and preserve retry IDs (0.408833ms)
+✔ saved display preferences use only explicit skills GET/POST with stable revision and ID (0.252875ms)
+✔ clear history requires explicit DELETE confirmation and generation; state reads are GET only (0.250833ms)
+✔ model disclosure reads and cancellation are skills-only and preserve generation (0.222417ms)
+✔ searchTrips requests the encoded hotel name and returns results (1.745667ms)
+✔ searchTrips exposes the backend error detail (0.408834ms)
+✔ searchTrips gives a friendly error when a response is not JSON (0.9585ms)
+✔ setup has no breathing progress and start does not require an input or request (1.72475ms)
+✔ all twelve ordered phases complete six 4/6 cycles in 60000 simulated active ms (1.328708ms)
+✔ repeated frame samples do not accumulate interval drift (0.825041ms)
+✔ pause freezes the remaining exhale and resume excludes user pause time (0.325875ms)
+✔ support access blocks start, pauses active pacing and never resumes on close (0.336417ms)
+✔ nested user pause and support time use disjoint duration categories (0.280917ms)
+✔ hidden-tab pause remains paused until explicitly resumed (0.822667ms)
+✔ a delayed callback interrupts instead of skipping an unpresented phase (0.270834ms)
+✔ completion records final callback delay instead of clamping to planned time (0.20725ms)
+✔ interruptions over the duration limit remain observable without forced exit (0.164458ms)
+✔ stop is immediate, idempotent, and terminal from running or paused states (0.28375ms)
+✔ snapshots and application configuration cannot be externally changed (0.320791ms)
+✔ invalid or backward clocks are rejected without corrupting state (0.138125ms)
+✔ failed turn retries exact request ID and body, then next turn advances revision (1.50475ms)
+✔ busy state blocks duplicate submits; leaving ignores a late reply (26.615875ms)
+✔ invalid input does not send and retry is never automatic (0.142541ms)
+✔ conversation binds its original history generation, including retries (0.109416ms)
+✔ pending reply keeps the exact request for explicit status retry without duplicating messages (0.170375ms)
+✔ leaving sends best-effort cancellation with the pinned epoch and ignores late success (0.429959ms)
+✔ budget fallback is visibly labeled as a mock and cannot change display choices (0.120041ms)
+✔ opening/cancelling confirmation never deletes; only explicit confirm dispatches (0.933416ms)
+✔ failed clear retries the exact generation and ID without reloading or a second local discard (4.128625ms)
+✔ loading failure and disposal prevent deletion and ignore late responses (0.194417ms)
+✔ loading/saving never applies choices; use last setup is explicit and reduced motion wins (3.120708ms)
+✔ a delayed read never overwrites current settings; disposal ignores late notifications (0.164584ms)
+✔ reset is local immediately, serializes after an in-flight save and uses fresh revision (0.264ms)
+✔ failed writes require explicit exact retry (0.307ms)
+✔ storage failure cannot block a local reset or apply saved choices (0.159167ms)
+✔ reset abandons a failed save retry and cannot resend it later (0.696459ms)
+✔ reduced motion always produces a stationary cue, including an earlier gentle choice (0.679083ms)
+✔ simpler view removes optional conversation entries before and after breathing (0.246ms)
+✔ conversation entries never appear during pacing, pauses, history or an already chosen conversation (0.196542ms)
+✔ crisis contacts are independently bundled, geographically labeled, and immutable (0.728791ms)
+✔ serial queue saves create then all events in local order with increasing revisions (2.084459ms)
+✔ slow creation never blocks local start or stop and checkpoints cannot overtake it (0.332833ms)
+✔ failed event is not retried automatically; explicit retry preserves UUID and exact body (0.291083ms)
+✔ creation failures keep the same session and settings for explicit retry (0.159125ms)
+✔ independent queues cannot replace each other’s session IDs or sequence (0.166042ms)
+✔ snapshots copy only the seven fields accepted by the session API (0.088416ms)
+✔ journal pins history generation and discards queued saves after local clear (0.161125ms)
+✔ every queued event keeps its original history generation on retry (0.109667ms)
+ℹ tests 87
+ℹ suites 0
+ℹ pass 87
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 183.59875
+
+> frontend@0.0.0 build
+> vite build
+
+vite v8.2.2 building client environment for production...
+transforming...
+✓ 53 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                   0.52 kB │ gzip:  0.32 kB
+dist/assets/index-COmBymWt.css   30.58 kB │ gzip: 10.17 kB
+dist/assets/index-CrJfoTqL.js   285.37 kB │ gzip: 90.35 kB
+
+✓ built in 545ms

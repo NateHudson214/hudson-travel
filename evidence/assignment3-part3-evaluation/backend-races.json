@@ -1,0 +1,31 @@
+{
+  "case": "S15",
+  "passed": true,
+  "method": "actual ASGI routes, httpx.MockTransport, fake key, separate temporary DB; no real network/provider",
+  "results": {
+    "cancel": {
+      "duplicate_status": "pending",
+      "control_http": 200,
+      "late_http": 200,
+      "late_status": "cancelled"
+    },
+    "clear": {
+      "duplicate_status": "pending",
+      "control_http": 200,
+      "late_http": 409,
+      "late_status": null
+    }
+  },
+  "fake_dispatches": 2,
+  "final_budget": {
+    "singleton_id": 1,
+    "model_id": "gpt-6-luna",
+    "call_limit": 10,
+    "dollar_limit_micro": 1000000,
+    "reserved_calls": 2,
+    "reserved_micro": 200000
+  },
+  "clear_preserved_preferences": true,
+  "late_records_absent": true,
+  "retry_did_not_redispatch": true
+}

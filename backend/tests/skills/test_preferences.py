@@ -9,11 +9,12 @@ from backend.app.main import app
 
 @pytest.fixture
 def prefs_client(client, tmp_path, monkeypatch):
-    monkeypatch.setattr(app.state, 'skills_database_path', tmp_path/'skills.sqlite3')
+    # Patch State storage directly so pytest undo restores dynamic attributes.
+    monkeypatch.setitem(app.state._state, 'skills_database_path', tmp_path/'skills.sqlite3')
     def forbidden(*args, **kwargs):
         pytest.fail('Display choices reached a live model provider')
-    monkeypatch.setattr(app.state, 'advisor_query_proposer', forbidden)
-    monkeypatch.setattr(app.state, 'advisor_answer_generator', forbidden)
+    monkeypatch.setitem(app.state._state, 'advisor_query_proposer', forbidden)
+    monkeypatch.setitem(app.state._state, 'advisor_answer_generator', forbidden)
     return client
 
 

@@ -1,0 +1,58 @@
+{
+  "sessions": [
+    {
+      "session_id": "2d492645-188e-45ef-96d1-3f98205c29dc",
+      "status": "completed",
+      "active_ms": 60002,
+      "pause_ms": 0,
+      "support_ms": 0,
+      "cycles_completed": 6
+    },
+    {
+      "session_id": "b950c0e6-cd8f-48b1-958f-377e2f59b5cd",
+      "status": "stopped",
+      "active_ms": 8834,
+      "pause_ms": 17118,
+      "support_ms": 10233,
+      "cycles_completed": 0
+    },
+    {
+      "session_id": "03554c26-2309-49a2-8a17-7c0351489dfb",
+      "status": "stopped",
+      "active_ms": 317,
+      "pause_ms": 0,
+      "support_ms": 0,
+      "cycles_completed": 0
+    }
+  ],
+  "runs": [
+    {
+      "request_id": "1edcf042-f1bc-432e-9c17-053b4b7fe130",
+      "status": "completed",
+      "mode": "mock",
+      "error_category": null,
+      "fictional_message": "Fictional character dislikes moving cues."
+    },
+    {
+      "request_id": "ae9635c7-e557-4df7-97ff-28257adfa0ca",
+      "status": "completed",
+      "mode": "mock",
+      "error_category": null,
+      "fictional_message": "Fictional character asks whether typing is required."
+    },
+    {
+      "request_id": "787fd6c9-b312-4a67-a882-8ba18f9d91c3",
+      "status": "failed",
+      "mode": "mock",
+      "error_category": "mock_reply_rejected",
+      "fictional_message": "Fictional S09 malformed"
+    },
+    {
+      "request_id": "781606eb-0e88-4067-bc38-c99ac79bc3ff",
+      "status": "completed",
+      "mode": "mock",
+      "error_category": null,
+      "fictional_message": "Fictional S06 delayed mock"
+    }
+  ]
+}

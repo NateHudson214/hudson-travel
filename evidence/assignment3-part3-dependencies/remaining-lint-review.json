@@ -1,0 +1,14 @@
+{
+  "advisory": "https://github.com/advisories/GHSA-g3hv-75wg-m249",
+  "reported_trigger": "attacker-controlled glob with optimizationLevel >=2",
+  "inspected_default": "minimatch 10.2.6 defaults optimizationLevel to 1",
+  "inspected_callers": "ESLint helpers and config-array use dot:true; neither file sets optimizationLevel",
+  "project_config": "fixed repository globs; no untrusted skills message passed into Node lint tooling",
+  "conclusion": "lower observed exposure for current lint paths, not a patched dependency or blanket non-exploitability proof",
+  "source_sha256": {
+    "frontend/node_modules/eslint/lib/eslint/eslint-helpers.js": "ba70c76105da4536ca807c70e6758180a4c8991a0f03a0694392a60a89a8bde0",
+    "frontend/node_modules/@eslint/config-array/dist/esm/index.js": "39fd87507068ce385a79a9672bdc5e1483ed6cddf195124ef29dad7ba07f60c6",
+    "frontend/node_modules/minimatch/dist/esm/index.js": "59821ec2ce0d3df968292036e5c831ad322b33e9c33a949ecbc9dfe125d165be",
+    "frontend/eslint.config.js": "939927b9dc6553d36680ea2fbdf6938ca1ae820d8c4de2e6ac3c9e0085d96c3f"
+  }
+}

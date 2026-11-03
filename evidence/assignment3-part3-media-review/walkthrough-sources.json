@@ -1,0 +1,17 @@
+{
+  "prepared_date": "2026-11-03",
+  "status": "prepared, not recorded; static checked, manual visual preview pending",
+  "pages": 13,
+  "source_sha256": {
+    "evidence/assignment3-part3-setup/backend-tests.txt": "d344711429f65c2e34933dfddf4b6d6473711db0b833f7132ea155f9a456db6f",
+    "evidence/assignment3-part3-setup/pytest-reproduction.json": "3379a8231e56fd1fc51974d690608047b64cfd04a53776d490954e22744a822d",
+    "backend/tests/skills/test_sessions.py": "38c7f4e433d1aebd883f7826b309c782d84a6f71c3253aa7d0e8e08e92a98e12",
+    "evidence/assignment3-part3-compatibility/first-correction-tests.txt": "e252b05d99ba9dae0cd7bd9ea164e450d5f346e9618cde0b9c20975cec38185e",
+    "evidence/assignment3-part3-dependencies/backend-tests.txt": "ade8f3cf052c9c86a40ce13ea6a29aff6001836ed3309324ffc0958c0797dedc",
+    "evidence/assignment3-part3-compatibility/state-isolation-tests.txt": "1ab88068e31f3c4e7e437e1fd39605710e4f27ab6003472542c98ef28b35294a",
+    "frontend/src/skills/breathing.js": "4b73f4b8e9ed1563c1c0055a52fd0e0b1f8fd7971d641793dfd5003ad2de148e",
+    "backend/app/skills/replies.py": "a074223901da954833f17a9059f04690a771da770f53ee0d7373a23f06030dbc",
+    "backend/app/skills/provider.py": "c967f539e319b398f44d08059733b64a98718516e161e1f286bab8ffdaf2a926",
+    "evidence/assignment3-part3-live-checks/batch.json": "340fa8e37a4ff4a344db599b3741914def8f0d6dec8ed4a0f5e350bd0f77a9ab"
+  }
+}

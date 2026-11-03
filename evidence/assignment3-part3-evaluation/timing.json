@@ -1,0 +1,27 @@
+{
+  "clockActiveMs": 60002,
+  "domActiveMs": 60005,
+  "phases": [
+    "1:inhale",
+    "1:exhale",
+    "2:inhale",
+    "2:exhale",
+    "3:inhale",
+    "3:exhale",
+    "4:inhale",
+    "4:exhale",
+    "5:inhale",
+    "5:exhale",
+    "6:inhale",
+    "6:exhale"
+  ],
+  "staticCue": "true",
+  "status": "completed",
+  "visibility": "visible",
+  "session_id": "2d492645-188e-45ef-96d1-3f98205c29dc",
+  "setupMs": 17146,
+  "pauseMs": 0,
+  "supportMs": 0,
+  "cycles": 6,
+  "no_conversation_run_during_exercise": true
+}

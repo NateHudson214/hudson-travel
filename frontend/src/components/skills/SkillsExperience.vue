@@ -2,7 +2,7 @@
 import { computed, nextTick, onActivated, onBeforeUnmount, onDeactivated, ref, watch } from 'vue'
 import { createBreathingSession } from '../../skills/breathing.js'
 import { createSessionJournal } from '../../skills/sessionJournal.js'
-import { useStaticCue } from '../../skills/presentation.js'
+import { canOfferConversation, useStaticCue } from '../../skills/presentation.js'
 import CrisisSupportPanel from './CrisisSupportPanel.vue'
 import SkillsHistory from './SkillsHistory.vue'
 import SkillsConversation from './SkillsConversation.vue'
@@ -29,6 +29,7 @@ const motion = ref('system')
 const reducedQuery = window.matchMedia('(prefers-reduced-motion: reduce)')
 const reducedMotion = ref(reducedQuery.matches)
 const staticCue = computed(() => useStaticCue(motion.value, reducedMotion.value))
+const offerConversation = computed(() => canOfferConversation(page.value, state.value.status, simpler.value))
 const support = ref(null)
 const saveState = ref({ state: 'none', error: '' })
 const notice = ref('')
@@ -282,7 +283,7 @@ onBeforeUnmount(deactivate)
         </template>
       </section>
 
-      <button v-if="page === 'exercise' && (state.status === 'ready' || terminal(state.status))" type="button" class="quiet" @click="showConversation">Optional conversation {{ terminal(state.status) ? 'after' : 'before' }} breathing</button>
+      <button v-if="offerConversation" type="button" class="quiet" @click="showConversation">Optional conversation {{ terminal(state.status) ? 'after' : 'before' }} breathing</button>
       <button v-if="page === 'exercise' && state.status !== 'running' && !simpler" type="button" class="quiet" @click="page = 'conversation-history'">Conversation history</button>
       <ClearSkillsHistory v-if="['history', 'conversation-history'].includes(page)" @intent="discardHistoryDrafts" @cleared="historyCleared" @crisis="openSupport" @leave="leave" />
       <div class="save-feedback" aria-live="polite">

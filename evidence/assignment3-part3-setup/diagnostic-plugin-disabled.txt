@@ -1,0 +1,303 @@
+.EEEEEEEEEEEEEEEEEEEEEE.E                                                [100%]
+==================================== ERRORS ====================================
+_ ERROR at setup of test_exact_request_retry_returns_original_pair_after_later_turn _
+
+client = <starlette.testclient.TestClient object at 0x108885590>
+tmp_path = PosixPath('/private/var/folders/nj/wwm32g054d78r7fjs2xw9wbh0000gn/T/pytest-of-natehudson/pytest-127/test_exact_request_retry_retur0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x1089ffbb0>
+
+    @pytest.fixture
+    def chat_client(client, tmp_path, monkeypatch):
+>       monkeypatch.setattr(app.state, 'skills_database_path', tmp_path/'skills.sqlite3')
+E       AttributeError: <starlette.datastructures.State object at 0x1085bc6e0> has no attribute 'skills_database_path'
+
+backend/tests/skills/test_conversations.py:17: AttributeError
+___ ERROR at setup of test_rejects_invalid_contract_without_writes[changes0] ___
+
+client = <starlette.testclient.TestClient object at 0x108887ed0>
+tmp_path = PosixPath('/private/var/folders/nj/wwm32g054d78r7fjs2xw9wbh0000gn/T/pytest-of-natehudson/pytest-127/test_rejects_invalid_contract_0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x108a2e7b0>
+
+    @pytest.fixture
+    def chat_client(client, tmp_path, monkeypatch):
+>       monkeypatch.setattr(app.state, 'skills_database_path', tmp_path/'skills.sqlite3')
+E       AttributeError: <starlette.datastructures.State object at 0x1085bc6e0> has no attribute 'skills_database_path'
+
+backend/tests/skills/test_conversations.py:17: AttributeError
+___ ERROR at setup of test_rejects_invalid_contract_without_writes[changes1] ___
+
+client = <starlette.testclient.TestClient object at 0x1089fefd0>
+tmp_path = PosixPath('/private/var/folders/nj/wwm32g054d78r7fjs2xw9wbh0000gn/T/pytest-of-natehudson/pytest-127/test_rejects_invalid_contract_1')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x108924e20>
+
+    @pytest.fixture
+    def chat_client(client, tmp_path, monkeypatch):
+>       monkeypatch.setattr(app.state, 'skills_database_path', tmp_path/'skills.sqlite3')
+E       AttributeError: <starlette.datastructures.State object at 0x1085bc6e0> has no attribute 'skills_database_path'
+
+backend/tests/skills/test_conversations.py:17: AttributeError
+___ ERROR at setup of test_rejects_invalid_contract_without_writes[changes2] ___
+
+client = <starlette.testclient.TestClient object at 0x1089048a0>
+tmp_path = PosixPath('/private/var/folders/nj/wwm32g054d78r7fjs2xw9wbh0000gn/T/pytest-of-natehudson/pytest-127/test_rejects_invalid_contract_2')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x108925480>
+
+    @pytest.fixture
+    def chat_client(client, tmp_path, monkeypatch):
+>       monkeypatch.setattr(app.state, 'skills_database_path', tmp_path/'skills.sqlite3')
+E       AttributeError: <starlette.datastructures.State object at 0x1085bc6e0> has no attribute 'skills_database_path'
+
+backend/tests/skills/test_conversations.py:17: AttributeError
+___ ERROR at setup of test_rejects_invalid_contract_without_writes[changes3] ___
+
+client = <starlette.testclient.TestClient object at 0x108a2dfd0>
+tmp_path = PosixPath('/private/var/folders/nj/wwm32g054d78r7fjs2xw9wbh0000gn/T/pytest-of-natehudson/pytest-127/test_rejects_invalid_contract_3')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x108962050>
+
+    @pytest.fixture
+    def chat_client(client, tmp_path, monkeypatch):
+>       monkeypatch.setattr(app.state, 'skills_database_path', tmp_path/'skills.sqlite3')
+E       AttributeError: <starlette.datastructures.State object at 0x1085bc6e0> has no attribute 'skills_database_path'
+
+backend/tests/skills/test_conversations.py:17: AttributeError
+___ ERROR at setup of test_rejects_invalid_contract_without_writes[changes4] ___
+
+client = <starlette.testclient.TestClient object at 0x108925370>
+tmp_path = PosixPath('/private/var/folders/nj/wwm32g054d78r7fjs2xw9wbh0000gn/T/pytest-of-natehudson/pytest-127/test_rejects_invalid_contract_4')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x108963650>
+
+    @pytest.fixture
+    def chat_client(client, tmp_path, monkeypatch):
+>       monkeypatch.setattr(app.state, 'skills_database_path', tmp_path/'skills.sqlite3')
+E       AttributeError: <starlette.datastructures.State object at 0x1085bc6e0> has no attribute 'skills_database_path'
+
+backend/tests/skills/test_conversations.py:17: AttributeError
+___ ERROR at setup of test_rejects_invalid_contract_without_writes[changes5] ___
+
+client = <starlette.testclient.TestClient object at 0x108926250>
+tmp_path = PosixPath('/private/var/folders/nj/wwm32g054d78r7fjs2xw9wbh0000gn/T/pytest-of-natehudson/pytest-127/test_rejects_invalid_contract_5')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x108acce60>
+
+    @pytest.fixture
+    def chat_client(client, tmp_path, monkeypatch):
+>       monkeypatch.setattr(app.state, 'skills_database_path', tmp_path/'skills.sqlite3')
+E       AttributeError: <starlette.datastructures.State object at 0x1085bc6e0> has no attribute 'skills_database_path'
+
+backend/tests/skills/test_conversations.py:17: AttributeError
+___ ERROR at setup of test_rejects_invalid_contract_without_writes[changes6] ___
+
+client = <starlette.testclient.TestClient object at 0x108926e00>
+tmp_path = PosixPath('/private/var/folders/nj/wwm32g054d78r7fjs2xw9wbh0000gn/T/pytest-of-natehudson/pytest-127/test_rejects_invalid_contract_6')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x108acdb80>
+
+    @pytest.fixture
+    def chat_client(client, tmp_path, monkeypatch):
+>       monkeypatch.setattr(app.state, 'skills_database_path', tmp_path/'skills.sqlite3')
+E       AttributeError: <starlette.datastructures.State object at 0x1085bc6e0> has no attribute 'skills_database_path'
+
+backend/tests/skills/test_conversations.py:17: AttributeError
+___ ERROR at setup of test_rejects_invalid_contract_without_writes[changes7] ___
+
+client = <starlette.testclient.TestClient object at 0x108927020>
+tmp_path = PosixPath('/private/var/folders/nj/wwm32g054d78r7fjs2xw9wbh0000gn/T/pytest-of-natehudson/pytest-127/test_rejects_invalid_contract_7')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x108ad1630>
+
+    @pytest.fixture
+    def chat_client(client, tmp_path, monkeypatch):
+>       monkeypatch.setattr(app.state, 'skills_database_path', tmp_path/'skills.sqlite3')
+E       AttributeError: <starlette.datastructures.State object at 0x1085bc6e0> has no attribute 'skills_database_path'
+
+backend/tests/skills/test_conversations.py:17: AttributeError
+___ ERROR at setup of test_rejects_invalid_contract_without_writes[changes8] ___
+
+client = <starlette.testclient.TestClient object at 0x1089f6030>
+tmp_path = PosixPath('/private/var/folders/nj/wwm32g054d78r7fjs2xw9wbh0000gn/T/pytest-of-natehudson/pytest-127/test_rejects_invalid_contract_8')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x1088b4d70>
+
+    @pytest.fixture
+    def chat_client(client, tmp_path, monkeypatch):
+>       monkeypatch.setattr(app.state, 'skills_database_path', tmp_path/'skills.sqlite3')
+E       AttributeError: <starlette.datastructures.State object at 0x1085bc6e0> has no attribute 'skills_database_path'
+
+backend/tests/skills/test_conversations.py:17: AttributeError
+___ ERROR at setup of test_rejects_invalid_contract_without_writes[changes9] ___
+
+client = <starlette.testclient.TestClient object at 0x108846030>
+tmp_path = PosixPath('/private/var/folders/nj/wwm32g054d78r7fjs2xw9wbh0000gn/T/pytest-of-natehudson/pytest-127/test_rejects_invalid_contract_9')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x108b0c530>
+
+    @pytest.fixture
+    def chat_client(client, tmp_path, monkeypatch):
+>       monkeypatch.setattr(app.state, 'skills_database_path', tmp_path/'skills.sqlite3')
+E       AttributeError: <starlette.datastructures.State object at 0x1085bc6e0> has no attribute 'skills_database_path'
+
+backend/tests/skills/test_conversations.py:17: AttributeError
+_ ERROR at setup of test_rejected_mock_is_saved_as_sanitized_fallback[selection0] _
+
+client = <starlette.testclient.TestClient object at 0x108927240>
+tmp_path = PosixPath('/private/var/folders/nj/wwm32g054d78r7fjs2xw9wbh0000gn/T/pytest-of-natehudson/pytest-127/test_rejected_mock_is_saved_as0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x108955550>
+
+    @pytest.fixture
+    def chat_client(client, tmp_path, monkeypatch):
+>       monkeypatch.setattr(app.state, 'skills_database_path', tmp_path/'skills.sqlite3')
+E       AttributeError: <starlette.datastructures.State object at 0x1085bc6e0> has no attribute 'skills_database_path'
+
+backend/tests/skills/test_conversations.py:17: AttributeError
+_ ERROR at setup of test_rejected_mock_is_saved_as_sanitized_fallback[selection1] _
+
+client = <starlette.testclient.TestClient object at 0x108927570>
+tmp_path = PosixPath('/private/var/folders/nj/wwm32g054d78r7fjs2xw9wbh0000gn/T/pytest-of-natehudson/pytest-127/test_rejected_mock_is_saved_as1')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x1089550d0>
+
+    @pytest.fixture
+    def chat_client(client, tmp_path, monkeypatch):
+>       monkeypatch.setattr(app.state, 'skills_database_path', tmp_path/'skills.sqlite3')
+E       AttributeError: <starlette.datastructures.State object at 0x1085bc6e0> has no attribute 'skills_database_path'
+
+backend/tests/skills/test_conversations.py:17: AttributeError
+_ ERROR at setup of test_rejected_mock_is_saved_as_sanitized_fallback[selection2] _
+
+client = <starlette.testclient.TestClient object at 0x108926360>
+tmp_path = PosixPath('/private/var/folders/nj/wwm32g054d78r7fjs2xw9wbh0000gn/T/pytest-of-natehudson/pytest-127/test_rejected_mock_is_saved_as2')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x108abce10>
+
+    @pytest.fixture
+    def chat_client(client, tmp_path, monkeypatch):
+>       monkeypatch.setattr(app.state, 'skills_database_path', tmp_path/'skills.sqlite3')
+E       AttributeError: <starlette.datastructures.State object at 0x1085bc6e0> has no attribute 'skills_database_path'
+
+backend/tests/skills/test_conversations.py:17: AttributeError
+__ ERROR at setup of test_rejected_mock_is_saved_as_sanitized_fallback[None] ___
+
+client = <starlette.testclient.TestClient object at 0x108926ad0>
+tmp_path = PosixPath('/private/var/folders/nj/wwm32g054d78r7fjs2xw9wbh0000gn/T/pytest-of-natehudson/pytest-127/test_rejected_mock_is_saved_as3')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x108abcec0>
+
+    @pytest.fixture
+    def chat_client(client, tmp_path, monkeypatch):
+>       monkeypatch.setattr(app.state, 'skills_database_path', tmp_path/'skills.sqlite3')
+E       AttributeError: <starlette.datastructures.State object at 0x1085bc6e0> has no attribute 'skills_database_path'
+
+backend/tests/skills/test_conversations.py:17: AttributeError
+____ ERROR at setup of test_exception_sanitized_and_no_raw_output_persisted ____
+
+client = <starlette.testclient.TestClient object at 0x108926140>
+tmp_path = PosixPath('/private/var/folders/nj/wwm32g054d78r7fjs2xw9wbh0000gn/T/pytest-of-natehudson/pytest-127/test_exception_sanitized_and_n0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x108b01bd0>
+
+    @pytest.fixture
+    def chat_client(client, tmp_path, monkeypatch):
+>       monkeypatch.setattr(app.state, 'skills_database_path', tmp_path/'skills.sqlite3')
+E       AttributeError: <starlette.datastructures.State object at 0x1085bc6e0> has no attribute 'skills_database_path'
+
+backend/tests/skills/test_conversations.py:17: AttributeError
+_ ERROR at setup of test_context_is_bounded_to_this_conversation_and_has_no_ids _
+
+client = <starlette.testclient.TestClient object at 0x108927130>
+tmp_path = PosixPath('/private/var/folders/nj/wwm32g054d78r7fjs2xw9wbh0000gn/T/pytest-of-natehudson/pytest-127/test_context_is_bounded_to_thi0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x108b022b0>
+
+    @pytest.fixture
+    def chat_client(client, tmp_path, monkeypatch):
+>       monkeypatch.setattr(app.state, 'skills_database_path', tmp_path/'skills.sqlite3')
+E       AttributeError: <starlette.datastructures.State object at 0x1085bc6e0> has no attribute 'skills_database_path'
+
+backend/tests/skills/test_conversations.py:17: AttributeError
+_ ERROR at setup of test_after_association_requires_terminal_session_and_never_changes_it _
+
+client = <starlette.testclient.TestClient object at 0x1089259d0>
+tmp_path = PosixPath('/private/var/folders/nj/wwm32g054d78r7fjs2xw9wbh0000gn/T/pytest-of-natehudson/pytest-127/test_after_association_require0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x108aec0e0>
+
+    @pytest.fixture
+    def chat_client(client, tmp_path, monkeypatch):
+>       monkeypatch.setattr(app.state, 'skills_database_path', tmp_path/'skills.sqlite3')
+E       AttributeError: <starlette.datastructures.State object at 0x1085bc6e0> has no attribute 'skills_database_path'
+
+backend/tests/skills/test_conversations.py:17: AttributeError
+_ ERROR at setup of test_history_pages_no_text_previews_and_message_page_boundaries _
+
+client = <starlette.testclient.TestClient object at 0x108925e10>
+tmp_path = PosixPath('/private/var/folders/nj/wwm32g054d78r7fjs2xw9wbh0000gn/T/pytest-of-natehudson/pytest-127/test_history_pages_no_text_pre0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x108ae9150>
+
+    @pytest.fixture
+    def chat_client(client, tmp_path, monkeypatch):
+>       monkeypatch.setattr(app.state, 'skills_database_path', tmp_path/'skills.sqlite3')
+E       AttributeError: <starlette.datastructures.State object at 0x1085bc6e0> has no attribute 'skills_database_path'
+
+backend/tests/skills/test_conversations.py:17: AttributeError
+______ ERROR at setup of test_concurrent_retry_and_stale_turn_are_atomic _______
+
+client = <starlette.testclient.TestClient object at 0x1089267a0>
+tmp_path = PosixPath('/private/var/folders/nj/wwm32g054d78r7fjs2xw9wbh0000gn/T/pytest-of-natehudson/pytest-127/test_concurrent_retry_and_stal0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x108ae9cd0>
+
+    @pytest.fixture
+    def chat_client(client, tmp_path, monkeypatch):
+>       monkeypatch.setattr(app.state, 'skills_database_path', tmp_path/'skills.sqlite3')
+E       AttributeError: <starlette.datastructures.State object at 0x1085bc6e0> has no attribute 'skills_database_path'
+
+backend/tests/skills/test_conversations.py:17: AttributeError
+________ ERROR at setup of test_insert_failure_rolls_back_pair_and_run _________
+
+client = <starlette.testclient.TestClient object at 0x108926580>
+tmp_path = PosixPath('/private/var/folders/nj/wwm32g054d78r7fjs2xw9wbh0000gn/T/pytest-of-natehudson/pytest-127/test_insert_failure_rolls_back0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x108aaaf20>
+
+    @pytest.fixture
+    def chat_client(client, tmp_path, monkeypatch):
+>       monkeypatch.setattr(app.state, 'skills_database_path', tmp_path/'skills.sqlite3')
+E       AttributeError: <starlette.datastructures.State object at 0x1085bc6e0> has no attribute 'skills_database_path'
+
+backend/tests/skills/test_conversations.py:17: AttributeError
+_ ERROR at setup of test_v1_migration_preserves_sessions_and_new_connections_restore_chat _
+
+client = <starlette.testclient.TestClient object at 0x108846030>
+tmp_path = PosixPath('/private/var/folders/nj/wwm32g054d78r7fjs2xw9wbh0000gn/T/pytest-of-natehudson/pytest-127/test_v1_migration_preserves_se0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x1088ca740>
+
+    @pytest.fixture
+    def chat_client(client, tmp_path, monkeypatch):
+>       monkeypatch.setattr(app.state, 'skills_database_path', tmp_path/'skills.sqlite3')
+E       AttributeError: <starlette.datastructures.State object at 0x1085bc6e0> has no attribute 'skills_database_path'
+
+backend/tests/skills/test_conversations.py:17: AttributeError
+_ ERROR at setup of test_incomplete_legacy_schema_is_rejected_before_migration _
+
+client = <starlette.testclient.TestClient object at 0x1089f7df0>
+tmp_path = PosixPath('/private/var/folders/nj/wwm32g054d78r7fjs2xw9wbh0000gn/T/pytest-of-natehudson/pytest-127/test_incomplete_legacy_schema_0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x108aab380>
+
+    @pytest.fixture
+    def chat_client(client, tmp_path, monkeypatch):
+>       monkeypatch.setattr(app.state, 'skills_database_path', tmp_path/'skills.sqlite3')
+E       AttributeError: <starlette.datastructures.State object at 0x1085bc6e0> has no attribute 'skills_database_path'
+
+backend/tests/skills/test_conversations.py:17: AttributeError
+=========================== short test summary info ============================
+ERROR backend/tests/skills/test_conversations.py::test_exact_request_retry_returns_original_pair_after_later_turn
+ERROR backend/tests/skills/test_conversations.py::test_rejects_invalid_contract_without_writes[changes0]
+ERROR backend/tests/skills/test_conversations.py::test_rejects_invalid_contract_without_writes[changes1]
+ERROR backend/tests/skills/test_conversations.py::test_rejects_invalid_contract_without_writes[changes2]
+ERROR backend/tests/skills/test_conversations.py::test_rejects_invalid_contract_without_writes[changes3]
+ERROR backend/tests/skills/test_conversations.py::test_rejects_invalid_contract_without_writes[changes4]
+ERROR backend/tests/skills/test_conversations.py::test_rejects_invalid_contract_without_writes[changes5]
+ERROR backend/tests/skills/test_conversations.py::test_rejects_invalid_contract_without_writes[changes6]
+ERROR backend/tests/skills/test_conversations.py::test_rejects_invalid_contract_without_writes[changes7]
+ERROR backend/tests/skills/test_conversations.py::test_rejects_invalid_contract_without_writes[changes8]
+ERROR backend/tests/skills/test_conversations.py::test_rejects_invalid_contract_without_writes[changes9]
+ERROR backend/tests/skills/test_conversations.py::test_rejected_mock_is_saved_as_sanitized_fallback[selection0]
+ERROR backend/tests/skills/test_conversations.py::test_rejected_mock_is_saved_as_sanitized_fallback[selection1]
+ERROR backend/tests/skills/test_conversations.py::test_rejected_mock_is_saved_as_sanitized_fallback[selection2]
+ERROR backend/tests/skills/test_conversations.py::test_rejected_mock_is_saved_as_sanitized_fallback[None]
+ERROR backend/tests/skills/test_conversations.py::test_exception_sanitized_and_no_raw_output_persisted
+ERROR backend/tests/skills/test_conversations.py::test_context_is_bounded_to_this_conversation_and_has_no_ids
+ERROR backend/tests/skills/test_conversations.py::test_after_association_requires_terminal_session_and_never_changes_it
+ERROR backend/tests/skills/test_conversations.py::test_history_pages_no_text_previews_and_message_page_boundaries
+ERROR backend/tests/skills/test_conversations.py::test_concurrent_retry_and_stale_turn_are_atomic
+ERROR backend/tests/skills/test_conversations.py::test_insert_failure_rolls_back_pair_and_run
+ERROR backend/tests/skills/test_conversations.py::test_v1_migration_preserves_sessions_and_new_connections_restore_chat
+ERROR backend/tests/skills/test_conversations.py::test_incomplete_legacy_schema_is_rejected_before_migration
+2 passed, 23 errors in 0.43s

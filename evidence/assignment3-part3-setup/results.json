@@ -1,0 +1,63 @@
+{
+  "date": "2026-11-02",
+  "scope": "isolated unpublished current-files snapshot; not committed clean checkout",
+  "runtime": {
+    "python": "3.14.7",
+    "node": "24.20.0",
+    "npm": "11.19.0"
+  },
+  "installation": {
+    "python": "declared requirements, unpinned resolution; pip check passed",
+    "frontend": "npm install using copied package-lock; copied source and lock unchanged",
+    "registry_restrictions": "initial DNS failures; authorized network retry succeeded",
+    "npm_advisory_summary": {
+      "moderate": 7,
+      "high": 3,
+      "critical": 1,
+      "total": 11,
+      "triage": "unresolved; installer-reported, not independently audited; no fix/upgrade attempted"
+    }
+  },
+  "backend": {
+    "passed": 362,
+    "setup_errors": 130,
+    "command": "SKILLS_MODEL_MODE=mock PYTHONDONTWRITEBYTECODE=1 backend/.venv/bin/python -m pytest backend/tests -q",
+    "blocking_issue": "pytest 9.2.0 monkeypatch undo removes dynamically stored Starlette State attribute; subsequent fixtures error",
+    "focused_diagnostic": "2 passed/23 errors with plugin loading disabled; isolated patch/undo reproduces missing attribute"
+  },
+  "frontend": {
+    "passed": 87,
+    "oxlint": "passed non-fixing",
+    "eslint": "passed non-fixing",
+    "build": "passed, Vite 8.2.2, 53 modules"
+  },
+  "runtime_checks": {
+    "startup": "README backend reload and npm run dev succeeded after local-port permission",
+    "keys": "no .env copied/created; all health key status unconfigured",
+    "travel": "four matching browser variants show T001/T009 and $150; unmatched/blank clear results; API success/empty/400",
+    "skills": "mock disclosure/reply persisted; Start/Pause/Stop; support Back remains paused; no fresh full-duration run claimed"
+  },
+  "temporary_database": {
+    "model_runs": [
+      [
+        "mock",
+        "completed"
+      ]
+    ],
+    "budget": [
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  "original_files_and_allowance_preserved": true,
+  "snapshot_inputs_unchanged": true,
+  "live_calls": 0,
+  "application_source_changes": 0,
+  "remaining_original_calls": 2,
+  "remaining_original_reservation_usd": 0.2,
+  "test_processes_stopped": true,
+  "browser_tab_closed": true,
+  "status": "BLOCKED full fresh-setup verification: backend suite errors and untriaged dependency advisories; no committed clean checkout tested"
+}

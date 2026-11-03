@@ -1,0 +1,20 @@
+{
+  "date": "2026-11-03",
+  "links": {
+    "demo_a": "https://pennstateoffice365-my.sharepoint.com/:v:/r/personal/nwh5289_psu_edu/Documents/assignment3-part3-demo.mov?d=w21c40828f8a64f588991bf457f26ed6a&csf=1&web=1&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=YbTWlA",
+    "process_b": "https://pennstateoffice365-my.sharepoint.com/:v:/r/personal/nwh5289_psu_edu/Documents/assignment3-part3-process.mov?d=w5559618d638c49dead9c73406d8b99e0&csf=1&web=1&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=KscKse"
+  },
+  "source": "Student supplied these OneDrive/SharePoint links; agent did not upload files.",
+  "browser_observations": {
+    "demo_a": "Redirected to Penn State Microsoft sign-in; no video content loaded in unauthenticated session.",
+    "process_b": "Redirected to Penn State Microsoft sign-in; no video content loaded in unauthenticated session."
+  },
+  "instructor_access": "Student explicitly confirmed on November 3, 2026 that instructor/applicable grading TA can view both videos. Not independently impersonated or tested by agent.",
+  "hosted_bytes_match_reviewed_local_files": "Not independently verified; local originals were previously sample-reviewed.",
+  "permission_changes": 0,
+  "uploads": 0,
+  "commits": 0,
+  "pushes": 0,
+  "submissions": 0,
+  "permission_confirmation_source": "Direct student reply: Yes, they can view the videos."
+}

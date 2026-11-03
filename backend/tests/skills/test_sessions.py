@@ -15,16 +15,17 @@ from backend.app.skills.routes import router
 
 @pytest.fixture
 def skills_client(client, tmp_path, monkeypatch):
-    monkeypatch.setattr(app.state, "skills_database_path", tmp_path / "skills.sqlite3")
-    monkeypatch.setattr(
-        app.state, "skills_now_provider",
+    # Patch State storage directly so pytest undo restores dynamic attributes.
+    monkeypatch.setitem(app.state._state, "skills_database_path", tmp_path / "skills.sqlite3")
+    monkeypatch.setitem(
+        app.state._state, "skills_now_provider",
         lambda: datetime(2026, 10, 21, 12, tzinfo=timezone.utc),
     )
     # A session request must not touch any configured travel-model provider.
     def unexpected_provider(*args, **kwargs):
         pytest.fail("A skills session operation reached a model provider.")
-    monkeypatch.setattr(app.state, "advisor_query_proposer", unexpected_provider)
-    monkeypatch.setattr(app.state, "advisor_answer_generator", unexpected_provider)
+    monkeypatch.setitem(app.state._state, "advisor_query_proposer", unexpected_provider)
+    monkeypatch.setitem(app.state._state, "advisor_answer_generator", unexpected_provider)
     return client
 
 
@@ -338,7 +339,7 @@ def test_storage_failures_are_safe_and_travel_remains_available(skills_client, d
                                                                monkeypatch, mode):
     path = Path(app.state.skills_database_path)
     if mode == "same_path":
-        monkeypatch.setattr(app.state, "skills_database_path", database_path)
+        monkeypatch.setitem(app.state._state, "skills_database_path", database_path)
     elif mode == "hard_link":
         path.hardlink_to(database_path)
     elif mode == "travel_copy":

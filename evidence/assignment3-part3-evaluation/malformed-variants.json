@@ -1,0 +1,44 @@
+{
+  "case": "S09",
+  "passed": true,
+  "mode": "mock",
+  "variants": [
+    {
+      "variant": 1,
+      "selection": {
+        "reply_id": "not_approved",
+        "fact_ids": []
+      },
+      "status": "failed",
+      "rendered": "Conversation is unavailable. You can continue without it. Crisis support remains available."
+    },
+    {
+      "variant": 2,
+      "selection": null,
+      "status": "failed",
+      "rendered": "Conversation is unavailable. You can continue without it. Crisis support remains available."
+    },
+    {
+      "variant": 3,
+      "selection": {
+        "reply_id": "neutral_acknowledgment",
+        "fact_ids": [
+          "breathing_sequence"
+        ]
+      },
+      "status": "failed",
+      "rendered": "Conversation is unavailable. You can continue without it. Crisis support remains available."
+    },
+    {
+      "variant": 4,
+      "selection": {
+        "reply_id": "neutral_acknowledgment",
+        "fact_ids": [],
+        "extra": "UNAPPROVED_VARIANT_PROSE"
+      },
+      "status": "failed",
+      "rendered": "Conversation is unavailable. You can continue without it. Crisis support remains available."
+    }
+  ],
+  "raw_prose_not_saved": true
+}

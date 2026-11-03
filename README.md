@@ -7,6 +7,39 @@ frontend-driven booking creation, history, cancellation, and deletion.
 
 The source CSV files in `backend/data/` are read-only seed inputs.
 
+## Assignment 3 Part 3 — Work in progress
+
+Started November 2, 2026 on `codex/assignment3-part3-refinements`, based on the
+published Part 2 checkpoint `16deb696c24222519c88be73f6d29df1a3fbab76`.
+The first refinement hides optional before/after conversation in Simpler view
+until **Show more**, and corrects cancellation wording to refer to saved messages.
+Compact ready-screen display save/reuse/reset remain available so a simpler
+setup can still be saved explicitly. Pacing, user control, reduced motion and
+independent support stay application-owned; travel is preserved.
+
+[Part 3 plan and verified first step](docs/assignment3-part3-plan.md),
+[15-scenario evaluation matrix / three behavior checks](docs/assignment3-part3-evaluation.md),
+and [separate Part 3 report scaffold](assignment3/part3/report.md) distinguish
+observed results from pending work. The full fifteen-scenario mocked evaluation and three behavior checks now passed
+under the documented conditions. A fresh run observed 60.005 s DOM active /
+60.002 s clock, with 17.146 s setup and twelve ordered cues. The [four repeated live attempts](docs/assignment3-part3-live-checks.md) produced
+three expected selections and one timeout, without retries. The [isolated fresh-setup attempt](docs/assignment3-part3-setup.md) passed frontend/startup/browser checks; a [test-only fixture repair and dependency triage](docs/assignment3-part3-compatibility.md) now passes all 492 backend tests without version changes. The [four approved dependency updates](docs/assignment3-part3-dependencies.md) are verified in the isolated copy and recorded in the lockfile; its audit now reports seven moderate lint-tool findings, no high/critical findings. The original frontend installation has not been reinstalled. Both actual Part 3 recordings now have a [sampled media review](docs/assignment3-part3-media-review.md); hosted links are supplied with student-confirmed instructor access; final hosted playback and a committed clean checkout remain incomplete. The student's actual
+creation/submission of a Part 2 recording was not confirmed.
+
+The [final Part 3 readiness review](docs/assignment3-part3-readiness.md) maps the
+full assignment to evidence and outstanding gates. Exact silent
+[demo](docs/assignment3-part3-demo-script.md) and
+[process/code](docs/assignment3-part3-process-script.md) scripts plus
+[caption cards](assignment3/part3/recording-cards.html) are prepared; these are
+supporting artifacts distinct from the two actual local videos. Hosted video links are in the Part 3 report, with viewing permission confirmed by the student. Final playback, a committed checkout, publication and repository-access checks remain pending.
+
+Mocks remain default and were restored after the authorized live batch. Earlier steps installed no dependencies. The authorized fresh-setup attempt installed declared dependencies only in a temporary copy.
+492 backend / 87 frontend tests, non-fixing lint and production build passed.
+The original allowance now has eight reserved attempts/$0.80, leaving two/$0.20;
+remaining allowance is not authorization for a live call. Prior milestone reports
+and the separate Part 2 upload files are preserved. No Part 3 commit/publication
+or Canvas submission has occurred.
+
 ## Assignment 3 Part 2 — Implementation progress
 
 Open **Skills Prototype** in the application navigation (`/#skills`); Hudson
@@ -89,8 +122,8 @@ Use a single backend worker as in the startup commands. See the
 [adapter contract, limits, and verification](docs/assignment3-part2-adapter.md).
 No dependency change is required. Live account access/selection quality remains
 subject to broader evaluation. Four authorized real skills-provider calls passed
-their recorded expectations; no failed attempts or retries occurred. The durable
-ledger has four reservations ($0.40), leaving six attempts/$0.60. These are
+their recorded expectations; no failed attempts or retries occurred. At that Part 2 checkpoint the durable
+ledger had four reservations ($0.40), leaving six attempts/$0.60; current Part 3 allowance is stated above. These are
 conservative reservations, not billed cost. See the
 [live-check results and limits](docs/assignment3-part2-live-checks.md).
 

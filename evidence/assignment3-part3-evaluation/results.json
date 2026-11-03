@@ -1,0 +1,235 @@
+{
+  "date": "2026-11-02",
+  "mode": "mock; synthetic media and local MockTransport explicitly labeled",
+  "scenarios": [
+    {
+      "id": "S01",
+      "expected": "Optional conversation/history hide; safety/Start remain; Show more restores options without starting",
+      "status": "passed under documented test conditions",
+      "observed": "Browser: simpler ready hid conversation/history; Start/support/Leave remained; Show more restored options with engine still ready.",
+      "browser_observation_keys": [
+        "S01_simple",
+        "S01_full"
+      ]
+    },
+    {
+      "id": "S02",
+      "expected": "No optional chat entry until Show more; user remains stopped/completed",
+      "status": "passed under documented test conditions",
+      "observed": "Browser: both completed and stopped simpler views hid after-conversation; Show more restored it while the terminal state stayed unchanged.",
+      "browser_observation_keys": [
+        "S02_completed_simple",
+        "S02_completed_full",
+        "S02_stopped_simple",
+        "S02_stopped_full"
+      ]
+    },
+    {
+      "id": "S03",
+      "expected": "Twelve ordered cues, no chat call inside, actual guided interval <=90 s including delays; setup separate",
+      "status": "passed under documented test conditions",
+      "observed": "Fresh browser: 12 ordered cues/six cycles, 60005 ms DOM active, 60002 ms clock, 17146 ms setup; pause/support zero; no chat inside sequence.",
+      "browser_observation_keys": [
+        "S03_start",
+        "S03_complete"
+      ]
+    },
+    {
+      "id": "S04",
+      "expected": "Phase remainder retained; pause excluded; no restart or automatic continuation",
+      "status": "passed under documented test conditions",
+      "observed": "Browser pause froze active clock at 8267 ms and the same exhale remainder; final stopped record separates 8834 ms active from 17118 ms other pauses.",
+      "browser_observation_keys": [
+        "S04_pause"
+      ]
+    },
+    {
+      "id": "S05",
+      "expected": "Local panel opens; Back remains paused; explicit Resume only",
+      "status": "passed under documented test conditions",
+      "observed": "Support opened from paused and running; both returns stayed paused. Saved support time 10233 ms was separate from other pauses.",
+      "browser_observation_keys": [
+        "S05_from_paused",
+        "S05_back_from_paused",
+        "S05_from_running",
+        "S05_back_from_running"
+      ]
+    },
+    {
+      "id": "S06",
+      "expected": "Immediate idle; stopped/cancelled or safe late-result handling; no penalty",
+      "status": "passed under documented test conditions",
+      "observed": "Active Leave saved stopped at 317 ms and reached idle. Pending-turn Leave/support/exit stayed responsive; delayed mock completed in storage while late UI result remained ignored.",
+      "browser_observation_keys": [
+        "S06_active_leave",
+        "S06_waiting",
+        "S06_waiting_left",
+        "S06_late",
+        "S06_waiting_support",
+        "S06_final_idle"
+      ]
+    },
+    {
+      "id": "S07",
+      "expected": "Labeled mock approved exercise/no-typing reply; optional continuation and persisted pair",
+      "status": "passed under documented test conditions",
+      "observed": "Before mock rendered exercise/no-typing/pause facts, saved the pair, and restored it after real backend restart.",
+      "browser_observation_keys": [
+        "S07",
+        "S07_restored"
+      ]
+    },
+    {
+      "id": "S08",
+      "expected": "Labeled mock reviewed static-option fact; no automatic setting change; history persists",
+      "status": "passed under documented test conditions",
+      "observed": "After mock rendered acknowledgment/static-display option, linked to the completed session, made no preference save, and restored from history.",
+      "browser_observation_keys": [
+        "S08",
+        "S08_restored"
+      ]
+    },
+    {
+      "id": "S09",
+      "expected": "Fixed application fallback; failed run; no rejected raw output saved/rendered; safety/Leave work",
+      "status": "passed under documented test conditions",
+      "observed": "Browser malformed extra-prose fixture produced fixed fallback and usable safety/exit; four ASGI variants rejected unknown IDs, null output, incompatible facts and extra prose without saving raw rejected text.",
+      "browser_observation_keys": [
+        "S09",
+        "S09_support",
+        "S09_left"
+      ]
+    },
+    {
+      "id": "S10",
+      "expected": "Bounded error and retained draft; local support/Leave usable; no silent retry",
+      "status": "passed under documented test conditions",
+      "observed": "Backend genuinely stopped: Send retained draft/error and explicit Retry; local support/Leave worked. Unsent draft was absent from SQLite before clearing.",
+      "browser_observation_keys": [
+        "S10_before_outage",
+        "S10_failed",
+        "S10_support",
+        "S10_left"
+      ]
+    },
+    {
+      "id": "S11",
+      "expected": "Load never applies/starts; reuse explicit; device reduced motion wins",
+      "status": "passed under documented test conditions",
+      "observed": "Save/reload/reuse stayed explicit and ready. A test-only JavaScript matchMedia fixture forced staticCue=true/transform=none despite saved gentle motion; no actual OS toggle is claimed.",
+      "browser_observation_keys": [
+        "S11_saved",
+        "S11_loaded",
+        "S11_reused",
+        "S11_reduced_ready",
+        "S11_reduced_running",
+        "S11_static"
+      ]
+    },
+    {
+      "id": "S12",
+      "expected": "Local display reset; saved choice reset retry explicit; sessions/conversations retained",
+      "status": "passed under documented test conditions",
+      "observed": "Named temporary reset-write failure changed display locally and showed warning; explicit retry cleared saved choices, preserved 4 sessions/3 conversations. Injected async preference test serialized reset behind old save using revision 1.",
+      "browser_observation_keys": [
+        "S12_failed",
+        "S12_support",
+        "S12_retried"
+      ]
+    },
+    {
+      "id": "S13",
+      "expected": "Cancel preserves data; confirm clears sessions/chats, preserves preferences and allowance",
+      "status": "passed under documented test conditions",
+      "observed": "Cancel preserved all 5 sessions/3 conversations. Confirm cleared 33 events/8 messages/4 runs, kept preferences/ledger, epoch became 1. Old turn/session writes returned 409; a new epoch-1 mock conversation saved afterward.",
+      "browser_observation_keys": [
+        "S13_confirmation",
+        "S13_cancelled",
+        "S13_support",
+        "S13_cleared",
+        "S13_preferences_kept"
+      ]
+    },
+    {
+      "id": "S14",
+      "expected": "No auto-resume; acknowledged lower-bound checkpoint/history restored; explicit reconcile only",
+      "status": "passed under documented test conditions",
+      "observed": "Real backend restart restored paused 283 ms checkpoint without resuming. Explicit reconciliation changed only status to interrupted; completed timing and saved conversations restored without a model call.",
+      "browser_observation_keys": [
+        "S14_before_restart",
+        "S14_offline_reload",
+        "S14_restored",
+        "S14_reconciled",
+        "S14_completed_history",
+        "S14_conversation_list",
+        "S07_restored",
+        "S08_restored"
+      ]
+    },
+    {
+      "id": "S15",
+      "expected": "One dispatch; durable cancellation/epoch check; no recreated records or refunded allowance",
+      "status": "passed under documented test conditions",
+      "observed": "Two local MockTransport dispatches: duplicates returned pending without redispatch; cancellation stayed cancelled; clear rejected late result/retry with 409, preserved preferences and two nonrefunded fake reservations.",
+      "browser_observation_keys": []
+    }
+  ],
+  "behavior_checks": {
+    "B1": "passed across exercised UI states",
+    "B2": "passed with simulated reduced-motion preference, not OS toggle",
+    "B3": "passed with actual temporary records and local fake provider lifecycle"
+  },
+  "fresh_timing": {
+    "clockActiveMs": 60002,
+    "domActiveMs": 60005,
+    "phases": [
+      "1:inhale",
+      "1:exhale",
+      "2:inhale",
+      "2:exhale",
+      "3:inhale",
+      "3:exhale",
+      "4:inhale",
+      "4:exhale",
+      "5:inhale",
+      "5:exhale",
+      "6:inhale",
+      "6:exhale"
+    ],
+    "staticCue": "true",
+    "status": "completed",
+    "visibility": "visible",
+    "session_id": "2d492645-188e-45ef-96d1-3f98205c29dc",
+    "setupMs": 17146,
+    "pauseMs": 0,
+    "supportMs": 0,
+    "cycles": 6,
+    "no_conversation_run_during_exercise": true
+  },
+  "additional_real_provider_calls": 0,
+  "local_fake_transport_dispatches": 2,
+  "original_databases_and_prior_reports_unchanged": true,
+  "application_source_unchanged_during_evaluation": true,
+  "original_allowance_reserved_calls": 4,
+  "remaining_calls": 6,
+  "remaining_reservation_usd": 0.6,
+  "limitations": [
+    "JavaScript matchMedia fixture, not an OS-setting test",
+    "One full-duration sample, no hardware-paint or multi-device/jitter guarantee",
+    "No real live variation or paid failure injection",
+    "No clean-checkout installation/recordings/submission in this step"
+  ],
+  "recorded_at_utc": "2026-11-02T20:22:33.721005+00:00",
+  "regression_gate": {
+    "backend_passed": 492,
+    "frontend_passed": 87,
+    "oxlint": "passed",
+    "eslint": "passed",
+    "build_modules": 53,
+    "build": "passed",
+    "backend_existing_warnings": 2
+  },
+  "test_services_and_browser_closed": true,
+  "surprising_finding": "Immediate Leave can coexist with a completed saved delayed mock turn; the late result does not reappear. Preserve best-effort cancellation wording and UI generation guards; do not promise to undo dispatched work.",
+  "new_application_fix_required": false
+}

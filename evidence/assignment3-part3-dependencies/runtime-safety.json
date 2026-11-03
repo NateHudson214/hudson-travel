@@ -1,0 +1,18 @@
+{
+  "live_enabled": false,
+  "credentials_configured": false,
+  "model_runs": [
+    [
+      "mock",
+      "completed"
+    ],
+    [
+      "mock",
+      "completed"
+    ]
+  ],
+  "temporary_reserved_calls": 0,
+  "temporary_reserved_micro": 0,
+  "integrity": "ok",
+  "foreign_key_errors": []
+}

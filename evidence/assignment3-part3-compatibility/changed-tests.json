@@ -1,0 +1,25 @@
+{
+  "scope": "Only test files; no application/dependency change",
+  "files": {
+    "backend/tests/skills/test_preferences.py": {
+      "replacements": 3,
+      "sha256": "70edfd4fb864faefac93a91b1f754215f422785bfee8141457113549382b2d53"
+    },
+    "backend/tests/skills/test_sessions.py": {
+      "replacements": 5,
+      "sha256": "38c7f4e433d1aebd883f7826b309c782d84a6f71c3253aa7d0e8e08e92a98e12"
+    },
+    "backend/tests/skills/test_live.py": {
+      "replacements": 14,
+      "sha256": "d99add5874f9e2c635b8aae2a02d981835a36b1ace59d65ef4b2e18d821d9d2e"
+    },
+    "backend/tests/skills/test_history_clear.py": {
+      "replacements": 3,
+      "sha256": "3d7dce35278325426cc990c19e8a46a64d2213e5345d622c34e07206c89b4c6f"
+    },
+    "backend/tests/skills/test_conversations.py": {
+      "replacements": 4,
+      "sha256": "18466e4882b9818c793d62664da0399436165b3027325f90facb90c3b1bffe68"
+    }
+  }
+}

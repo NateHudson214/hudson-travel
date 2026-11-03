@@ -14,12 +14,13 @@ from backend.app.skills.replies import FALLBACK_TEXT
 
 @pytest.fixture
 def chat_client(client, tmp_path, monkeypatch):
-    monkeypatch.setattr(app.state, 'skills_database_path', tmp_path/'skills.sqlite3')
-    monkeypatch.setattr(app.state, 'skills_now_provider', lambda: datetime(2026,10,26,tzinfo=timezone.utc))
+    # Patch State storage directly so pytest undo restores dynamic attributes.
+    monkeypatch.setitem(app.state._state, 'skills_database_path', tmp_path/'skills.sqlite3')
+    monkeypatch.setitem(app.state._state, 'skills_now_provider', lambda: datetime(2026,10,26,tzinfo=timezone.utc))
     def forbidden(*args, **kwargs):
         pytest.fail('Mock conversation invoked a travel provider')
-    monkeypatch.setattr(app.state, 'advisor_query_proposer', forbidden)
-    monkeypatch.setattr(app.state, 'advisor_answer_generator', forbidden)
+    monkeypatch.setitem(app.state._state, 'advisor_query_proposer', forbidden)
+    monkeypatch.setitem(app.state._state, 'advisor_answer_generator', forbidden)
     yield client
     app.dependency_overrides.pop(mock_selector, None)
 

@@ -1,0 +1,10 @@
+{
+  "epoch": 1,
+  "new_conversations": 1,
+  "new_model_runs": 1,
+  "mode": "mock",
+  "new_epoch_activity_saved": true,
+  "reserved_calls": 0,
+  "integrity": "ok",
+  "foreign_key_errors": []
+}

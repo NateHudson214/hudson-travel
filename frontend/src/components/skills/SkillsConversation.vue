@@ -58,7 +58,7 @@ onBeforeUnmount(() => { disposed = true; conversation?.dispose() })
     <p v-if="state.error" role="alert">{{ state.error }} Your draft remains here. Continue without it or retry the same turn.</p>
     <button v-if="state.canRetry" type="button" @click="retry">Retry same turn</button>
     <p v-if="mode === 'mock'">Leaving closes this conversation view. Already saved replies remain in history.</p>
-    <p v-if="mode === 'live'">Leaving requests cancellation. An already dispatched call can still count toward the allowance; late replies cannot change the exercise. Review saved statuses in history.</p>
+    <p v-if="mode === 'live'">Leaving requests cancellation. An already dispatched call can still count toward the allowance; late replies cannot change the exercise. You can review saved messages in conversation history.</p>
   </section>
 </template>
 

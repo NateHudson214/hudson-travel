@@ -1,0 +1,46 @@
+{
+  "date": "2026-11-02",
+  "scope": "29 state patches in five test files; no production source or dependency change",
+  "first_correction": "444 passed, 48 errors; one multiline state patch remained; retained evidence",
+  "final_isolated_backend": "492 passed, pytest 9.2.0 existing isolated install",
+  "original_environment_skills": "164 passed; two existing dependency deprecation warnings",
+  "isolated_state_cleanup_check": "164 passed; original application-state keys/bindings preserved; one harness assertion-rewrite warning",
+  "frontend": "unchanged; prior isolated 87 tests/lint/build remain applicable, not rerun",
+  "audit_counts": {
+    "info": 0,
+    "low": 0,
+    "moderate": 7,
+    "high": 3,
+    "critical": 1,
+    "total": 11
+  },
+  "triage": "all 11 flagged packages mapped; five packages carry 12 unique direct advisories, six packages inherit ESLint chain",
+  "proposed_compatible_updates": {
+    "vite": "8.2.4",
+    "shell-quote": "1.11.0",
+    "source-map-js": "1.2.2",
+    "brace-expansion": "5.0.12"
+  },
+  "separate_major_review": "minimatch 11.0.1 is patched but outside installed ESLint/config-array minimatch ^10 ranges; no blind override or ancient downgrade",
+  "metadata_verified": {
+    "eslint_latest": "10.14.0",
+    "eslint_latest_minimatch": "^10.2.6",
+    "config_array_latest": "0.23.5",
+    "config_array_minimatch": "^10.2.4",
+    "vite_8_2_4_node": "^20.19.0 || >=22.12.0",
+    "node_used": "24.20.0",
+    "shell_quote_parent_range": "^1.8.4",
+    "source_map_parent_ranges": "^1.2.1",
+    "brace_parent_range": "^5.0.8"
+  },
+  "installed_or_upgraded": false,
+  "live_calls": 0,
+  "original_protected_hashes_unchanged": true,
+  "original_ledger_unchanged": true,
+  "application_source_unchanged": true,
+  "dependency_files_unchanged": true,
+  "remaining_calls": 2,
+  "remaining_reserved_allowance_usd": 0.2,
+  "commits_pushes_submissions": 0,
+  "snapshot_kind": "unpublished copied files plus five corrected test files; not a committed clean checkout"
+}

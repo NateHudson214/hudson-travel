@@ -1,0 +1,31 @@
+{
+  "case": "S12",
+  "mode": "injected local functions; no HTTP",
+  "passed": true,
+  "resetAppliedBeforeOldSaveFinished": true,
+  "applied": [
+    {
+      "simpler_view": false,
+      "motion_mode": "system"
+    }
+  ],
+  "calls": [
+    {
+      "request_id": "fixture-1",
+      "expected_revision": 0,
+      "action": "save",
+      "display_settings": {
+        "simpler_view": true,
+        "motion_mode": "gentle"
+      }
+    },
+    {
+      "request_id": "fixture-2",
+      "expected_revision": 1,
+      "action": "reset",
+      "display_settings": null
+    }
+  ],
+  "final_revision": 2,
+  "final_saved_setup": null
+}

@@ -1,0 +1,14 @@
+{
+  "case": "S12",
+  "before_history_counts": {
+    "sessions": 4,
+    "conversations": 3
+  },
+  "after_history_counts": {
+    "sessions": 4,
+    "conversations": 3
+  },
+  "history_preserved": true,
+  "reset_retry_cleared_saved_setup": true,
+  "fault": "named temporary SQLite UPDATE trigger; removed before explicit retry"
+}

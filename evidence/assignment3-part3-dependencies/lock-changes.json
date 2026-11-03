@@ -1,0 +1,18 @@
+{
+  "node_modules/source-map-js": {
+    "before": "1.2.1",
+    "after": "1.2.2"
+  },
+  "node_modules/vite": {
+    "before": "8.2.2",
+    "after": "8.2.4"
+  },
+  "node_modules/shell-quote": {
+    "before": "1.10.0",
+    "after": "1.11.0"
+  },
+  "node_modules/brace-expansion": {
+    "before": "5.0.9",
+    "after": "5.0.12"
+  }
+}

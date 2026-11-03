@@ -1,0 +1,575 @@
+{
+  "skills_sessions": [
+    {
+      "session_id": "2d492645-188e-45ef-96d1-3f98205c29dc",
+      "skill_id": "paced_breathing_4_6",
+      "skill_version": "1",
+      "status": "completed",
+      "revision": 13,
+      "settings_json": "{\"motion_mode\":\"static\",\"simpler_view\":false}",
+      "created_at": "2026-11-02T20:02:40.218644+00:00",
+      "updated_at": "2026-11-02T20:03:40.197958+00:00",
+      "started_at": "2026-11-02T20:02:40.239003+00:00",
+      "ended_at": "2026-11-02T20:03:40.197958+00:00",
+      "active_ms": 60002,
+      "pause_ms": 0,
+      "support_ms": 0,
+      "setup_ms": 17146,
+      "cycles_completed": 6,
+      "phase": "exhale",
+      "phase_remaining_ms": 0,
+      "support_open": 0
+    },
+    {
+      "session_id": "b950c0e6-cd8f-48b1-958f-377e2f59b5cd",
+      "skill_id": "paced_breathing_4_6",
+      "skill_version": "1",
+      "status": "stopped",
+      "revision": 10,
+      "settings_json": "{\"motion_mode\":\"static\",\"simpler_view\":false}",
+      "created_at": "2026-11-02T20:05:28.483618+00:00",
+      "updated_at": "2026-11-02T20:06:04.669199+00:00",
+      "started_at": "2026-11-02T20:05:28.503572+00:00",
+      "ended_at": "2026-11-02T20:06:04.669199+00:00",
+      "active_ms": 8834,
+      "pause_ms": 17118,
+      "support_ms": 10233,
+      "setup_ms": 267,
+      "cycles_completed": 0,
+      "phase": "exhale",
+      "phase_remaining_ms": 1166,
+      "support_open": 0
+    },
+    {
+      "session_id": "03554c26-2309-49a2-8a17-7c0351489dfb",
+      "skill_id": "paced_breathing_4_6",
+      "skill_version": "1",
+      "status": "stopped",
+      "revision": 2,
+      "settings_json": "{\"motion_mode\":\"static\",\"simpler_view\":false}",
+      "created_at": "2026-11-02T20:06:29.735007+00:00",
+      "updated_at": "2026-11-02T20:06:30.050450+00:00",
+      "started_at": "2026-11-02T20:06:29.763116+00:00",
+      "ended_at": "2026-11-02T20:06:30.050450+00:00",
+      "active_ms": 317,
+      "pause_ms": 0,
+      "support_ms": 0,
+      "setup_ms": 267,
+      "cycles_completed": 0,
+      "phase": "inhale",
+      "phase_remaining_ms": 3683,
+      "support_open": 0
+    },
+    {
+      "session_id": "1ad8007d-706c-4ecf-be73-800a72837c16",
+      "skill_id": "paced_breathing_4_6",
+      "skill_version": "1",
+      "status": "stopped",
+      "revision": 5,
+      "settings_json": "{\"motion_mode\":\"gentle\",\"simpler_view\":true}",
+      "created_at": "2026-11-02T20:09:33.353585+00:00",
+      "updated_at": "2026-11-02T20:09:52.304332+00:00",
+      "started_at": "2026-11-02T20:09:33.368981+00:00",
+      "ended_at": "2026-11-02T20:09:52.304332+00:00",
+      "active_ms": 18951,
+      "pause_ms": 0,
+      "support_ms": 0,
+      "setup_ms": 545,
+      "cycles_completed": 1,
+      "phase": "exhale",
+      "phase_remaining_ms": 1049,
+      "support_open": 0
+    },
+    {
+      "session_id": "d16553eb-bc25-4ecb-ac47-58e8a35257aa",
+      "skill_id": "paced_breathing_4_6",
+      "skill_version": "1",
+      "status": "interrupted",
+      "revision": 3,
+      "settings_json": "{\"motion_mode\":\"system\",\"simpler_view\":false}",
+      "created_at": "2026-11-02T20:11:45.958166+00:00",
+      "updated_at": "2026-11-02T20:12:42.637213+00:00",
+      "started_at": "2026-11-02T20:11:45.991859+00:00",
+      "ended_at": "2026-11-02T20:12:42.637213+00:00",
+      "active_ms": 283,
+      "pause_ms": 0,
+      "support_ms": 0,
+      "setup_ms": 113415,
+      "cycles_completed": 0,
+      "phase": "inhale",
+      "phase_remaining_ms": 3717,
+      "support_open": 0
+    }
+  ],
+  "skills_session_events": [
+    {
+      "event_id": "5f315df8-3804-4786-b368-aea783f7451a",
+      "session_id": "2d492645-188e-45ef-96d1-3f98205c29dc",
+      "sequence": 1,
+      "kind": "start",
+      "created_at": "2026-11-02T20:02:40.239003+00:00",
+      "payload_json": "{\"event_id\":\"5f315df8-3804-4786-b368-aea783f7451a\",\"expected_revision\":0,\"history_epoch\":0,\"kind\":\"start\",\"reason\":null,\"sequence\":1,\"snapshot\":{\"active_ms\":0,\"cycles_completed\":0,\"pause_ms\":0,\"phase\":\"inhale\",\"phase_remaining_ms\":4000,\"setup_ms\":17146,\"support_ms\":0}}"
+    },
+    {
+      "event_id": "18e8c3b0-874b-4928-b6e4-ab291730b08d",
+      "session_id": "2d492645-188e-45ef-96d1-3f98205c29dc",
+      "sequence": 2,
+      "kind": "checkpoint",
+      "created_at": "2026-11-02T20:02:44.208255+00:00",
+      "payload_json": "{\"event_id\":\"18e8c3b0-874b-4928-b6e4-ab291730b08d\",\"expected_revision\":1,\"history_epoch\":0,\"kind\":\"checkpoint\",\"reason\":null,\"sequence\":2,\"snapshot\":{\"active_ms\":4016,\"cycles_completed\":0,\"pause_ms\":0,\"phase\":\"exhale\",\"phase_remaining_ms\":5984,\"setup_ms\":17146,\"support_ms\":0}}"
+    },
+    {
+      "event_id": "286acff4-9897-4958-af03-1c9ecef7b02e",
+      "session_id": "2d492645-188e-45ef-96d1-3f98205c29dc",
+      "sequence": 3,
+      "kind": "checkpoint",
+      "created_at": "2026-11-02T20:02:50.209742+00:00",
+      "payload_json": "{\"event_id\":\"286acff4-9897-4958-af03-1c9ecef7b02e\",\"expected_revision\":2,\"history_epoch\":0,\"kind\":\"checkpoint\",\"reason\":null,\"sequence\":3,\"snapshot\":{\"active_ms\":10017,\"cycles_completed\":1,\"pause_ms\":0,\"phase\":\"inhale\",\"phase_remaining_ms\":3983,\"setup_ms\":17146,\"support_ms\":0}}"
+    },
+    {
+      "event_id": "26707b90-30d2-482e-8a89-6a8a6aa87b15",
+      "session_id": "2d492645-188e-45ef-96d1-3f98205c29dc",
+      "sequence": 4,
+      "kind": "checkpoint",
+      "created_at": "2026-11-02T20:02:54.208590+00:00",
+      "payload_json": "{\"event_id\":\"26707b90-30d2-482e-8a89-6a8a6aa87b15\",\"expected_revision\":3,\"history_epoch\":0,\"kind\":\"checkpoint\",\"reason\":null,\"sequence\":4,\"snapshot\":{\"active_ms\":14016,\"cycles_completed\":1,\"pause_ms\":0,\"phase\":\"exhale\",\"phase_remaining_ms\":5984,\"setup_ms\":17146,\"support_ms\":0}}"
+    },
+    {
+      "event_id": "794ac89d-6715-4675-be84-e786d8c131c2",
+      "session_id": "2d492645-188e-45ef-96d1-3f98205c29dc",
+      "sequence": 5,
+      "kind": "checkpoint",
+      "created_at": "2026-11-02T20:03:00.214625+00:00",
+      "payload_json": "{\"event_id\":\"794ac89d-6715-4675-be84-e786d8c131c2\",\"expected_revision\":4,\"history_epoch\":0,\"kind\":\"checkpoint\",\"reason\":null,\"sequence\":5,\"snapshot\":{\"active_ms\":20017,\"cycles_completed\":2,\"pause_ms\":0,\"phase\":\"inhale\",\"phase_remaining_ms\":3983,\"setup_ms\":17146,\"support_ms\":0}}"
+    },
+    {
+      "event_id": "c6dbde1c-913a-418b-9991-64ffb41c6475",
+      "session_id": "2d492645-188e-45ef-96d1-3f98205c29dc",
+      "sequence": 6,
+      "kind": "checkpoint",
+      "created_at": "2026-11-02T20:03:04.208048+00:00",
+      "payload_json": "{\"event_id\":\"c6dbde1c-913a-418b-9991-64ffb41c6475\",\"expected_revision\":5,\"history_epoch\":0,\"kind\":\"checkpoint\",\"reason\":null,\"sequence\":6,\"snapshot\":{\"active_ms\":24017,\"cycles_completed\":2,\"pause_ms\":0,\"phase\":\"exhale\",\"phase_remaining_ms\":5983,\"setup_ms\":17146,\"support_ms\":0}}"
+    },
+    {
+      "event_id": "0a444087-907f-404f-ab44-e0f7dd8a2dba",
+      "session_id": "2d492645-188e-45ef-96d1-3f98205c29dc",
+      "sequence": 7,
+      "kind": "checkpoint",
+      "created_at": "2026-11-02T20:03:10.185854+00:00",
+      "payload_json": "{\"event_id\":\"0a444087-907f-404f-ab44-e0f7dd8a2dba\",\"expected_revision\":6,\"history_epoch\":0,\"kind\":\"checkpoint\",\"reason\":null,\"sequence\":7,\"snapshot\":{\"active_ms\":30000,\"cycles_completed\":3,\"pause_ms\":0,\"phase\":\"inhale\",\"phase_remaining_ms\":4000,\"setup_ms\":17146,\"support_ms\":0}}"
+    },
+    {
+      "event_id": "162218ad-2d58-4842-bb42-3509edcebc6d",
+      "session_id": "2d492645-188e-45ef-96d1-3f98205c29dc",
+      "sequence": 8,
+      "kind": "checkpoint",
+      "created_at": "2026-11-02T20:03:14.188190+00:00",
+      "payload_json": "{\"event_id\":\"162218ad-2d58-4842-bb42-3509edcebc6d\",\"expected_revision\":7,\"history_epoch\":0,\"kind\":\"checkpoint\",\"reason\":null,\"sequence\":8,\"snapshot\":{\"active_ms\":34000,\"cycles_completed\":3,\"pause_ms\":0,\"phase\":\"exhale\",\"phase_remaining_ms\":6000,\"setup_ms\":17146,\"support_ms\":0}}"
+    },
+    {
+      "event_id": "45b1e1cc-c128-48a9-9417-0f6e20108e14",
+      "session_id": "2d492645-188e-45ef-96d1-3f98205c29dc",
+      "sequence": 9,
+      "kind": "checkpoint",
+      "created_at": "2026-11-02T20:03:20.191585+00:00",
+      "payload_json": "{\"event_id\":\"45b1e1cc-c128-48a9-9417-0f6e20108e14\",\"expected_revision\":8,\"history_epoch\":0,\"kind\":\"checkpoint\",\"reason\":null,\"sequence\":9,\"snapshot\":{\"active_ms\":40000,\"cycles_completed\":4,\"pause_ms\":0,\"phase\":\"inhale\",\"phase_remaining_ms\":4000,\"setup_ms\":17146,\"support_ms\":0}}"
+    },
+    {
+      "event_id": "b7fe835c-631f-4d0f-96a3-e1df21a99ab0",
+      "session_id": "2d492645-188e-45ef-96d1-3f98205c29dc",
+      "sequence": 10,
+      "kind": "checkpoint",
+      "created_at": "2026-11-02T20:03:24.206980+00:00",
+      "payload_json": "{\"event_id\":\"b7fe835c-631f-4d0f-96a3-e1df21a99ab0\",\"expected_revision\":9,\"history_epoch\":0,\"kind\":\"checkpoint\",\"reason\":null,\"sequence\":10,\"snapshot\":{\"active_ms\":44001,\"cycles_completed\":4,\"pause_ms\":0,\"phase\":\"exhale\",\"phase_remaining_ms\":5999,\"setup_ms\":17146,\"support_ms\":0}}"
+    },
+    {
+      "event_id": "f5cd96a5-1390-4cd0-a8d0-580874a8062a",
+      "session_id": "2d492645-188e-45ef-96d1-3f98205c29dc",
+      "sequence": 11,
+      "kind": "checkpoint",
+      "created_at": "2026-11-02T20:03:30.194659+00:00",
+      "payload_json": "{\"event_id\":\"f5cd96a5-1390-4cd0-a8d0-580874a8062a\",\"expected_revision\":10,\"history_epoch\":0,\"kind\":\"checkpoint\",\"reason\":null,\"sequence\":11,\"snapshot\":{\"active_ms\":50001,\"cycles_completed\":5,\"pause_ms\":0,\"phase\":\"inhale\",\"phase_remaining_ms\":3999,\"setup_ms\":17146,\"support_ms\":0}}"
+    },
+    {
+      "event_id": "fc738f95-de02-4d1b-8afc-c48f4b67fe4c",
+      "session_id": "2d492645-188e-45ef-96d1-3f98205c29dc",
+      "sequence": 12,
+      "kind": "checkpoint",
+      "created_at": "2026-11-02T20:03:34.189455+00:00",
+      "payload_json": "{\"event_id\":\"fc738f95-de02-4d1b-8afc-c48f4b67fe4c\",\"expected_revision\":11,\"history_epoch\":0,\"kind\":\"checkpoint\",\"reason\":null,\"sequence\":12,\"snapshot\":{\"active_ms\":54001,\"cycles_completed\":5,\"pause_ms\":0,\"phase\":\"exhale\",\"phase_remaining_ms\":5999,\"setup_ms\":17146,\"support_ms\":0}}"
+    },
+    {
+      "event_id": "3cc179dd-743e-49e8-b450-0d7175b8d5a4",
+      "session_id": "2d492645-188e-45ef-96d1-3f98205c29dc",
+      "sequence": 13,
+      "kind": "complete",
+      "created_at": "2026-11-02T20:03:40.197958+00:00",
+      "payload_json": "{\"event_id\":\"3cc179dd-743e-49e8-b450-0d7175b8d5a4\",\"expected_revision\":12,\"history_epoch\":0,\"kind\":\"complete\",\"reason\":null,\"sequence\":13,\"snapshot\":{\"active_ms\":60002,\"cycles_completed\":6,\"pause_ms\":0,\"phase\":\"exhale\",\"phase_remaining_ms\":0,\"setup_ms\":17146,\"support_ms\":0}}"
+    },
+    {
+      "event_id": "458215f2-be4d-406b-94a5-fe074f75f205",
+      "session_id": "b950c0e6-cd8f-48b1-958f-377e2f59b5cd",
+      "sequence": 1,
+      "kind": "start",
+      "created_at": "2026-11-02T20:05:28.503572+00:00",
+      "payload_json": "{\"event_id\":\"458215f2-be4d-406b-94a5-fe074f75f205\",\"expected_revision\":0,\"history_epoch\":0,\"kind\":\"start\",\"reason\":null,\"sequence\":1,\"snapshot\":{\"active_ms\":0,\"cycles_completed\":0,\"pause_ms\":0,\"phase\":\"inhale\",\"phase_remaining_ms\":4000,\"setup_ms\":267,\"support_ms\":0}}"
+    },
+    {
+      "event_id": "2a782144-12df-43a8-8ebe-3e62c9da22f4",
+      "session_id": "b950c0e6-cd8f-48b1-958f-377e2f59b5cd",
+      "sequence": 2,
+      "kind": "checkpoint",
+      "created_at": "2026-11-02T20:05:32.511419+00:00",
+      "payload_json": "{\"event_id\":\"2a782144-12df-43a8-8ebe-3e62c9da22f4\",\"expected_revision\":1,\"history_epoch\":0,\"kind\":\"checkpoint\",\"reason\":null,\"sequence\":2,\"snapshot\":{\"active_ms\":4016,\"cycles_completed\":0,\"pause_ms\":0,\"phase\":\"exhale\",\"phase_remaining_ms\":5984,\"setup_ms\":267,\"support_ms\":0}}"
+    },
+    {
+      "event_id": "db661590-fd86-47dc-a84a-51ce62e0bf7a",
+      "session_id": "b950c0e6-cd8f-48b1-958f-377e2f59b5cd",
+      "sequence": 3,
+      "kind": "pause",
+      "created_at": "2026-11-02T20:05:36.750847+00:00",
+      "payload_json": "{\"event_id\":\"db661590-fd86-47dc-a84a-51ce62e0bf7a\",\"expected_revision\":2,\"history_epoch\":0,\"kind\":\"pause\",\"reason\":\"user\",\"sequence\":3,\"snapshot\":{\"active_ms\":8267,\"cycles_completed\":0,\"pause_ms\":0,\"phase\":\"exhale\",\"phase_remaining_ms\":1733,\"setup_ms\":267,\"support_ms\":0}}"
+    },
+    {
+      "event_id": "2dc9e5ff-8dff-44bc-beeb-fa69a26f3174",
+      "session_id": "b950c0e6-cd8f-48b1-958f-377e2f59b5cd",
+      "sequence": 4,
+      "kind": "support_open",
+      "created_at": "2026-11-02T20:05:47.399607+00:00",
+      "payload_json": "{\"event_id\":\"2dc9e5ff-8dff-44bc-beeb-fa69a26f3174\",\"expected_revision\":3,\"history_epoch\":0,\"kind\":\"support_open\",\"reason\":null,\"sequence\":4,\"snapshot\":{\"active_ms\":8267,\"cycles_completed\":0,\"pause_ms\":10633,\"phase\":\"exhale\",\"phase_remaining_ms\":1733,\"setup_ms\":267,\"support_ms\":0}}"
+    },
+    {
+      "event_id": "67f6d614-eae6-4950-a0af-d4a22888d764",
+      "session_id": "b950c0e6-cd8f-48b1-958f-377e2f59b5cd",
+      "sequence": 5,
+      "kind": "support_close",
+      "created_at": "2026-11-02T20:05:57.327602+00:00",
+      "payload_json": "{\"event_id\":\"67f6d614-eae6-4950-a0af-d4a22888d764\",\"expected_revision\":4,\"history_epoch\":0,\"kind\":\"support_close\",\"reason\":null,\"sequence\":5,\"snapshot\":{\"active_ms\":8267,\"cycles_completed\":0,\"pause_ms\":10633,\"phase\":\"exhale\",\"phase_remaining_ms\":1733,\"setup_ms\":267,\"support_ms\":9934}}"
+    },
+    {
+      "event_id": "cc3ef6f0-43b5-4f16-874b-d22b1bf6b684",
+      "session_id": "b950c0e6-cd8f-48b1-958f-377e2f59b5cd",
+      "sequence": 6,
+      "kind": "resume",
+      "created_at": "2026-11-02T20:05:57.571595+00:00",
+      "payload_json": "{\"event_id\":\"cc3ef6f0-43b5-4f16-874b-d22b1bf6b684\",\"expected_revision\":5,\"history_epoch\":0,\"kind\":\"resume\",\"reason\":null,\"sequence\":6,\"snapshot\":{\"active_ms\":8267,\"cycles_completed\":0,\"pause_ms\":10885,\"phase\":\"exhale\",\"phase_remaining_ms\":1733,\"setup_ms\":267,\"support_ms\":9934}}"
+    },
+    {
+      "event_id": "82e54439-993a-4118-bf1b-9afbccafd36a",
+      "session_id": "b950c0e6-cd8f-48b1-958f-377e2f59b5cd",
+      "sequence": 7,
+      "kind": "support_open",
+      "created_at": "2026-11-02T20:05:57.853944+00:00",
+      "payload_json": "{\"event_id\":\"82e54439-993a-4118-bf1b-9afbccafd36a\",\"expected_revision\":6,\"history_epoch\":0,\"kind\":\"support_open\",\"reason\":null,\"sequence\":7,\"snapshot\":{\"active_ms\":8550,\"cycles_completed\":0,\"pause_ms\":10885,\"phase\":\"exhale\",\"phase_remaining_ms\":1450,\"setup_ms\":267,\"support_ms\":9934}}"
+    },
+    {
+      "event_id": "bf5ca1ca-eb96-44e1-a4d5-7b28977fd138",
+      "session_id": "b950c0e6-cd8f-48b1-958f-377e2f59b5cd",
+      "sequence": 8,
+      "kind": "support_close",
+      "created_at": "2026-11-02T20:05:58.153144+00:00",
+      "payload_json": "{\"event_id\":\"bf5ca1ca-eb96-44e1-a4d5-7b28977fd138\",\"expected_revision\":7,\"history_epoch\":0,\"kind\":\"support_close\",\"reason\":null,\"sequence\":8,\"snapshot\":{\"active_ms\":8550,\"cycles_completed\":0,\"pause_ms\":10885,\"phase\":\"exhale\",\"phase_remaining_ms\":1450,\"setup_ms\":267,\"support_ms\":10233}}"
+    },
+    {
+      "event_id": "498ac95e-1557-4b77-aaa4-995efaf3c140",
+      "session_id": "b950c0e6-cd8f-48b1-958f-377e2f59b5cd",
+      "sequence": 9,
+      "kind": "resume",
+      "created_at": "2026-11-02T20:06:04.383613+00:00",
+      "payload_json": "{\"event_id\":\"498ac95e-1557-4b77-aaa4-995efaf3c140\",\"expected_revision\":8,\"history_epoch\":0,\"kind\":\"resume\",\"reason\":null,\"sequence\":9,\"snapshot\":{\"active_ms\":8550,\"cycles_completed\":0,\"pause_ms\":17118,\"phase\":\"exhale\",\"phase_remaining_ms\":1450,\"setup_ms\":267,\"support_ms\":10233}}"
+    },
+    {
+      "event_id": "58532dab-d4ae-4894-8858-3e725e472a6f",
+      "session_id": "b950c0e6-cd8f-48b1-958f-377e2f59b5cd",
+      "sequence": 10,
+      "kind": "stop",
+      "created_at": "2026-11-02T20:06:04.669199+00:00",
+      "payload_json": "{\"event_id\":\"58532dab-d4ae-4894-8858-3e725e472a6f\",\"expected_revision\":9,\"history_epoch\":0,\"kind\":\"stop\",\"reason\":null,\"sequence\":10,\"snapshot\":{\"active_ms\":8834,\"cycles_completed\":0,\"pause_ms\":17118,\"phase\":\"exhale\",\"phase_remaining_ms\":1166,\"setup_ms\":267,\"support_ms\":10233}}"
+    },
+    {
+      "event_id": "88511782-4270-4925-950c-bcbdef019930",
+      "session_id": "03554c26-2309-49a2-8a17-7c0351489dfb",
+      "sequence": 1,
+      "kind": "start",
+      "created_at": "2026-11-02T20:06:29.763116+00:00",
+      "payload_json": "{\"event_id\":\"88511782-4270-4925-950c-bcbdef019930\",\"expected_revision\":0,\"history_epoch\":0,\"kind\":\"start\",\"reason\":null,\"sequence\":1,\"snapshot\":{\"active_ms\":0,\"cycles_completed\":0,\"pause_ms\":0,\"phase\":\"inhale\",\"phase_remaining_ms\":4000,\"setup_ms\":267,\"support_ms\":0}}"
+    },
+    {
+      "event_id": "93e286a7-feaa-464f-a533-7f637d6fe192",
+      "session_id": "03554c26-2309-49a2-8a17-7c0351489dfb",
+      "sequence": 2,
+      "kind": "stop",
+      "created_at": "2026-11-02T20:06:30.050450+00:00",
+      "payload_json": "{\"event_id\":\"93e286a7-feaa-464f-a533-7f637d6fe192\",\"expected_revision\":1,\"history_epoch\":0,\"kind\":\"stop\",\"reason\":null,\"sequence\":2,\"snapshot\":{\"active_ms\":317,\"cycles_completed\":0,\"pause_ms\":0,\"phase\":\"inhale\",\"phase_remaining_ms\":3683,\"setup_ms\":267,\"support_ms\":0}}"
+    },
+    {
+      "event_id": "081e1403-7b70-4ab3-a157-fe9a47339dfd",
+      "session_id": "1ad8007d-706c-4ecf-be73-800a72837c16",
+      "sequence": 1,
+      "kind": "start",
+      "created_at": "2026-11-02T20:09:33.368981+00:00",
+      "payload_json": "{\"event_id\":\"081e1403-7b70-4ab3-a157-fe9a47339dfd\",\"expected_revision\":0,\"history_epoch\":0,\"kind\":\"start\",\"reason\":null,\"sequence\":1,\"snapshot\":{\"active_ms\":0,\"cycles_completed\":0,\"pause_ms\":0,\"phase\":\"inhale\",\"phase_remaining_ms\":4000,\"setup_ms\":545,\"support_ms\":0}}"
+    },
+    {
+      "event_id": "b30b371d-879f-46a5-9d40-b00ae703899e",
+      "session_id": "1ad8007d-706c-4ecf-be73-800a72837c16",
+      "sequence": 2,
+      "kind": "checkpoint",
+      "created_at": "2026-11-02T20:09:37.366050+00:00",
+      "payload_json": "{\"event_id\":\"b30b371d-879f-46a5-9d40-b00ae703899e\",\"expected_revision\":1,\"history_epoch\":0,\"kind\":\"checkpoint\",\"reason\":null,\"sequence\":2,\"snapshot\":{\"active_ms\":4016,\"cycles_completed\":0,\"pause_ms\":0,\"phase\":\"exhale\",\"phase_remaining_ms\":5984,\"setup_ms\":545,\"support_ms\":0}}"
+    },
+    {
+      "event_id": "895e6df7-8b41-4538-b98e-e78a6f3a9cd5",
+      "session_id": "1ad8007d-706c-4ecf-be73-800a72837c16",
+      "sequence": 3,
+      "kind": "checkpoint",
+      "created_at": "2026-11-02T20:09:43.365702+00:00",
+      "payload_json": "{\"event_id\":\"895e6df7-8b41-4538-b98e-e78a6f3a9cd5\",\"expected_revision\":2,\"history_epoch\":0,\"kind\":\"checkpoint\",\"reason\":null,\"sequence\":3,\"snapshot\":{\"active_ms\":10000,\"cycles_completed\":1,\"pause_ms\":0,\"phase\":\"inhale\",\"phase_remaining_ms\":4000,\"setup_ms\":545,\"support_ms\":0}}"
+    },
+    {
+      "event_id": "f8785c24-2269-45ea-bb45-8dac82288a93",
+      "session_id": "1ad8007d-706c-4ecf-be73-800a72837c16",
+      "sequence": 4,
+      "kind": "checkpoint",
+      "created_at": "2026-11-02T20:09:47.351860+00:00",
+      "payload_json": "{\"event_id\":\"f8785c24-2269-45ea-bb45-8dac82288a93\",\"expected_revision\":3,\"history_epoch\":0,\"kind\":\"checkpoint\",\"reason\":null,\"sequence\":4,\"snapshot\":{\"active_ms\":14000,\"cycles_completed\":1,\"pause_ms\":0,\"phase\":\"exhale\",\"phase_remaining_ms\":6000,\"setup_ms\":545,\"support_ms\":0}}"
+    },
+    {
+      "event_id": "dd6e62b7-081e-40c3-b473-0e252f66bbea",
+      "session_id": "1ad8007d-706c-4ecf-be73-800a72837c16",
+      "sequence": 5,
+      "kind": "stop",
+      "created_at": "2026-11-02T20:09:52.304332+00:00",
+      "payload_json": "{\"event_id\":\"dd6e62b7-081e-40c3-b473-0e252f66bbea\",\"expected_revision\":4,\"history_epoch\":0,\"kind\":\"stop\",\"reason\":null,\"sequence\":5,\"snapshot\":{\"active_ms\":18951,\"cycles_completed\":1,\"pause_ms\":0,\"phase\":\"exhale\",\"phase_remaining_ms\":1049,\"setup_ms\":545,\"support_ms\":0}}"
+    },
+    {
+      "event_id": "e24d848e-3907-49be-b9d9-313b7512b4ce",
+      "session_id": "d16553eb-bc25-4ecb-ac47-58e8a35257aa",
+      "sequence": 1,
+      "kind": "start",
+      "created_at": "2026-11-02T20:11:45.991859+00:00",
+      "payload_json": "{\"event_id\":\"e24d848e-3907-49be-b9d9-313b7512b4ce\",\"expected_revision\":0,\"history_epoch\":0,\"kind\":\"start\",\"reason\":null,\"sequence\":1,\"snapshot\":{\"active_ms\":0,\"cycles_completed\":0,\"pause_ms\":0,\"phase\":\"inhale\",\"phase_remaining_ms\":4000,\"setup_ms\":113415,\"support_ms\":0}}"
+    },
+    {
+      "event_id": "7df7d0ea-66b3-494c-ba9d-39fda31d0315",
+      "session_id": "d16553eb-bc25-4ecb-ac47-58e8a35257aa",
+      "sequence": 2,
+      "kind": "pause",
+      "created_at": "2026-11-02T20:11:46.235638+00:00",
+      "payload_json": "{\"event_id\":\"7df7d0ea-66b3-494c-ba9d-39fda31d0315\",\"expected_revision\":1,\"history_epoch\":0,\"kind\":\"pause\",\"reason\":\"user\",\"sequence\":2,\"snapshot\":{\"active_ms\":283,\"cycles_completed\":0,\"pause_ms\":0,\"phase\":\"inhale\",\"phase_remaining_ms\":3717,\"setup_ms\":113415,\"support_ms\":0}}"
+    },
+    {
+      "event_id": "fb33ad79-aef3-4f92-8ce9-746e52b6ce05",
+      "session_id": "d16553eb-bc25-4ecb-ac47-58e8a35257aa",
+      "sequence": 3,
+      "kind": "interrupt",
+      "created_at": "2026-11-02T20:12:42.637213+00:00",
+      "payload_json": "{\"event_id\":\"fb33ad79-aef3-4f92-8ce9-746e52b6ce05\",\"expected_revision\":2,\"history_epoch\":0,\"kind\":\"interrupt\",\"reason\":null,\"sequence\":3,\"snapshot\":{\"active_ms\":283,\"cycles_completed\":0,\"pause_ms\":0,\"phase\":\"inhale\",\"phase_remaining_ms\":3717,\"setup_ms\":113415,\"support_ms\":0}}"
+    }
+  ],
+  "skills_conversations": [
+    {
+      "conversation_id": "779d7f40-99a0-4ae9-b01a-abb2a1477724",
+      "session_id": "2d492645-188e-45ef-96d1-3f98205c29dc",
+      "placement": "after",
+      "created_at": "2026-11-02T20:04:34.310505+00:00",
+      "updated_at": "2026-11-02T20:04:34.310505+00:00",
+      "revision": 2
+    },
+    {
+      "conversation_id": "514b322f-1253-4572-ac93-1f2ba04781ec",
+      "session_id": null,
+      "placement": "before",
+      "created_at": "2026-11-02T20:04:39.785356+00:00",
+      "updated_at": "2026-11-02T20:04:50.385424+00:00",
+      "revision": 4
+    },
+    {
+      "conversation_id": "76ccd564-cb8e-4b2c-8fdd-a4bfd2ad4f43",
+      "session_id": null,
+      "placement": "before",
+      "created_at": "2026-11-02T20:06:38.722127+00:00",
+      "updated_at": "2026-11-02T20:06:38.722127+00:00",
+      "revision": 2
+    }
+  ],
+  "skills_messages": [
+    {
+      "message_id": "21d6901f-d569-4867-8135-1071c959aafa",
+      "conversation_id": "779d7f40-99a0-4ae9-b01a-abb2a1477724",
+      "sequence": 1,
+      "role": "user",
+      "content": "Fictional character dislikes moving cues.",
+      "source": "user",
+      "created_at": "2026-11-02T20:04:34.310505+00:00",
+      "reply_id": null,
+      "fact_ids_json": "[]"
+    },
+    {
+      "message_id": "a58edb0e-e7f0-4621-9516-db5ca8ded7b3",
+      "conversation_id": "779d7f40-99a0-4ae9-b01a-abb2a1477724",
+      "sequence": 2,
+      "role": "assistant",
+      "content": "You can choose what to do next. You can choose a static display instead of motion.",
+      "source": "mock-selected-template",
+      "created_at": "2026-11-02T20:04:34.310505+00:00",
+      "reply_id": "neutral_acknowledgment",
+      "fact_ids_json": "[\"static_display_option\"]"
+    },
+    {
+      "message_id": "42607c67-bb4b-40ea-b831-8ce6c1c73d94",
+      "conversation_id": "514b322f-1253-4572-ac93-1f2ba04781ec",
+      "sequence": 1,
+      "role": "user",
+      "content": "Fictional character asks whether typing is required.",
+      "source": "user",
+      "created_at": "2026-11-02T20:04:39.785356+00:00",
+      "reply_id": null,
+      "fact_ids_json": "[]"
+    },
+    {
+      "message_id": "12242a45-54ef-4f5d-ba77-e925ddf50697",
+      "conversation_id": "514b322f-1253-4572-ac93-1f2ba04781ec",
+      "sequence": 2,
+      "role": "assistant",
+      "content": "This prototype offers one paced breathing exercise. No typing is required during the exercise. You can pause, stop, or leave at any time.",
+      "source": "mock-selected-template",
+      "created_at": "2026-11-02T20:04:39.785356+00:00",
+      "reply_id": "explain_available_skill",
+      "fact_ids_json": "[\"no_typing_required\",\"pause_or_stop\"]"
+    },
+    {
+      "message_id": "3c29177f-254c-4fce-9370-1e4fe9637b25",
+      "conversation_id": "514b322f-1253-4572-ac93-1f2ba04781ec",
+      "sequence": 3,
+      "role": "user",
+      "content": "Fictional S09 malformed",
+      "source": "user",
+      "created_at": "2026-11-02T20:04:50.385424+00:00",
+      "reply_id": null,
+      "fact_ids_json": "[]"
+    },
+    {
+      "message_id": "bdd3ad83-07ec-4b9d-a5b1-7d33684631bb",
+      "conversation_id": "514b322f-1253-4572-ac93-1f2ba04781ec",
+      "sequence": 4,
+      "role": "assistant",
+      "content": "Conversation is unavailable. You can continue without it. Crisis support remains available.",
+      "source": "application-fallback",
+      "created_at": "2026-11-02T20:04:50.385424+00:00",
+      "reply_id": null,
+      "fact_ids_json": "[]"
+    },
+    {
+      "message_id": "51cab5da-a349-4def-8a81-b4529a3b231c",
+      "conversation_id": "76ccd564-cb8e-4b2c-8fdd-a4bfd2ad4f43",
+      "sequence": 1,
+      "role": "user",
+      "content": "Fictional S06 delayed mock",
+      "source": "user",
+      "created_at": "2026-11-02T20:06:38.722127+00:00",
+      "reply_id": null,
+      "fact_ids_json": "[]"
+    },
+    {
+      "message_id": "69dd52ee-1e6c-4cfa-8b04-87ac1f4548ca",
+      "conversation_id": "76ccd564-cb8e-4b2c-8fdd-a4bfd2ad4f43",
+      "sequence": 2,
+      "role": "assistant",
+      "content": "This prototype offers one paced breathing exercise. No typing is required during the exercise. You can pause, stop, or leave at any time.",
+      "source": "mock-selected-template",
+      "created_at": "2026-11-02T20:06:38.722127+00:00",
+      "reply_id": "explain_available_skill",
+      "fact_ids_json": "[\"no_typing_required\",\"pause_or_stop\"]"
+    }
+  ],
+  "skills_model_runs": [
+    {
+      "request_id": "1edcf042-f1bc-432e-9c17-053b4b7fe130",
+      "conversation_id": "779d7f40-99a0-4ae9-b01a-abb2a1477724",
+      "user_message_id": "21d6901f-d569-4867-8135-1071c959aafa",
+      "payload_json": "{\"allow_live\":false,\"conversation_id\":\"779d7f40-99a0-4ae9-b01a-abb2a1477724\",\"expected_revision\":0,\"history_epoch\":0,\"message\":\"Fictional character dislikes moving cues.\",\"placement\":\"after\",\"request_id\":\"1edcf042-f1bc-432e-9c17-053b4b7fe130\",\"session_id\":\"2d492645-188e-45ef-96d1-3f98205c29dc\"}",
+      "response_json": "{\"conversation\":{\"conversation_id\":\"779d7f40-99a0-4ae9-b01a-abb2a1477724\",\"created_at\":\"2026-11-02T20:04:34.310505+00:00\",\"placement\":\"after\",\"revision\":2,\"session_id\":\"2d492645-188e-45ef-96d1-3f98205c29dc\",\"updated_at\":\"2026-11-02T20:04:34.310505+00:00\"},\"messages\":[{\"content\":\"Fictional character dislikes moving cues.\",\"conversation_id\":\"779d7f40-99a0-4ae9-b01a-abb2a1477724\",\"created_at\":\"2026-11-02T20:04:34.310505+00:00\",\"fact_ids\":[],\"message_id\":\"21d6901f-d569-4867-8135-1071c959aafa\",\"reply_id\":null,\"role\":\"user\",\"sequence\":1,\"source\":\"user\"},{\"content\":\"You can choose what to do next. You can choose a static display instead of motion.\",\"conversation_id\":\"779d7f40-99a0-4ae9-b01a-abb2a1477724\",\"created_at\":\"2026-11-02T20:04:34.310505+00:00\",\"fact_ids\":[\"static_display_option\"],\"message_id\":\"a58edb0e-e7f0-4621-9516-db5ca8ded7b3\",\"reply_id\":\"neutral_acknowledgment\",\"role\":\"assistant\",\"sequence\":2,\"source\":\"mock-selected-template\"}],\"replayed\":false,\"run\":{\"context_hash\":\"96bb1dcfeca44636e2cf45b8833f756829ca2ac0ac15f96c9815051b829c2f48\",\"context_version\":\"skills-replies-v1\",\"error_category\":null,\"mode\":\"mock\",\"model_id\":\"local-fixed-fixture-v1\",\"request_id\":\"1edcf042-f1bc-432e-9c17-053b4b7fe130\",\"status\":\"completed\"}}",
+      "status": "completed",
+      "mode": "mock",
+      "model_id": "local-fixed-fixture-v1",
+      "context_version": "skills-replies-v1",
+      "context_hash": "96bb1dcfeca44636e2cf45b8833f756829ca2ac0ac15f96c9815051b829c2f48",
+      "error_category": null,
+      "created_at": "2026-11-02T20:04:34.310505+00:00"
+    },
+    {
+      "request_id": "ae9635c7-e557-4df7-97ff-28257adfa0ca",
+      "conversation_id": "514b322f-1253-4572-ac93-1f2ba04781ec",
+      "user_message_id": "42607c67-bb4b-40ea-b831-8ce6c1c73d94",
+      "payload_json": "{\"allow_live\":false,\"conversation_id\":\"514b322f-1253-4572-ac93-1f2ba04781ec\",\"expected_revision\":0,\"history_epoch\":0,\"message\":\"Fictional character asks whether typing is required.\",\"placement\":\"before\",\"request_id\":\"ae9635c7-e557-4df7-97ff-28257adfa0ca\",\"session_id\":null}",
+      "response_json": "{\"conversation\":{\"conversation_id\":\"514b322f-1253-4572-ac93-1f2ba04781ec\",\"created_at\":\"2026-11-02T20:04:39.785356+00:00\",\"placement\":\"before\",\"revision\":2,\"session_id\":null,\"updated_at\":\"2026-11-02T20:04:39.785356+00:00\"},\"messages\":[{\"content\":\"Fictional character asks whether typing is required.\",\"conversation_id\":\"514b322f-1253-4572-ac93-1f2ba04781ec\",\"created_at\":\"2026-11-02T20:04:39.785356+00:00\",\"fact_ids\":[],\"message_id\":\"42607c67-bb4b-40ea-b831-8ce6c1c73d94\",\"reply_id\":null,\"role\":\"user\",\"sequence\":1,\"source\":\"user\"},{\"content\":\"This prototype offers one paced breathing exercise. No typing is required during the exercise. You can pause, stop, or leave at any time.\",\"conversation_id\":\"514b322f-1253-4572-ac93-1f2ba04781ec\",\"created_at\":\"2026-11-02T20:04:39.785356+00:00\",\"fact_ids\":[\"no_typing_required\",\"pause_or_stop\"],\"message_id\":\"12242a45-54ef-4f5d-ba77-e925ddf50697\",\"reply_id\":\"explain_available_skill\",\"role\":\"assistant\",\"sequence\":2,\"source\":\"mock-selected-template\"}],\"replayed\":false,\"run\":{\"context_hash\":\"28ca71cfa02f74137374132407d55048678bec08e7d474aadfb428be78d126a6\",\"context_version\":\"skills-replies-v1\",\"error_category\":null,\"mode\":\"mock\",\"model_id\":\"local-fixed-fixture-v1\",\"request_id\":\"ae9635c7-e557-4df7-97ff-28257adfa0ca\",\"status\":\"completed\"}}",
+      "status": "completed",
+      "mode": "mock",
+      "model_id": "local-fixed-fixture-v1",
+      "context_version": "skills-replies-v1",
+      "context_hash": "28ca71cfa02f74137374132407d55048678bec08e7d474aadfb428be78d126a6",
+      "error_category": null,
+      "created_at": "2026-11-02T20:04:39.785356+00:00"
+    },
+    {
+      "request_id": "787fd6c9-b312-4a67-a882-8ba18f9d91c3",
+      "conversation_id": "514b322f-1253-4572-ac93-1f2ba04781ec",
+      "user_message_id": "3c29177f-254c-4fce-9370-1e4fe9637b25",
+      "payload_json": "{\"allow_live\":false,\"conversation_id\":\"514b322f-1253-4572-ac93-1f2ba04781ec\",\"expected_revision\":2,\"history_epoch\":0,\"message\":\"Fictional S09 malformed\",\"placement\":\"before\",\"request_id\":\"787fd6c9-b312-4a67-a882-8ba18f9d91c3\",\"session_id\":null}",
+      "response_json": "{\"conversation\":{\"conversation_id\":\"514b322f-1253-4572-ac93-1f2ba04781ec\",\"created_at\":\"2026-11-02T20:04:39.785356+00:00\",\"placement\":\"before\",\"revision\":4,\"session_id\":null,\"updated_at\":\"2026-11-02T20:04:50.385424+00:00\"},\"messages\":[{\"content\":\"Fictional S09 malformed\",\"conversation_id\":\"514b322f-1253-4572-ac93-1f2ba04781ec\",\"created_at\":\"2026-11-02T20:04:50.385424+00:00\",\"fact_ids\":[],\"message_id\":\"3c29177f-254c-4fce-9370-1e4fe9637b25\",\"reply_id\":null,\"role\":\"user\",\"sequence\":3,\"source\":\"user\"},{\"content\":\"Conversation is unavailable. You can continue without it. Crisis support remains available.\",\"conversation_id\":\"514b322f-1253-4572-ac93-1f2ba04781ec\",\"created_at\":\"2026-11-02T20:04:50.385424+00:00\",\"fact_ids\":[],\"message_id\":\"bdd3ad83-07ec-4b9d-a5b1-7d33684631bb\",\"reply_id\":null,\"role\":\"assistant\",\"sequence\":4,\"source\":\"application-fallback\"}],\"replayed\":false,\"run\":{\"context_hash\":\"1eea449d00d2b917a2295b47b3bbc70ba86f370f18492b7f233923dafc74e5b9\",\"context_version\":\"skills-replies-v1\",\"error_category\":\"mock_reply_rejected\",\"mode\":\"mock\",\"model_id\":\"local-fixed-fixture-v1\",\"request_id\":\"787fd6c9-b312-4a67-a882-8ba18f9d91c3\",\"status\":\"failed\"}}",
+      "status": "failed",
+      "mode": "mock",
+      "model_id": "local-fixed-fixture-v1",
+      "context_version": "skills-replies-v1",
+      "context_hash": "1eea449d00d2b917a2295b47b3bbc70ba86f370f18492b7f233923dafc74e5b9",
+      "error_category": "mock_reply_rejected",
+      "created_at": "2026-11-02T20:04:50.385424+00:00"
+    },
+    {
+      "request_id": "781606eb-0e88-4067-bc38-c99ac79bc3ff",
+      "conversation_id": "76ccd564-cb8e-4b2c-8fdd-a4bfd2ad4f43",
+      "user_message_id": "51cab5da-a349-4def-8a81-b4529a3b231c",
+      "payload_json": "{\"allow_live\":false,\"conversation_id\":\"76ccd564-cb8e-4b2c-8fdd-a4bfd2ad4f43\",\"expected_revision\":0,\"history_epoch\":0,\"message\":\"Fictional S06 delayed mock\",\"placement\":\"before\",\"request_id\":\"781606eb-0e88-4067-bc38-c99ac79bc3ff\",\"session_id\":null}",
+      "response_json": "{\"conversation\":{\"conversation_id\":\"76ccd564-cb8e-4b2c-8fdd-a4bfd2ad4f43\",\"created_at\":\"2026-11-02T20:06:38.722127+00:00\",\"placement\":\"before\",\"revision\":2,\"session_id\":null,\"updated_at\":\"2026-11-02T20:06:38.722127+00:00\"},\"messages\":[{\"content\":\"Fictional S06 delayed mock\",\"conversation_id\":\"76ccd564-cb8e-4b2c-8fdd-a4bfd2ad4f43\",\"created_at\":\"2026-11-02T20:06:38.722127+00:00\",\"fact_ids\":[],\"message_id\":\"51cab5da-a349-4def-8a81-b4529a3b231c\",\"reply_id\":null,\"role\":\"user\",\"sequence\":1,\"source\":\"user\"},{\"content\":\"This prototype offers one paced breathing exercise. No typing is required during the exercise. You can pause, stop, or leave at any time.\",\"conversation_id\":\"76ccd564-cb8e-4b2c-8fdd-a4bfd2ad4f43\",\"created_at\":\"2026-11-02T20:06:38.722127+00:00\",\"fact_ids\":[\"no_typing_required\",\"pause_or_stop\"],\"message_id\":\"69dd52ee-1e6c-4cfa-8b04-87ac1f4548ca\",\"reply_id\":\"explain_available_skill\",\"role\":\"assistant\",\"sequence\":2,\"source\":\"mock-selected-template\"}],\"replayed\":false,\"run\":{\"context_hash\":\"be2fec3e4d68ce619a962f9e401d0284c65a8675d20d75febee63ec135a75469\",\"context_version\":\"skills-replies-v1\",\"error_category\":null,\"mode\":\"mock\",\"model_id\":\"local-fixed-fixture-v1\",\"request_id\":\"781606eb-0e88-4067-bc38-c99ac79bc3ff\",\"status\":\"completed\"}}",
+      "status": "completed",
+      "mode": "mock",
+      "model_id": "local-fixed-fixture-v1",
+      "context_version": "skills-replies-v1",
+      "context_hash": "be2fec3e4d68ce619a962f9e401d0284c65a8675d20d75febee63ec135a75469",
+      "error_category": null,
+      "created_at": "2026-11-02T20:06:38.722127+00:00"
+    }
+  ],
+  "skills_preferences": [
+    {
+      "singleton_id": 1,
+      "revision": 3,
+      "has_saved": 1,
+      "simpler_view": 0,
+      "motion_mode": "static",
+      "updated_at": "2026-11-02T20:14:40.174047+00:00",
+      "last_request_id": "daa70746-0521-4668-84a8-e83828538dcd",
+      "last_payload_json": "{\"action\":\"save\",\"display_settings\":{\"motion_mode\":\"static\",\"simpler_view\":false},\"expected_revision\":2,\"request_id\":\"daa70746-0521-4668-84a8-e83828538dcd\"}"
+    }
+  ],
+  "skills_history_state": [
+    {
+      "singleton_id": 1,
+      "epoch": 0,
+      "last_request_id": null,
+      "last_payload_json": null,
+      "last_response_json": null
+    }
+  ],
+  "skills_call_budget": [
+    {
+      "singleton_id": 1,
+      "model_id": "gpt-6-luna",
+      "call_limit": 10,
+      "dollar_limit_micro": 1000000,
+      "reserved_calls": 0,
+      "reserved_micro": 0
+    }
+  ]
+}

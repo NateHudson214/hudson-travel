@@ -1,0 +1,57 @@
+{
+  "verified_date": "2026-11-02",
+  "live_enabled": false,
+  "new_run_records": [
+    {
+      "request_id": "9af991c9-7bc6-48d9-9861-f05fb25a3dc4",
+      "status": "failed",
+      "mode": "live",
+      "model_id": "gpt-6-luna",
+      "error_category": "timeout",
+      "context_hash": "b14d2e6434c7fba76e4b878e2906bc284ab9668ba0652a0029ebf816af5dd21e"
+    },
+    {
+      "request_id": "d9f222c4-4789-4a60-ac80-748fa50ef80f",
+      "status": "completed",
+      "mode": "live",
+      "model_id": "gpt-6-luna",
+      "error_category": null,
+      "context_hash": "b14d2e6434c7fba76e4b878e2906bc284ab9668ba0652a0029ebf816af5dd21e"
+    },
+    {
+      "request_id": "198bcf4f-74b1-40cf-99e3-b2223f8ad4ab",
+      "status": "completed",
+      "mode": "live",
+      "model_id": "gpt-6-luna",
+      "error_category": null,
+      "context_hash": "0a492735c9c8a497c5d26c8febf91861f7cc847bf876e4b2777151aa160327b7"
+    },
+    {
+      "request_id": "5aa5e7e0-5bd7-430d-990e-95dc23a2c557",
+      "status": "completed",
+      "mode": "live",
+      "model_id": "gpt-6-luna",
+      "error_category": null,
+      "context_hash": "0a492735c9c8a497c5d26c8febf91861f7cc847bf876e4b2777151aa160327b7"
+    }
+  ],
+  "existing_rows_preserved": {
+    "skills_sessions": true,
+    "skills_session_events": true,
+    "skills_conversations": true,
+    "skills_messages": true,
+    "skills_model_runs": true,
+    "skills_run_control": true,
+    "skills_preferences": true,
+    "skills_history_state": true
+  },
+  "new_conversations": 4,
+  "new_messages": 8,
+  "pending_runs": 0,
+  "integrity": "ok",
+  "foreign_key_errors": [],
+  "remaining_calls": 2,
+  "remaining_reservation_usd": 0.2,
+  "mock_regression": "164 skills backend tests passed; two existing dependency warnings",
+  "no_source_change": true
+}

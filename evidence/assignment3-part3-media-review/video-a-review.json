@@ -1,0 +1,43 @@
+{
+  "review_date": "2026-11-03",
+  "filename": "assignment3-part3-demo.mov",
+  "sha256": "e485ceb64ae977b7f320ef8715e2b034df9fc6739ea13f66698a953f2ada993b",
+  "bytes": 34131441,
+  "audio_tracks": 0,
+  "duration_seconds": 307.345,
+  "height": 1494,
+  "sample_count": 32,
+  "sample_interval_seconds": 10,
+  "video_tracks": 1,
+  "width": 2866,
+  "method": "macOS AVFoundation metadata and 32 extracted frames at ten-second intervals plus last second; targeted full-resolution frames inspected; not continuous playback certification",
+  "observed": [
+    "simpler options",
+    "explicit static/save/reuse, no auto-start",
+    "labeled before/after mock conversation",
+    "six-cycle progression",
+    "completion timing and saved session/checkpoints",
+    "conversation history after reload",
+    "display reset with session retained",
+    "local support over paused exercise",
+    "Leave screen"
+  ],
+  "visible_completion_values": {
+    "rendered_seconds_rounded": 60.02,
+    "clock_seconds_rounded": 60.01,
+    "setup_seconds_rounded": 56.26,
+    "phase_cues": 12
+  },
+  "important_gap": "fixed bottom Pause/Resume/Stop bar lies outside captured portion; click actions themselves are not readable in the recording",
+  "other_limits": [
+    "intro/outro caption cards not observed in sampled frames",
+    "brief clear confirmation/cancel not verified by ten-second samples",
+    "no claim of frame-by-frame privacy review or continuous playback review"
+  ],
+  "decision": "retain useful main demo; record a short full-viewport control supplement at start of video B, then process evidence/code walkthrough; manually watch both final files",
+  "recording_b": "now exists; see video-b-review.json",
+  "original_video_modified": false,
+  "uploads": 0,
+  "user_direction_2026_11_03": "Keep recording as-is; user explicitly said not to worry about the framing gap.",
+  "current_decision": "Document framing limitation; do not require another recording or imply bottom controls were captured."
+}

@@ -11,10 +11,11 @@ from backend.app.skills.routes import mock_selector
 
 @pytest.fixture
 def history_client(client,tmp_path,monkeypatch):
-    monkeypatch.setattr(app.state,'skills_database_path',tmp_path/'skills.sqlite3')
+    # Patch State storage directly so pytest undo restores dynamic attributes.
+    monkeypatch.setitem(app.state._state,'skills_database_path',tmp_path/'skills.sqlite3')
     def forbidden(*args,**kwargs): pytest.fail('Clear history invoked a live provider')
-    monkeypatch.setattr(app.state,'advisor_query_proposer',forbidden)
-    monkeypatch.setattr(app.state,'advisor_answer_generator',forbidden)
+    monkeypatch.setitem(app.state._state,'advisor_query_proposer',forbidden)
+    monkeypatch.setitem(app.state._state,'advisor_answer_generator',forbidden)
     yield client
     app.dependency_overrides.pop(mock_selector,None)
 

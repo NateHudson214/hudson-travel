@@ -1,0 +1,43 @@
+{
+  "date": "2026-11-02",
+  "approved_versions": {
+    "vite": "8.2.4",
+    "shell-quote": "1.11.0",
+    "source-map-js": "1.2.2",
+    "brace-expansion": "5.0.12"
+  },
+  "method": "temporary exact constraints for lock-only resolution, restore original package.json, normalize lock, npm ci --ignore-scripts in isolation; no final direct additions/overrides",
+  "only_four_package_records_changed": true,
+  "package_json_unchanged": true,
+  "repository_lock_copied_after_verification": true,
+  "isolated_backend": "492 passed in 5.69s",
+  "isolated_frontend": "87 passed; non-fixing oxlint and ESLint passed; Vite 8.2.4 53-module build passed",
+  "browser": "six travel variants, simpler toggle, mock reply saved, Start/Pause/Resume/Stop/Leave, support Back remains paused",
+  "automation_note": "DOM checkbox locator returned no match; fresh AX state and native indexed toggle succeeded; no application defect inferred",
+  "audit_before": {
+    "moderate": 7,
+    "high": 3,
+    "critical": 1,
+    "total": 11
+  },
+  "audit_after": {
+    "moderate": 7,
+    "high": 0,
+    "critical": 0,
+    "total": 7
+  },
+  "remaining": "minimatch 10.2.6 plus six inherited lint-tool package findings, all marked dev in lock",
+  "compatible_remediation": "No patched minimatch 10 version found; current latest ESLint/config-array retain ^10. No major/override/downgrade applied.",
+  "risk_decision": "unresolved dependency limitation; no student acceptance assumed",
+  "original_databases_env_csv_earlier_reports_preserved": true,
+  "allowance_unchanged": true,
+  "remaining_calls": 2,
+  "remaining_reservation_usd": 0.2,
+  "production_source_unchanged": true,
+  "python_dependencies_unchanged": true,
+  "original_frontend_node_modules": "not reinstalled; original installed versions may differ from updated lock",
+  "real_model_calls": 0,
+  "commits_pushes_submissions": 0,
+  "test_services_and_tab_closed": true,
+  "scope": "existing isolated unpublished snapshot plus repaired tests and approved lock; not committed clean checkout"
+}

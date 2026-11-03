@@ -1,0 +1,96 @@
+{
+  "date": "2026-11-02",
+  "mode": "mock",
+  "scenarios": [
+    {
+      "id": "S01",
+      "action": "Choose Simpler view while ready, then Show more",
+      "expected": "Optional conversation/history hide; safety/Start remain; Show more restores options without starting",
+      "behavior_checks": "B1 B2"
+    },
+    {
+      "id": "S02",
+      "action": "Stop or complete an exercise in Simpler view, then Show more",
+      "expected": "No optional chat entry until Show more; user remains stopped/completed",
+      "behavior_checks": "B1 B2"
+    },
+    {
+      "id": "S03",
+      "action": "Start and finish all six cycles without input",
+      "expected": "Twelve ordered cues, no chat call inside, actual guided interval <=90 s including delays; setup separate",
+      "behavior_checks": "B2 B3"
+    },
+    {
+      "id": "S04",
+      "action": "Pause midway through a phase, wait, explicitly Resume",
+      "expected": "Phase remainder retained; pause excluded; no restart or automatic continuation",
+      "behavior_checks": "B1 B2"
+    },
+    {
+      "id": "S05",
+      "action": "Open support during running/paused state, Back, then Resume",
+      "expected": "Local panel opens; Back remains paused; explicit Resume only",
+      "behavior_checks": "B1 B2"
+    },
+    {
+      "id": "S06",
+      "action": "Leave while running or waiting for a reply",
+      "expected": "Immediate idle; stopped/cancelled or safe late-result handling; no penalty",
+      "behavior_checks": "B1 B2 B3"
+    },
+    {
+      "id": "S07",
+      "action": "Before: \u201cFictional character asks whether typing is required.\u201d",
+      "expected": "Labeled mock approved exercise/no-typing reply; optional continuation and persisted pair",
+      "behavior_checks": "B1 B2 B3"
+    },
+    {
+      "id": "S08",
+      "action": "After: \u201cFictional character dislikes moving cues.\u201d",
+      "expected": "Labeled mock reviewed static-option fact; no automatic setting change; history persists",
+      "behavior_checks": "B1 B2 B3"
+    },
+    {
+      "id": "S09",
+      "action": "Inject unknown reply ID/extra prose/malformed selection",
+      "expected": "Fixed application fallback; failed run; no rejected raw output saved/rendered; safety/Leave work",
+      "behavior_checks": "B1 B2 B3"
+    },
+    {
+      "id": "S10",
+      "action": "Load composer, stop only test backend, send fictional draft",
+      "expected": "Bounded error and retained draft; local support/Leave usable; no silent retry",
+      "behavior_checks": "B1 B3"
+    },
+    {
+      "id": "S11",
+      "action": "Save simpler/static, reload, Use last setup; test reduced motion",
+      "expected": "Load never applies/starts; reuse explicit; device reduced motion wins",
+      "behavior_checks": "B1 B2 B3"
+    },
+    {
+      "id": "S12",
+      "action": "Reset display choices with existing history and a failed/in-flight preference write",
+      "expected": "Local display reset; saved choice reset retry explicit; sessions/conversations retained",
+      "behavior_checks": "B1 B2 B3"
+    },
+    {
+      "id": "S13",
+      "action": "Open Clear history, cancel; later confirm in temporary DB",
+      "expected": "Cancel preserves data; confirm clears sessions/chats, preserves preferences and allowance",
+      "behavior_checks": "B1 B3"
+    },
+    {
+      "id": "S14",
+      "action": "Refresh/restart with unfinished session and saved conversation",
+      "expected": "No auto-resume; acknowledged lower-bound checkpoint/history restored; explicit reconcile only",
+      "behavior_checks": "B1 B2 B3"
+    },
+    {
+      "id": "S15",
+      "action": "Duplicate pending Send; cancel/clear while fake provider waits; return late result",
+      "expected": "One dispatch; durable cancellation/epoch check; no recreated records or refunded allowance",
+      "behavior_checks": "B1 B2 B3"
+    }
+  ]
+}

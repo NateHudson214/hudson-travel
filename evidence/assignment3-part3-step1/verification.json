@@ -1,0 +1,74 @@
+{
+  "review_date": "2026-11-02",
+  "branch": "codex/assignment3-part3-refinements",
+  "base_commit": "16deb696c24222519c88be73f6d29df1a3fbab76",
+  "part3_commit": null,
+  "checks": {
+    "backend_tests": 492,
+    "frontend_tests": 87,
+    "oxlint": "passed",
+    "eslint": "passed",
+    "production_build": "passed"
+  },
+  "browser_observations": [
+    "Ready simpler view hides optional conversation/history; safety/Start retained",
+    "Stopped simpler view hides optional conversation; Show more restores it without restart",
+    "Saving simpler setup succeeds while engine remains ready",
+    "Show more restores before-conversation entry without starting",
+    "Support opens during pacing, Back stays paused and Stop ends it"
+  ],
+  "source_only_checks": [
+    "Live cancellation copy now says saved messages, not exact run-status badges"
+  ],
+  "unit_only_checks": [
+    "Completed-state entry visibility; no new completed browser/timing claim"
+  ],
+  "safety_button_rectangles": {
+    "viewport_width": 1280,
+    "crisis_right": 971.4765625,
+    "leave_right": 1056
+  },
+  "screenshot_limit": "Native screenshot is a cropped portion of the DOM viewport; not a complete mobile/edge accessibility proof",
+  "temporary_database": {
+    "sessions": [
+      {
+        "status": "stopped",
+        "active_ms": 283,
+        "pause_ms": 257,
+        "support_ms": 30679,
+        "cycles_completed": 0
+      }
+    ],
+    "preferences": {
+      "has_saved": 1,
+      "simpler_view": 1,
+      "motion_mode": "system"
+    },
+    "model_runs": 0,
+    "reserved_calls": 0,
+    "integrity": "ok",
+    "foreign_key_errors": []
+  },
+  "original_databases_and_part1_part2_reports_unchanged": true,
+  "mode": "mock",
+  "additional_live_calls": 0,
+  "original_reserved_calls": 4,
+  "original_reserved_micro": 400000,
+  "remaining_calls": 6,
+  "remaining_reservation_usd": 0.6,
+  "test_services_and_tab_closed": true,
+  "source_sha256": {
+    "frontend/src/skills/presentation.js": "7e2f9b822ba8ab6395c5443089e0c227b2a40eb11cb13a220eee0d7a316e27b0",
+    "frontend/src/skills/presentation.test.js": "13a3dcd8d89e6c5b3013e770e147495129a9f54d45033ba1eb7c60f2eb8e6727",
+    "frontend/src/components/skills/SkillsExperience.vue": "c77662ea8061d83090b7ba0603e705bcda5fe5957c5861e18bb003f3e7993f84",
+    "frontend/src/components/skills/SkillsConversation.vue": "efc6599bb50a81c4fbcd81bcfe79dfcad13b614d8241bf6f085198fb41a5f59a"
+  },
+  "pending": [
+    "Formal 15-scenario matrix completion and B1-B3",
+    "Fresh duration capture",
+    "Repeated live variation authorization/checks",
+    "Clean-checkout verification",
+    "Final recordings/code explanation",
+    "Final Part 3 checkpoint/upload report"
+  ]
+}

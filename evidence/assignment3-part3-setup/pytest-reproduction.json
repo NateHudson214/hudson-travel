@@ -1,0 +1,9 @@
+{
+  "pytest": "9.2.0",
+  "starlette": "1.10.0",
+  "attribute": "skills_database_path",
+  "before": true,
+  "during": true,
+  "after_undo": false,
+  "mode_mock": true
+}

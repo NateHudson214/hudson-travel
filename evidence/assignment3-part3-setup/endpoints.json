@@ -1,0 +1,101 @@
+{
+  "/api/health": {
+    "status": 200,
+    "body": {
+      "status": "ok",
+      "geoapify": "key is not configured",
+      "openrouter": "key is not configured",
+      "openrouter_model": "nvidia/nemotron-3.5-lightning:free",
+      "openai": "key is not configured",
+      "openai_model": "gpt-6-luna"
+    }
+  },
+  "/api/skills/model-status": {
+    "status": 200,
+    "body": {
+      "mode": "mock",
+      "model_id": "local-fixed-fixture-v1",
+      "live_enabled": false,
+      "allowance_exhausted": false,
+      "budget": {
+        "singleton_id": 1,
+        "model_id": "gpt-6-luna",
+        "call_limit": 10,
+        "dollar_limit_micro": 1000000,
+        "reserved_calls": 0,
+        "reserved_micro": 0
+      }
+    }
+  },
+  "/api/skills/sessions": {
+    "status": 200,
+    "body": {
+      "sessions": [
+        {
+          "session_id": "80f44151-b642-469a-bab5-e8acbe067f5f",
+          "skill_id": "paced_breathing_4_6",
+          "skill_version": "1",
+          "status": "stopped",
+          "revision": 5,
+          "created_at": "2026-11-02T23:09:24.040528+00:00",
+          "updated_at": "2026-11-02T23:09:35.206431+00:00",
+          "started_at": "2026-11-02T23:09:24.059950+00:00",
+          "ended_at": "2026-11-02T23:09:35.206431+00:00",
+          "active_ms": 1000,
+          "pause_ms": 1551,
+          "support_ms": 8615,
+          "setup_ms": 22845,
+          "cycles_completed": 0,
+          "phase": "inhale",
+          "phase_remaining_ms": 3000,
+          "support_open": false,
+          "display_settings": {
+            "motion_mode": "system",
+            "simpler_view": false
+          },
+          "within_duration_limit": false,
+          "timing_source": "client_reported",
+          "timing_verified": false
+        }
+      ],
+      "next_cursor": null
+    }
+  },
+  "/api/trips?hotel_name=Harbor%20Lantern%20Hotel": {
+    "status": 200,
+    "body": [
+      {
+        "trip_id": "T001",
+        "trip_name": "Boston Harbor Weekend",
+        "hotel_id": "H001",
+        "hotel_name": "Harbor Lantern Hotel",
+        "city": "Boston",
+        "state": "MA",
+        "nightly_rate_usd": 150.0,
+        "check_in": "2026-09-18",
+        "check_out": "2026-09-20"
+      },
+      {
+        "trip_id": "T009",
+        "trip_name": "Boston Autumn Weekend",
+        "hotel_id": "H001",
+        "hotel_name": "Harbor Lantern Hotel",
+        "city": "Boston",
+        "state": "MA",
+        "nightly_rate_usd": 150.0,
+        "check_in": "2026-10-02",
+        "check_out": "2026-10-04"
+      }
+    ]
+  },
+  "/api/trips?hotel_name=Not%20a%20Real%20Hotel": {
+    "status": 200,
+    "body": []
+  },
+  "/api/trips?hotel_name=": {
+    "status": 400,
+    "body": {
+      "detail": "Enter a hotel name to search."
+    }
+  }
+}

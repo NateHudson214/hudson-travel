@@ -32,14 +32,15 @@ def body(**values):
 
 @pytest.fixture
 def live_client(client, tmp_path, monkeypatch):
-    monkeypatch.setattr(app.state,'skills_database_path',tmp_path/'skills.sqlite3')
-    monkeypatch.setattr(app.state,'skills_live_enabled_provider',lambda:True)
-    monkeypatch.setattr(app.state,'openai_key_provider',lambda:'TEST_ONLY_NOT_A_KEY')
+    # Patch State storage directly so pytest undo restores dynamic attributes.
+    monkeypatch.setitem(app.state._state,'skills_database_path',tmp_path/'skills.sqlite3')
+    monkeypatch.setitem(app.state._state,'skills_live_enabled_provider',lambda:True)
+    monkeypatch.setitem(app.state._state,'openai_key_provider',lambda:'TEST_ONLY_NOT_A_KEY')
     calls=[]
     def handler(request):
         calls.append(json.loads(request.content))
         return httpx.Response(200,json=reply())
-    monkeypatch.setattr(app.state,'skills_live_transport_provider',lambda:httpx.MockTransport(handler))
+    monkeypatch.setitem(app.state._state,'skills_live_transport_provider',lambda:httpx.MockTransport(handler))
     return client,calls
 
 
@@ -55,9 +56,9 @@ def budget(client):
 
 def test_disabled_and_explicit_disclosure_gate_never_dispatch(live_client,monkeypatch):
     c,calls=live_client
-    monkeypatch.setattr(app.state,'skills_live_enabled_provider',lambda:False)
+    monkeypatch.setitem(app.state._state,'skills_live_enabled_provider',lambda:False)
     assert post(c,body())['run']['mode']=='mock'
-    monkeypatch.setattr(app.state,'skills_live_enabled_provider',lambda:True)
+    monkeypatch.setitem(app.state._state,'skills_live_enabled_provider',lambda:True)
     assert post(c,body(allow_live=False))['run']['mode']=='mock'
     assert calls==[]
     assert budget(c)['reserved_calls']==0
@@ -84,7 +85,7 @@ def test_transport_boundary_and_saved_live_provenance(live_client):
 @pytest.mark.parametrize('status,category',[(401,'authentication'),(403,'authentication'),(429,'rate_limit'),(500,'provider_http')])
 def test_http_errors_sanitized_and_counted(live_client,monkeypatch,status,category):
     c,_=live_client
-    monkeypatch.setattr(app.state,'skills_live_transport_provider',lambda:httpx.MockTransport(lambda r:httpx.Response(status,text='PRIVATE')))
+    monkeypatch.setitem(app.state._state,'skills_live_transport_provider',lambda:httpx.MockTransport(lambda r:httpx.Response(status,text='PRIVATE')))
     r=post(c,body())
     assert r['run']['status']=='failed' and r['run']['error_category']==category
     assert 'PRIVATE' not in json.dumps(r)
@@ -102,7 +103,7 @@ def test_http_errors_sanitized_and_counted(live_client,monkeypatch,status,catego
 ])
 def test_rejected_provider_output_never_rendered(live_client,monkeypatch,data):
     c,_=live_client
-    monkeypatch.setattr(app.state,'skills_live_transport_provider',lambda:httpx.MockTransport(lambda r:httpx.Response(200,json=data)))
+    monkeypatch.setitem(app.state._state,'skills_live_transport_provider',lambda:httpx.MockTransport(lambda r:httpx.Response(200,json=data)))
     r=post(c,body())
     assert r['run']['error_category']=='response_rejected'
     assert r['messages'][1]['source']=='application-fallback'
@@ -116,7 +117,7 @@ def test_timeout_is_finite_no_retry(live_client,monkeypatch):
         await asyncio.sleep(1)
         return httpx.Response(200,json=reply())
     monkeypatch.setattr(provider,'TIMEOUT_SECONDS',0.03)
-    monkeypatch.setattr(app.state,'skills_live_transport_provider',lambda:httpx.MockTransport(slow))
+    monkeypatch.setitem(app.state._state,'skills_live_transport_provider',lambda:httpx.MockTransport(slow))
     r=post(c,body())
     assert r['run']['error_category']=='timeout'
     assert len(calls)==1 and budget(c)['reserved_calls']==1
@@ -125,7 +126,7 @@ def test_timeout_is_finite_no_retry(live_client,monkeypatch):
 def test_missing_configuration_and_invalid_message_do_not_charge(live_client,monkeypatch):
     c,calls=live_client
     post(c,body(message=' '),422)
-    monkeypatch.setattr(app.state,'openai_key_provider',lambda:None)
+    monkeypatch.setitem(app.state._state,'openai_key_provider',lambda:None)
     post(c,body(),503)
     assert calls==[] and budget(c)['reserved_calls']==0
 
@@ -138,8 +139,8 @@ def test_ten_call_dollar_cap_survives_clear_and_new_connections(live_client,monk
     clear=c.request('DELETE','/api/skills/history',json={'request_id':str(uuid4()),'expected_epoch':0,'confirm':True})
     assert clear.status_code==200
     assert post(c,body(history_epoch=1))['run']['mode']=='mock'
-    monkeypatch.setattr(app.state,'skills_live_enabled_provider',lambda:False)
-    monkeypatch.setattr(app.state,'skills_live_enabled_provider',lambda:True)
+    monkeypatch.setitem(app.state._state,'skills_live_enabled_provider',lambda:False)
+    monkeypatch.setitem(app.state._state,'skills_live_enabled_provider',lambda:True)
     assert budget(c)['reserved_calls']==10 and len(calls)==10
     with sqlite3.connect(app.state.skills_database_path) as db:
         assert db.execute('PRAGMA foreign_key_check').fetchall()==[]
@@ -152,7 +153,7 @@ def test_pending_duplicate_cancel_and_late_result_are_atomic(live_client,monkeyp
         calls.append(request);entered.set()
         while not release.is_set(): await asyncio.sleep(0.005)
         return httpx.Response(200,json=reply())
-    monkeypatch.setattr(app.state,'skills_live_transport_provider',lambda:httpx.MockTransport(blocking))
+    monkeypatch.setitem(app.state._state,'skills_live_transport_provider',lambda:httpx.MockTransport(blocking))
     p=body()
     with ThreadPoolExecutor(max_workers=1) as pool:
         running=pool.submit(post,c,p)
@@ -177,7 +178,7 @@ def test_history_clear_during_dispatch_never_recreates_records(live_client,monke
         entered.set()
         while not release.is_set(): await asyncio.sleep(0.005)
         return httpx.Response(200,json=reply())
-    monkeypatch.setattr(app.state,'skills_live_transport_provider',lambda:httpx.MockTransport(blocking))
+    monkeypatch.setitem(app.state._state,'skills_live_transport_provider',lambda:httpx.MockTransport(blocking))
     p=body()
     with ThreadPoolExecutor(max_workers=1) as pool:
         running=pool.submit(lambda:c.post('/api/skills/conversations/turns',json=p))
